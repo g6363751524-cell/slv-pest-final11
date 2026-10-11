@@ -1,0 +1,270 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  HelpCircle,
+  ShieldCheck,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  PawPrint
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Flea Identification',
+    desc: 'Signs of flea activity, bite patterns, flea dirt, and pet scratching behaviors.',
+    href: '/knowledge/fleas/identification'
+  },
+  {
+    title: 'Where Fleas Hide',
+    desc: 'Pet bedding, carpets, rugs, upholstery, furniture, and shaded outdoor resting areas.',
+    href: '/knowledge/fleas/where-they-hide'
+  },
+  {
+    title: 'How Fleas Spread',
+    desc: 'Pets, animal resting areas, infested carpets, and outdoor environmental vectors.',
+    href: '/knowledge/fleas/how-they-spread'
+  },
+  {
+    title: 'Flea Prevention',
+    desc: 'Washing bedding, deep vacuuming, clutter reduction, and early response protocols.',
+    href: '/knowledge/fleas/prevention'
+  },
+  {
+    title: 'Flea Treatment Guide',
+    desc: 'The 4-stage management workflow: inspection, source assessment, targeted treatment, and guidance.',
+    href: '/knowledge/fleas/treatment-guide'
+  }
+];
+
+const faqs = [
+  {
+    q: 'How do I know if I have fleas?',
+    a: 'Common indicators include itchy red bite clusters around your ankles and lower legs, observing tiny reddish-brown insects jumping across rugs or furniture, pets scratching or biting at their fur persistently, and discovering black pepper-like specks (flea dirt) on pet bedding that dissolve reddish on damp paper towels.'
+  },
+  {
+    q: 'Where do fleas usually hide?',
+    a: 'While adult fleas live on animal hosts to feed, eggs, larvae, and pupal cocoons hide deep within carpet piles, pet cushions, upholstery seams, underneath low furniture, along timber floorboard cracks, and in shaded outdoor resting areas.'
+  },
+  {
+    q: 'Can pets contribute to flea activity?',
+    a: 'Yes. Domestic dogs and cats frequently bring fleas indoors after picking them up during walks, from dog parks, or from interaction with other animals. Because female fleas lay non-sticky eggs directly on pets, these eggs roll off as pets walk, spreading throughout the home.'
+  },
+  {
+    q: 'How do fleas spread?',
+    a: 'Fleas spread when animal hosts transport adult fleas into indoor spaces. Eggs then fall onto carpets and bedding, where larvae feed on organic flea dirt, spin protective silken cocoons, and emerge as hungry adult jumpers in response to host footsteps and body warmth.'
+  },
+  {
+    q: 'How much does flea control cost in Bangalore?',
+    a: 'Flea control pricing is confirmed after an on-site property inspection. The cost depends on the square footage of carpeted and upholstered areas, number of rooms requiring environmental treatment, severity of the infestation, and whether outdoor compound zones require treatment.'
+  },
+  {
+    q: 'Is an inspection required before treatment?',
+    a: 'Yes. An on-site inspection allows our technicians to identify active flea hotspots, map out pet resting areas, check for secondary pest vectors (such as rodents or stray animal access), and calibrate an appropriate treatment protocol.'
+  },
+  {
+    q: 'How long does flea treatment take?',
+    a: 'Environmental application typically takes between 1 to 2 hours depending on the property size. Residents and pets are usually asked to vacate the treated premises for 2 to 3 hours during and immediately following treatment until surfaces have completely dried.'
+  },
+  {
+    q: 'What preparation is required before treatment?',
+    a: 'Property owners should thoroughly vacuum all carpets, rugs, and upholstered furniture (disposing of the vacuum contents outdoors), pick up clutter and pet toys from floors, and launder all pet bedding in hot water (60°C or above).'
+  },
+  {
+    q: 'What should I do after treatment?',
+    a: 'Wait until treated surfaces are thoroughly dry before re-entering. Continue to vacuum carpets and rugs every 2 to 3 days for the next 2 weeks. The vibrations encourage remaining pupae in cocoons to emerge and contact the residual treatment barrier.'
+  },
+  {
+    q: 'Can flea activity return after treatment?',
+    a: 'Yes. Fleas can re-occur if untreated pets continue to carry newly acquired fleas indoors from outdoor spaces, or if dormant cocoons hatch without follow-up vacuuming. Ongoing preventative hygiene and coordination with your veterinarian are vital.'
+  },
+  {
+    q: 'Do you treat residential homes and apartments?',
+    a: 'Yes. SLV Pest Control provides comprehensive environmental treatments for independent houses, villas, and apartments across Bangalore, targeting carpet piles, rug underlays, and furniture bases.'
+  },
+  {
+    q: 'Do you treat areas where pets spend time?',
+    a: 'Yes. Our environmental treatments pay particular attention to pet sleeping corners, rugs, sofa bases, and shaded balcony verandas where pets rest. However, we do not apply pest control products directly onto animals.'
+  },
+  {
+    q: 'Should pets be checked by a veterinarian?',
+    a: 'Yes, absolutely. Environmental pest control treats your premises, but treating the animal host requires qualified veterinary care. We strongly advise having your pet examined by a licensed veterinarian who can recommend safe, veterinary-approved flea preventative medications.'
+  }
+];
+---
+
+<Layout
+  title="Flea FAQ | Frequently Asked Questions in Bangalore | SLV Pest Control"
+  description="Answers to common questions about flea control in Bangalore: costs, inspection requirements, pet safety, preparation, post-treatment vacuuming, and veterinary care."
+  canonical="https://slvpestcontrol.com/knowledge/fleas/faq"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://slvpestcontrol.com/knowledge/fleas/faq#faq",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Fleas > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/flea-control" class="hover:text-white transition">Fleas</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Flea FAQ</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            FLEA KNOWLEDGE HUB
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1] mb-5 font-heading">
+          Flea Control <span class="slv-gold-text">FAQ</span>
+        </h1>
+
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+          Clear, factual answers to 13 common questions regarding flea biology, environmental treatments, vacuuming protocols, and veterinary collaboration in Bangalore.
+        </p>
+
+        <div class="inline-flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+          <a
+            href="/services/flea-control"
+            class="slv-btn-primary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>View Flea Control</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>Call 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* FAQS LIST */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <h2 class="text-base sm:text-lg font-bold text-white mb-3 flex items-start gap-3 font-heading">
+                <HelpCircle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>{faq.q}</span>
+              </h2>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-8">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* RELATED GUIDES */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            CONTINUE LEARNING
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            More Flea Knowledge Guides
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedArticles.map((article) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+              <div>
+                <h3 class="text-base font-bold text-white mb-2 font-heading">
+                  {article.title}
+                </h3>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+                  {article.desc}
+                </p>
+              </div>
+              <a
+                href={article.href}
+                class="text-xs font-bold text-[#F6C453] hover:text-white inline-flex items-center gap-1.5 transition"
+              >
+                <span>Read Guide</span>
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FOOTER CTA SECTION */}
+    <section class="relative z-10 py-14 sm:py-16 bg-[#0c0d10]/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+          Need Professional Flea Assessment for Your Home?
+        </h2>
+        <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+          Reach out to SLV Pest Control for factual advice, on-site environmental inspection, and targeted residual treatment across Bangalore.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/services/flea-control"
+            class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>View Flea Control</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 rounded-full bg-[#25D366] text-white text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-md hover:bg-[#20bd5a] transition"
+          >
+            <MessageCircle class="w-4 h-4" />
+            <span>WhatsApp 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

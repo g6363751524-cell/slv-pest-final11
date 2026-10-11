@@ -1,0 +1,720 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import { ContactForm } from '../../components/ContactForm';
+import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+import {
+  PawPrint,
+  Shield,
+  ShieldCheck,
+  CheckCircle2,
+  AlertTriangle,
+  Search,
+  Phone,
+  MessageCircle,
+  Mail,
+  ArrowRight,
+  MapPin,
+  HelpCircle,
+  Activity,
+  Layers,
+  Sparkles,
+  Home,
+  Building,
+  Trees,
+  Compass,
+  HeartHandshake
+} from 'lucide-react';
+
+const signs = [
+  {
+    title: 'Ankle & Lower Leg Bites',
+    desc: 'Small red, raised bumps typically clustered around ankles, shins, and feet, accompanied by persistent itching and skin irritation.',
+    icon: Activity
+  },
+  {
+    title: 'Excessive Pet Scratching',
+    desc: 'Domestic dogs or cats scratching, biting, or licking their fur and hindquarters continuously due to flea irritation.',
+    icon: PawPrint
+  },
+  {
+    title: 'Flea Dirt on Bedding & Rugs',
+    desc: 'Tiny black specks resembling black pepper on pet blankets, rugs, and sofa cushions that dissolve into reddish-brown halos when wet.',
+    icon: AlertTriangle
+  },
+  {
+    title: 'Jumping Insects on Carpets',
+    desc: 'Tiny, reddish-brown wingless insects observed leaping across carpet fibers, tile joints, or fabric upholstery.',
+    icon: Search
+  }
+];
+
+const harbourageAreas = [
+  { name: 'Pet Bedding & Mats', desc: 'Concentrated resting cushions where flea eggs, larvae, and shed flea dirt accumulate' },
+  { name: 'Carpets & Area Rugs', desc: 'Base of deep carpet fibers where phototactic larvae feed on organic dander away from light' },
+  { name: 'Upholstered Furniture', desc: 'Cushion seams, underside skirts, and fabric crevices of sofas frequented by pets' },
+  { name: 'Timber Floorboard Gaps', desc: 'Expansion cracks along hardwood flooring, parquet joints, and tile skirting lines' },
+  { name: 'Underneath Low Furniture', desc: 'Undisturbed dust zones beneath beds, dressers, and couches where vacuuming rarely reaches' },
+  { name: 'Shaded Outdoor Verandahs', desc: 'Under patio decks, porch steps, and garden shrub beds where pets or stray animals rest' }
+];
+
+const fourStageProcess = [
+  {
+    step: '01',
+    title: 'Inspection',
+    description: 'Identify flea activity, resting areas and likely harbourage.',
+    detail: 'Our certified technicians survey carpet piles, rug underlays, upholstery seams, floorboard gaps, and pet resting niches to map out active flea jumping zones and larval development areas.',
+    icon: Search
+  },
+  {
+    step: '02',
+    title: 'Source Assessment',
+    description: 'Assess areas where pets, people and animals may have introduced or maintained flea activity.',
+    detail: 'We evaluate domestic animal movement patterns, visiting animals, neighborhood strays, or rodent vectors that may be re-introducing flea populations into your property.',
+    icon: Compass
+  },
+  {
+    step: '03',
+    title: 'Targeted Treatment',
+    description: 'Apply an appropriate treatment approach to suitable environmental areas based on inspection findings.',
+    detail: 'Precision application of approved environmental formulations across carpet fibers, baseboard perimeters, and upholstery bases to target active adult fleas and disrupt developing larvae.',
+    icon: Layers
+  },
+  {
+    step: '04',
+    title: 'Follow-up & Prevention Guidance',
+    description: 'Provide monitoring and prevention recommendations based on the property and infestation conditions.',
+    detail: 'Actionable post-treatment vacuuming schedules, high-temperature bedding laundering advice, and coordination with your qualified veterinarian for pet care.',
+    icon: ShieldCheck
+  }
+];
+
+const propertiesWeTreat = [
+  'Independent Homes & Villas',
+  'Apartments & Gated Societies',
+  'Pet-Friendly Residences',
+  'Veterinary Clinics & Boarding',
+  'Pet Foster Homes & Rescues',
+  'Commercial Offices & Studios',
+  'Farmhouses & Weekend Retreats',
+  'Hospitality & Rental Units'
+];
+
+const serviceZones = [
+  { title: 'NORTH BANGALORE', areas: 'Yelahanka, Hebbal, RT Nagar, Sahakar Nagar and surrounding sectors' },
+  { title: 'EAST BANGALORE', areas: 'Whitefield, Indiranagar, Marathahalli, KR Puram and surrounding sectors' },
+  { title: 'WEST BANGALORE', areas: 'Nagasandra, Yeshwanthpur, Rajajinagar, Basaveshwaranagar, Andarahalli' },
+  { title: 'SOUTH BANGALORE', areas: 'Jayanagar, JP Nagar, BTM Layout, Koramangala, Electronic City' },
+  { title: 'CENTRAL BANGALORE', areas: 'Malleshwaram, MG Road, Richmond Town, Shanthi Nagar and central corridors' },
+  { title: 'OUTER BANGALORE', areas: 'Sarjapur Road, Devanahalli, Kanakapura Road and extended industrial zones' }
+];
+
+const knowledgeArticles = [
+  {
+    title: 'Flea Identification',
+    desc: 'Signs of flea activity, bite patterns, flea dirt, and pet scratching behaviors.',
+    href: '/knowledge/fleas/identification'
+  },
+  {
+    title: 'Where Fleas Hide',
+    desc: 'Pet bedding, carpets, rugs, upholstery, furniture, and shaded outdoor resting areas.',
+    href: '/knowledge/fleas/where-they-hide'
+  },
+  {
+    title: 'How Fleas Spread',
+    desc: 'Pets, animal resting areas, infested carpets, and outdoor environmental vectors.',
+    href: '/knowledge/fleas/how-they-spread'
+  },
+  {
+    title: 'Flea Prevention',
+    desc: 'Washing bedding, deep vacuuming, clutter reduction, and early response protocols.',
+    href: '/knowledge/fleas/prevention'
+  },
+  {
+    title: 'Flea Treatment Guide',
+    desc: 'The 4-stage management workflow: inspection, source assessment, targeted treatment, and guidance.',
+    href: '/knowledge/fleas/treatment-guide'
+  },
+  {
+    title: 'Flea FAQ',
+    desc: 'Clear, factual answers to 13 common questions on costs, preparation, pets, and safety.',
+    href: '/knowledge/fleas/faq'
+  }
+];
+
+const faqs = [
+  {
+    q: 'How do fleas enter homes without outdoor pets?',
+    a: 'Fleas can be introduced indoors by visiting pets, rodents, neighborhood stray cats nesting on balconies or roofs, or on footwear after walking through infested grassy compounds and basements.'
+  },
+  {
+    q: 'How much does flea control cost in Bangalore?',
+    a: 'Flea treatment pricing is determined following an on-site property inspection. The cost depends on the square footage of carpeted and upholstered areas, number of rooms, and infestation level.'
+  },
+  {
+    q: 'Does environmental pest control treat fleas on my pets?',
+    a: 'No. Environmental pest control treatments treat the premises—such as carpets, rugs, and furniture. Treating the animal host requires consultation with a qualified veterinarian who can prescribe safe, approved pet medications.'
+  },
+  {
+    q: 'Why is vacuuming critical before and after flea treatment?',
+    a: 'Vacuuming removes flea eggs and flea dirt before treatment, and the vibrations post-treatment stimulate dormant pupae to emerge from their cocoons, bringing them into contact with residual barriers for faster resolution.'
+  },
+  {
+    q: 'Can flea activity return after treatment?',
+    a: 'Yes, if pets continue to acquire fleas outdoors without veterinary prevention, or if vacuuming is neglected during the first two weeks post-treatment. Ongoing environmental hygiene and pet care prevent re-infestation.'
+  },
+  {
+    q: 'Are your flea treatments safe for domestic pets once dry?',
+    a: 'Yes. Residents and pets should vacate the premises during application and remain outside until treated surfaces have completely dried (typically 2 to 3 hours), ensuring safety for animals and family members.'
+  }
+];
+---
+
+<Layout
+  title="Fleas Control in Bangalore | Starting at ₹799 | SLV Pest Control"
+  description="Professional fleas control in Bangalore. Stop itching, feel comfortable with targeted environmental treatment for carpets, upholstery, and pet zones. Starting at ₹799. Call 91803 97822."
+  canonical="https://slvpestcontrol.com/services/flea-control"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://slvpestcontrol.com/services/flea-control#service",
+          "name": "Flea Control in Bangalore",
+          "serviceType": "Flea Pest Control Service",
+          "description": "Professional flea control in Bangalore providing targeted environmental residual treatment for carpets, rugs, furniture, and pet resting zones.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "SLV Pest Control",
+            "telephone": "+91-9180397822",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "143 Soundarya Layout, Doddabidarakallu",
+              "addressLocality": "Bengaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "560073",
+              "addressCountry": "IN"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Bengaluru"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "INR",
+              "description": "Pricing determined after property inspection"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://slvpestcontrol.com/services/flea-control#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.a
+            }
+          }))
+        }
+      ]
+    })} />
+  </Fragment>
+
+  <Header client:load activeItem="fleas" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Background glow effects */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[35%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/#services" class="hover:text-white transition">Services</a>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Flea Control</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 lg:pt-18 pb-14 sm:pb-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.25em] uppercase">
+            FLEA CONTROL IN BANGALORE
+          </span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading">
+          Flea Control in <span class="slv-gold-text">Bangalore</span>
+        </h1>
+
+        <p class="text-xl sm:text-2xl font-bold text-white mb-6 font-heading tracking-tight">
+          Stop itching, feel comfortable
+        </p>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8 font-normal">
+          SLV Pest Control offers specialized environmental flea control across Bangalore. Targeting carpet fibers, upholstery seams, floorboard gaps, and pet resting perimeters with approved residual treatments, we help eliminate persistent flea activity in your living spaces.
+        </p>
+
+        {/* Badges */}
+        <div class="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] mb-8 text-xs sm:text-sm font-semibold">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E5A93C]"></span>
+            <span class="text-[#F6C453] font-black tracking-wide">STARTING AT ₹799</span>
+          </div>
+          <span class="text-zinc-600 hidden sm:inline">|</span>
+          <div class="flex items-center gap-2">
+            <Layers class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-white">Carpet &amp; Upholstery Treatment</span>
+          </div>
+          <span class="text-zinc-600 hidden sm:inline">|</span>
+          <div class="flex items-center gap-2">
+            <ShieldCheck class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-white">Residual Barrier Defense</span>
+          </div>
+        </div>
+
+        {/* CTAs */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+          <a
+            href="/contact"
+            class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider"
+          >
+            <span>Get Free Inspection</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider hover:border-[#F6C453]"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>Call Now</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider rounded-full bg-[#25D366] text-white shadow-md hover:bg-[#20bd5a] transition inline-flex items-center justify-center"
+          >
+            <MessageCircle class="w-4 h-4 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* WHY FLEAS ARE A PROBLEM */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+                IRRITATION &amp; HARBOURAGE
+              </span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight leading-tight">
+              Why Environmental Flea Control Is Essential
+            </h2>
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+              Flea infestations cause intense discomfort for both pets and family members. Their bites lead to itchy, inflamed red bumps around ankles and shins. More importantly, over 95% of a flea population lives not on the animal, but in your carpets, rugs, and furniture as eggs, larvae, and pupae.
+            </p>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+              Simply treating pets with topical medication without addressing environmental harbourage in carpet piles and skirting boards allows newly emerging fleas to continuously re-infest your home. A coordinated environmental treatment breaks this persistent cycle.
+            </p>
+          </div>
+
+          <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <Activity class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Relief from Itching</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Eliminates biting adult fleas jumping from carpet fibers onto residents and visitors.
+              </p>
+            </div>
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <Layers class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Deep Fiber Penetration</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Reaches larvae hidden at the base of carpet piles feeding on organic debris.
+              </p>
+            </div>
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <Home class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Pet Resting Protection</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Safeguards pet sleeping cushions, sofa skirts, and favorite resting rugs.
+              </p>
+            </div>
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <HeartHandshake class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Veterinary Coordination</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Works alongside veterinary pet treatments to achieve comprehensive relief.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* COMMON SIGNS */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              IDENTIFICATION SIGNS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Common Signs of Flea Activity
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Watch for these key indicators of flea presence in your living spaces.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {signs.map((sign) => {
+            const Icon = sign.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+                <div>
+                  <div class="w-12 h-12 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center mb-4">
+                    <Icon class="w-6 h-6 text-[#E5A93C]" />
+                  </div>
+                  <h3 class="text-base font-bold text-white mb-2 font-heading">
+                    {sign.title}
+                  </h3>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    {sign.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* WHERE FLEAS HIDE */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              HARBOURAGE LOCATIONS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Where Fleas Hide Inside Properties
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Flea eggs roll off hosts and settle deep into fabric fibers, crevices, and shaded resting spots.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {harbourageAreas.map((area) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="w-2 h-2 rounded-full bg-[#E5A93C]"></span>
+                <h3 class="text-base font-bold text-white font-heading">{area.name}</h3>
+              </div>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{area.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 4-STAGE MANAGEMENT PROCESS */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              OUR PROTOCOL
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            The SLV 4-Stage Flea Management Approach
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            A comprehensive environmental strategy designed to disrupt the flea lifecycle across all stages.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {fourStageProcess.map((stage) => {
+            const Icon = stage.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] relative group hover:border-[#E5A93C]/50 transition">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black font-heading slv-gold-text">
+                    {stage.step}
+                  </span>
+                  <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center">
+                    <Icon class="w-5 h-5 text-[#E5A93C]" />
+                  </div>
+                </div>
+
+                <h3 class="text-base font-bold text-white mb-1 font-heading">
+                  {stage.title}
+                </h3>
+                <p class="text-xs font-semibold text-[#F6C453] mb-3">
+                  {stage.description}
+                </p>
+                <p class="text-zinc-400 text-xs leading-relaxed">
+                  {stage.detail}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* PRICING */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#E5A93C]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase block mb-2">
+            INSPECTION-BASED PRICING
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-white font-heading mb-4">
+            FLEA CONTROL
+          </h2>
+
+          <div class="my-6">
+            <span class="text-3xl sm:text-5xl font-black text-[#F6C453] uppercase tracking-wider font-heading">
+              Starting at ₹799
+            </span>
+          </div>
+
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Treatment cost is determined based on carpet square footage, number of rooms, upholstery density, and severity of the infestation. Clear quotations provided on-site.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-300 mb-8">
+            <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+              Low-Odor Formulations
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+              Transparent Quotations
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+              Veterinary Advice Alignment
+            </span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/contact"
+              class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* LEARN MORE ABOUT FLEAS - KNOWLEDGE HUB INTEGRATION */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL RESOURCES
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Learn More About Fleas
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Explore our educational Knowledge Hub guides covering flea biology, hiding zones, spread mechanics, prevention tips, treatment processes, and FAQs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {knowledgeArticles.map((article) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/50 transition-all flex flex-col justify-between group">
+              <div>
+                <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-2 font-mono">
+                  Knowledge Guide
+                </span>
+                <h3 class="text-lg font-bold text-white group-hover:text-[#F6C453] transition mb-2 font-heading">
+                  {article.title}
+                </h3>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                  {article.desc}
+                </p>
+              </div>
+
+              <a
+                href={article.href}
+                class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between transition"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#E5A93C]" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* PROPERTIES WE TREAT */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            PROPERTY COVERAGE
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Properties We Treat Across Bangalore
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {propertiesWeTreat.map((property) => (
+            <div class="slv-card rounded-xl p-4 border border-white/[0.08] text-center">
+              <CheckCircle2 class="w-5 h-5 text-[#E5A93C] mx-auto mb-2" />
+              <span class="text-xs sm:text-sm font-semibold text-zinc-200 block">{property}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* BANGALORE SERVICE AREAS */}
+    <ServiceAreasSection />
+
+    {/* FAQS */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            COMMON QUESTIONS
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-zinc-400 text-sm mt-2">
+            Factual information regarding flea behavior, environmental treatment, and veterinary care.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <h3 class="text-base font-bold text-white mb-2 flex items-start gap-2.5">
+                <HelpCircle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>{faq.q}</span>
+              </h3>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-7">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT FORM */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+                CONTACT SLV
+              </span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+              Schedule Free Flea Inspection
+            </h2>
+            <p class="text-zinc-300 text-sm leading-relaxed">
+              Reach out to our Bangalore flea control specialists. We will inspect your premises, evaluate carpet and upholstery harbourages, and provide an accurate inspection-based quotation.
+            </p>
+
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] space-y-4 text-xs sm:text-sm">
+              <div class="flex items-start gap-3">
+                <MapPin class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span class="text-zinc-300">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <Phone class="w-5 h-5 text-[#E5A93C] shrink-0" />
+                <a href="tel:9180397822" class="font-bold text-white font-mono hover:text-[#FFE08A] transition">
+                  91803 97822
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <Mail class="w-5 h-5 text-[#E5A93C] shrink-0" />
+                <a href="mailto:contact@slvpestcontrol.com" class="text-white hover:text-[#FFE08A] transition">
+                  contact@slvpestcontrol.com
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <a
+                href="https://wa.me/9180397822"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-3 rounded-xl bg-[#25D366] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:bg-[#20bd5a] transition"
+              >
+                <MessageCircle class="w-4 h-4 text-white" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <ContactForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

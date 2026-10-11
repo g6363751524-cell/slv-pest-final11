@@ -1,0 +1,329 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Home,
+  PawPrint,
+  TreePine
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Tick Identification',
+    desc: 'Recognize what ticks look like, visible wall signs, and pet indicators.',
+    href: '/knowledge/ticks/identification'
+  },
+  {
+    title: 'How Ticks Spread',
+    desc: 'Understand entry vectors through pets, vegetation, and outdoor walks.',
+    href: '/knowledge/ticks/how-they-spread'
+  },
+  {
+    title: 'Tick Prevention',
+    desc: 'Actionable environmental hygiene, bedding sanitation, and structural sealing.',
+    href: '/knowledge/ticks/prevention'
+  },
+  {
+    title: 'Tick Treatment Guide',
+    desc: 'Our structured 4-stage environmental protocol: inspection, source assessment, treatment, and follow-up.',
+    href: '/knowledge/ticks/treatment-guide'
+  },
+  {
+    title: 'Tick FAQ',
+    desc: 'Clear, factual answers to 13 common questions regarding tick management.',
+    href: '/knowledge/ticks/faq'
+  }
+];
+
+const hidingZones = [
+  {
+    title: 'Pet Resting Areas & Cushions',
+    desc: 'The most concentrated harbourage zones indoors. Ticks drop off after a blood meal and seek refuge along the seams, piping, zippers, and foam folds of pet sleeping mats, rugs, and baskets.',
+    icon: PawPrint
+  },
+  {
+    title: 'Bedding & Fabric Linens',
+    desc: 'Blankets, duvets, and sheets where pets are permitted to rest. Engorged females crawl into fabric folds and between mattress seams to lay thousands of eggs in undisturbed darkness.',
+    icon: Layers
+  },
+  {
+    title: 'Carpets, Rugs & Upholstered Furniture',
+    desc: 'Tufted carpet fibers, backing adhesives, and under-sofa crevices where dogs lounge. Ticks crawl beneath skirts and seams of armchairs and heavy draperies.',
+    icon: Home
+  },
+  {
+    title: 'Cracks, Crevices & Baseboards',
+    desc: 'Vertical plaster hairline fissures, spaces behind wooden skirting boards, gaps around window trims, and unsealed electrical socket plates along walls where ticks climb to molt.',
+    icon: Search
+  },
+  {
+    title: 'Shaded Outdoor Areas & Kennels',
+    desc: 'Exterior wooden kennels, shaded veranda corners, vehicle porch tiles, and crawl spaces under garden decking where direct sunlight does not penetrate.',
+    icon: Eye
+  },
+  {
+    title: 'Garden Zones & Perimeter Margins',
+    desc: 'Tall grass margins, dense shrubbery undergrowth, flowerbed edging stones, and boundary compound walls where animals frequently walk or rest during the day.',
+    icon: TreePine
+  }
+];
+---
+
+<Layout
+  title="Where Ticks Hide | Indoor & Outdoor Harbourage Guide | SLV Pest Control"
+  description="Discover where ticks hide in Bangalore homes, pet areas, and gardens. Learn why inspection must assess both indoor and outdoor zones. Book SLV Pest Control."
+  canonical="https://slvpestcontrol.com/knowledge/ticks/where-they-hide"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Glow */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Ticks > Where Ticks Hide */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/tick-control" class="hover:text-white transition">Ticks</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Where Ticks Hide</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            HARBOURAGE &amp; BEHAVIOUR
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Where Ticks Hide in <span class="slv-gold-text">Homes &amp; Compounds</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Detailed guide to common tick harbourages across pet bedding, upholstery, wall crevices, garden perimeters, and shaded outdoor resting spots in Bangalore properties.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/tick-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Get Tick Inspection</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+          >
+            <MessageCircle class="w-4 h-4 mr-1 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Core Principles: Indoor & Outdoor Assessment */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Why Inspection Must Consider Both Indoor and Outdoor Areas
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Ticks do not restrict their presence to a single room or host. Because domestic pets move freely between indoor living areas and outdoor compounds, an effective inspection must thoroughly evaluate both environments:
+            </p>
+            <ul class="space-y-2.5 pl-2">
+              <li class="flex items-start gap-2.5">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-1" />
+                <span><strong>Indoor environments:</strong> Ticks drop from pets into carpets, dog beds, and upholstery, then crawl upward into wall crevices, switch boxes, and curtain headers to molt.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-1" />
+                <span><strong>Outdoor environments:</strong> Shaded compound walls, kennel woodwork, exterior verandas, gate pillars, and perimeter vegetation shelter ticks between host encounters.</span>
+              </li>
+            </ul>
+            <p>
+              Treating only indoor rooms while neglecting outdoor resting areas—or vice versa—leaves active harbourages that allow tick populations to resurge. A balanced, property-wide assessment is essential for comprehensive control.
+            </p>
+          </div>
+        </div>
+
+        {/* 6 Hiding Zones Grid */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">HARBOURAGE ZONES</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              Key Hiding Locations on Properties
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {hidingZones.map((zone) => {
+              const Icon = zone.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{zone.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{zone.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Areas Where Animals Spend Time */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Focus Areas: Where Animals Spend Time
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+            <p>
+              Ticks are host-seeking parasites. Their spatial distribution directly mirrors the daily patterns and resting locations of domestic animals on your property:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <span class="text-[#F6C453] font-bold block mb-1">Crates &amp; Kennels</span>
+                <span class="text-zinc-400 text-xs">Wooden joints, plastic latches, corner brackets, and bedding underlays.</span>
+              </div>
+              <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <span class="text-[#F6C453] font-bold block mb-1">Verandas &amp; Porches</span>
+                <span class="text-zinc-400 text-xs">Tile skirting joints, door saddle gaps, steps, and shaded vehicle porch corners.</span>
+              </div>
+              <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
+                <span class="text-[#F6C453] font-bold block mb-1">Boundary Walls</span>
+                <span class="text-zinc-400 text-xs">Plaster hollows, exterior electrical wiring pipes, and shaded boundary fences.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Suspect Hidden Ticks in Your Property?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Book an on-site property inspection. Our technicians assess both indoor rooms and outdoor perimeter zones to formulate an accurate management plan.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/tick-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Get Tick Inspection</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+              <span>Call: 91803 97822</span>
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Tick Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

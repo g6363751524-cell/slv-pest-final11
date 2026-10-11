@@ -1,0 +1,1060 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import { ContactForm } from '../../components/ContactForm';
+import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+import {
+  BedDouble,
+  Shield,
+  ShieldCheck,
+  CheckCircle2,
+  AlertTriangle,
+  Flame,
+  Sparkles,
+  Phone,
+  MessageCircle,
+  Mail,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Home,
+  Building,
+  Hotel,
+  Users,
+  Search,
+  Layers,
+  HelpCircle,
+  BookOpen,
+  Luggage,
+  Shirt,
+  Armchair,
+  Eye,
+  Activity,
+  FileText
+} from 'lucide-react';
+
+const signsOfInfestation = [
+  {
+    title: 'Bites or Red Welts',
+    desc: 'Bite marks often appearing in clusters or small rows on skin exposed while sleeping, usually on arms, neck, shoulders, or legs.',
+    icon: Activity
+  },
+  {
+    title: 'Blood Marks on Bedding',
+    desc: 'Small unexplained blood stains or streaks on bed sheets, pillowcases, or mattress covers caused by accidental contact.',
+    icon: AlertTriangle
+  },
+  {
+    title: 'Dark / Rust-Colored Spotting',
+    desc: 'Small dark spots of bed bug droppings along mattress piping, box spring edges, bed frame crevices, or behind headboards.',
+    icon: Eye
+  },
+  {
+    title: 'Shed Skins & Egg Casings',
+    desc: 'Pale amber translucent skins cast off by developing nymphs and tiny pearl-white egg casings nestled in fabric crevices.',
+    icon: Layers
+  },
+  {
+    title: 'Live Bed Bugs',
+    desc: 'Small, flat, reddish-brown wingless insects observed crawling along seams or within joints near sleeping areas.',
+    icon: BedDouble
+  },
+  {
+    title: 'Activity Around Sleeping Areas',
+    desc: 'Visible activity in mattress seams, behind wooden headboards, within bed frames, and in nearby upholstered chairs or tables.',
+    icon: Search
+  }
+];
+
+const harbourageAreas = [
+  { name: 'Mattress Seams', desc: 'Tufts, borders, and piping of mattresses' },
+  { name: 'Bed Frames', desc: 'Joints, screw holes, and corners of wooden or metal frames' },
+  { name: 'Headboards', desc: 'Back panels, wall mountings, and decorative carvings' },
+  { name: 'Sofas and Chairs', desc: 'Cushion crevices, skirts, and under-fabric areas' },
+  { name: 'Cracks and Crevices', desc: 'Baseboard gaps, floorboard joints, and trim seams' },
+  { name: 'Bedside Tables', desc: 'Drawer joints, backboards, and lamp bases' },
+  { name: 'Nearby Furniture', desc: 'Desks, wardrobe edges, and adjacent upholstered items' },
+  { name: 'Protected Sleeping Zones', desc: 'Curtain hems, electrical faceplates, and wall hangings' }
+];
+
+const spreadSteps = [
+  { step: '01', title: 'Travel', desc: 'Visiting hotels, hostels, dormitories, or public transport with unnoticed bed bug activity.' },
+  { step: '02', title: 'Luggage', desc: 'Bed bugs climb into suitcases, backpacks, or duffel bags placed near sleeping or storage areas.' },
+  { step: '03', title: 'Clothing & Belongings', desc: 'Insects and eggs hitchhike undetected on garments, linens, or personal travel items.' },
+  { step: '04', title: 'Furniture', desc: 'Transferring second-hand furniture, beds, or rental belongings between living spaces.' },
+  { step: '05', title: 'New Hiding Place', desc: 'Pests establish themselves in cracks, seams, and furniture around sleeping areas.' }
+];
+
+const fourStageProcess = [
+  {
+    step: '01',
+    title: 'Forensic Bed Bug Inspection',
+    description: 'Inspect sleeping areas, furniture, seams, cracks, crevices and other likely harbourage areas.',
+    detail: 'Our technician inspects mattresses, box springs, headboards, bed frames, upholstery, and adjoining perimeter crevices to determine the infestation extent.',
+    icon: Search
+  },
+  {
+    step: '02',
+    title: 'Thermal & Contact Treatment',
+    description: 'Apply the appropriate treatment approach based on the infestation and property conditions.',
+    detail: 'Targeted application combining thermal steaming and contact treatment tailored to the surfaces and materials present in your space.',
+    icon: Flame
+  },
+  {
+    step: '03',
+    title: 'Targeted Residual Protection',
+    description: 'Treat appropriate harbourage and surrounding areas with a targeted residual approach where suitable.',
+    detail: 'Specialized residual application placed inside crevices, joints, and perimeter zones to target active bed bugs moving between harbourages.',
+    icon: Layers
+  },
+  {
+    step: '04',
+    title: 'Follow-up & Monitoring',
+    description: 'Provide follow-up and monitoring guidance based on the treatment requirements and property conditions.',
+    detail: 'Specific monitoring recommendations and follow-up guidance provided to track treatment effectiveness and maintain your 4-month warranty coverage.',
+    icon: ShieldCheck
+  }
+];
+
+const propertyTypes = [
+  'Homes',
+  'Apartments / PGs',
+  'Hotels',
+  'Hostels',
+  'Offices',
+  'Rental Properties',
+  'Commercial Spaces'
+];
+
+const serviceZones = [
+  { title: 'NORTH BANGALORE', areas: 'Yelahanka, Hebbal, RT Nagar, Sahakar Nagar and surrounding sectors' },
+  { title: 'EAST BANGALORE', areas: 'Whitefield, Indiranagar, Marathahalli, KR Puram and surrounding sectors' },
+  { title: 'WEST BANGALORE', areas: 'Nagasandra, Yeshwanthpur, Rajajinagar, Basaveshwaranagar, Andarahalli' },
+  { title: 'SOUTH BANGALORE', areas: 'Jayanagar, JP Nagar, BTM Layout, Koramangala, Electronic City' },
+  { title: 'CENTRAL BANGALORE', areas: 'Malleshwaram, MG Road, Richmond Town, Shanthi Nagar and central corridors' },
+  { title: 'OUTER BANGALORE', areas: 'Sarjapur Road, Devanahalli, Kanakapura Road and extended industrial zones' }
+];
+
+const faqs = [
+  {
+    q: '1. How do I know if I have bed bugs?',
+    a: 'Common indications include unexplained bites or red welts upon waking, small blood stains on bed sheets, dark spotting (droppings) along mattress seams, cast skins, or spotting live insects in cracks and headboard joints.'
+  },
+  {
+    q: '2. Where do bed bugs usually hide?',
+    a: 'Bed bugs typically harbour within 5 to 8 feet of sleeping or resting areas. Common sites include mattress seams, bed frames, headboard crevices, bedside tables, upholstered chairs, baseboard cracks, and switchboards.'
+  },
+  {
+    q: '3. How do bed bugs spread?',
+    a: 'Bed bugs spread primarily by hitchhiking on luggage, clothing, backpacks, and used furniture. They can also move between adjoining rooms in multi-unit buildings like apartments, PGs, and hotels through wall voids or pipe openings.'
+  },
+  {
+    q: '4. How much does bed bug treatment cost?',
+    a: 'Bed bug treatment at SLV Pest Control starts from ₹999. The final price depends on the property size (1 BHK, 2 BHK, 3 BHK, or commercial room count), the degree of infestation, and the specific treatment scope required.'
+  },
+  {
+    q: '5. Is inspection required?',
+    a: 'Yes. A thorough inspection allows the technician to confirm the presence of bed bugs, locate primary harbourage areas, and recommend the appropriate treatment approach suited to your property.'
+  },
+  {
+    q: '6. How long does treatment take?',
+    a: 'Treatment duration depends on the property size, the number of beds and rooms involved, and the level of infestation. The technician will evaluate your property and provide an estimated duration before commencing.'
+  },
+  {
+    q: '7. Do I need to leave my home during treatment?',
+    a: 'Treatment duration and re-entry requirements depend on the infestation level, property conditions and treatment method. The required preparation, treatment duration and re-entry instructions will be clearly explained by the technician before treatment begins.'
+  },
+  {
+    q: '8. What preparation is required before treatment?',
+    a: 'Key preparation steps include reducing clutter around sleeping areas, keeping mattresses and bed frames accessible, stripping bed linens as advised, and avoiding moving potentially infested items into untreated rooms.'
+  },
+  {
+    q: '9. What should I do after treatment?',
+    a: 'Follow the technician’s safety and re-entry instructions carefully. Do not unnecessarily disturb treated surfaces, wash bedding in hot water as instructed, avoid moving belongings between rooms, and follow the provided monitoring guidelines.'
+  },
+  {
+    q: '10. Do bed bugs come back?',
+    a: 'While professional treatment targets existing populations and harbourages, re-infestation can occur if bed bugs are re-introduced via infested luggage, visitors, or second-hand items. Our 4-month warranty provides structured follow-up support if assistance is needed.'
+  },
+  {
+    q: '11. Do you treat apartments, PGs and hotels?',
+    a: 'Yes. SLV Pest Control treats private residences, flats, gated community apartments, paying guest (PG) accommodations, student hostels, and hospitality properties across Bangalore with tailored protocols.'
+  },
+  {
+    q: '12. What does the 4-month warranty cover?',
+    a: 'The 4-month warranty covers service assistance and follow-up support for the treated premises under the applicable warranty terms. If bed bug activity persists in the treated areas, our team provides necessary follow-up guidance and service.'
+  }
+];
+---
+
+<Layout
+  title="Bed Bug Treatment in Bangalore | ₹999 Starting | SLV Pest Control"
+  description="Professional bed bug treatment in Bangalore with 4 months warranty. 4-stage inspection, thermal & contact treatment for homes, PGs, and hotels. Starting ₹999. Call 91803 97822."
+  canonical="https://slvpestcontrol.com/services/bed-bugs"
+>
+  <Fragment slot="head">
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://slvpestcontrol.com/services/bed-bugs#service",
+          "name": "Bed Bug Treatment in Bangalore",
+          "serviceType": "Bed Bug Pest Control Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "SLV Pest Control",
+            "telephone": "+91-9180397822",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "143 Soundarya Layout, Doddabidarakallu",
+              "addressLocality": "Bengaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "560073",
+              "addressCountry": "IN"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Bengaluru"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "999",
+            "priceCurrency": "INR"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://slvpestcontrol.com/services/bed-bugs#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.a
+            }
+          }))
+        }
+      ]
+    })} />
+  </Fragment>
+
+  <!-- Interactive Header -->
+  <Header client:load activeItem="bed-bugs" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <!-- Architectural Honeycomb Pattern Background -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <svg
+        class="absolute w-full h-full opacity-[0.035]"
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+      >
+        <defs>
+          <pattern id="honeycomb-pattern-bedbugs" width="56" height="96" patternUnits="userSpaceOnUse">
+            <path
+              d="M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z M28 48 L56 64 L56 96 L28 112 L0 96 L0 64 Z"
+              fill="none"
+              stroke="#E5A93C"
+              stroke-width="1"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#honeycomb-pattern-bedbugs)" />
+      </svg>
+      <div class="absolute -top-40 left-1/3 w-[550px] h-[550px] bg-[#E5A93C]/[0.07] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[35%] -right-20 w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/#services" class="hover:text-white transition">Services</a>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Bed Bug Treatment</span>
+      </nav>
+    </div>
+
+    {/* ============================================================== */}
+    {/* 1. HERO SECTION                                               */}
+    {/* ============================================================== */}
+    <section class="relative z-10 pt-10 sm:pt-14 lg:pt-18 pb-14 sm:pb-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto">
+          {/* Eyebrow badge */}
+          <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+            <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.25em] uppercase">
+              BED BUG CONTROL IN BANGALORE
+            </span>
+          </div>
+
+          {/* H1 */}
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading">
+            Bed Bug Treatment in <span class="slv-gold-text">Bangalore</span>
+          </h1>
+
+          {/* Supporting message */}
+          <p class="text-xl sm:text-2xl font-bold text-white mb-6 font-heading tracking-tight">
+            Restful, peaceful sleep
+          </p>
+
+          <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8 font-normal">
+            SLV Pest Control provides professional bed bug inspection and targeted treatment services across Bangalore. Our structured 4-stage process addresses adult bed bugs, nymphs, and harbourage areas in homes, apartments, PGs, and commercial spaces.
+          </p>
+
+          {/* Minimal Pricing & Warranty indicator */}
+          <div class="inline-flex items-center gap-4 px-4 py-2 rounded-2xl bg-white/[0.03] border border-white/[0.08] mb-8 text-xs sm:text-sm font-semibold">
+            <span class="text-[#F6C453] font-bold">Starting at ₹999</span>
+            <span class="text-zinc-600">|</span>
+            <span class="text-white uppercase tracking-wider text-[11px] sm:text-xs">4 MONTHS WARRANTY</span>
+          </div>
+
+          {/* CTAs */}
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+            <a
+              href="/contact"
+              class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider hover:border-[#F6C453]"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call Now</span>
+            </a>
+
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md transition-all inline-flex items-center justify-center"
+            >
+              <MessageCircle class="w-4 h-4 text-white" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 2. WHY BED BUGS ARE A PROBLEM                                  */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08]">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              Understanding the Pest
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-heading mb-6">
+            Why Bed Bugs Are a Problem
+          </h2>
+
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Bed bugs can hide in small cracks, seams, and furniture around sleeping areas and may be difficult to identify during the early stages of an infestation. Because they are nocturnal and avoid light, they stay sheltered during the day and emerge primarily when people are resting.
+            </p>
+            <p>
+              Their flat, oval-shaped bodies allow them to slip into microscopic openings around mattress seams, headboard screws, wooden joints, and skirting boards. Left unmanaged, their populations can grow and spread into adjoining rooms, living furniture, and neighboring units.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 3. COMMON SIGNS OF INFESTATION                                */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              IDENTIFICATION
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Common Signs of Bed Bugs
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3">
+            Inspect your sleeping and seating areas for these characteristic indicators.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {signsOfInfestation.map((sign) => {
+            const Icon = sign.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                    <Icon class="w-5 h-5 text-[#E5A93C]" />
+                  </div>
+                  <h3 class="text-base sm:text-lg font-bold text-white mb-2">
+                    {sign.title}
+                  </h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                    {sign.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 4. WHERE BED BUGS HIDE                                        */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              HARBOURAGE AREAS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Where Bed Bugs Hide
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3">
+            Common protected harborage locations where bed bugs cluster near resting areas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {harbourageAreas.map((item) => (
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.07] flex flex-col justify-between">
+              <div>
+                <h3 class="text-sm sm:text-base font-bold text-white mb-1.5 text-[#F6C453]">
+                  {item.name}
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 5. HOW BED BUGS SPREAD (VISUAL FLOW)                          */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              TRANSMISSION
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            How Bed Bugs Spread
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3">
+            Bed bugs can be transported through belongings and establish themselves in new locations.
+          </p>
+        </div>
+
+        {/* Visual Flow: Travel -> Luggage -> Clothing & Belongings -> Furniture -> New Hiding Place */}
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+          {spreadSteps.map((step, idx) => (
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08] flex flex-col justify-between relative group hover:border-[#E5A93C]/40 transition-colors">
+              <div>
+                <span class="text-xs font-black font-mono text-[#F6C453] block mb-2">{step.step}</span>
+                <h3 class="text-base font-bold text-white mb-2">{step.title}</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{step.desc}</p>
+              </div>
+              {idx < spreadSteps.length - 1 && (
+                <div class="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 text-[#E5A93C]/40">
+                  <ArrowRight class="w-4 h-4" />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 6. OUR 4-STAGE TREATMENT PROCESS                              */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              TREATMENT PROCESS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Our 4-Stage Treatment Process
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-4">
+            A disciplined, property-specific approach designed around thorough inspection and targeted execution.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {fourStageProcess.map((stage) => {
+            const Icon = stage.icon;
+            return (
+              <div class="slv-card rounded-2xl p-7 flex flex-col justify-between border border-white/[0.08] hover:border-[#E5A93C]/50 transition-all">
+                <div>
+                  <div class="flex items-center justify-between mb-5">
+                    <span class="text-3xl font-black font-heading slv-gold-text tracking-tighter">
+                      {stage.step}
+                    </span>
+                    <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#E5A93C]">
+                      <Icon class="w-5 h-5 text-[#E5A93C]" />
+                    </div>
+                  </div>
+
+                  <h3 class="text-lg font-bold text-white font-heading mb-2">
+                    {stage.title}
+                  </h3>
+                  <p class="text-[#FFE08A] text-xs font-semibold mb-3">
+                    {stage.description}
+                  </p>
+                  <p class="text-zinc-400 text-xs sm:text-[13px] leading-relaxed">
+                    {stage.detail}
+                  </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] text-zinc-500 font-mono">
+                  Phase {stage.step} of 04
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 7. HOW WE TREAT                                               */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08]">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              PROFESSIONAL METHODOLOGY
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-heading mb-6">
+            How We Treat
+          </h2>
+
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              At SLV Pest Control, treatment is never applied through a generic, one-size-fits-all spray. Every service is planned and executed based on:
+            </p>
+            <ul className="space-y-2.5 pl-2">
+              <li class="flex items-center gap-3 text-white text-sm">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span><strong>Inspection findings</strong> and documented pest locations</span>
+              </li>
+              <li class="flex items-center gap-3 text-white text-sm">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span><strong>Infestation level</strong> (early-stage localized vs. multi-room spread)</span>
+              </li>
+              <li class="flex items-center gap-3 text-white text-sm">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span><strong>Harbourage locations</strong> in wooden beds, mattresses, and furniture</span>
+              </li>
+              <li class="flex items-center gap-3 text-white text-sm">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span><strong>Property conditions</strong> and resident occupancy needs</span>
+              </li>
+              <li class="flex items-center gap-3 text-white text-sm">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span><strong>Treatment requirements</strong> suited to the specific environment</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 8. PROPERTY TYPES                                             */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              COVERAGE
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Properties We Treat
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3">
+            Customized bed bug control solutions across all residential, rental, and commercial properties.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {propertyTypes.map((prop) => (
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.07] text-center flex flex-col items-center justify-center">
+              <Building class="w-6 h-6 text-[#E5A93C] mb-2" />
+              <span class="text-sm font-bold text-white">{prop}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 9. DEDICATED PRICING SECTION                                  */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-14 text-center border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] relative shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.25em] uppercase block mb-3">
+            TRANSPARENT PRICING
+          </span>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-heading mb-6">
+            BED BUG TREATMENT
+          </h2>
+
+          <div class="my-6">
+            <span class="text-zinc-400 text-base sm:text-lg mr-2 font-medium">Starting at</span>
+            <span class="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-mono tracking-tight text-[#F6C453]">
+              ₹999
+            </span>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] mb-8">
+            <ShieldCheck class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
+              4 MONTHS WARRANTY
+            </span>
+          </div>
+
+          <p class="text-zinc-400 text-xs sm:text-sm max-w-md mx-auto mb-8 leading-relaxed">
+            Starting price applies to basic residential treatment scope. Detailed pricing is confirmed based on room count and property conditions during inspection.
+          </p>
+
+          <div class="flex justify-center">
+            <a
+              href="/contact"
+              class="slv-btn-primary px-8 py-4 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 10. BEFORE TREATMENT & PREPARATION GUIDANCE                    */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08]">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              PREPARATION GUIDANCE
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-heading mb-6">
+            Before Treatment
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-zinc-300">
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Reduce unnecessary clutter around treatment areas.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Keep the mattress and bed frame accessible.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Do not move potentially infested furniture to another room.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Keep sleeping areas accessible for inspection.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Inform the technician about suspected infestation areas.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Follow the specific preparation instructions provided by SLV Pest Control.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 11. TREATMENT DURATION & RE-ENTRY GUIDANCE                     */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08]">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              SAFETY & TIMING
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-heading mb-6">
+            Treatment Duration &amp; Re-entry
+          </h2>
+
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Treatment duration and re-entry requirements depend on the infestation level, property conditions and treatment method.
+            </p>
+            <p>
+              The required preparation, treatment duration and re-entry instructions will be explained before treatment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 12. AFTER TREATMENT                                           */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08]">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              POST-TREATMENT CARE
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-heading mb-6">
+            After Treatment
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-zinc-300">
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Follow the technician's safety and re-entry instructions.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Do not unnecessarily disturb treated areas.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Wash bedding and clothing as instructed.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Avoid moving potentially infested belongings to other areas.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Follow monitoring instructions.</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>Contact SLV Pest Control if further assistance is required under the applicable warranty terms.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 13. WARRANTY                                                  */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            SERVICE ASSURANCE
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading mb-4">
+            4 MONTHS WARRANTY
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Our bed bug control service includes 4 months warranty coverage. If you need assistance during the warranty period, our team provides necessary guidance and follow-up support in accordance with your service agreement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 14. WHY SLV PEST CONTROL                                      */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            WHY CHOOSE US
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Why SLV Pest Control
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Search class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Professional Inspection</h3>
+            <p class="text-zinc-400 text-xs">Thorough diagnosis of sleeping and harbourage areas.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Flame class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Targeted Treatment</h3>
+            <p class="text-zinc-400 text-xs">Precision application suited to the property environment.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Home class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Property-Specific Approach</h3>
+            <p class="text-zinc-400 text-xs">Tailored protocols for homes, apartments, PGs, and commercial spaces.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Users class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Customer-Focused Service</h3>
+            <p class="text-zinc-400 text-xs">Clear communication, transparent quotes, and preparation advice.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <ShieldCheck class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">4 Months Warranty</h3>
+            <p class="text-zinc-400 text-xs">Active warranty support for treated spaces.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <FileText class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Free Inspection</h3>
+            <p class="text-zinc-400 text-xs">Initial assessment to identify the problem and required steps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 15. KNOWLEDGE HUB SECTION                                     */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08]">
+          <div class="flex items-center gap-2 mb-3">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              EDUCATIONAL RESOURCES
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-heading mb-4">
+            Learn More About Bed Bugs
+          </h2>
+
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-8">
+            Explore our educational Knowledge Hub for in-depth insights on bed bug identification, prevention strategies, and treatment methodology.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <a href="/knowledge#pest-identification" class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#E5A93C]/40 transition block">
+              <span class="text-xs font-bold text-white block mb-1">Bed Bug Identification</span>
+              <span class="text-[11px] text-zinc-400">Diagnose bites, droppings and signs</span>
+            </a>
+            <a href="/knowledge#pest-library" class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#E5A93C]/40 transition block">
+              <span class="text-xs font-bold text-white block mb-1">Where Bed Bugs Hide</span>
+              <span class="text-[11px] text-zinc-400">Common mattress and frame harbourages</span>
+            </a>
+            <a href="/knowledge#treatment-guides" class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#E5A93C]/40 transition block">
+              <span class="text-xs font-bold text-white block mb-1">How Bed Bugs Spread</span>
+              <span class="text-[11px] text-zinc-400">Luggage hitchhiking and travel risks</span>
+            </a>
+            <a href="/knowledge#prevention" class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#E5A93C]/40 transition block">
+              <span class="text-xs font-bold text-white block mb-1">Bed Bug Prevention</span>
+              <span class="text-[11px] text-zinc-400">Hygiene and exclusion practices</span>
+            </a>
+            <a href="/knowledge#treatment-guides" class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#E5A93C]/40 transition block">
+              <span class="text-xs font-bold text-white block mb-1">Treatment Guidance</span>
+              <span class="text-[11px] text-zinc-400">What to expect during service</span>
+            </a>
+            <a href="/knowledge" class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#E5A93C]/40 transition block">
+              <span class="text-xs font-bold text-[#F6C453] block mb-1">Visit Knowledge Hub →</span>
+              <span class="text-[11px] text-zinc-400">All 7 Bangalore pest categories</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 16. FREQUENTLY ASKED QUESTIONS (12 FAQS)                       */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              FAQS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-heading">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <div class="flex items-start gap-3.5 mb-2.5">
+                <HelpCircle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+                  {faq.q}
+                </h3>
+              </div>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-8">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 17. SERVICE AREAS                                             */}
+    {/* ============================================================== */}
+    <ServiceAreasSection />
+
+    {/* ============================================================== */}
+    {/* 18. CONTACT & INSPECTION FORM                                 */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+                CONTACT SLV
+              </span>
+              <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-heading mb-4">
+                Schedule Your Bed Bug Inspection
+              </h2>
+              <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                Contact our Bangalore team directly or submit the inquiry form below for prompt assistance.
+              </p>
+            </div>
+
+            <div class="slv-card rounded-2xl p-6 space-y-4 border border-white/[0.08]">
+              <div class="flex items-start gap-3">
+                <MapPin class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <div>
+                  <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">Office Address</span>
+                  <p class="text-sm text-white">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 pt-3 border-t border-white/[0.06]">
+                <Phone class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <div>
+                  <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">Phone</span>
+                  <a href="tel:9180397822" class="text-base font-bold text-white font-mono hover:text-[#FFE08A]">91803 97822</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 pt-3 border-t border-white/[0.06]">
+                <Mail class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <div>
+                  <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">Email</span>
+                  <a href="mailto:contact@slvpestcontrol.com" class="text-sm font-semibold text-white hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                href="tel:9180397822"
+                class="slv-btn-primary flex-1 py-3 text-xs font-bold uppercase tracking-wider justify-center"
+              >
+                <Phone class="w-3.5 h-3.5 mr-1" />
+                <span>Call Now</span>
+              </a>
+
+              <a
+                href="https://wa.me/9180397822"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 py-3 text-xs font-bold uppercase tracking-wider justify-center rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white inline-flex items-center"
+              >
+                <MessageCircle class="w-3.5 h-3.5 mr-1" />
+                <span>WhatsApp</span>
+              </a>
+
+              <a
+                href="mailto:contact@slvpestcontrol.com"
+                class="slv-btn-secondary flex-1 py-3 text-xs font-bold uppercase tracking-wider justify-center"
+              >
+                <Mail class="w-3.5 h-3.5 mr-1" />
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <ContactForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

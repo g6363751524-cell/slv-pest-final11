@@ -1,0 +1,299 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Package,
+  Truck,
+  Building2,
+  Waves,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  ShieldCheck,
+  Share2,
+  DoorOpen,
+  Shuffle
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Cockroach Identification',
+    desc: 'Recognize signs, droppings, egg cases, and distinctive odors.',
+    href: '/knowledge/cockroaches/identification'
+  },
+  {
+    title: 'Where Cockroaches Hide',
+    desc: 'Discover the top hiding spots in kitchens, drains, and appliances.',
+    href: '/knowledge/cockroaches/where-they-hide'
+  },
+  {
+    title: 'Cockroach Prevention',
+    desc: 'Practical hygiene, moisture reduction, and structural exclusion tips.',
+    href: '/knowledge/cockroaches/prevention'
+  },
+  {
+    title: 'Cockroach Treatment Guide',
+    desc: 'Professional 4-stage IPM approach from inspection to targeted gel baiting.',
+    href: '/knowledge/cockroaches/treatment-guide'
+  },
+  {
+    title: 'Cockroach FAQ',
+    desc: '11 practical questions and answers regarding cockroach control.',
+    href: '/knowledge/cockroaches/faq'
+  }
+];
+
+const pathways = [
+  {
+    step: '01',
+    title: 'Corrugated Food Packaging & Egg Cartons',
+    desc: 'Corrugated cardboard boxes used for bulk groceries, vegetables, and commercial egg crates are notorious transport vehicles. German cockroaches wedge inside the corrugated flute channels and deposit adhesive ootheca egg capsules that hitchhike unnoticed directly into home pantries.',
+    icon: Package
+  },
+  {
+    step: '02',
+    title: 'Delivery Parcels & E-Commerce Cartons',
+    desc: 'With the widespread use of quick-commerce delivery apps and online ordering in Bangalore, packages stored in centralized warehouses and transport hubs can accidentally harbor live nymphs or egg cases, introducing pests when brought indoors.',
+    icon: Truck
+  },
+  {
+    step: '03',
+    title: 'Municipal Drainage & Sewer Pipe Traps',
+    desc: 'American cockroaches thrive in municipal sewer lines and storm drains. They crawl upwards through dry floor drains, plumbing trap lines, and kitchen wash basins—especially during dry spells or heavy monsoons when underground tunnels flood.',
+    icon: Waves
+  },
+  {
+    step: '04',
+    title: 'Exterior Cracks, Doors & Wall Gaps',
+    desc: 'Gaps beneath entry doors lacking brush sweeps, unsealed gaps around air conditioner coolant piping, and exterior wall cracks provide effortless passage into residential units and ground-floor commercial premises.',
+    icon: DoorOpen
+  },
+  {
+    step: '05',
+    title: 'Shared Apartment Shafts & Garbage Chutes',
+    desc: 'In modern Bangalore apartment complexes, vertical plumbing chases, electrical cable risers, and communal garbage disposal areas act as indoor highways. A heavy infestation in one unit or ground floor pantry readily migrates along utility voids into adjacent flats.',
+    icon: Building2
+  },
+  {
+    step: '06',
+    title: 'Movement Between Adjoining Harbourages',
+    desc: 'When population density increases or food becomes scarce in one kitchen, cockroaches disperse in search of new foraging grounds. They crawl along exterior balcony corridors, shared PG common areas, and connected false ceilings to colonize neighboring rooms.',
+    icon: Shuffle
+  }
+];
+---
+
+<Layout
+  title="How Cockroaches Enter & Spread | Pathways & Prevention | SLV Pest Control"
+  description="Learn how cockroaches enter homes and spread across Bangalore buildings. Discover primary pathways: delivery boxes, drainage pipes, utility ducts, and shared building voids."
+  canonical="https://slvpestcontrol.com/knowledge/cockroaches/how-they-spread"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Cockroaches > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/cockroach-control" class="hover:text-white transition">Cockroaches</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">How Cockroaches Enter &amp; Spread</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            ENTRY &amp; DISPERSAL MECHANISMS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          How Cockroaches Enter &amp; Spread in <span class="slv-gold-text">Homes &amp; Buildings</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Understanding the transmission routes and structural vectors that allow cockroach colonies to establish and migrate across properties.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/cockroach-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Get Cockroach Treatment</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Core Principles of Dispersal */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            How Infestations Take Root
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Cockroaches enter homes and commercial spaces through two primary mechanisms: <strong>passive hitchhiking</strong> (being carried indoors inside contaminated materials) and <strong>active structural dispersal</strong> (migrating through pipes, vents, door gaps, and shared utility shafts).
+            </p>
+            <p>
+              German cockroaches rarely fly or travel far outdoors on their own; nearly 90% of home infestations begin when an egg capsule or live nymph is brought in with groceries, cardboard delivery boxes, second-hand electronics, or rental furniture. American cockroaches, conversely, actively crawl up municipal drainage and plumbing shafts from underground chambers.
+            </p>
+          </div>
+        </div>
+
+        {/* 6 Key Pathways */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">ENTRY MECHANISMS</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              6 Common Entry &amp; Spread Pathways
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {pathways.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="text-2xl font-black font-mono text-[#F6C453]">{item.step}</span>
+                      <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C]">
+                        <Icon class="w-5 h-5" />
+                      </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{item.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Multi-Unit Dynamics */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl font-black text-white font-heading mb-4">
+            Spread Dynamics in Bangalore Apartments &amp; PGs
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+            <p>
+              In densely populated residential complexes, high-rise societies, and paying guest (PG) accommodations, pest management cannot be treated as an isolated single-room matter. Shared kitchen extraction ducts, vertical sewer risers, and false ceiling voids allow cockroaches to bypass locked doors.
+            </p>
+            <p>
+              When a resident in one apartment uses over-the-counter aerosol bug sprays, the irritating airborne repellent drives cockroaches out of that unit and pushes them directly into adjacent flats through electrical pipe conduits. A comprehensive approach using non-repellent gel baits ensures populations are controlled without spreading them to neighbors.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Stop Cockroaches From Spreading Further
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Our targeted barrier placement and odorless gel baiting establish long-term protection across kitchens and entry points. Starting ₹599.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/cockroach-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Get Cockroach Treatment</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Cockroach Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

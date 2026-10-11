@@ -1,0 +1,292 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  AlertTriangle,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  ShieldCheck,
+  DoorOpen,
+  Waves,
+  Wrench,
+  Trees,
+  Trash2,
+  Minimize2,
+  Compass
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Rodent Identification',
+    desc: 'Signs of activity: droppings, gnaw marks, scratching noises, and smear trails.',
+    href: '/knowledge/rodents/identification'
+  },
+  {
+    title: 'Where Rodents Hide',
+    desc: 'Kitchens, storage areas, ceiling voids, wall cavities, and utility rooms.',
+    href: '/knowledge/rodents/where-they-hide'
+  },
+  {
+    title: 'Rodent Prevention',
+    desc: 'Securing food, clutter reduction, waste sanitation, and exclusion tips.',
+    href: '/knowledge/rodents/prevention'
+  },
+  {
+    title: 'Rodent Management Guide',
+    desc: 'The 4-stage management workflow: inspection, assessment, targeted control, and monitoring.',
+    href: '/knowledge/rodents/treatment-guide'
+  },
+  {
+    title: 'Rodent FAQ',
+    desc: 'Practical answers to 12 questions on costs, signs, preparation, and commercial treatment.',
+    href: '/knowledge/rodents/faq'
+  }
+];
+
+const entryRoutes = [
+  {
+    title: 'Structural Gaps & Foundation Cracks',
+    desc: 'Mice can squeeze through gaps as narrow as 6mm (roughly the width of a pencil), while rats can enter openings just 12mm wide (the size of a coin). Settlement cracks in masonry, missing brickwork mortar, and expansion joints serve as primary ground-level gateways.',
+    icon: Minimize2
+  },
+  {
+    title: 'Exterior Doors & Low Windows',
+    desc: 'Gaps beneath exterior entrance doors, degraded rubber door sweeps, unsealed garage roller doors, and ground-level sliding windows left ajar allow opportunistic rodents direct entry from outdoor garden beds.',
+    icon: DoorOpen
+  },
+  {
+    title: 'Utility Penetrations & Pipe Sleeves',
+    desc: 'Openings drilled through exterior masonry walls for plumbing waste pipes, air-conditioning refrigerant copper lines, electrical conduit feeds, and broadband cables are rarely sealed flush, creating accessible conduits.',
+    icon: Wrench
+  },
+  {
+    title: 'Drainage & City Sewer Lines',
+    desc: 'Norway rats (sewer rats) are exceptional swimmers capable of navigating municipal sewer pipes and emerging through un-trapped floor drains, broken gulley covers, and compromised underground drainage chambers.',
+    icon: Waves
+  },
+  {
+    title: 'Roofline & Overhanging Tree Canopy',
+    desc: 'Roof rats (black rats) are agile aerial acrobats that utilize overhanging tree branches, telephone cables, and boundary walls to reach building rooflines, slipping beneath loose roof tiles and unsealed fascia boards.',
+    icon: Trees
+  },
+  {
+    title: 'Waste Storage & External Food Sources',
+    desc: 'Overflowing outdoor waste containers, unsealed dumpster enclosures, commercial kitchen grease traps, and pet feeding dishes create powerful olfactory trails that draw rodent populations from neighboring properties.',
+    icon: Trash2
+  }
+];
+---
+
+<Layout
+  title="How Rodents Enter & Spread | Entry Routes in Bangalore | SLV Pest Control"
+  description="Discover how rats and mice enter and spread inside Bangalore buildings: foundation cracks, door sweeps, plumbing openings, rooflines, and food waste areas."
+  canonical="https://slvpestcontrol.com/knowledge/rodents/how-they-spread"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Rodents > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/rodent-control" class="hover:text-white transition">Rodents</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">How Rodents Enter &amp; Spread</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            RODENT KNOWLEDGE HUB
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1] mb-5 font-heading">
+          How Rodents Enter &amp; <span class="slv-gold-text">Spread Across Buildings</span>
+        </h1>
+
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+          Rodents possess remarkable physical agility and flexible skeletons that allow them to exploit concealed structural vulnerabilities. Once inside, they move through internal wall cavities and establish nesting areas wherever food, water, and shelter intersect.
+        </p>
+
+        <div class="inline-flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+          <a
+            href="/services/rodent-control"
+            class="slv-btn-primary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>Get Rodent Management</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>Call 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* ENTRY ROUTES GRID */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            INGRESS PATHWAYS
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            6 Common Structural Entry Routes
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-2">
+            How wild mice and rats penetrate residential and commercial building envelopes.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {entryRoutes.map((route) => {
+            const Icon = route.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+                <div>
+                  <div class="w-12 h-12 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center mb-4">
+                    <Icon class="w-6 h-6 text-[#E5A93C]" />
+                  </div>
+                  <h3 class="text-lg font-bold text-white mb-2 font-heading">
+                    {route.title}
+                  </h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+                    {route.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* HOW RODENTS MOVE CONCEALED */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08]">
+          <div class="flex items-center gap-3 mb-4">
+            <Compass class="w-6 h-6 text-[#E5A93C]" />
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              Movement Through Concealed Internal Pathways
+            </h2>
+          </div>
+          <p class="text-zinc-300 text-sm leading-relaxed mb-5">
+            Rodents are thigmotactic creatures, meaning they instinctively travel while keeping their whiskers in constant physical contact with vertical walls. Inside modern buildings, they rarely venture into open spaces unless startled or desperate for food. Instead, they utilize:
+          </p>
+          <ul class="space-y-3 text-xs sm:text-sm text-zinc-300 mb-6">
+            <li class="flex items-start gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-[#E5A93C] mt-1.5 shrink-0"></span>
+              <span><strong>Vertical Plumbing Shafts:</strong> Soil and waste water pipe riser shafts connecting multiple floors in apartment buildings.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-[#E5A93C] mt-1.5 shrink-0"></span>
+              <span><strong>Suspended Ceiling Voids:</strong> Continuous hollow planes above modular grid tiles allowing unhindered travel between rooms.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-[#E5A93C] mt-1.5 shrink-0"></span>
+              <span><strong>HVAC Duct Insulation:</strong> Soft thermal lagging around air-conditioning ductwork that provides warm nesting material and hidden corridors.</span>
+            </li>
+          </ul>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            Once a single fertile pair establishes residency near an accessible pantry or garbage area, rapid reproduction can escalate the infestation across adjacent units if entry conduits remain unsealed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* RELATED GUIDES */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            CONTINUE LEARNING
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            More Rodent Knowledge Guides
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedArticles.map((article) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+              <div>
+                <h3 class="text-base font-bold text-white mb-2 font-heading">
+                  {article.title}
+                </h3>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+                  {article.desc}
+                </p>
+              </div>
+              <a
+                href={article.href}
+                class="text-xs font-bold text-[#F6C453] hover:text-white inline-flex items-center gap-1.5 transition"
+              >
+                <span>Read Guide</span>
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FOOTER CTA SECTION */}
+    <section class="relative z-10 py-14 sm:py-16 bg-[#0c0d10]/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+          Block Rodent Entry Points with Professional Assessment
+        </h2>
+        <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+          SLV Pest Control identifies structural access gaps and deploys strategic exterior and interior management defenses.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/services/rodent-control"
+            class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>Get Rodent Management</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 rounded-full bg-[#25D366] text-white text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-md hover:bg-[#20bd5a] transition"
+          >
+            <MessageCircle class="w-4 h-4" />
+            <span>WhatsApp 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

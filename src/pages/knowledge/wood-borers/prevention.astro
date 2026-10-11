@@ -1,0 +1,314 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Home,
+  Droplets,
+  PackageCheck,
+  Clock
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Wood Borer Identification',
+    desc: 'Recognize shot-holes, fine frass powder, weakened timber, and activity around furniture.',
+    href: '/knowledge/wood-borers/identification'
+  },
+  {
+    title: 'Where Wood Borers Are Found',
+    desc: 'Examine common harbourages: wooden furniture, doors, window frames, flooring, and cabinets.',
+    href: '/knowledge/wood-borers/where-they-are-found'
+  },
+  {
+    title: 'How Wood Borers Damage Wood',
+    desc: 'Understand internal tunneling, exit holes, frass generation, and progressive timber weakening.',
+    href: '/knowledge/wood-borers/how-they-damage-wood'
+  },
+  {
+    title: 'Wood Borer Treatment Guide',
+    desc: 'Our 4-stage journey: inspection, assessment, targeted treatment, and follow-up monitoring.',
+    href: '/knowledge/wood-borers/treatment-guide'
+  },
+  {
+    title: 'Wood Borer FAQ',
+    desc: 'Clear, factual answers to 13 common questions regarding costs, inspection, and furniture safety.',
+    href: '/knowledge/wood-borers/faq'
+  }
+];
+
+const preventionMeasures = [
+  {
+    title: 'Regularly Inspect Wooden Furniture & Structures',
+    desc: 'Perform periodic checks of wooden wardrobe backs, under-table surfaces, cabinet joints, and doorframes. Look for tiny pinholes or powdery deposits in undisturbed storage zones.',
+    icon: Search
+  },
+  {
+    title: 'Address Moisture-Related Conditions',
+    desc: 'Wood borers thrive in timber with higher moisture levels. Repair plumbing leaks near wooden vanities, rectify damp wall seepage adjoining wardrobes, and maintain adequate indoor ventilation.',
+    icon: Droplets
+  },
+  {
+    title: 'Maintain Wooden Surfaces & Finishes',
+    desc: 'Keep timber sealed with quality polyurethane polish, varnish, paint, or wood preservatives. Female beetles avoid laying eggs on sealed, non-porous surfaces because exposed timber pores are required for oviposition.',
+    icon: ShieldCheck
+  },
+  {
+    title: 'Check Newly Purchased Wooden Furniture',
+    desc: 'Carefully inspect new, custom-made, antique, or second-hand wooden furniture before bringing it into your living spaces. Ensure raw plywood or solid wood items show no flight holes or powder residue.',
+    icon: PackageCheck
+  },
+  {
+    title: 'Inspect Visible Holes or Powder Promptly',
+    desc: 'If you notice tiny pinholes or powder, monitor the area closely. Wipe away dust and check after several days to determine if new bore-dust is accumulating from active larval tunneling.',
+    icon: Eye
+  },
+  {
+    title: 'Act Early When Signs Are Noticed',
+    desc: 'Prompt intervention restricts larvae to the initial affected timber pieces, preventing adult beetles from emerging and spreading eggs across surrounding cabinetry, wooden flooring, and doorframes.',
+    icon: Clock
+  }
+];
+---
+
+<Layout
+  title="Wood Borer Prevention | Timber Care & Protection Guide | SLV Pest Control"
+  description="Actionable prevention tips to protect wooden furniture, doors, and timber structures from wood borers in Bangalore. Surface sealing, moisture control, and early checks."
+  canonical="https://slvpestcontrol.com/knowledge/wood-borers/prevention"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Glow */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Wood Borers > Wood Borer Prevention */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/wood-borer-control" class="hover:text-white transition">Wood Borers</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Wood Borer Prevention</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            PREVENTION STRATEGIES
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Wood Borer Prevention: <span class="slv-gold-text">Timber Care Guide</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Proactive maintenance routines, surface sealing best practices, moisture control, and early inspection steps to safeguard wooden fixtures across Bangalore.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/wood-borer-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Wood Borer Treatment</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+          >
+            <MessageCircle class="w-4 h-4 mr-1 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Overview */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            A Proactive Approach to Wooden Structure Protection
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Preventing wood borer infestation centers on eliminating egg-laying opportunities for adult beetles and maintaining timber in dry, well-sealed conditions. Because wood borers seek exposed raw timber grain to lay eggs, surface preservation is your first line of defense.
+            </p>
+          </div>
+        </div>
+
+        {/* 6 Prevention Measures Grid */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">ACTIONABLE CHECKLIST</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              Practical Prevention Guidelines
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {preventionMeasures.map((measure) => {
+              const Icon = measure.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{measure.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{measure.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Practical Timber Maintenance Strategies */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Key Environmental &amp; Timber Care Practices
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm text-zinc-300">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Surface Sealing</span>
+              <h3 class="text-base font-bold text-white mb-2">Seal Unfinished Wood Edges</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                Ensure back panels of wardrobes, bottom edges of wooden doors, and underside surfaces of tables receive at least one protective coat of clear sealer or wood polish to close vulnerable wood grain.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Moisture Control</span>
+              <h3 class="text-base font-bold text-white mb-2">Control Ambient Humidity</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                Keep wooden furniture positioned with a slight air gap (1–2 inches) away from exterior walls during monsoon months to avoid moisture transfer and preserve timber dryness.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Already Spotted Wood Borer Activity?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Professional inspection and targeted syringe infusion help eliminate active larvae inside wooden galleries. Pricing provided after inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/wood-borer-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Wood Borer Treatment</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+              <span>Call: 91803 97822</span>
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Wood Borer Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

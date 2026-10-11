@@ -1,0 +1,310 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Wind,
+  Droplets,
+  AlertTriangle,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  ShieldCheck,
+  TreePine,
+  Waves,
+  Eye,
+  Activity
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Where Mosquitoes Breed & Hide',
+    desc: 'Stagnant water, containers, drains, gardens, and shaded damp areas.',
+    href: '/knowledge/mosquitoes/where-they-breed'
+  },
+  {
+    title: 'How Mosquitoes Enter & Spread',
+    desc: 'Open windows, door gaps, outdoor breeding sources, and indoor flight paths.',
+    href: '/knowledge/mosquitoes/how-they-spread'
+  },
+  {
+    title: 'Mosquito Prevention',
+    desc: 'Eliminating standing water, covered tanks, physical mesh, and outdoor care.',
+    href: '/knowledge/mosquitoes/prevention'
+  },
+  {
+    title: 'Mosquito Treatment Guide',
+    desc: 'The 4-stage journey: inspection, source assessment, targeted treatment, and guidance.',
+    href: '/knowledge/mosquitoes/treatment-guide'
+  },
+  {
+    title: 'Mosquito FAQ',
+    desc: 'Answers to 12 practical questions on costs, preparation, breeding, and safety.',
+    href: '/knowledge/mosquitoes/faq'
+  }
+];
+
+const identificationSigns = [
+  {
+    title: 'Persistent Biting Indoors & Balconies',
+    desc: 'Frequent bites occurring during dawn and dusk hours (or during daylight hours from container-breeding Aedes mosquitoes) across balconies, verandas, living spaces, and ground-floor corridors.',
+    icon: Wind
+  },
+  {
+    title: 'Visible Larvae (Wigglers) in Standing Water',
+    desc: 'Small, active worm-like larvae wriggling near the surface of stagnant water in flowerpot saucers, AC condensation trays, bucket bottoms, and open cisterns.',
+    icon: Droplets
+  },
+  {
+    title: 'Audible High-Pitched Buzzing at Rest',
+    desc: 'Persistent high-pitched whining or buzzing sounds around bedrooms, study desks, and quiet corners, causing disrupted sleep and heightened bite awareness.',
+    icon: AlertTriangle
+  },
+  {
+    title: 'Resting Adults in Shaded Vegetation',
+    desc: 'Adult mosquitoes clustered under dense garden foliage, ornamental shrubbery, hanging planters, balcony privacy screens, and beneath outdoor stairwells during the heat of the day.',
+    icon: TreePine
+  },
+  {
+    title: 'Activity Near Wet Drainage Lines',
+    desc: 'Elevated swarm activity concentrated around stagnant stormwater drains, inspection chambers, washing area gulley traps, and basement sump collection pits.',
+    icon: Waves
+  },
+  {
+    title: 'Indoor Daytime Wall Harbourage',
+    desc: 'Adult mosquitoes resting motionless on dark indoor walls, behind full-length window curtains, under beds, and inside wardrobe gaps to escape direct ceiling fans.',
+    icon: Eye
+  }
+];
+---
+
+<Layout
+  title="Mosquito Identification | Signs, Breeding & Bangalore Guide | SLV Pest Control"
+  description="Learn how to identify mosquito activity and breeding conditions in Bangalore. Discover key signs: standing water larvae, shaded resting areas, and seasonal biting habits."
+  canonical="https://slvpestcontrol.com/knowledge/mosquitoes/identification"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Mosquitoes > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/mosquito-control" class="hover:text-white transition">Mosquitoes</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Mosquito Identification</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            MOSQUITO KNOWLEDGE HUB
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Mosquito Identification in <span class="slv-gold-text">Bangalore</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Recognize early signs of mosquito activity, understand aquatic breeding conditions, and locate outdoor resting zones around your property.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/mosquito-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Mosquito Control</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Overview */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Understanding Mosquito Biology &amp; Activity Signs
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Mosquitoes are flying insects whose life cycle is intrinsically linked to stagnant water. Females require protein from a blood meal to develop viable eggs, which they deposit directly onto or near standing water surfaces. Within 24 to 48 hours, these eggs hatch into aquatic larvae, completing their transition into flying adults in as few as 7 to 10 days in Bangalore's warm, humid climate.
+            </p>
+            <p>
+              Because adults can fly several hundred meters from their original breeding source, identifying mosquito activity requires assessing both <strong>immediate indoor harbourages</strong> and <strong>outdoor standing-water reservoirs</strong> within the perimeter.
+            </p>
+          </div>
+        </div>
+
+        {/* 6 Signs Grid */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">IDENTIFICATION SIGNS</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              Key Indicators of Mosquito Activity
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {identificationSigns.map((sign) => {
+              const Icon = sign.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{sign.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{sign.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Species Breakdown */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Common Mosquito Categories in Bangalore
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Container Breeder</span>
+              <h3 class="text-lg font-bold text-white mb-2">Aedes Mosquitoes</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-3">
+                Distinct black-and-white lyre markings on the thorax. Day-active biters peaking in early morning and late afternoon. Breeds in clean, artificial water containers such as plant saucers, discarded tires, and open water tanks.
+              </p>
+              <div class="text-xs text-zinc-500 font-mono">Biting habit: Daytime outdoors &amp; balconies</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Drain &amp; Sewage Breeder</span>
+              <h3 class="text-lg font-bold text-white mb-2">Culex Mosquitoes</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-3">
+                Brownish, robust bodies. Nocturnal biters active after dusk and throughout the night. Proliferates in organic-rich, stagnant drainage channels, wastewater ditches, septic tanks, and polluted stormwater corridors.
+              </p>
+              <div class="text-xs text-zinc-500 font-mono">Biting habit: Nighttime indoors &amp; bedrooms</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Vegetation &amp; Sump Breeder</span>
+              <h3 class="text-lg font-bold text-white mb-2">Anopheles Mosquitoes</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-3">
+                Rests at a characteristic 45-degree angle to the surface with spotted wings. Breeds in clean, slow-moving water sources, shaded overhead tank covers, and garden ponds with natural vegetation.
+              </p>
+              <div class="text-xs text-zinc-500 font-mono">Biting habit: Dusk to dawn</div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Noticed Excessive Mosquito Activity Around Your Property?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Schedule an on-site property evaluation with SLV Pest Control technicians to map breeding hotspots and receive targeted treatment. Pricing confirmed after inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/mosquito-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Mosquito Control</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Mosquito Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

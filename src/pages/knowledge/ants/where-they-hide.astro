@@ -1,0 +1,284 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  Home,
+  Shield
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Ant Identification',
+    desc: 'Recognize common ant behaviors, signs of infestation, trailing activity, and food attraction.',
+    href: '/knowledge/ants/identification'
+  },
+  {
+    title: 'How Ants Enter & Spread',
+    desc: 'Understand entry through exterior gaps, utility penetrations, foraging trails, and scent-guided expansion.',
+    href: '/knowledge/ants/how-they-spread'
+  },
+  {
+    title: 'Ant Prevention Guide',
+    desc: 'Actionable sanitation steps, food storage habits, moisture control, and structural sealing techniques.',
+    href: '/knowledge/ants/prevention'
+  },
+  {
+    title: 'Ant Treatment Guide',
+    desc: 'Our systematic 4-stage management methodology: inspection, colony assessment, targeted baiting, and prevention.',
+    href: '/knowledge/ants/treatment-guide'
+  },
+  {
+    title: 'Ant FAQ',
+    desc: 'Clear, factual answers to 12 common questions regarding ant species, nesting habits, sprays vs baits, and safety.',
+    href: '/knowledge/ants/faq'
+  }
+];
+
+const hidingZones = [
+  {
+    title: 'Cracks, Crevices & Wall Gaps',
+    desc: 'Hairline fractures in cement plaster, gaps behind baseboards, unsealed mortar joints, and expansion gaps between floor tiles provide protected channels for colony nesting.',
+    icon: Search
+  },
+  {
+    title: 'Kitchens & Food Preparation Areas',
+    desc: 'Spaces underneath built-in gas hobs, gaps behind modular laminate cabinets, microwave footpads, and garbage bin storage enclosures where food starches and fats collect.',
+    icon: Home
+  },
+  {
+    title: 'Cupboards, Pantries & Wardrobes',
+    desc: 'Dark shelving crevices, hinges of modular kitchen units, dry grocery storage racks, and bottom corners of undisturbed storage cupboards.',
+    icon: Layers
+  },
+  {
+    title: 'Around Sinks & Moisture-Prone Areas',
+    desc: 'Moist under-sink basins, leaking bottle-traps, bathroom tile borders, condensation lines behind refrigerators, and washing machine drain lines.',
+    icon: Droplets
+  },
+  {
+    title: 'Outdoor Perimeter & Garden Soil',
+    desc: 'Flower beds, potted plant roots, paver walkways, exterior foundation perimeters, and tree bark adjacent to exterior structural walls.',
+    icon: Activity
+  },
+  {
+    title: 'Other Suitable Nesting Locations',
+    desc: 'Hollow interior doors, insulation linings, sub-floor cavities, air conditioning compressor trunking, and electrical conduit boxes.',
+    icon: AlertTriangle
+  }
+];
+---
+
+<Layout
+  title="Where Ants Hide & Nest in Homes | Harbourage Zones | SLV Pest Control"
+  description="Discover where ants hide and nest in Bangalore homes: wall crevices, kitchen cupboards, around sinks, and outdoor areas. Expert inspection by SLV Pest Control."
+  canonical="https://slvpestcontrol.com/knowledge/ants/where-they-hide"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+    </div>
+
+    {/* BREADCRUMB */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>/</span>
+        <span class="text-zinc-500">Ants</span>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Where They Hide</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+            KNOWLEDGE BASE • ANTS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] mb-5 font-heading">
+          Where Ants Hide &amp; Nest: Identifying Hidden Colony Harbourages
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6">
+          While ants appear momentarily on kitchen counters or dining tables, their actual nests remain carefully hidden in inaccessible structural voids, moisture-prone wall cavities, or outdoor gardens. Locating the exact harbourage is essential for true colony elimination.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-400 pt-4 border-t border-white/[0.06]">
+          <span>Topic: Ant Nesting Ecology &amp; Harbourage Inspection</span>
+          <span>•</span>
+          <span>Bangalore Residential &amp; Commercial Properties</span>
+          <span>•</span>
+          <span class="text-[#F6C453]">SLV Technical Guide</span>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        {/* SECTION 1: OVERVIEW */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Why Ants Nest in Hidden Spaces
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Ants are cold-blooded creatures that require stable micro-climates with warm temperatures, elevated humidity, and darkness to protect developing eggs and larvae. They exploit architectural voids that humans rarely disturb.
+          </p>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            Many ant species also maintain multiple satellite colonies. While the primary nest containing the queen might reside in outdoor potting soil or beneath foundation tiles, satellite nurseries filled with pupae and worker reserves establish themselves right behind kitchen tiles or modular woodwork.
+          </p>
+        </div>
+
+        {/* SECTION 2: SIX CORE HIDING ZONES */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Primary Harbourage Locations in Bangalore Properties
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {hidingZones.map((zone) => {
+              const Icon = zone.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+                  <Icon class="w-6 h-6 text-[#E5A93C] mb-3" />
+                  <h3 class="text-base font-bold text-white mb-2">{zone.title}</h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{zone.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SECTION 3: DETAILED ROOM BREAKDOWN */}
+        <div class="space-y-6">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            Room-by-Room Inspection Analysis
+          </h2>
+
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3">
+            <h3 class="text-lg font-bold text-white">1. Kitchens &amp; Pantries</h3>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+              Kitchens combine food abundance and moisture. Look closely behind drawer slide tracks, under the sink sink-trap, beneath refrigerator drip trays, and behind silicone sealant along countertop backsplashes where moisture gets trapped.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3">
+            <h3 class="text-lg font-bold text-white">2. Bathrooms &amp; Utility Balconies</h3>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+              Bathrooms provide continuous moisture from floor traps, concealed shower mixers, and vanity cabinet surrounds. Ants frequently establish nesting pockets beneath loose floor tiles or inside empty spaces around plumbing pipe sleeves.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3">
+            <h3 class="text-lg font-bold text-white">3. Electrical &amp; Structural Voids</h3>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+              Certain species (such as crazy ants and carpenter ants) are strongly attracted to electrical fields and warm transformer coils inside inverter battery housings, switchboards, and air conditioner wall sleeves.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3">
+            <h3 class="text-lg font-bold text-white">4. Outdoor Boundaries &amp; Gardens</h3>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+              Inspect exterior foundation perimeters, garden mulch beds, decorative pavers, and flower pots. Overhanging tree branches touching the roof or windows act as highway bridges allowing worker ants to bypass exterior ground treatments.
+            </p>
+          </div>
+        </div>
+
+        {/* PRIMARY CALL TO ACTION */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-[#E5A93C]/40 text-center">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            INSPECTION &amp; ASSESSMENT
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Can't Find Where Ants Are Originating?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+            A professional assessment tracks trailing workers back to their core nesting source within wall voids, cupboards, or exterior perimeters.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/services/ant-control" class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2">
+              <span>Get Ant Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a href="tel:9180397822" class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 hover:border-[#F6C453]">
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+
+        {/* RELATED ARTICLES */}
+        <div>
+          <h3 class="text-xl font-bold text-white font-heading mb-4">
+            Related Ant Knowledge Guides
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card p-4 rounded-xl border border-white/[0.08] hover:border-[#E5A93C]/40 transition group block"
+              >
+                <h4 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1">
+                  {article.title}
+                </h4>
+                <p class="text-zinc-400 text-xs line-clamp-2">
+                  {article.desc}
+                </p>
+                <span class="text-[#E5A93C] text-xs font-semibold inline-flex items-center gap-1 mt-2">
+                  <span>Read Guide</span>
+                  <ArrowRight class="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* LOCAL SERVICE FOOTER */}
+    <section class="relative z-10 py-12 border-b border-white/[0.06] bg-[#0c0d10]/50 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-xl font-bold text-white font-heading mb-2">
+          Professional Ant Harbourage Inspection in Bangalore
+        </h3>
+        <p class="text-zinc-400 text-xs sm:text-sm mb-4">
+          Pinpointing hidden ant colonies in residential apartments, independent houses, villas, and commercial kitchens across Bangalore.
+        </p>
+        <div class="flex items-center justify-center gap-6 text-xs text-zinc-300 font-mono">
+          <span>Phone: 91803 97822</span>
+          <span>•</span>
+          <span>Email: contact@slvpestcontrol.com</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

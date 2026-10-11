@@ -1,0 +1,309 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  FileText
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Where Ants Hide & Nest',
+    desc: 'Discover nesting zones in cracks, wall voids, under sinks, kitchen cupboards, and outdoor perimeters.',
+    href: '/knowledge/ants/where-they-hide'
+  },
+  {
+    title: 'How Ants Enter & Spread',
+    desc: 'Understand entry through exterior gaps, utility penetrations, foraging trails, and scent-guided expansion.',
+    href: '/knowledge/ants/how-they-spread'
+  },
+  {
+    title: 'Ant Prevention Guide',
+    desc: 'Actionable sanitation steps, food storage habits, moisture control, and structural sealing techniques.',
+    href: '/knowledge/ants/prevention'
+  },
+  {
+    title: 'Ant Treatment Guide',
+    desc: 'Our systematic 4-stage management methodology: inspection, colony assessment, targeted baiting, and prevention.',
+    href: '/knowledge/ants/treatment-guide'
+  },
+  {
+    title: 'Ant FAQ',
+    desc: 'Clear, factual answers to 12 common questions regarding ant species, nesting habits, sprays vs baits, and safety.',
+    href: '/knowledge/ants/faq'
+  }
+];
+
+const identificationPoints = [
+  {
+    title: 'What Ants Are',
+    desc: 'Ants are highly social insects living in organized colonies headed by one or multiple queens, supported by sterile worker ants that forage continuously for sustenance.',
+    icon: Search
+  },
+  {
+    title: 'Physical Appearance & Anatomy',
+    desc: 'Identified by their distinct three-segment bodies (head, thorax, and abdomen) with a narrow, pinched "waist" (petiole), elbowed antennae, and strong chewing mandibles.',
+    icon: Eye
+  },
+  {
+    title: 'Visible Worker Ants & Continuous Trails',
+    desc: 'Single or dual lines of worker ants steadily traveling across countertops, baseboards, floor tiles, and doorframes along established chemical scent trails.',
+    icon: Activity
+  },
+  {
+    title: 'Activity Around Food & Moisture',
+    desc: 'Clustering around sugar granules, fruit bowls, pet kibble, cooking oil droplets, under-sink plumbing leaks, and damp bathroom corners.',
+    icon: Droplets
+  },
+  {
+    title: 'Nesting Debris & Soil Mounds',
+    desc: 'Small deposits of fine soil, dust particles, or insect body fragments pushed out from expansion holes in wall crevices, grout joints, or exterior paving.',
+    icon: AlertTriangle
+  },
+  {
+    title: 'Common Indoor & Outdoor Activity Zones',
+    desc: 'Frequently detected around kitchen splashbacks, pantry shelving, electrical switchboard cavities, bathroom drains, window ledges, and potted plant soil.',
+    icon: Layers
+  }
+];
+---
+
+<Layout
+  title="Ant Identification in Bangalore | Common Signs & Habits | SLV Pest Control"
+  description="Learn how to identify ants, signs of ant trails and activity around food and moisture in Bangalore homes. Professional ant management guidance from SLV."
+  canonical="https://slvpestcontrol.com/knowledge/ants/identification"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+    </div>
+
+    {/* BREADCRUMB */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>/</span>
+        <span class="text-zinc-500">Ants</span>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Identification</span>
+      </nav>
+    </div>
+
+    {/* ARTICLE HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+            KNOWLEDGE BASE • ANTS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] mb-5 font-heading">
+          Ant Identification: Signs of Activity &amp; Infestation in Bangalore
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6">
+          Ants are among the most persistent pests found across residential homes, apartments, and commercial facilities in Bangalore. Understanding what ants are, how to identify them, and recognizing the early signs of trail formation can prevent minor foraging from escalating into established wall-cavity nesting.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-400 pt-4 border-t border-white/[0.06]">
+          <span>Subject: Ant Biology &amp; Field Signs</span>
+          <span>•</span>
+          <span>Target Audience: Bangalore Property Owners</span>
+          <span>•</span>
+          <span class="text-[#F6C453]">SLV Technical Advisory</span>
+        </div>
+      </div>
+    </section>
+
+    {/* ARTICLE CONTENT */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        {/* SECTION 1: WHAT ANTS ARE */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            What Ants Are
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Ants are social insects belonging to the family <em>Formicidae</em>, order Hymenoptera. Unlike solitary insects, ants live in structured colonies that can number from several hundreds to hundreds of thousands of individuals. Within every mature colony, there exists a strict division of labour:
+          </p>
+          <ul class="space-y-2 text-zinc-300 text-sm sm:text-base pl-5 list-disc marker:text-[#E5A93C] mb-4">
+            <li><strong>The Queen (or Queens):</strong> The reproductive heart of the colony, living secluded inside deep nesting cavities and continuously laying eggs.</li>
+            <li><strong>Worker Ants:</strong> Wingless sterile females that excavate tunnels, nurse developing larvae, defend the nest, and forage outdoors or across indoor floors for nourishment.</li>
+            <li><strong>Alates (Swarmers):</strong> Winged reproductive males and females produced during humid or rainy weather to embark on nuptial flights and establish new satellite colonies.</li>
+          </ul>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            Because worker ants represent only 5% to 15% of the total colony population, crushing or spraying visible workers does not resolve the nesting queen hidden within structural cavities.
+          </p>
+        </div>
+
+        {/* SECTION 2: PHYSICAL TRAITS */}
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
+          <h2 class="text-xl sm:text-2xl font-black text-white font-heading mb-4">
+            Physical Characteristics &amp; Anatomy
+          </h2>
+          <p class="text-zinc-300 text-sm leading-relaxed mb-4">
+            Distinguishing ants from other household insects (such as termites or small flies) is straightforward when observing key morphological features:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-zinc-300">
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Pinched "Waist" (Petiole):</strong>
+              Ants have a distinct, narrow waist segment connecting the thorax and abdomen, whereas termites have a broad, uniform waist.
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Elbowed "Bent" Antennae:</strong>
+              Ant antennae feature a distinctive sharp bend or joint like an elbow, used for tasting and picking up pheromone scent trails.
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Variable Colouration &amp; Sizing:</strong>
+              Bangalore properties commonly encounter black carpenter ants (8–15 mm), tiny sugar/pharaoh ants (1.5–2.5 mm), and reddish crazy ants (2–3 mm).
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Mandibles for Carrying &amp; Excavating:</strong>
+              Powerful pinching jaws allow workers to haul food pieces 10–50 times their body weight and chew through building insulation or softening wood.
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 3: KEY IDENTIFICATION POINTS GRID */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Common Signs of Ant Activity in Bangalore
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {identificationPoints.map((point) => {
+              const Icon = point.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+                  <Icon class="w-6 h-6 text-[#E5A93C] mb-3" />
+                  <h3 class="text-base font-bold text-white mb-2">{point.title}</h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{point.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SECTION 4: WHERE ANTS ARE COMMONLY NOTICED */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Areas Where Ants Are Commonly Noticed
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Inside Bangalore apartments and standalone villas, ants navigate along structural corners and warm conduits where temperature and moisture remain stable:
+          </p>
+          <div class="space-y-3">
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs sm:text-sm text-zinc-300">
+              <strong class="text-[#FFE08A] block mb-1">1. Kitchen Countertops, Splashbacks &amp; Pantries</strong>
+              Ants actively patrol along silicone seams between granite slabs and wall tiles, seeking food residues, sweet syrup containers, and crumbs behind microwaves.
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs sm:text-sm text-zinc-300">
+              <strong class="text-[#FFE08A] block mb-1">2. Under-Sink Plumbing Cabinets &amp; Drains</strong>
+              Sink drain conduits provide continuous moisture from condensating cold pipes and small persistent leaks, serving as an essential hydration depot.
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs sm:text-sm text-zinc-300">
+              <strong class="text-[#FFE08A] block mb-1">3. Wall Crevices, Switchboard Voids &amp; Skirting Boards</strong>
+              Electrical conduit tubes and hollow masonry blocks provide secure, temperature-regulated travel expressways connecting outdoor soil to indoor living areas.
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs sm:text-sm text-zinc-300">
+              <strong class="text-[#FFE08A] block mb-1">4. Balcony Garden Pots &amp; Exterior Foundation Walls</strong>
+              Potting soil in balcony plants offers high organic matter and constant watering, making it an ideal nesting zone from which worker ants raid adjacent indoor rooms.
+            </div>
+          </div>
+        </div>
+
+        {/* PRIMARY CALL TO ACTION */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-[#E5A93C]/40 text-center">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            PROFESSIONAL COLONY TREATMENT
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Noticing Recurring Ant Trails in Your Home?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+            Eliminating ant infestations requires pinpointing hidden wall nests and stopping recruitment pheromones. Schedule a thorough inspection with SLV Pest Control today.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/services/ant-control" class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2">
+              <span>Ant Control</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a href="tel:9180397822" class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 hover:border-[#F6C453]">
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+
+        {/* RELATED ARTICLES */}
+        <div>
+          <h3 class="text-xl font-bold text-white font-heading mb-4">
+            Related Ant Knowledge Guides
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card p-4 rounded-xl border border-white/[0.08] hover:border-[#E5A93C]/40 transition group block"
+              >
+                <h4 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1">
+                  {article.title}
+                </h4>
+                <p class="text-zinc-400 text-xs line-clamp-2">
+                  {article.desc}
+                </p>
+                <span class="text-[#E5A93C] text-xs font-semibold inline-flex items-center gap-1 mt-2">
+                  <span>Read Guide</span>
+                  <ArrowRight class="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* CONTACT & CONSULTATION FOOTER */}
+    <section class="relative z-10 py-12 border-b border-white/[0.06] bg-[#0c0d10]/50 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-xl font-bold text-white font-heading mb-2">
+          Expert Ant Management Across All Bangalore Localities
+        </h3>
+        <p class="text-zinc-400 text-xs sm:text-sm mb-4">
+          Serving Whitefield, Indiranagar, Koramangala, HSR Layout, Electronic City, Jayanagar, Doddabidarakallu, and all neighbouring areas.
+        </p>
+        <div class="flex items-center justify-center gap-6 text-xs text-zinc-300 font-mono">
+          <span>Phone: 91803 97822</span>
+          <span>•</span>
+          <span>Email: contact@slvpestcontrol.com</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

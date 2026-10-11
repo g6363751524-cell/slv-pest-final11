@@ -1,0 +1,559 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { FloatingActions } from '../components/FloatingActions';
+import {
+  Phone,
+  MessageCircle,
+  ArrowRight,
+  Home,
+  Building2,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  Eye,
+  HeartHandshake,
+  CheckCircle2,
+  Users,
+  Search,
+  ClipboardList,
+  Layers,
+  Clock,
+  MapPin,
+  Mail,
+  Shield,
+  Leaf
+} from 'lucide-react';
+
+const heroFeatures = [
+  {
+    title: 'Residential Services',
+    desc: 'Apartments, villas, and independent homes',
+    icon: Home,
+    accent: 'border-[#E5A93C]/30 text-[#F6C453] bg-[#E5A93C]/10'
+  },
+  {
+    title: 'Commercial Services',
+    desc: 'Offices, restaurants, kitchens, and facilities',
+    icon: Building2,
+    accent: 'border-cyan-500/30 text-cyan-400 bg-cyan-500/10'
+  },
+  {
+    title: 'Professional Approach',
+    desc: 'Trained technicians & disciplined protocols',
+    icon: ShieldCheck,
+    accent: 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
+  },
+  {
+    title: 'Cleaner Environments',
+    desc: 'Promoting hygienic and healthier living spaces',
+    icon: Sparkles,
+    accent: 'border-amber-400/30 text-amber-300 bg-amber-400/10'
+  }
+];
+
+const serviceHighlights = [
+  {
+    label: 'Residential & Commercial Customers',
+    icon: Home
+  },
+  {
+    label: 'Wide Range of Pest Control Services',
+    icon: Layers
+  },
+  {
+    label: 'Responsible Treatment Methods',
+    icon: ShieldCheck
+  },
+  {
+    label: 'Cleaner, Healthier Environments',
+    icon: Sparkles
+  }
+];
+
+const whyChooseCards = [
+  {
+    title: 'Experienced Team',
+    desc: 'Skilled and trained professionals.',
+    icon: Users
+  },
+  {
+    title: 'Effective Solutions',
+    desc: 'Treatment recommendations based on pest and property requirements.',
+    icon: CheckCircle2
+  },
+  {
+    title: 'Customer Focused',
+    desc: 'Clear communication and reliable service.',
+    icon: HeartHandshake
+  },
+  {
+    title: 'Residential & Commercial',
+    desc: 'Services for a wide range of property types.',
+    icon: Building2
+  }
+];
+
+const processSteps = [
+  {
+    num: '01',
+    title: 'Inspection',
+    desc: 'Understand the pest problem and property conditions.',
+    icon: Search
+  },
+  {
+    num: '02',
+    title: 'Assessment',
+    desc: 'Recommend suitable treatment based on inspection.',
+    icon: ClipboardList
+  },
+  {
+    num: '03',
+    title: 'Treatment',
+    desc: 'Carry out treatment using appropriate methods.',
+    icon: ShieldCheck
+  },
+  {
+    num: '04',
+    title: 'Follow-Up',
+    desc: 'Provide guidance and support as needed.',
+    icon: HeartHandshake
+  }
+];
+
+const coreValues = [
+  'Customer Focus',
+  'Professional Service',
+  'Safe and Responsible Practices',
+  'Honest Communication',
+  'Continuous Improvement'
+];
+---
+
+<Layout
+  title="About Us | About SLV Pest Control Bangalore"
+  description="Learn about SLV Pest Control. We provide professional pest control services for homes and businesses across Bangalore using safe and effective methods."
+  canonical="https://slvpestcontrol.com/about"
+>
+  <!-- Reusable Global Header with active About navigation -->
+  <Header client:load activeItem="about" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <!-- Clean Architectural Honeycomb Pattern & Ambient Geometric Lines (NO photo backgrounds) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <svg
+        class="absolute w-full h-full opacity-[0.035]"
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+      >
+        <defs>
+          <pattern id="honeycomb-pattern-about" width="56" height="96" patternUnits="userSpaceOnUse">
+            <path
+              d="M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z M28 48 L56 64 L56 96 L28 112 L0 96 L0 64 Z"
+              fill="none"
+              stroke="#E5A93C"
+              stroke-width="1"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#honeycomb-pattern-about)" />
+      </svg>
+
+      <!-- Soft ambient lighting gradients -->
+      <div class="absolute -top-32 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.05] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[35%] left-[-100px] w-[500px] h-[500px] bg-cyan-500/[0.03] rounded-full blur-[160px]"></div>
+      <div class="absolute bottom-10 right-[-100px] w-[500px] h-[500px] bg-emerald-500/[0.03] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* ============================================================== */}
+    {/* 1. HERO SECTION                                               */}
+    {/* ============================================================== */}
+    <section class="relative z-10 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Breadcrumb: Home → About Us -->
+        <nav aria-label="Breadcrumb" class="flex items-center justify-center gap-2 text-xs text-zinc-400 mb-6 font-medium">
+          <a href="/" class="hover:text-[#F6C453] transition-colors">Home</a>
+          <span class="text-zinc-600">→</span>
+          <span class="text-[#F6C453] font-semibold">About Us</span>
+        </nav>
+
+        <!-- Eyebrow badge -->
+        <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#E5A93C]/30 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+          <span class="text-[#E5A93C] text-[11px] sm:text-xs font-extrabold tracking-[0.2em] uppercase font-mono">
+            PESTS OUT. PEACE IN.
+          </span>
+        </div>
+
+        <!-- Heading: About SLV Pest Control with company name in gold -->
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading max-w-4xl mx-auto">
+          About <span class="text-[#F6C453] slv-gold-text">SLV Pest Control</span>
+        </h1>
+
+        <!-- Description from brief -->
+        <p class="text-zinc-300 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-3xl mx-auto mb-8">
+          We provide professional pest control services for homes and businesses, using safe and effective methods to help you maintain a cleaner, healthier and more comfortable environment.
+        </p>
+
+        <!-- Prominent Call Now and WhatsApp Us Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <!-- Call Now Button -->
+          <a
+            href="tel:9180397822"
+            class="slv-btn-primary w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-black gap-2.5 uppercase tracking-wider shadow-lg shadow-[#E5A93C]/25 hover:shadow-[#E5A93C]/40"
+          >
+            <Phone class="w-4 h-4 text-[#090a0c]" />
+            <span>CALL NOW: 91803 97822</span>
+          </a>
+
+          <!-- WhatsApp Us Button -->
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-bold gap-2.5 uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_26px_rgba(37,211,102,0.55)] hover:scale-[1.02] active:scale-95 transition-all duration-200 inline-flex items-center justify-center"
+          >
+            <MessageCircle class="w-4 h-4 text-white" />
+            <span>WHATSAPP US</span>
+          </a>
+        </div>
+
+        <!-- Four Compact Feature Blocks with Line Icons -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto pt-6 border-t border-white/[0.06]">
+          {heroFeatures.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div class="slv-card rounded-2xl p-4 sm:p-5 flex items-center gap-3.5 text-left border border-white/[0.07] bg-[#0c0d10]/70 hover:border-white/[0.2] transition-colors">
+                <div class={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 ${item.accent}`}>
+                  <Icon class="w-5 h-5" />
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight leading-snug">{item.title}</h3>
+                  <p class="text-[11px] text-zinc-400 mt-0.5 leading-tight">{item.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 2. MISSION, VISION AND VALUES (3 Glassmorphism Cards)          */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-14 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              GUIDING PRINCIPLES
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Mission, Vision &amp; Values
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed">
+            The foundation of our commitment to customers, community health, and professional standards across Bangalore.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+          {/* Card 1: Our Mission (Gold) */}
+          <div class="slv-card rounded-3xl p-7 sm:p-9 border border-[#E5A93C]/35 bg-[#0e1014]/90 hover:border-[#F6C453] hover:shadow-[0_15px_35px_rgba(229,169,60,0.12)] transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-13 h-13 rounded-2xl bg-[#E5A93C]/10 border border-[#E5A93C]/35 flex items-center justify-center text-[#F6C453] group-hover:scale-105 transition-transform">
+                  <Target class="w-7 h-7 text-[#F6C453]" />
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full font-mono text-[#F6C453] bg-[#E5A93C]/10 border border-[#E5A93C]/25">
+                  PURPOSE
+                </span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-black text-white font-heading tracking-tight mb-4 group-hover:text-[#F6C453] transition-colors">
+                Our Mission
+              </h3>
+
+              <p class="text-zinc-300 text-sm sm:text-base leading-relaxed font-normal">
+                “To provide reliable and effective pest control solutions that help create cleaner, healthier and safer environments for our customers.”
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-[#F6C453] font-semibold">
+              <Sparkles class="w-3.5 h-3.5" />
+              <span>Safer &amp; healthier living spaces</span>
+            </div>
+          </div>
+
+          {/* Card 2: Our Vision (Cyan) */}
+          <div class="slv-card rounded-3xl p-7 sm:p-9 border border-cyan-500/35 bg-[#0e1014]/90 hover:border-cyan-400 hover:shadow-[0_15px_35px_rgba(6,182,212,0.12)] transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-13 h-13 rounded-2xl bg-cyan-500/10 border border-cyan-500/35 flex items-center justify-center text-cyan-400 group-hover:scale-105 transition-transform">
+                  <Eye class="w-7 h-7 text-cyan-400" />
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full font-mono text-cyan-400 bg-cyan-500/10 border border-cyan-500/25">
+                  ASPIRATION
+                </span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-black text-white font-heading tracking-tight mb-4 group-hover:text-cyan-400 transition-colors">
+                Our Vision
+              </h3>
+
+              <p class="text-zinc-300 text-sm sm:text-base leading-relaxed font-normal">
+                “To be a trusted and preferred pest control service provider, known for quality service, professionalism and customer care.”
+              </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-cyan-400 font-semibold">
+              <ShieldCheck class="w-3.5 h-3.5" />
+              <span>Trust, quality &amp; customer care</span>
+            </div>
+          </div>
+
+          {/* Card 3: Our Values (Green) */}
+          <div class="slv-card rounded-3xl p-7 sm:p-9 border border-emerald-500/35 bg-[#0e1014]/90 hover:border-emerald-400 hover:shadow-[0_15px_35px_rgba(16,185,129,0.12)] transition-all flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-13 h-13 rounded-2xl bg-emerald-500/10 border border-emerald-500/35 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform">
+                  <HeartHandshake class="w-7 h-7 text-emerald-400" />
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/25">
+                  CORE VALUES
+                </span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-black text-white font-heading tracking-tight mb-4 group-hover:text-emerald-400 transition-colors">
+                Our Values
+              </h3>
+
+              <ul class="space-y-2.5">
+                {coreValues.map((val) => (
+                  <li class="flex items-center gap-2.5 text-zinc-300 text-xs sm:text-sm font-medium">
+                    <CheckCircle2 class="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>{val}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-emerald-400 font-semibold">
+              <Shield class="w-3.5 h-3.5" />
+              <span>Ethical &amp; disciplined practices</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 3. SERVICE HIGHLIGHTS (Slim Horizontal Feature Strip)          */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-10 sm:py-12 border-b border-white/[0.06] bg-[#0c0d10]/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-2xl py-5 sm:py-6 px-6 sm:px-8 border border-white/[0.08] bg-[#0e1014]/90 shadow-md">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 divide-y sm:divide-y-0 lg:divide-x divide-white/[0.08]">
+            {serviceHighlights.map((highlight, idx) => {
+              const Icon = highlight.icon;
+              return (
+                <div class={`flex items-center gap-3.5 ${idx !== 0 ? 'pt-4 sm:pt-0 lg:px-6' : 'lg:pr-6'}`}>
+                  <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center shrink-0">
+                    <Icon class="w-5 h-5 text-[#F6C453]" />
+                  </div>
+                  <span class="text-xs sm:text-sm font-bold text-white tracking-tight leading-snug">
+                    {highlight.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 4. WHY CHOOSE SLV PEST CONTROL? (4 Compact Cards)              */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-14 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              OUR ADVANTAGES
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Why Choose SLV Pest Control?
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed">
+            Straightforward service, customized recommendations, and trained technicians committed to doing pest control properly.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          {whyChooseCards.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 sm:p-7 border border-white/[0.08] bg-[#0e1014]/90 hover:border-[#E5A93C]/60 hover:shadow-[0_10px_30px_rgba(229,169,60,0.1)] transition-all flex flex-col justify-between group">
+                <div>
+                  <div class="w-12 h-12 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 text-[#F6C453] flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
+                    <Icon class="w-6 h-6 text-[#F6C453]" />
+                  </div>
+
+                  <h3 class="text-lg font-bold text-white font-heading mb-2 group-hover:text-[#F6C453] transition-colors">
+                    {item.title}
+                  </h3>
+
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                    “{item.desc}”
+                  </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center gap-2 text-[11px] font-semibold text-[#E5A93C]">
+                  <CheckCircle2 class="w-3.5 h-3.5" />
+                  <span>SLV Standard</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 5. OUR PROCESS (Connected 4-Step Process)                      */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-14 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              STRUCTURED WORKFLOW
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Our Process
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed">
+            A methodical four-stage approach designed to address pest activity thoroughly and reliably.
+          </p>
+        </div>
+
+        {/* Process Steps with connected timeline logic */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 relative">
+          {processSteps.map((step, idx) => {
+            const Icon = step.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 sm:p-7 border border-white/[0.08] bg-[#0e1014]/90 flex flex-col justify-between group hover:border-cyan-500/40 transition-all relative">
+                <div>
+                  <div class="flex items-center justify-between mb-5">
+                    <span class="text-2xl sm:text-3xl font-black font-heading text-[#F6C453] font-mono">
+                      {step.num}
+                    </span>
+                    <div class="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-zinc-300 group-hover:text-[#F6C453] group-hover:border-[#E5A93C]/40 transition-colors">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                  </div>
+
+                  <h3 class="text-lg font-bold text-white font-heading uppercase mb-2 group-hover:text-[#F6C453] transition-colors">
+                    {idx + 1}. {step.title}
+                  </h3>
+
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-400">
+                  <span class="font-mono text-[11px]">Stage {step.num}</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#E5A93C]"></span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 6. CONTACT ACTIONS (Closing Callout)                           */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 overflow-hidden">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden backdrop-blur-2xl border border-cyan-500/30 bg-gradient-to-b from-[#13151c] to-[#0b0c10] shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
+          <div class="absolute inset-0 bg-gradient-to-b from-[#E5A93C]/[0.08] via-transparent to-cyan-500/[0.03] pointer-events-none"></div>
+
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <span class="text-[#E5A93C] text-[11px] font-bold tracking-[0.25em] uppercase block mb-3 font-mono">
+              CONNECT WITH OUR TEAM
+            </span>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 font-heading">
+              Ready to Protect Your Space?
+            </h2>
+
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+              Contact SLV Pest Control to discuss your pest problem, arrange an on-site property inspection, or request a service quotation.
+            </p>
+
+            <!-- Verified office location badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.08] mb-8 text-xs text-zinc-300">
+              <MapPin class="w-4 h-4 text-[#E5A93C] shrink-0" />
+              <span>143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</span>
+            </div>
+
+            <!-- Action buttons: Call Now, WhatsApp Us, Contact Us -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+              <!-- Call Now -->
+              <a
+                href="tel:9180397822"
+                class="slv-btn-primary w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider shadow-lg shadow-[#E5A93C]/25"
+              >
+                <Phone class="w-4 h-4 text-[#090a0c]" />
+                <span>CALL: 91803 97822</span>
+              </a>
+
+              <!-- WhatsApp Us -->
+              <a
+                href="https://wa.me/9180397822"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_4px_18px_rgba(37,211,102,0.4)] hover:scale-[1.02] active:scale-95 transition-all duration-200 inline-flex items-center justify-center"
+              >
+                <MessageCircle class="w-4 h-4 text-white" />
+                <span>WHATSAPP US</span>
+              </a>
+
+              <!-- Contact Us -->
+              <a
+                href="/contact"
+                class="slv-btn-secondary w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider hover:border-cyan-400"
+              >
+                <span>CONTACT US</span>
+                <ArrowRight class="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Reusable Global Footer -->
+  <Footer />
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <FloatingActions client:load />
+</Layout>

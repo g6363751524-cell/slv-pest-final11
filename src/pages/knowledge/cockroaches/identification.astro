@@ -1,0 +1,303 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  UtensilsCrossed,
+  Home,
+  ShieldCheck,
+  Activity
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Where Cockroaches Hide',
+    desc: 'Discover the top hiding spots in kitchens, drains, and appliances.',
+    href: '/knowledge/cockroaches/where-they-hide'
+  },
+  {
+    title: 'How Cockroaches Enter & Spread',
+    desc: 'Understand entry pathways through groceries, drains, and building voids.',
+    href: '/knowledge/cockroaches/how-they-spread'
+  },
+  {
+    title: 'Cockroach Prevention',
+    desc: 'Practical hygiene, moisture reduction, and structural exclusion tips.',
+    href: '/knowledge/cockroaches/prevention'
+  },
+  {
+    title: 'Cockroach Treatment Guide',
+    desc: 'Professional 4-stage IPM approach from inspection to targeted gel baiting.',
+    href: '/knowledge/cockroaches/treatment-guide'
+  },
+  {
+    title: 'Cockroach FAQ',
+    desc: '11 practical questions and answers regarding cockroach control.',
+    href: '/knowledge/cockroaches/faq'
+  }
+];
+
+const identificationSigns = [
+  {
+    title: 'Live Cockroaches',
+    desc: 'Observing live cockroaches scuttling across kitchen counters, sinks, or cabinet bases—especially when turning on the light at night. The most common species in Bangalore are German cockroaches (small, light brown with two dark stripes) and American cockroaches (larger, reddish-brown).',
+    icon: Eye
+  },
+  {
+    title: 'Cockroach Droppings',
+    desc: 'Small droppings that resemble coarse black pepper grains or coffee grounds. In severe infestations, droppings accumulate along cabinet hinges, behind refrigerators, under sinks, and inside pantry drawers.',
+    icon: Activity
+  },
+  {
+    title: 'Egg Cases (Oothecae)',
+    desc: 'Capsule-shaped, dark reddish-brown to black egg cases (oothecae) about 5–8 mm in length. A single German cockroach ootheca can carry 30 to 40 nymphs and is often glued to secluded undersides of shelves or behind appliances.',
+    icon: Layers
+  },
+  {
+    title: 'Unpleasant Musty Odour',
+    desc: 'An oily, stale, pungent musty odor caused by aggregation pheromones and secretions. This smell intensifies in enclosed spaces like modular kitchen cabinets, under-sink cupboards, and utility ducts.',
+    icon: Sparkles
+  },
+  {
+    title: 'Smear Marks & Shed Skins',
+    desc: 'Irregular dark smear marks along horizontal surfaces and baseboards where moisture is present, along with translucent amber skin casts left behind as developing nymphs molt.',
+    icon: Search
+  },
+  {
+    title: 'Activity Around Kitchens & Wet Areas',
+    desc: 'Concentrated activity around food preparation zones, wet sinks, trash storage areas, under cooking hobs, and around bathroom drain traps.',
+    icon: UtensilsCrossed
+  }
+];
+---
+
+<Layout
+  title="Cockroach Identification | Signs, Droppings & Bangalore Guide | SLV Pest Control"
+  description="Learn how to identify cockroach infestations in Bangalore homes and commercial spaces. Discover key signs: live sightings, droppings, egg cases, and distinctive odors."
+  canonical="https://slvpestcontrol.com/knowledge/cockroaches/identification"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Cockroaches > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/cockroach-control" class="hover:text-white transition">Cockroaches</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Cockroach Identification</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            COCKROACH KNOWLEDGE HUB
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Cockroach Identification in <span class="slv-gold-text">Bangalore</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Recognize the early signs of cockroach activity in your home, apartment, PG, or commercial kitchen before an infestation multiplies.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/cockroach-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Cockroach Control</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Overview */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Understanding Early Signs of Cockroach Activity
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Cockroaches are resilient, nocturnal scavengers that naturally seek warmth, moisture, and secluded dark harborage. In Bangalore apartments and independent houses, the two most prevalent species are the <strong>German cockroach (Blattella germanica)</strong>, which predominantly colonizes indoor kitchens and electrical appliances, and the <strong>American cockroach (Periplaneta americana)</strong>, which frequently travels via plumbing lines and drainage inspection chambers.
+            </p>
+            <p>
+              Because cockroaches avoid daylight, a visible daytime sighting frequently indicates that preferred harborage spaces are already heavily populated. Recognizing physical indicators like droppings, egg cases, and musty odors allows homeowners to take prompt action before colonies expand.
+            </p>
+          </div>
+        </div>
+
+        {/* 6 Key Signs Grid */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">DIAGNOSTIC INDICATORS</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              Key Signs of Cockroach Activity
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {identificationSigns.map((sign) => {
+              const Icon = sign.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{sign.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{sign.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Species Breakdown */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Common Cockroach Species in Bangalore
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Domestic Species</span>
+              <h3 class="text-lg font-bold text-white mb-2">German Cockroach (Blattella germanica)</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-3">
+                Light brown to tan, 12–15 mm in length with two dark parallel longitudinal stripes on the pronotum. High reproductive rate. Commonly found inside microwave motors, refrigerator compressors, modular cabinet hinges, and sink undersides.
+              </p>
+              <div class="text-xs text-zinc-500 font-mono">Primary habitat: Indoor kitchens &amp; pantries</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Perimeter &amp; Sewer Species</span>
+              <h3 class="text-lg font-bold text-white mb-2">American Cockroach (Periplaneta americana)</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-3">
+                Reddish-brown with a yellowish border on the thorax, 35–45 mm in length. Strong fliers over short distances. Typically enters through drainage floor traps, municipal sewer connections, utility shafts, and basement ducts.
+              </p>
+              <div class="text-xs text-zinc-500 font-mono">Primary habitat: Drains, utility shafts &amp; basements</div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Noticed Cockroach Activity in Your Premises?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Professional inspection and targeted odorless gel baiting help address cockroach colonies at their source. Starting from ₹599.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/cockroach-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Cockroach Control</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Cockroach Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

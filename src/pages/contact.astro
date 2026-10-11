@@ -1,0 +1,593 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { FloatingActions } from '../components/FloatingActions';
+import { ContactForm } from '../components/ContactForm';
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Clock,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Headphones,
+  CalendarCheck,
+  Award,
+  Home,
+  Building2,
+  ClipboardCheck,
+  Compass,
+  Navigation,
+  Shield,
+  HelpCircle,
+  ExternalLink
+} from 'lucide-react';
+
+const verifiedLocationCards = [
+  {
+    title: 'Easy Access',
+    desc: 'Conveniently connected to Tumkur Road (NH 48), 8th Mile, and the Outer Ring Road corridor for swift dispatch across Bangalore.',
+    icon: Compass,
+    accent: 'border-cyan-500/30 text-cyan-400 bg-cyan-500/10'
+  },
+  {
+    title: 'Safe & Secure Area',
+    desc: 'Established, well-planned residential community in Soundarya Layout, Doddabidarakallu with clear street access and parking.',
+    icon: Shield,
+    accent: 'border-[#E5A93C]/30 text-[#F6C453] bg-[#E5A93C]/10'
+  },
+  {
+    title: 'Nearby Landmarks',
+    desc: 'Situated within Soundarya Layout, Doddabidarakallu, easily reachable from Nagasandra Metro Station and Dasarahalli.',
+    icon: Navigation,
+    accent: 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
+  }
+];
+
+const helpCards = [
+  {
+    title: 'Residential Pest Control',
+    accentColor: 'gold',
+    icon: Home,
+    borderClass: 'border-[#E5A93C]/30 hover:border-[#F6C453] hover:shadow-[0_10px_30px_rgba(229,169,60,0.15)]',
+    iconBg: 'bg-[#E5A93C]/10 text-[#F6C453] border border-[#E5A93C]/30',
+    titleClass: 'text-white group-hover:text-[#F6C453]',
+    badgeText: 'Homes & Apartments',
+    badgeClass: 'text-[#F6C453] bg-[#E5A93C]/10 border border-[#E5A93C]/25',
+    desc: 'Odorless gel baiting, thermal bed bug treatments, termite drill-fill barriers, and pet-safe pest protection for apartments, villas, and independent homes.',
+    href: '/services'
+  },
+  {
+    title: 'Commercial Pest Control',
+    accentColor: 'cyan',
+    icon: Building2,
+    borderClass: 'border-cyan-500/30 hover:border-cyan-400 hover:shadow-[0_10px_30px_rgba(6,182,212,0.15)]',
+    iconBg: 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30',
+    titleClass: 'text-white group-hover:text-cyan-400',
+    badgeText: 'FSSAI & Audits',
+    badgeClass: 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/25',
+    desc: 'Scheduled treatments, tamper-resistant rodent stations, fly control, and bio-drain maintenance for restaurants, commercial kitchens, IT offices, and warehouses.',
+    href: '/services'
+  },
+  {
+    title: 'Inspection and Service Enquiries',
+    accentColor: 'green',
+    icon: ClipboardCheck,
+    borderClass: 'border-emerald-500/30 hover:border-emerald-400 hover:shadow-[0_10px_30px_rgba(16,185,129,0.15)]',
+    iconBg: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30',
+    titleClass: 'text-white group-hover:text-emerald-400',
+    badgeText: 'Property Assessment',
+    badgeClass: 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/25',
+    desc: 'Detailed on-site property evaluation, species identification, harborage mapping, and clear upfront quotation before initiating treatment.',
+    href: '/services'
+  }
+];
+
+const faqs = [
+  {
+    question: 'How quickly can an SLV technician arrive at my property?',
+    answer: 'We provide prompt same-day service across all major Bangalore corridors. In cases of acute pest emergencies, priority dispatch units can reach your location swiftly.'
+  },
+  {
+    question: 'Are the treatments safe for children, pets, and senior citizens?',
+    answer: 'Yes. We strictly utilize Central Insecticides Board (CIB) approved botanical and low-toxicity formulations. Our residential applications are odorless, non-staining, and family-friendly.'
+  },
+  {
+    question: 'Do you offer a service warranty or satisfaction guarantee?',
+    answer: 'Yes. Our specialized treatments (such as Bed Bug Management and Termite Treatment) come with structured service warranties with scheduled follow-up visits.'
+  },
+  {
+    question: 'Do we need to vacate our home during the treatment?',
+    answer: 'For standard cockroach gel baiting and ant treatments, vacating your home is completely unnecessary. For intensive misting or bed bug protocols, technicians advise a brief settling period.'
+  }
+];
+---
+
+<Layout
+  title="Contact Us | Get in Touch | SLV Pest Control Bangalore"
+  description="Need professional pest control? Contact SLV Pest Control to discuss your pest problem, arrange an inspection, or request a service quotation. Call 91803 97822."
+  canonical="https://slvpestcontrol.com/contact"
+>
+  <!-- Header with active Contact navigation highlight -->
+  <Header client:load activeItem="contact" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <!-- Clean Architectural Honeycomb Pattern & Ambient Geometric Lines (NO photo backgrounds) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <svg
+        class="absolute w-full h-full opacity-[0.035]"
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+      >
+        <defs>
+          <pattern id="honeycomb-pattern-contact" width="56" height="96" patternUnits="userSpaceOnUse">
+            <path
+              d="M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z M28 48 L56 64 L56 96 L28 112 L0 96 L0 64 Z"
+              fill="none"
+              stroke="#E5A93C"
+              stroke-width="1"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#honeycomb-pattern-contact)" />
+      </svg>
+
+      <!-- Ambient lighting gradients -->
+      <div class="absolute -top-32 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.05] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[35%] left-[-100px] w-[500px] h-[500px] bg-cyan-500/[0.03] rounded-full blur-[160px]"></div>
+      <div class="absolute bottom-10 right-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* ============================================================== */}
+    {/* 1. HERO SECTION                                               */}
+    {/* ============================================================== */}
+    <section class="relative z-10 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Breadcrumb: Home → Contact -->
+        <nav aria-label="Breadcrumb" class="flex items-center justify-center gap-2 text-xs text-zinc-400 mb-6 font-medium">
+          <a href="/" class="hover:text-[#F6C453] transition-colors">Home</a>
+          <span class="text-zinc-600">→</span>
+          <span class="text-[#F6C453] font-semibold">Contact</span>
+        </nav>
+
+        <!-- Eyebrow badge -->
+        <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-cyan-500/30 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+          <span class="text-[#E5A93C] text-[11px] sm:text-xs font-extrabold tracking-[0.2em] uppercase font-mono">
+            BANGALORE PEST CONTROL HEADQUARTERS
+          </span>
+        </div>
+
+        <!-- Heading: Get in Touch with "Touch" in gold -->
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading max-w-4xl mx-auto">
+          Get in <span class="text-[#F6C453] slv-gold-text">Touch</span>
+        </h1>
+
+        <!-- Description from brief -->
+        <p class="text-zinc-300 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-3xl mx-auto mb-8">
+          Need professional pest control? Contact SLV Pest Control to discuss your pest problem, arrange an inspection, or request a service quotation.
+        </p>
+
+        <!-- Prominent Call Now and WhatsApp Us Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <!-- Call Now Button -->
+          <a
+            href="tel:9180397822"
+            class="slv-btn-primary w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-black gap-2.5 uppercase tracking-wider shadow-lg shadow-[#E5A93C]/25 hover:shadow-[#E5A93C]/40"
+          >
+            <Phone class="w-4 h-4 text-[#090a0c]" />
+            <span>CALL NOW: 91803 97822</span>
+          </a>
+
+          <!-- WhatsApp Us Button -->
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-bold gap-2.5 uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_26px_rgba(37,211,102,0.55)] hover:scale-[1.02] active:scale-95 transition-all duration-200 inline-flex items-center justify-center"
+          >
+            <MessageCircle class="w-4 h-4 text-white" />
+            <span>WHATSAPP US</span>
+          </a>
+        </div>
+
+        <!-- Three Compact Benefits with Line Icons -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-5 max-w-4xl mx-auto pt-6 border-t border-white/[0.06]">
+          {/* Benefit 1: Professional Support */}
+          <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-cyan-500/20 text-left">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0">
+              <Headphones class="w-5 h-5 text-cyan-400" />
+            </div>
+            <div>
+              <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight">Professional Support</h3>
+              <p class="text-[11px] text-zinc-400">Expert guidance &amp; prompt response</p>
+            </div>
+          </div>
+
+          {/* Benefit 2: Book an Inspection */}
+          <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-[#E5A93C]/20 text-left">
+            <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center shrink-0">
+              <CalendarCheck class="w-5 h-5 text-[#F6C453]" />
+            </div>
+            <div>
+              <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight">Book an Inspection</h3>
+              <p class="text-[11px] text-zinc-400">On-site property evaluation</p>
+            </div>
+          </div>
+
+          {/* Benefit 3: Reliable Service */}
+          <div class="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.02] border border-emerald-500/20 text-left">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0">
+              <Award class="w-5 h-5 text-emerald-400" />
+            </div>
+            <div>
+              <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight">Reliable Service</h3>
+              <p class="text-[11px] text-zinc-400">CIB-approved &amp; warranty-backed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 2. MAIN LAYOUT: TWO-COLUMN FORM & CONTACT INFO                 */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-14 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Column: Send Us a Message Form (7 cols) */}
+          <div class="lg:col-span-7">
+            <ContactForm client:load />
+          </div>
+
+          {/* Right Column: Contact Information Cards (5 cols) */}
+          <div class="lg:col-span-5 flex flex-col space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 mb-2">
+                <span class="w-5 h-[1.5px] bg-[#E5A93C]"></span>
+                <span class="text-[#E5A93C] text-[11px] font-bold tracking-[0.2em] uppercase font-mono">
+                  DIRECT CONTACT
+                </span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight font-heading">
+                Contact Information
+              </h2>
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1 leading-relaxed">
+                Connect with our team directly via telephone, email, or visit our Bangalore operational office.
+              </p>
+            </div>
+
+            {/* Three Compact Glass Cards */}
+
+            {/* Card 1: Phone */}
+            <div class="slv-card rounded-2xl p-6 border border-cyan-500/25 bg-[#0e1014]/90 hover:border-cyan-400/60 hover:shadow-[0_10px_30px_rgba(6,182,212,0.12)] transition-all group">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Phone class="w-6 h-6 text-cyan-400" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-wider block mb-0.5 font-mono">
+                    Direct Phone Support
+                  </span>
+                  <a
+                    href="tel:9180397822"
+                    class="text-xl sm:text-2xl font-black text-white font-mono hover:text-[#F6C453] transition-colors block truncate"
+                  >
+                    91803 97822
+                  </a>
+                  <p class="text-xs text-zinc-400 mt-1">
+                    Call directly for immediate assistance, same-day scheduling, and priority dispatch.
+                  </p>
+                  <div class="mt-3.5 pt-3 border-t border-white/[0.06]">
+                    <a
+                      href="tel:9180397822"
+                      class="text-xs font-bold text-cyan-400 hover:text-white flex items-center gap-1.5 transition-colors"
+                    >
+                      <span>Call 91803 97822</span>
+                      <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: Email */}
+            <div class="slv-card rounded-2xl p-6 border border-[#E5A93C]/25 bg-[#0e1014]/90 hover:border-[#E5A93C]/60 hover:shadow-[0_10px_30px_rgba(229,169,60,0.12)] transition-all group">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Mail class="w-6 h-6 text-[#F6C453]" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-wider block mb-0.5 font-mono">
+                    Email Inquiries &amp; Quotations
+                  </span>
+                  <a
+                    href="mailto:contact@slvpestcontrol.com"
+                    class="text-base sm:text-lg font-bold text-white hover:text-[#F6C453] transition-colors block truncate"
+                  >
+                    contact@slvpestcontrol.com
+                  </a>
+                  <p class="text-xs text-zinc-400 mt-1">
+                    Send floor plans, property photos, or formal commercial service inquiries.
+                  </p>
+                  <div class="mt-3.5 pt-3 border-t border-white/[0.06]">
+                    <a
+                      href="mailto:contact@slvpestcontrol.com"
+                      class="text-xs font-bold text-[#F6C453] hover:text-white flex items-center gap-1.5 transition-colors"
+                    >
+                      <span>Send Email Inquiry</span>
+                      <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Office Address */}
+            <div class="slv-card rounded-2xl p-6 border border-emerald-500/25 bg-[#0e1014]/90 hover:border-emerald-400/60 hover:shadow-[0_10px_30px_rgba(16,185,129,0.12)] transition-all group">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <MapPin class="w-6 h-6 text-emerald-400" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-wider block mb-0.5 font-mono">
+                    Service Headquarters
+                  </span>
+                  <p class="text-sm sm:text-base font-bold text-white leading-snug">
+                    143 Soundarya Layout, Doddabidarakallu, Bangalore 560073
+                  </p>
+                  <p class="text-xs text-zinc-400 mt-1">
+                    Central operational base serving North, East, West, South, Central &amp; Outer Bangalore.
+                  </p>
+                  <div class="mt-3.5 pt-3 border-t border-white/[0.06]">
+                    <a
+                      href="https://www.google.com/maps/dir/?api=1&destination=143+Soundarya+Layout,+Doddabidarakallu,+Bangalore+560073"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-xs font-bold text-emerald-400 hover:text-white flex items-center gap-1.5 transition-colors"
+                    >
+                      <span>Get Directions on Google Maps</span>
+                      <ExternalLink class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 3. HOW CAN WE HELP? (3 Compact Service Cards)                  */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              SOLUTIONS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            How Can We Help?
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed">
+            Choose the right pest management service tailored for your property type and severity.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+          {helpCards.map((card) => {
+            const Icon = card.icon;
+            return (
+              <a
+                href={card.href}
+                class={`slv-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between group transition-all duration-300 ${card.borderClass} bg-[#0e1014]/90`}
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-5">
+                    <div class={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform ${card.iconBg}`}>
+                      <Icon class="w-6 h-6" />
+                    </div>
+                    <span class={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full font-mono ${card.badgeClass}`}>
+                      {card.badgeText}
+                    </span>
+                  </div>
+
+                  <h3 class={`text-lg sm:text-xl font-bold font-heading mb-2.5 transition-colors ${card.titleClass}`}>
+                    {card.title}
+                  </h3>
+
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                    {card.desc}
+                  </p>
+                </div>
+
+                <div class="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-bold">
+                  <span class="text-white group-hover:text-[#F6C453] transition-colors">
+                    Explore Treatments
+                  </span>
+                  <ArrowRight class="w-3.5 h-3.5 text-zinc-400 group-hover:text-[#F6C453] group-hover:translate-x-1 transition-all" />
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 4. LOCATION SECTION (Google Maps Embed + Verified Info Cards) */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-14 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              BANGALORE LOCATION
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Visit or Locate Our Office
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed">
+            Centrally stationed in Soundarya Layout, Doddabidarakallu with rapid access to all Bangalore sectors.
+          </p>
+        </div>
+
+        {/* Dark Glass Container with Google Maps Embed */}
+        <div class="slv-card rounded-3xl p-3 sm:p-5 border border-cyan-500/25 bg-[#0e1014]/90 shadow-[0_20px_50px_rgba(0,0,0,0.85)] mb-8">
+          <div class="relative w-full h-[360px] sm:h-[420px] rounded-2xl overflow-hidden bg-[#121316]">
+            <iframe
+              title="SLV Pest Control Office Location"
+              src="https://maps.google.com/maps?q=143+Soundarya+Layout,+Doddabidarakallu,+Bangalore+560073&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full h-full rounded-2xl filter contrast-[1.05] grayscale-[0.15]"
+            ></iframe>
+          </div>
+
+          {/* Quick bar beneath map */}
+          <div class="pt-4 px-2 sm:px-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-400">
+            <div class="flex items-center gap-2">
+              <MapPin class="w-4 h-4 text-[#E5A93C]" />
+              <span>143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</span>
+            </div>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=143+Soundarya+Layout,+Doddabidarakallu,+Bangalore+560073"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#F6C453] hover:text-white font-bold flex items-center gap-1.5 transition-colors"
+            >
+              <span>Open in Google Maps App</span>
+              <ExternalLink class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Three Compact Verified Information Cards */}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {verifiedLocationCards.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div class="slv-card rounded-2xl p-5 border border-white/[0.08] bg-[#0c0d10]/70 flex items-start gap-4">
+                <div class={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${item.accent}`}>
+                  <Icon class="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 class="text-sm font-bold text-white mb-1 font-heading">{item.title}</h3>
+                  <p class="text-xs text-zinc-400 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 5. FREQUENTLY ASKED QUESTIONS (Clean Glass Styling)             */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 sm:mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              COMMON INQUIRIES
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-heading">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="slv-card rounded-2xl p-5 sm:p-6 border border-white/[0.08] bg-[#0e1014]/90">
+              <div class="flex items-start gap-3.5 mb-2">
+                <HelpCircle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <h3 class="text-sm sm:text-base font-bold text-white font-heading">
+                  {faq.question}
+                </h3>
+              </div>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-8">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 6. URGENT EMERGENCY CALLOUT BANNER (Pure CSS Glass & Glow)    */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 overflow-hidden">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden backdrop-blur-2xl border border-cyan-500/30 bg-gradient-to-b from-[#13151c] to-[#0b0c10] shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
+          <div class="absolute inset-0 bg-gradient-to-b from-[#E5A93C]/[0.08] via-transparent to-cyan-500/[0.03] pointer-events-none"></div>
+
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <span class="text-[#E5A93C] text-[11px] font-bold tracking-[0.25em] uppercase block mb-3 font-mono">
+              EMERGENCY SUPPORT &amp; DISPATCH
+            </span>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 font-heading">
+              Have An Urgent Pest Problem?
+            </h2>
+
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8">
+              Speak directly with an on-duty technician for immediate assistance, practical containment steps, and priority booking.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <!-- Direct Call -->
+              <a
+                href="tel:9180397822"
+                class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider shadow-lg shadow-[#E5A93C]/25"
+              >
+                <Phone class="w-4 h-4 text-[#090a0c]" />
+                <span>CALL: 91803 97822</span>
+              </a>
+
+              <!-- WhatsApp -->
+              <a
+                href="https://wa.me/9180397822"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_4px_18px_rgba(37,211,102,0.4)] hover:scale-[1.02] active:scale-95 transition-all duration-200 inline-flex items-center justify-center"
+              >
+                <MessageCircle class="w-4 h-4 text-white" />
+                <span>CHAT ON WHATSAPP</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <Footer />
+
+  <!-- Floating Actions (Back to Top & WhatsApp button) -->
+  <FloatingActions client:load />
+</Layout>

@@ -1,0 +1,307 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  AlertTriangle,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  ShieldCheck,
+  CheckCircle2,
+  Trash2,
+  Package,
+  Wrench,
+  Droplets,
+  Layers,
+  CalendarCheck
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Rodent Identification',
+    desc: 'Signs of activity: droppings, gnaw marks, scratching noises, and smear trails.',
+    href: '/knowledge/rodents/identification'
+  },
+  {
+    title: 'Where Rodents Hide',
+    desc: 'Kitchens, storage areas, ceiling voids, wall cavities, and utility rooms.',
+    href: '/knowledge/rodents/where-they-hide'
+  },
+  {
+    title: 'How Rodents Enter & Spread',
+    desc: 'Concealed gaps, door sweeps, utility pipes, and roofline travel paths.',
+    href: '/knowledge/rodents/how-they-spread'
+  },
+  {
+    title: 'Rodent Management Guide',
+    desc: 'The 4-stage management workflow: inspection, assessment, targeted control, and monitoring.',
+    href: '/knowledge/rodents/treatment-guide'
+  },
+  {
+    title: 'Rodent FAQ',
+    desc: 'Practical answers to 12 questions on costs, signs, preparation, and commercial treatment.',
+    href: '/knowledge/rodents/faq'
+  }
+];
+
+const preventionStrategies = [
+  {
+    title: 'Store Food in Secure Containers',
+    desc: 'Transfer dry kitchen provisions—such as pulses, rice, flours, grains, snacks, and pet food—out of cardboard boxes and plastic bags into airtight glass, metal, or heavy-duty food-grade containers that rodents cannot chew through.',
+    icon: Package
+  },
+  {
+    title: 'Keep Waste Areas Clean & Covered',
+    desc: 'Ensure all interior and exterior garbage cans feature tight-fitting, heavy lids. Never leave exposed organic waste bags overnight, and sanitize waste disposal enclosures regularly to eliminate tempting food odours.',
+    icon: Trash2
+  },
+  {
+    title: 'Reduce Clutter in Storage Spaces',
+    desc: 'Minimize stacked cardboard cartons in basements, attics, and storage pantries. Replace disposable cardboard with sealed plastic totes, elevate stored goods at least 6 inches off the floor, and clear outdoor leaf piles.',
+    icon: Layers
+  },
+  {
+    title: 'Seal Structural Entry Points',
+    desc: 'Seal gaps around plumbing utility pipes, AC conduits, and brick joints using coarse stainless steel wire mesh or copper mesh embedded in masonry sealant. Install heavy-duty metal bristle door sweeps on exterior doors.',
+    icon: Wrench
+  },
+  {
+    title: 'Remove Accessible Food Sources',
+    desc: 'Wipe kitchen countertops and stovetops nightly to remove grease films and food crumbs. Clean behind toasters and microwaves, sweep dining area floors after meals, and avoid leaving pet food bowls out overnight.',
+    icon: CheckCircle2
+  },
+  {
+    title: 'Address Water & Moisture Sources',
+    desc: 'Repair dripping faucets, leaky under-sink pipe couplings, and sweating AC condensation lines. Keep bathroom floor drain traps primed with water to prevent sewer rats from ascending dry drainage plumbing.',
+    icon: Droplets
+  },
+  {
+    title: 'Inspect Entry Areas Regularly',
+    desc: 'Conduct scheduled monthly walk-throughs of your property perimeter, checking for newly developed settling cracks, dislodged drain grates, eroded weatherstripping, or overhanging tree limbs touching roof gutters.',
+    icon: CalendarCheck
+  }
+];
+---
+
+<Layout
+  title="Rodent Prevention | Practical Hygiene & Exclusion in Bangalore | SLV Pest Control"
+  description="Learn actionable rodent prevention strategies in Bangalore: secure food storage, waste sanitation, clutter reduction, structural sealing, and moisture elimination."
+  canonical="https://slvpestcontrol.com/knowledge/rodents/prevention"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Rodents > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/rodent-control" class="hover:text-white transition">Rodents</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Rodent Prevention</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            RODENT KNOWLEDGE HUB
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1] mb-5 font-heading">
+          Practical Rodent Prevention <span class="slv-gold-text">for Bangalore Properties</span>
+        </h1>
+
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+          Preventing rodent infestations requires denying rats and mice the three resources they need to thrive: food, water, and harborage. Follow these proven hygiene, storage, and physical exclusion strategies.
+        </p>
+
+        <div class="inline-flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+          <a
+            href="/services/rodent-control"
+            class="slv-btn-primary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>Rodent Management</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>Call 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* STRATEGIES GRID */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            PREVENTION PROTOCOLS
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            7 Actionable Rodent Prevention Steps
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-2">
+            Daily sanitation, structural hardening, and scheduled property maintenance.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {preventionStrategies.map((strat) => {
+            const Icon = strat.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+                <div>
+                  <div class="w-12 h-12 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center mb-4">
+                    <Icon class="w-6 h-6 text-[#E5A93C]" />
+                  </div>
+                  <h3 class="text-lg font-bold text-white mb-2 font-heading">
+                    {strat.title}
+                  </h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+                    {strat.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* EXCLUSION HARDWARE DETAIL */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08]">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            PHYSICAL HARDENING
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Materials that Rodents Cannot Chew Through
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-5">
+            Standard foam spray, wood trims, and plastic tape will quickly be gnawed away by determined rats. For effective structural exclusion, use durable rodent-resistant materials:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-zinc-300 mb-6">
+            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Galvanized Steel Hardware Cloth</strong>
+              <span>1/4-inch (6mm) heavy mesh for ventilation grilles, exhaust openings, and foundation vents.</span>
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Coarse Stainless Steel Wool</strong>
+              <span>Tightly packed into voids around plumbing pipe penetrations, backed by masonry compound.</span>
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Heavy-Gauge Aluminium Door Sweeps</strong>
+              <span>Installed along exterior door bottoms with zero gap clearance over the threshold.</span>
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+              <strong class="text-white block mb-1">Concrete &amp; Hydraulic Mortar</strong>
+              <span>To fill foundation crevices and replace eroded mortar along exterior baseboard joints.</span>
+            </div>
+          </div>
+          <div class="text-center pt-2">
+            <a
+              href="/services/rodent-control"
+              class="slv-btn-primary px-8 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2"
+            >
+              <span>Explore Rodent Management Service</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* RELATED GUIDES */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            CONTINUE LEARNING
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            More Rodent Knowledge Guides
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedArticles.map((article) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+              <div>
+                <h3 class="text-base font-bold text-white mb-2 font-heading">
+                  {article.title}
+                </h3>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+                  {article.desc}
+                </p>
+              </div>
+              <a
+                href={article.href}
+                class="text-xs font-bold text-[#F6C453] hover:text-white inline-flex items-center gap-1.5 transition"
+              >
+                <span>Read Guide</span>
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FOOTER CTA SECTION */}
+    <section class="relative z-10 py-14 sm:py-16 bg-[#0c0d10]/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+          Need Professional Rodent Management Assistance?
+        </h2>
+        <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+          Combine preventative housekeeping with SLV Pest Control's certified rodent management protocols for comprehensive protection.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/services/rodent-control"
+            class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>Rodent Management</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 rounded-full bg-[#25D366] text-white text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-md hover:bg-[#20bd5a] transition"
+          >
+            <MessageCircle class="w-4 h-4" />
+            <span>WhatsApp 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

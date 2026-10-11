@@ -1,0 +1,704 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import { ContactForm } from '../../components/ContactForm';
+import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+
+const signs = [
+  {
+    title: 'Frequent Fly Activity Indoors',
+    desc: 'Persistent houseflies, fruit flies, or drain flies buzzing around rooms, light sources, prep counters, and seating areas throughout the day.',
+    icon: 'activity'
+  },
+  {
+    title: 'Flies Gathering Around Food, Waste & Drains',
+    desc: 'Clusters of flies feeding on fresh produce, uncovered food dishes, waste bins, grease traps, or congregating along window panes.',
+    icon: 'trash'
+  },
+  {
+    title: 'Small Dark Spots / Fly Specks',
+    desc: 'Visible dark regurgitation and fecal spots left on illuminated walls, light fixtures, upper door frames, and ceiling surfaces.',
+    icon: 'circle'
+  },
+  {
+    title: 'Maggots or Larvae in Waste & Organic Residue',
+    desc: 'Small pale larvae active in trash can liners, decomposing waste, compost buckets, grease build-ups, or uncleaned drain traps.',
+    icon: 'search'
+  }
+];
+
+const harbourageAreas = [
+  {
+    name: 'Kitchen & Food-Preparation Areas',
+    detail: 'Prep tables, cutting stations, under-counter shelves, and grease-accumulating zones where organic particles linger.',
+    icon: 'utensils'
+  },
+  {
+    name: 'Garbage & Waste Bins',
+    detail: 'Internal kitchen dustbins, bulk trash compactor rooms, damp bin liners, and wet organic waste containers.',
+    icon: 'trash-2'
+  },
+  {
+    name: 'Floor & Sink Drains',
+    detail: 'Plumbing U-bends, floor drains, and scuppers harbouring gelatinous bacterial film where drain flies breed prolifically.',
+    icon: 'droplet'
+  },
+  {
+    name: 'Food-Storage & Restaurant Areas',
+    detail: 'Fruit baskets, beverage dispensers, syrup taps, bar areas, and dry pantry corners susceptible to fruit flies.',
+    icon: 'package'
+  },
+  {
+    name: 'Compost & Organic Waste Areas',
+    detail: 'Yard compost piles, wet vegetable scrap bins, and damp outdoor disposal bays attracting houseflies and blowflies.',
+    icon: 'leaf'
+  },
+  {
+    name: 'Doors, Windows & Outdoor Waste Bays',
+    detail: 'Frequently opened service doors, torn window screens, exterior dumpster pads, and perimeter lighting corridors.',
+    icon: 'door-open'
+  }
+];
+
+const treatmentStages = [
+  {
+    step: '01',
+    title: 'Inspection & Activity Mapping',
+    tag: 'Stage 1',
+    desc: 'Thorough assessment of the property to detect specific fly species (houseflies, drain flies, fruit flies, blowflies), map structural entry points, locate hidden larval breeding zones, and identify sanitation vulnerabilities.'
+  },
+  {
+    step: '02',
+    title: 'Targeted Treatment & Bio-Drain Action',
+    tag: 'Stage 2',
+    desc: 'Deployment of targeted residual treatments, enzymatic bio-drain foam treatments to dissolve organic slime, and insect growth regulators to halt larval development without contaminating food-contact surfaces.'
+  },
+  {
+    step: '03',
+    title: 'Monitoring & Residual Fly Trapping',
+    tag: 'Stage 3',
+    desc: 'Strategic placement of electronic insect light traps (ILTs), pheromone sticky boards, and perimeter barriers in high-traffic fly paths to monitor lingering activity and suppress adult populations.'
+  },
+  {
+    step: '04',
+    title: 'Prevention Guidance & Structural Exclusion',
+    tag: 'Stage 4',
+    desc: 'Actionable recommendations for air curtain positioning, door seal installation, waste management schedules, drain flushing routines, and window mesh maintenance to prevent recurrent fly ingress.'
+  }
+];
+
+const propertyTypes = [
+  { name: 'Homes & Villas', desc: 'Kitchens, dining halls, balconies & waste collection points' },
+  { name: 'Apartments & High-Rises', desc: 'Waste chutes, service balconies, utility rooms & common ducts' },
+  { name: 'Paying Guest (PG) Accommodations', desc: 'Shared mess dining, prep kitchens & communal washrooms' },
+  { name: 'Hotels & Hostels', desc: 'Buffet halls, commercial kitchens, room service docks & bars' },
+  { name: 'Restaurants & Cloud Kitchens', desc: 'Heavy food-prep stations, grease traps & dishwashing lines' },
+  { name: 'Corporate Offices & Cafeterias', desc: 'Pantry hubs, coffee stations, breakrooms & food courts' },
+  { name: 'Retail Outlets & Supermarkets', desc: 'Fresh produce aisles, meat/fish counters & storage rooms' },
+  { name: 'Commercial Food Facilities', desc: 'Food processing lines, bottling units & packaging warehouses' }
+];
+
+const knowledgeHub = [
+  {
+    title: 'Fly Identification',
+    desc: 'Learn how to differentiate common houseflies, drain flies, fruit flies, and blowflies by size, breeding habits, and flight patterns.',
+    tag: 'Guide'
+  },
+  {
+    title: 'Where Flies Breed & Gather',
+    desc: 'Discover why flies thrive around wet kitchen waste, floor drains, fermented food scraps, unsealed trash cans, and damp outdoor vegetation.',
+    tag: 'Breeding'
+  },
+  {
+    title: 'How Flies Enter & Spread',
+    desc: 'Understand entry vectors: open doors, unscreened windows, negative air pressure, and delivery crates that transport flies indoors.',
+    tag: 'Insights'
+  },
+  {
+    title: 'Fly Prevention',
+    desc: 'Proactive measures including prompt trash disposal, sealed container storage, enzymatic drain maintenance, and mesh screen installation.',
+    tag: 'Prevention'
+  },
+  {
+    title: 'Fly Treatment Guide',
+    desc: 'A comprehensive overview of commercial and residential fly management: bio-foaming drains, targeted residual barriers, and UV light traps.',
+    tag: 'Treatment'
+  },
+  {
+    title: 'Fly FAQ',
+    desc: 'Answers to key questions regarding fly disease vectors, food contamination risks, safe chemical usage, and commercial hygiene compliance.',
+    tag: 'FAQ'
+  }
+];
+
+const prepSteps = [
+  'Keep food covered and stored properly in airtight cabinets, containers, or refrigerators.',
+  'Clear access to affected kitchen counters, sink areas, waste disposal zones, and drainage points.',
+  'Empty and thoroughly secure waste bins prior to technician arrival as advised.',
+  'Keep food-contact surfaces, cookware, and dining utensils protected or covered.',
+  'Inform the technician about specific areas exhibiting peak fly activity or breeding clusters.',
+  'Follow technician-specific preparation instructions based on your property layout.'
+];
+
+const aftercareSteps = [
+  'Maintain proper waste management by bagging wet organic waste and emptying trash cans daily.',
+  'Keep all prepared food and fresh fruit covered and stored correctly at all times.',
+  'Keep sink and floor drains clean, flushed, and maintained to prevent organic slime build-up.',
+  'Avoid disturbing treated areas immediately after application to ensure optimal residual efficacy.',
+  'Monitor for continuing fly activity and report any persistent clusters to our support team.',
+  'Follow technician follow-up instructions regarding trap inspections and preventative maintenance.'
+];
+
+const whyChooseUs = [
+  {
+    title: 'Detailed Inspection',
+    desc: 'In-depth assessment of the entire property to trace primary attraction points and structural vulnerabilities.'
+  },
+  {
+    title: 'Breeding-Source Identification',
+    desc: 'Targeting root-cause breeding sites such as drain slime, waste accumulation, and grease traps rather than just adult flies.'
+  },
+  {
+    title: 'Targeted Treatment',
+    desc: 'Application of government-approved, low-toxicity, odourless treatments and enzymatic solutions safe for kitchens.'
+  },
+  {
+    title: 'Property-Specific Approach',
+    desc: 'Customized treatment programs designed specifically for homes, high-volume restaurants, or commercial facilities.'
+  },
+  {
+    title: 'Free Inspection',
+    desc: 'Zero-obligation on-site property evaluation with transparent pricing and no unexpected hidden charges.'
+  },
+  {
+    title: 'Direct Communication',
+    desc: 'Clear guidance, responsive customer support, and direct coordination with certified pest control specialists.'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Why do flies enter homes and businesses?',
+    a: 'Flies are attracted by olfactory cues from food preparation, warm indoor air currents, decomposing organic waste, ripe fruit, and uncleaned drains. They easily enter through unsealed doors, windows, exhaust vents, and delivery bays.'
+  },
+  {
+    q: 'Where do flies breed?',
+    a: 'Flies breed in moist, rotting organic matter. Common houseflies lay eggs in garbage and animal waste; fruit flies breed in fermenting fruits and sugary spills; and drain flies breed in the gelatinous organic slime lining sink and floor drain pipes.'
+  },
+  {
+    q: 'Why are flies common around drains and waste?',
+    a: 'Drains collect organic grime, grease, and hair, creating a nutrient-rich bacterial film where drain fly larvae thrive. Waste areas provide abundant decaying matter, warm humidity, and undisturbed shelter ideal for rapid fly reproduction.'
+  },
+  {
+    q: 'How does professional fly treatment work?',
+    a: 'Our approach combines breeding-source elimination (such as bio-enzymatic drain cleaning), targeted residual application on resting surfaces, insect growth regulators to disrupt the life cycle, and strategic placement of non-toxic light or pheromone traps.'
+  },
+  {
+    q: 'Is preparation required before fly treatment?',
+    a: 'Yes. Basic preparation involves covering food, clearing access around kitchen sinks, floor drains, and trash stations, and securing waste. Our technician provides customized prep instructions during scheduling.'
+  },
+  {
+    q: 'How much does professional fly control cost in Bangalore?',
+    a: 'Fly control pricing is confirmed after an on-site property inspection based on property size, severity of fly activity, identified breeding sources, and required treatment methods. We provide upfront, transparent quotations with zero hidden fees.'
+  },
+  {
+    q: 'Can restaurants, apartments, PGs, offices, and commercial properties be treated?',
+    a: 'Absolutely. We provide specialized fly management programs tailored to commercial kitchens, restaurants, corporate cafeterias, supermarkets, apartment complexes, and residential villas across Bangalore adhering to food safety standards.'
+  }
+];
+
+const regions = [
+  {
+    name: 'NORTH BANGALORE',
+    areas: 'Yelahanka, Hebbal, RT Nagar, Sahakar Nagar and surrounding sectors'
+  },
+  {
+    name: 'EAST BANGALORE',
+    areas: 'Whitefield, Indiranagar, Marathahalli, KR Puram and surrounding sectors'
+  },
+  {
+    name: 'WEST BANGALORE',
+    areas: 'Nagasandra, Yeshwanthpur, Rajajinagar, Basaveshwaranagar, Andarahalli'
+  },
+  {
+    name: 'SOUTH BANGALORE',
+    areas: 'Jayanagar, JP Nagar, BTM Layout, Koramangala, Electronic City'
+  },
+  {
+    name: 'CENTRAL BANGALORE',
+    areas: 'Malleshwaram, MG Road, Richmond Town, Shanthi Nagar and central corridors'
+  },
+  {
+    name: 'OUTER BANGALORE',
+    areas: 'Sarjapur Road, Devanahalli, Kanakapura Road and extended industrial zones'
+  }
+];
+---
+
+<Layout
+  title="Flies Control in Bangalore | Starting at ₹499 | SLV Pest Control"
+  description="Expert flies control services in Bangalore. Safe, targeted eradication of houseflies, drain flies, and fruit flies for homes, restaurants, kitchens, and commercial properties. Starting at ₹499. Free inspection."
+>
+  <Header client:load />
+
+  <main class="min-h-screen bg-[#0b0f17] text-slate-100 antialiased selection:bg-[#f59e0b] selection:text-black">
+    {/* 01. HERO SECTION */}
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-slate-800">
+      {/* Background Image with Dark Atmospheric Overlay */}
+      <div class="absolute inset-0 z-0">
+        <img
+          src="/fly-hero-banner.jpg"
+          alt="Fly Control Service in Bangalore - SLV Pest Control"
+          class="w-full h-full object-cover object-center brightness-[0.45] contrast-[1.15]"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f17] via-[#0b0f17]/70 to-[#0b0f17]/40"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#0b0f17]/60 to-[#0b0f17]"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+        {/* Supporting badge / indicator */}
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-medium mb-6 backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          Starting at ₹499 • Bio-Drain Treatment &amp; Barrier Defense
+        </div>
+
+        {/* Headline */}
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
+          Fly Control in <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">Bangalore</span>
+        </h1>
+
+        {/* Short supporting statement */}
+        <p class="text-lg sm:text-xl text-amber-200/90 font-medium max-w-2xl mx-auto mb-4">
+          Safe, targeted & scientific eradication for homes, restaurants, commercial kitchens, and commercial properties.
+        </p>
+
+        {/* Professional description */}
+        <p class="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+          Flies contaminate food-contact surfaces, spread harmful pathogens, and compromise health standards. SLV Pest Control provides breeding-source mapping, targeted bio-drain actions, and long-lasting barrier defense to maintain strict hygiene across Bangalore properties.
+        </p>
+
+        {/* CTAs */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+          <a
+            href="#contact"
+            class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all duration-200 flex items-center justify-center gap-2 group"
+          >
+            <span>Get Free Inspection</span>
+            <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+
+          <a
+            href="tel:+919876543210"
+            class="w-full sm:w-auto px-7 py-4 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-base border border-slate-700/80 hover:border-slate-600 transition-all duration-200 flex items-center justify-center gap-2 backdrop-blur-sm"
+          >
+            <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <span>Call Now</span>
+          </a>
+
+          <a
+            href="https://wa.me/919876543210?text=Hi%20SLV%20Pest%20Control,%20I%20need%20Fly%20Control%20service%20in%20Bangalore."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-7 py-4 rounded-xl bg-emerald-600/90 hover:emerald-500 text-white font-semibold text-base border border-emerald-500/50 transition-all duration-200 flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.02-.072-.25-.08-.57-.193-.974-.367-1.705-.733-2.812-2.463-2.898-2.58-.087-.115-.693-.923-.693-1.761s.434-1.25.59-1.423c.155-.173.338-.216.452-.216.114 0 .229.001.328.006.104.005.244-.039.382.292.144.346.49 1.196.533 1.283.043.088.072.191.014.307-.058.115-.087.188-.173.289l-.26.302c-.087.087-.178.181-.077.354.101.173.45 1.056 1.346 1.854.717.639 1.321.836 1.509.923.188.087.299.072.41-.058.115-.13.49-.571.62-1.004.13-.433.26-.361.434-.298.173.063 1.097.518 1.285.612.188.094.312.141.358.22.046.079.046.458-.098.863z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+
+        {/* Feature badges */}
+        <div class="mt-12 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-400">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Breeding-Source Elimination</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Food-Safe & Odourless Treatment</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Transparent Inspection-Based Quotes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* 02. IDENTIFICATION */}
+    <section class="py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Early Detection</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Common Signs of Flies
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            Recognizing the early signs of fly activity helps pinpoint breeding sources before populations multiply and contaminate sensitive areas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {signs.map((sign, idx) => (
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 hover:border-amber-500/40 hover:bg-slate-800/80 transition-all duration-200">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-lg mb-5">
+                0{idx + 1}
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">{sign.title}</h3>
+              <p class="text-sm text-slate-300 leading-relaxed">{sign.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 03. HARBOURAGE / BREEDING AREAS */}
+    <section class="py-20 bg-[#0b0f17] border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Activity Hotspots</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Where Flies Breed & Gather
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            Flies target damp areas containing organic waste, decomposing food, or standing drainage slime to feed and lay eggs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {harbourageAreas.map((area) => (
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 hover:shadow-xl transition-all duration-200 group">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors mb-2">
+                    {area.name}
+                  </h3>
+                  <p class="text-sm text-slate-400 leading-relaxed">
+                    {area.detail}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 04. TREATMENT PROCESS */}
+    <section class="py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Scientific Methodology</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Our 4-Stage Treatment Process
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            A comprehensive, multi-step management process designed to identify breeding sources, suppress adult populations, and prevent recurrent infestations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {treatmentStages.map((stage) => (
+            <div class="relative bg-slate-800/40 border border-slate-700/70 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/40 hover:bg-slate-800/70 transition-all duration-200">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black text-amber-400 font-mono">{stage.step}</span>
+                  <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-700 text-slate-300">
+                    {stage.tag}
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-3 leading-snug">{stage.title}</h3>
+                <p class="text-sm text-slate-300 leading-relaxed">{stage.desc}</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-700/50 flex items-center gap-2 text-xs text-amber-400/90 font-medium">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Certified Execution</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 05. COVERAGE */}
+    <section class="py-20 bg-[#0b0f17] border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Comprehensive Coverage</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Properties We Treat
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            From residential homes to high-traffic dining establishments and industrial food packaging plants across Bangalore.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {propertyTypes.map((prop) => (
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all">
+              <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold text-white mb-2">{prop.name}</h3>
+              <p class="text-sm text-slate-400">{prop.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 06. TRANSPARENT PRICING */}
+    <section class="py-20 bg-slate-900/80 border-b border-slate-800">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Honest & Fair Pricing</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+          FLY CONTROL
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+          Pricing confirmed based on property size, fly activity, breeding sources, and treatment requirements.
+        </p>
+
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-8 sm:p-10 shadow-2xl relative overflow-hidden text-left max-w-2xl mx-auto">
+          <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-xs font-black uppercase px-4 py-1.5 rounded-bl-xl tracking-wider">
+            Free Inspection First
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-6">
+            <span class="text-3xl sm:text-4xl font-extrabold text-[#F6C453]">Starting at ₹499</span>
+            <span class="text-slate-400 text-sm">/ Customized Quote Based on Property Assessment</span>
+          </div>
+
+          <ul class="space-y-3.5 text-sm text-slate-300 mb-8">
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>On-site inspection to detect fly species, breeding drains & waste bays</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Targeted enzymatic drain foam & food-safe residual perimeter barrier</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Zero hidden charges with free follow-up service options</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span>Commercial food-safety compliance and odourless formulations</span>
+            </li>
+          </ul>
+
+          <a
+            href="#contact"
+            class="block w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-center text-base shadow-lg transition-all"
+          >
+            Schedule Free Inspection & Get Quote
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* 07. EDUCATIONAL RESOURCES */}
+    <section class="py-20 bg-[#0b0f17] border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Knowledge Hub</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Learn More About Flies
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            Expert insights to help you identify, understand, and prevent fly breeding across your commercial or residential property.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {knowledgeHub.map((card) => (
+            <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all group flex flex-col justify-between">
+              <div>
+                <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-3">
+                  {card.tag}
+                </span>
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors mb-2">
+                  {card.title}
+                </h3>
+                <p class="text-sm text-slate-400 leading-relaxed">{card.desc}</p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center text-xs font-semibold text-amber-400 group-hover:translate-x-1 transition-transform">
+                <span>Read detailed insights</span>
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 08. PREPARATION GUIDANCE & 09. POST-TREATMENT CARE */}
+    <section class="py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Treatment Protocol</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Preparation & Aftercare Guidance
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            Simple guidelines to prepare your kitchen, drains, and waste areas for optimal fly control efficacy and food safety.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* 08. Before Treatment */}
+          <div class="bg-slate-800/40 border border-slate-700/80 rounded-2xl p-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-wider mb-4 border border-amber-500/20">
+              Checklist
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Before Treatment</h3>
+            <ul class="space-y-3.5 text-sm text-slate-300">
+              {prepSteps.map((step) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2 flex-shrink-0"></span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* 09. After Treatment */}
+          <div class="bg-slate-800/40 border border-slate-700/80 rounded-2xl p-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/20">
+              Post-Care
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">After Treatment</h3>
+            <ul class="space-y-3.5 text-sm text-slate-300">
+              {aftercareSteps.map((step) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 flex-shrink-0"></span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* 10. WHY CHOOSE US */}
+    <section class="py-20 bg-[#0b0f17] border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Our Advantage</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Why SLV Pest Control
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            Professional fly management backed by scientific breeding-site eradication, rapid response, and transparent service.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {whyChooseUs.map((item) => (
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all">
+              <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold text-white mb-2">{item.title}</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 11. FAQS */}
+    <section class="py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Frequently Asked Questions</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p class="mt-3 text-slate-400 text-base">
+            Clear, practical answers about fly habits, drain breeding, treatment procedures, and commercial safety.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-slate-800/40 border border-slate-700/60 rounded-xl overflow-hidden transition-all duration-200">
+              <summary class="flex items-center justify-between p-5 text-left font-bold text-base text-white cursor-pointer select-none group-open:text-amber-300">
+                <span>{faq.q}</span>
+                <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform duration-200">
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-5 pb-5 pt-1 text-sm text-slate-300 leading-relaxed border-t border-slate-700/30">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 12. BANGALORE SERVICE AREAS */}
+    <ServiceAreasSection />
+
+    {/* 13. CONTACT SLV & 14. GET IN TOUCH (INQUIRY FORM) */}
+    <section id="contact" class="py-20 bg-slate-900/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <p class="text-amber-400 font-semibold text-sm tracking-wider uppercase mb-2">Schedule Your Fly Inspection</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Tell Us About Your Pest Problem
+          </h2>
+          <p class="mt-3 text-slate-300 text-base">
+            Get in touch with Bangalore's certified fly control team. Transparent inspection-based pricing with guaranteed long-term protection.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 sm:p-10 shadow-2xl">
+          <ContactForm client:load defaultService="Fly Control" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+  <FloatingActions client:load />
+</Layout>

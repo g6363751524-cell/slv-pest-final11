@@ -1,0 +1,333 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  ShieldCheck,
+  CheckCircle2,
+  Sparkles,
+  Layers,
+  Activity,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  HelpCircle,
+  AlertTriangle,
+  Syringe
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Wood Borer Identification',
+    desc: 'Recognize shot-holes, fine frass powder, weakened timber, and activity around furniture.',
+    href: '/knowledge/wood-borers/identification'
+  },
+  {
+    title: 'Where Wood Borers Are Found',
+    desc: 'Examine common harbourages: wooden furniture, doors, window frames, flooring, and cabinets.',
+    href: '/knowledge/wood-borers/where-they-are-found'
+  },
+  {
+    title: 'How Wood Borers Damage Wood',
+    desc: 'Understand internal tunneling, exit holes, frass generation, and progressive timber weakening.',
+    href: '/knowledge/wood-borers/how-they-damage-wood'
+  },
+  {
+    title: 'Wood Borer Prevention',
+    desc: 'Actionable tips: moisture management, timber maintenance, and checking newly purchased furniture.',
+    href: '/knowledge/wood-borers/prevention'
+  },
+  {
+    title: 'Wood Borer FAQ',
+    desc: 'Clear, factual answers to 13 common questions regarding costs, inspection, and furniture safety.',
+    href: '/knowledge/wood-borers/faq'
+  }
+];
+
+const treatmentStages = [
+  {
+    step: '01',
+    title: 'Inspection',
+    desc: 'Inspect wooden furniture, structures and visible signs of activity.',
+    detail: 'A certified SLV Pest Control technician conducts an exhaustive visual audit of wooden furniture, door leaves, frames, cabinetry, wall paneling, and structural timber across the property. The technician differentiates active infestations from dormant defects by assessing frass freshness, hole margins, and timber resilience.',
+    icon: Search
+  },
+  {
+    step: '02',
+    title: 'Assessment',
+    desc: 'Identify affected areas and determine the appropriate treatment approach based on the inspection.',
+    detail: 'Because timber species, finishes, and infestation depths vary, we evaluate whether localized syringe injection, unpolished surface preservative brush coating, or combined methods are warranted. We document all affected zones and formulate a customized treatment plan tailored to property conditions.',
+    icon: Layers
+  },
+  {
+    step: '03',
+    title: 'Targeted Treatment',
+    desc: 'Apply an appropriate treatment method to suitable affected wooden areas according to the property and inspection findings.',
+    detail: 'Utilizing specialized micro-infusion equipment, our technician injects professional-grade, oil-based wood preservative formulations directly into active flight holes and internal gallery networks. Where raw, unpolished, or backside plywood surfaces are accessible, an additional protective surface coating is applied to prevent emerging beetles from re-infesting exposed pores.',
+    icon: Activity
+  },
+  {
+    step: '04',
+    title: 'Follow-up & Monitoring',
+    desc: 'Provide appropriate monitoring and follow-up guidance based on the treatment requirements.',
+    detail: 'Because beetle pupae and larvae located deep in dense heartwood require appropriate exposure time, ongoing monitoring is essential. Our technician provides clear instructions on monitoring treated timber for any new frass ejection and schedules follow-up reviews as dictated by property requirements.',
+    icon: ShieldCheck
+  }
+];
+---
+
+<Layout
+  title="Wood Borer Treatment Guide | 4-Stage Methodology | SLV Pest Control"
+  description="Discover SLV Pest Control's structured 4-stage wood borer treatment methodology: forensic inspection, assessment, targeted syringe infusion, and follow-up monitoring."
+  canonical="https://slvpestcontrol.com/knowledge/wood-borers/treatment-guide"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Glow */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Wood Borers > Wood Borer Treatment Guide */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/wood-borer-control" class="hover:text-white transition">Wood Borers</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Wood Borer Treatment Guide</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            TREATMENT METHODOLOGY
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Wood Borer Treatment Guide: <span class="slv-gold-text">4-Stage Methodology</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          A disciplined, scientific approach to inspecting and managing wood-boring beetle infestations in furniture, doors, and wooden structures across Bangalore.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/wood-borer-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>View Wood Borer Treatment</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+          >
+            <MessageCircle class="w-4 h-4 mr-1 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Core Principles & Honest Nuance */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Customized Environmental Preservation Approach
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Wood borer treatment differs fundamentally from general surface spraying. Because the damaging larvae reside deep inside timber tunnels, superficial misting cannot penetrate dense wood grain.
+            </p>
+            <div class="p-5 rounded-2xl bg-white/[0.03] border border-[#E5A93C]/30 text-xs sm:text-sm text-zinc-200 space-y-3">
+              <div class="flex items-start gap-3">
+                <AlertTriangle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <div class="space-y-2">
+                  <p class="font-bold text-white">Realistic Treatment &amp; Biological Nuance:</p>
+                  <p>
+                    <strong>Not every wood-borer infestation requires the same treatment.</strong> Treatment strategies depend heavily on whether the affected item is polished furniture, raw commercial plywood, antique solid wood, or structural rafters.
+                  </p>
+                  <p>
+                    <strong>No fixed treatment duration:</strong> Treatment timelines vary based on piece count, timber accessibility, and gallery density. Furthermore, because pupae and deeply embedded larvae hatch over extended developmental windows, professional pest management relies on methodical IPM application and follow-up monitoring rather than claims of guaranteed elimination.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4-Stage Breakdown */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">TREATMENT PROTOCOL</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              Our 4-Stage Treatment Journey
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {treatmentStages.map((stage) => {
+              const Icon = stage.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 sm:p-7 border border-white/[0.08] flex flex-col justify-between hover:border-[#E5A93C]/40 transition-colors">
+                  <div>
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="text-3xl font-black font-mono text-[#F6C453]">{stage.step}</span>
+                      <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C]">
+                        <Icon class="w-5 h-5" />
+                      </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 font-heading">{stage.title}</h3>
+                    <p class="text-xs font-semibold text-[#FFE08A] mb-3">{stage.desc}</p>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{stage.detail}</p>
+                  </div>
+                  <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] text-zinc-500 font-mono">
+                    Stage {stage.step} of 04
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Injection & Coating Mechanics */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl font-black text-white font-heading mb-4">
+            How Precision Syringe Infusion Works
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+            <p>
+              To neutralize wood borers without stripping expensive finishes, specialized injection protocols are deployed:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                <span class="text-[#F6C453] font-bold block mb-1">Syringe Micro-Injection</span>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                  High-grade oil-based timber preservatives are infused through fine syringe needles directly into individual pinholes. The capillary action distributes the active fluid deep into the gallery network, contacting tunneling larvae.
+                </p>
+              </div>
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+                <span class="text-[#F6C453] font-bold block mb-1">Protective Surface Brush Application</span>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                  On unpolished surfaces (such as the underside of tables, wardrobe backs, and drawer bases), a protective preservative wash is applied. This creates a residual chemical barrier that prevents newly hatched larvae from penetrating unsealed wood pores.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Schedule an On-Site Wood Borer Inspection
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Our technicians evaluate your wooden furniture and structures to design a customized preservation plan. Pricing provided after inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/wood-borer-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>View Wood Borer Treatment</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+              <span>Call: 91803 97822</span>
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Wood Borer Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

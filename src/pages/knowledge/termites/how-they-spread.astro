@@ -1,0 +1,300 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Building,
+  DoorOpen,
+  Waves,
+  Layers,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  ShieldCheck,
+  Share2,
+  TreePine,
+  Activity,
+  Compass
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Termite Identification',
+    desc: 'Recognize signs: mud tubes, hollow woodwork, and discarded wings.',
+    href: '/knowledge/termites/identification'
+  },
+  {
+    title: 'Where Termites Are Found',
+    desc: 'Foundations, wooden door frames, floor joints, and concealed spaces.',
+    href: '/knowledge/termites/where-they-are-found'
+  },
+  {
+    title: 'Termite Prevention',
+    desc: 'Practical moisture mitigation, wood-to-soil reduction, and sealing.',
+    href: '/knowledge/termites/prevention'
+  },
+  {
+    title: 'Termite Treatment Guide',
+    desc: 'The 4-stage journey: inspection, assessment, targeted treatment, and monitoring.',
+    href: '/knowledge/termites/treatment-guide'
+  },
+  {
+    title: 'Termite FAQ',
+    desc: 'Factual answers regarding costs, signs, preparation, and apartments.',
+    href: '/knowledge/termites/faq'
+  }
+];
+
+const pathways = [
+  {
+    step: '01',
+    title: 'Subterranean Soil Foraging Networks',
+    desc: 'Termite colonies live underground, maintaining extensive tunnel networks that radiate up to 50–100 meters through garden soil and sub-slab fill in search of cellulose sources. They continuously explore ground moisture gradients to locate structural foundations.',
+    icon: Compass
+  },
+  {
+    step: '02',
+    title: 'Foundation Penetration & Plinth Joints',
+    desc: 'As concrete foundations settle, microscopic shrinkage cracks develop in plinth beams and floor slabs. Termites exploit these tiny fissures, along with cold pour seams and masonry joints, to cross from subterranean soil into building superstructures.',
+    icon: Building
+  },
+  {
+    step: '03',
+    title: 'Structural Openings & Utility Sleeves',
+    desc: 'Plumbing lines, bathroom drainage stacks, electrical cable conduits, and gas pipe sleeves create continuous void passages through solid slabs. Termites pack these gaps with moist soil, moving between floors without encountering open air.',
+    icon: Waves
+  },
+  {
+    step: '04',
+    title: 'Concealed Masonry & Tile Crevices',
+    desc: 'The hollow cores of concrete masonry blocks, voids behind decorative wall tiles, and the cavity between plastered brickwork and wooden paneling provide dark, climate-controlled highways shielded from human observation.',
+    icon: Layers
+  },
+  {
+    step: '05',
+    title: 'Interconnected Wooden Assemblies',
+    desc: 'Once a termite colony reaches a ground-floor door frame, the connected woodwork acts as a continuous bridge. Termites readily tunnel from the frame into baseboard skirtings, continue under wooden flooring underlays, and climb into modular wardrobes and false ceilings.',
+    icon: TreePine
+  },
+  {
+    step: '06',
+    title: 'Seasonal Alate Nuptial Flights',
+    desc: 'Following pre-monsoon and monsoon rains in Bangalore, mature colonies release winged reproductive alates. While only a small fraction successfully initiate new subterranean colonies, they can land on exterior verandas, balconies, and soil patches around the building perimeter.',
+    icon: Activity
+  }
+];
+---
+
+<Layout
+  title="How Termites Spread | Soil, Foundations & Structural Pathways | SLV Pest Control"
+  description="Understand how subterranean termites move through soil, breach concrete foundations, navigate utility conduits, and spread across wooden building assemblies in Bangalore."
+  canonical="https://slvpestcontrol.com/knowledge/termites/how-they-spread"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Termites > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/termite-control" class="hover:text-white transition">Termites</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">How Termites Spread</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            STRUCTURAL SPREAD MECHANICS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          How Termites Spread in <span class="slv-gold-text">Homes &amp; Structures</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          An honest, engineering-grounded explanation of subterranean migration routes through ground soil, foundation joints, and continuous woodwork.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/termite-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Get Termite Assessment</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Core Principles */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Continuous Foraging Without Daylight
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Subterranean termites do not wander randomly across floors or walls. Every foraging excursion is protected by continuous earthen shelter tubes constructed from soil particles cemented with salivary enzymes. These moisture-retaining tunnels preserve near 100% relative humidity, protecting blind workers from desiccating in dry indoor air.
+            </p>
+            <p>
+              Because colonies operate 24 hours a day, an unchecked colony can systematically exploit internal voids between structural masonry and interior timber, spreading across multiple rooms before visible outward damage breaks the surface veneer.
+            </p>
+          </div>
+        </div>
+
+        {/* 6 Spread Pathways */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">FORAGING VECTORS</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              6 Key Structural Spread Pathways
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {pathways.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="text-2xl font-black font-mono text-[#F6C453]">{item.step}</span>
+                      <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C]">
+                        <Icon class="w-5 h-5" />
+                      </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{item.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Why Spraying Visible Mud Tubes Fails */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl font-black text-white font-heading mb-4">
+            Why Scraping or Spraying Visible Mud Tubes Is Ineffective
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+            <p>
+              When homeowners scrape away a mud tube on an exterior wall or spray it with over-the-counter surface insecticides, only a few dozen exposed worker termites are killed. The subterranean central colony—housing the queen, reproductive pairs, and hundreds of thousands of workers deep beneath the soil slab—remains entirely unharmed.
+            </p>
+            <p>
+              In response to repellent surface sprays, the colony simply seals off the disturbed section of gallery and excavates alternative sub-surface routes through adjacent masonry joints. Professional management requires drill-and-infusion barrier treatments using non-repellent termiticides that foraging termites unwittingly carry back to eliminate the central colony.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Halt Structural Termite Spread Across Your Property
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Get an on-site evaluation of foundation breaches, woodwork bridges, and soil contact points. Pricing confirmed after inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/termite-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Get Termite Assessment</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Termite Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

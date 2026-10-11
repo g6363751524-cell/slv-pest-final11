@@ -1,0 +1,294 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  Shield,
+  Trash2,
+  Box,
+  Wrench
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Ant Identification',
+    desc: 'Recognize common ant behaviors, signs of infestation, trailing activity, and food attraction.',
+    href: '/knowledge/ants/identification'
+  },
+  {
+    title: 'Where Ants Hide & Nest',
+    desc: 'Discover nesting zones in cracks, wall voids, under sinks, kitchen cupboards, and outdoor perimeters.',
+    href: '/knowledge/ants/where-they-hide'
+  },
+  {
+    title: 'How Ants Enter & Spread',
+    desc: 'Understand entry through exterior gaps, utility penetrations, foraging trails, and scent-guided expansion.',
+    href: '/knowledge/ants/how-they-spread'
+  },
+  {
+    title: 'Ant Treatment Guide',
+    desc: 'Our systematic 4-stage management methodology: inspection, colony assessment, targeted baiting, and prevention.',
+    href: '/knowledge/ants/treatment-guide'
+  },
+  {
+    title: 'Ant FAQ',
+    desc: 'Clear, factual answers to 12 common questions regarding ant species, nesting habits, sprays vs baits, and safety.',
+    href: '/knowledge/ants/faq'
+  }
+];
+
+const preventionTips = [
+  {
+    title: 'Store Food in Airtight Sealed Containers',
+    desc: 'Transfer sugar, pulses, biscuits, cereal, honey, and snacks from open paper or plastic packets into heavy-duty airtight glass or hard plastic containers with silicone seals.',
+    icon: Box
+  },
+  {
+    title: 'Wipe Countertops & Clean Food Residues Promptly',
+    desc: 'Clean kitchen countertops, stovetops, dining tables, and cutting boards with mild soapy water immediately after meal preparation to eliminate attractant oils and crumbs.',
+    icon: Sparkles
+  },
+  {
+    title: 'Fix Plumbing Leaks & Eliminate Standing Moisture',
+    desc: 'Repair dripping faucets, leaky under-sink pipe fittings, and condensating drain pipes. Empty pet water dishes and drip trays regularly to eliminate easy drinking spots.',
+    icon: Droplets
+  },
+  {
+    title: 'Seal Cracks, Crevices & Window Openings',
+    desc: 'Apply silicone or acrylic caulk to hairline wall cracks, gaps around kitchen window frames, skirting gaps, and openings where plumbing pipes enter through walls.',
+    icon: Wrench
+  },
+  {
+    title: 'Manage Waste & Maintain Lidded Trash Bins',
+    desc: 'Dispose of kitchen food scraps daily, rinse recyclable containers before throwing them away, and use indoor dustbins equipped with tight-fitting lids.',
+    icon: Trash2
+  },
+  {
+    title: 'Inspect Indoor Potted Plants & Prune Branches',
+    desc: 'Check the soil of balcony or indoor plants for nesting mounds. Prune outdoor tree branches and foliage so they do not touch exterior walls or roof gutters.',
+    icon: ShieldCheck
+  }
+];
+---
+
+<Layout
+  title="Ant Prevention in Bangalore | Practical Tips & Sanitation | SLV Pest Control"
+  description="Practical ant prevention tips for Bangalore homes: airtight food storage, moisture control, crack sealing, and structural maintenance. SLV Pest Control."
+  canonical="https://slvpestcontrol.com/knowledge/ants/prevention"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+    </div>
+
+    {/* BREADCRUMB */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>/</span>
+        <span class="text-zinc-500">Ants</span>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Prevention</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+            KNOWLEDGE BASE • ANTS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] mb-5 font-heading">
+          Ant Prevention Guide: Practical Strategies for Bangalore Homes
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6">
+          The most sustainable defence against recurring ant trails is denying worker ants easy access to food, hydration, and nesting harbours. Combine good sanitation with targeted exclusion methods to keep your living spaces ant-free.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-400 pt-4 border-t border-white/[0.06]">
+          <span>Topic: Preventive Sanitation &amp; Exclusion Best Practices</span>
+          <span>•</span>
+          <span>Property Maintenance</span>
+          <span>•</span>
+          <span class="text-[#F6C453]">SLV Technical Guide</span>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        {/* SECTION 1: PROACTIVE MANAGEMENT */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Why Prevention is the Foundation of Long-Term Control
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Ants are relentless scavengers. A single drop of honey or a few grains of sugar on a kitchen counter will trigger chemical recruitment trails within minutes. By removing food incentives and sealing entry points, you drastically reduce the likelihood of foraging workers choosing your home as their regular feeding ground.
+          </p>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            While preventive steps are vital for ongoing maintenance, please note: if an ant colony has already built a mature nest inside your wall voids, prevention alone cannot dismantle the queen. In such cases, professional targeted treatment should be paired with ongoing prevention.
+          </p>
+        </div>
+
+        {/* SECTION 2: 6 PRACTICAL ACTIONS GRID */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Essential Prevention Practices
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {preventionTips.map((tip) => {
+              const Icon = tip.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+                  <Icon class="w-6 h-6 text-[#E5A93C] mb-3" />
+                  <h3 class="text-base font-bold text-white mb-2">{tip.title}</h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{tip.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SECTION 3: KITCHEN HYGIENE CHECKLIST */}
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-4">
+          <h2 class="text-xl sm:text-2xl font-black text-white font-heading">
+            Daily &amp; Weekly Kitchen Maintenance Checklist
+          </h2>
+          <p class="text-zinc-300 text-sm leading-relaxed">
+            Follow this practical routine to safeguard Bangalore kitchens, pantries, and dining spaces:
+          </p>
+          <div class="space-y-2.5 text-xs sm:text-sm text-zinc-300 pt-2">
+            <div class="flex items-start gap-2.5">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span><strong>Nightly Clean:</strong> Wipe down counters, stove tops, and microwave interiors before bed to eliminate overnight foraging targets.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span><strong>Pet Food Care:</strong> Never leave pet food out overnight. Place pet feeding bowls in a shallow water moat if ants persistently target kibble.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span><strong>Neutralize Scent Trails:</strong> Wipe identified ant trails with a 50/50 white vinegar and water solution or soapy water to disrupt lingering pheromone tracks.</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span><strong>Trash Discipline:</strong> Empty waste bins with food scraps daily. Wash the internal bin lining regularly to remove sticky syrup or food grease deposits.</span>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 4: EXCLUSION & STRUCTURAL REPAIRS */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Structural Exclusion &amp; Sealing Tips
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Denying ants physical access into your home is one of the most effective long-term deterrents:
+          </p>
+          <ul class="space-y-2 text-zinc-300 text-sm sm:text-base pl-5 list-disc marker:text-[#E5A93C]">
+            <li><strong>Caulk Gaps Around Utility Lines:</strong> Inspect underneath the kitchen sink and bathroom basins where water supply and drainage pipes pass through walls. Seal these gaps using silicone caulk.</li>
+            <li><strong>Weatherstrip Doors &amp; Windows:</strong> Install durable brush sweeps on external entry doors and ensure mesh window screens fit snugly into frames without gaps.</li>
+            <li><strong>Maintain Balcony Plants:</strong> Avoid placing pots directly against external brick walls. Elevate pots on stands and clear fallen dead leaves from balcony drains.</li>
+          </ul>
+        </div>
+
+        {/* PRIMARY CALL TO ACTION */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-[#E5A93C]/40 text-center">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            PREVENTION GUIDANCE &amp; TREATMENT
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Already Facing an Established Infestation?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+            Sanitation stops new trails, but eliminating established nests requires expert baiting. Book a free inspection with SLV Pest Control today.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/services/ant-control" class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2">
+              <span>Get Ant Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a href="tel:9180397822" class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 hover:border-[#F6C453]">
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+
+        {/* RELATED ARTICLES */}
+        <div>
+          <h3 class="text-xl font-bold text-white font-heading mb-4">
+            Related Ant Knowledge Guides
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card p-4 rounded-xl border border-white/[0.08] hover:border-[#E5A93C]/40 transition group block"
+              >
+                <h4 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1">
+                  {article.title}
+                </h4>
+                <p class="text-zinc-400 text-xs line-clamp-2">
+                  {article.desc}
+                </p>
+                <span class="text-[#E5A93C] text-xs font-semibold inline-flex items-center gap-1 mt-2">
+                  <span>Read Guide</span>
+                  <ArrowRight class="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* LOCAL FOOTER */}
+    <section class="relative z-10 py-12 border-b border-white/[0.06] bg-[#0c0d10]/50 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-xl font-bold text-white font-heading mb-2">
+          Long-Term Ant Prevention &amp; Treatment in Bangalore
+        </h3>
+        <p class="text-zinc-400 text-xs sm:text-sm mb-4">
+          Guiding homeowners and commercial kitchens toward hygienic, ant-free environments across Bangalore.
+        </p>
+        <div class="flex items-center justify-center gap-6 text-xs text-zinc-300 font-mono">
+          <span>Phone: 91803 97822</span>
+          <span>•</span>
+          <span>Email: contact@slvpestcontrol.com</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

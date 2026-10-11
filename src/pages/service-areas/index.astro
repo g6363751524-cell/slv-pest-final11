@@ -1,0 +1,1023 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import { ContactForm } from '../../components/ContactForm';
+import { ServiceAreasFaq } from '../../components/ServiceAreasFaq';
+import {
+  MapPin,
+  Phone,
+  MessageCircle,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  Clock,
+  Sparkles,
+  Search,
+  Building,
+  Home,
+  Layers,
+  CalendarCheck,
+  Compass,
+  Navigation,
+  Mail,
+  Shield,
+  Zap,
+  Target
+} from 'lucide-react';
+
+export interface ServiceRegion {
+  id: string;
+  number: string;
+  title: string;
+  shortName: string;
+  colorName: string;
+  theme: {
+    border: string;
+    borderHover: string;
+    glow: string;
+    text: string;
+    badgeBg: string;
+    badgeBorder: string;
+    badgeText: string;
+    iconBg: string;
+    chipBg: string;
+    chipBorder: string;
+    chipHover: string;
+    dotBg: string;
+  };
+  tagline: string;
+  summary: string;
+  description: string;
+  coverageAreas: string[];
+  commonPests: string[];
+  avgResponse: string;
+  propertyTypes: string[];
+}
+
+const serviceRegions: ServiceRegion[] = [
+  {
+    id: 'north-bangalore',
+    number: '01',
+    title: 'North Bangalore',
+    shortName: 'North',
+    colorName: 'Orange',
+    theme: {
+      border: 'border-orange-500/25',
+      borderHover: 'hover:border-orange-400',
+      glow: 'hover:shadow-[0_12px_36px_rgba(249,115,22,0.16)]',
+      text: 'text-orange-400',
+      badgeBg: 'bg-orange-500/10',
+      badgeBorder: 'border-orange-500/30',
+      badgeText: 'text-orange-400',
+      iconBg: 'bg-orange-500/10 border-orange-500/30 text-orange-400',
+      chipBg: 'bg-orange-500/[0.06]',
+      chipBorder: 'border-orange-500/20',
+      chipHover: 'hover:border-orange-400 hover:text-white hover:bg-orange-500/15',
+      dotBg: 'bg-orange-400'
+    },
+    tagline: 'Rapid dispatch across Yelahanka, Hebbal & northern tech corridors',
+    summary: 'Yelahanka, Hebbal, RT Nagar, Sahakar Nagar and surrounding sectors',
+    description: 'Providing comprehensive residential and commercial pest management across North Bangalore, covering modern high-rises, villa communities, and busy commercial hubs along airport road corridors.',
+    coverageAreas: [
+      'Yelahanka',
+      'Hebbal',
+      'RT Nagar',
+      'Sahakar Nagar',
+      'Vidyaranyapura',
+      'Thanisandra',
+      'Jakkur',
+      'Hennur',
+      'Doddaballapur Road',
+      'Kogilu',
+      'Jalahalli'
+    ],
+    commonPests: ['Cockroach Control', 'Bed Bug Treatment', 'Termite Defense', 'Mosquito Fogging', 'Ant Management'],
+    avgResponse: '30 - 45 Minutes',
+    propertyTypes: ['Apartments & Gated Villas', 'Tech Parks & Offices', 'Educational Institutions', 'Retail Stores']
+  },
+  {
+    id: 'east-bangalore',
+    number: '02',
+    title: 'East Bangalore',
+    shortName: 'East',
+    colorName: 'Cyan',
+    theme: {
+      border: 'border-cyan-500/25',
+      borderHover: 'hover:border-cyan-400',
+      glow: 'hover:shadow-[0_12px_36px_rgba(6,182,212,0.16)]',
+      text: 'text-cyan-400',
+      badgeBg: 'bg-cyan-500/10',
+      badgeBorder: 'border-cyan-500/30',
+      badgeText: 'text-cyan-400',
+      iconBg: 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400',
+      chipBg: 'bg-cyan-500/[0.06]',
+      chipBorder: 'border-cyan-500/20',
+      chipHover: 'hover:border-cyan-400 hover:text-white hover:bg-cyan-500/15',
+      dotBg: 'bg-cyan-400'
+    },
+    tagline: 'Same-day technician coverage across Whitefield, Indiranagar & IT belts',
+    summary: 'Whitefield, Indiranagar, Marathahalli, KR Puram and surrounding sectors',
+    description: 'Specialized pest eradication for East Bangalore’s vibrant IT corridors, startup campuses, residential gated societies, and bustling culinary hotspots with odorless formulations.',
+    coverageAreas: [
+      'Whitefield',
+      'Indiranagar',
+      'Marathahalli',
+      'KR Puram',
+      'Bellandur',
+      'Mahadevapura',
+      'CV Raman Nagar',
+      'Varthur',
+      'Hoodi',
+      'Brookefield',
+      'Kadugodi'
+    ],
+    commonPests: ['Cockroach Gel Baiting', 'Bed Bug Heat & Spray', 'Rodent Proofing', 'Termite Pre/Post', 'Fly Control'],
+    avgResponse: '30 - 45 Minutes',
+    propertyTypes: ['High-Rise Societies', 'Corporate Campuses', 'Restaurants & Cafes', 'PGs & Co-Living Spaces']
+  },
+  {
+    id: 'west-bangalore',
+    number: '03',
+    title: 'West Bangalore',
+    shortName: 'West',
+    colorName: 'Purple',
+    theme: {
+      border: 'border-purple-500/25',
+      borderHover: 'hover:border-purple-400',
+      glow: 'hover:shadow-[0_12px_36px_rgba(168,85,247,0.16)]',
+      text: 'text-purple-400',
+      badgeBg: 'bg-purple-500/10',
+      badgeBorder: 'border-purple-500/30',
+      badgeText: 'text-purple-400',
+      iconBg: 'bg-purple-500/10 border-purple-500/30 text-purple-400',
+      chipBg: 'bg-purple-500/[0.06]',
+      chipBorder: 'border-purple-500/20',
+      chipHover: 'hover:border-purple-400 hover:text-white hover:bg-purple-500/15',
+      dotBg: 'bg-purple-400'
+    },
+    tagline: 'Headquarters-based direct response across Nagasandra, Rajajinagar & Peenya',
+    summary: 'Nagasandra, Yeshwanthpur, Rajajinagar, Basaveshwaranagar, Andarahalli',
+    description: 'Operating from our central Soundarya Layout base, we provide rapid-response pest elimination across West Bangalore, catering to standalone homes, high-density residential layouts, and industrial complexes.',
+    coverageAreas: [
+      'Nagasandra',
+      'Yeshwanthpur',
+      'Rajajinagar',
+      'Basaveshwaranagar',
+      'Andarahalli',
+      'Peenya Industrial Area',
+      'Vijayanagar',
+      'Malleshwaram West',
+      'Kengeri',
+      'Magadi Road'
+    ],
+    commonPests: ['Termite Barrier Protection', 'Cockroach Eradication', 'Rodent Trapping', 'Tick Control', 'Bed Bugs'],
+    avgResponse: '20 - 30 Minutes',
+    propertyTypes: ['Independent Houses', 'Manufacturing Units & Warehouses', 'Residential Apartments', 'Shops & Markets']
+  },
+  {
+    id: 'south-bangalore',
+    number: '04',
+    title: 'South Bangalore',
+    shortName: 'South',
+    colorName: 'Green',
+    theme: {
+      border: 'border-emerald-500/25',
+      borderHover: 'hover:border-emerald-400',
+      glow: 'hover:shadow-[0_12px_36px_rgba(16,185,129,0.16)]',
+      text: 'text-emerald-400',
+      badgeBg: 'bg-emerald-500/10',
+      badgeBorder: 'border-emerald-500/30',
+      badgeText: 'text-emerald-400',
+      iconBg: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400',
+      chipBg: 'bg-emerald-500/[0.06]',
+      chipBorder: 'border-emerald-500/20',
+      chipHover: 'hover:border-emerald-400 hover:text-white hover:bg-emerald-500/15',
+      dotBg: 'bg-emerald-400'
+    },
+    tagline: 'Trusted pest management across Koramangala, Jayanagar & Electronic City',
+    summary: 'Jayanagar, JP Nagar, BTM Layout, Koramangala, Electronic City',
+    description: 'Decades of trusted service across South Bangalore’s traditional residential neighborhoods, co-living student accommodations, software parks, and modern gated apartment complexes.',
+    coverageAreas: [
+      'Jayanagar',
+      'JP Nagar',
+      'BTM Layout',
+      'Koramangala',
+      'Electronic City',
+      'HSR Layout',
+      'Bannerghatta Road',
+      'Banashankari',
+      'Kanakapura Road',
+      'Padmanabhanagar'
+    ],
+    commonPests: ['Bed Bug Warranty Treatment', 'Kitchen Cockroach Baiting', 'Mosquito Control', 'Flea & Tick Defense', 'Wood Borer'],
+    avgResponse: '30 - 45 Minutes',
+    propertyTypes: ['PGs & Hostels', 'Villas & Row Houses', 'IT & Tech Hubs', 'Hospitals & Clinics']
+  },
+  {
+    id: 'central-bangalore',
+    number: '05',
+    title: 'Central Bangalore',
+    shortName: 'Central',
+    colorName: 'Gold',
+    theme: {
+      border: 'border-[#E5A93C]/30',
+      borderHover: 'hover:border-[#F6C453]',
+      glow: 'hover:shadow-[0_12px_36px_rgba(229,169,60,0.18)]',
+      text: 'text-[#F6C453]',
+      badgeBg: 'bg-[#E5A93C]/10',
+      badgeBorder: 'border-[#E5A93C]/30',
+      badgeText: 'text-[#F6C453]',
+      iconBg: 'bg-[#E5A93C]/10 border-[#E5A93C]/30 text-[#F6C453]',
+      chipBg: 'bg-[#E5A93C]/[0.06]',
+      chipBorder: 'border-[#E5A93C]/20',
+      chipHover: 'hover:border-[#F6C453] hover:text-white hover:bg-[#E5A93C]/15',
+      dotBg: 'bg-[#E5A93C]'
+    },
+    tagline: 'Discreet, odorless treatments for Malleshwaram, MG Road & CBD areas',
+    summary: 'Malleshwaram, MG Road, Richmond Town, Shanthi Nagar and central corridors',
+    description: 'Precision, odorless pest control tailored for Central Bangalore’s heritage residences, corporate headquarters, luxury boutiques, hotels, and upscale dining establishments.',
+    coverageAreas: [
+      'Malleshwaram',
+      'MG Road',
+      'Richmond Town',
+      'Shanthi Nagar',
+      'Frazer Town',
+      'Vasanth Nagar',
+      'Shivajinagar',
+      'Cunningham Road',
+      'Brigade Road',
+      'Ashok Nagar'
+    ],
+    commonPests: ['Cockroach Gel Treatment', 'Ant Control', 'Termite Protection', 'Rodent Control', 'Fly Management'],
+    avgResponse: '30 - 45 Minutes',
+    propertyTypes: ['Heritage Residences', 'Commercial Offices', 'Hotels & Dining', 'Apartment Communities']
+  },
+  {
+    id: 'outer-bangalore',
+    number: '06',
+    title: 'Outer Bangalore',
+    shortName: 'Outer',
+    colorName: 'Red',
+    theme: {
+      border: 'border-rose-500/25',
+      borderHover: 'hover:border-rose-400',
+      glow: 'hover:shadow-[0_12px_36px_rgba(244,63,94,0.16)]',
+      text: 'text-rose-400',
+      badgeBg: 'bg-rose-500/10',
+      badgeBorder: 'border-rose-500/30',
+      badgeText: 'text-rose-400',
+      iconBg: 'bg-rose-500/10 border-rose-500/30 text-rose-400',
+      chipBg: 'bg-rose-500/[0.06]',
+      chipBorder: 'border-rose-500/20',
+      chipHover: 'hover:border-rose-400 hover:text-white hover:bg-rose-500/15',
+      dotBg: 'bg-rose-400'
+    },
+    tagline: 'Comprehensive perimeter defense for Sarjapur, Devanahalli & industrial corridors',
+    summary: 'Sarjapur Road, Devanahalli, Kanakapura Road and extended industrial zones',
+    description: 'Extensive pest control solutions for sprawling gated villa enclaves, farmhouses, manufacturing facilities, warehouses, and rapidly growing suburban townships around Bangalore.',
+    coverageAreas: [
+      'Sarjapur Road',
+      'Devanahalli',
+      'Kanakapura Road',
+      'Nelamangala',
+      'Hoskote',
+      'Bidadi Industrial Area',
+      'Jigani Industrial Area',
+      'Attibele',
+      'Electronic City Phase 2'
+    ],
+    commonPests: ['Termite Pre/Post Construction', 'Rodent Exclusion', 'Wood Borer Treatment', 'Mosquito Larvicide', 'Fleas Control'],
+    avgResponse: '45 - 60 Minutes',
+    propertyTypes: ['Gated Villa Communities', 'Logistics Parks & Warehouses', 'Manufacturing Facilities', 'Suburban Estates']
+  }
+];
+
+const faqs = [
+  {
+    q: 'Do you provide pest control services across all areas of Bangalore?',
+    a: 'Yes. SLV Pest Control provides comprehensive residential and commercial pest management across North, East, West, South, Central, and Outer Bangalore with strategically routed technicians for same-day service.'
+  },
+  {
+    q: 'How fast can a technician arrive for an inspection in my Bangalore locality?',
+    a: 'Our central dispatch coordinates technicians stationed across key Bangalore sectors. For emergency bed bug, rodent, or cockroach issues, we typically arrange same-day inspections within 30 to 60 minutes depending on your zone.'
+  },
+  {
+    q: 'Are your pest control chemicals safe for homes with children, elderly members, and pets?',
+    a: 'Yes. We prioritize odorless, government-approved formulations and targeted gel baiting that eliminate pests without harmful fumes or messy sprays. In most residential cases, you do not need to vacate your home.'
+  },
+  {
+    q: 'Do you offer warranty-backed pest control services across Bangalore?',
+    a: 'Yes. Our specialized treatments—including Bed Bug Management (up to 4 months warranty) and Termite Control (up to 5 to 10 years warranty)—come with formal service guarantees and structured monitoring visits.'
+  },
+  {
+    q: 'How can I book a free pest inspection in Bangalore?',
+    a: 'You can call our direct helpline at 91803 97822, send a WhatsApp message, or submit the online inquiry form. Our team will promptly confirm an inspection slot convenient for your schedule.'
+  }
+];
+
+const processSteps = [
+  {
+    num: '01',
+    title: 'Inspection & Mapping',
+    desc: 'Diagnostic assessment of harbourage zones, entry points, and moisture conditions in your premises.',
+    icon: Search
+  },
+  {
+    num: '02',
+    title: 'Targeted Treatment',
+    desc: 'Strategic odorless gel baiting, micro-sprays, or physical barriers applied strictly where pests live and feed.',
+    icon: Sparkles
+  },
+  {
+    num: '03',
+    title: 'Monitoring & Follow-Up',
+    desc: 'Tracking population reduction, addressing new hatching cycles, and providing scheduled warranty inspections.',
+    icon: Clock
+  },
+  {
+    num: '04',
+    title: 'Prevention Guidance',
+    desc: 'Actionable sanitation, moisture management, and structural sealing tips to keep infestations away permanently.',
+    icon: ShieldCheck
+  }
+];
+---
+
+<Layout
+  title="Pest Control Service Areas in Bangalore | North, East, West, South, Central & Outer Bangalore"
+  description="We provide pest-control services across North, East, West, South, Central and Outer Bangalore. Same-day inspection, odorless gel baiting, and certified pest management. Call 91803 97822."
+  canonical="https://slvpestcontrol.com/service-areas"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://slvpestcontrol.com/#business",
+          "name": "SLV Pest Control",
+          "telephone": "+91-9180397822",
+          "email": "contact@slvpestcontrol.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "143 Soundarya Layout, Doddabidarakallu",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "postalCode": "560073",
+            "addressCountry": "IN"
+          },
+          "areaServed": [
+            "North Bangalore",
+            "East Bangalore",
+            "West Bangalore",
+            "South Bangalore",
+            "Central Bangalore",
+            "Outer Bangalore",
+            "Bengaluru"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://slvpestcontrol.com/service-areas#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.a
+            }
+          }))
+        }
+      ]
+    })} />
+  </Fragment>
+
+  <!-- Reusable Global Header with active Service Areas navigation -->
+  <Header client:load activeItem="service-areas" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <!-- Clean Architectural Honeycomb Pattern & Ambient Geometric Lines (NO photo backgrounds) -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <svg
+        class="absolute w-full h-full opacity-[0.035]"
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        height="100%"
+      >
+        <defs>
+          <pattern id="honeycomb-pattern-service-areas" width="56" height="96" patternUnits="userSpaceOnUse">
+            <path
+              d="M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z M28 48 L56 64 L56 96 L28 112 L0 96 L0 64 Z"
+              fill="none"
+              stroke="#E5A93C"
+              stroke-width="1"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#honeycomb-pattern-service-areas)" />
+      </svg>
+
+      <!-- Multi-region soft ambient lighting gradients -->
+      <div class="absolute -top-32 right-1/4 w-[520px] h-[520px] bg-[#E5A93C]/[0.05] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[28%] left-[-120px] w-[500px] h-[500px] bg-cyan-500/[0.03] rounded-full blur-[160px]"></div>
+      <div class="absolute top-[55%] right-[-100px] w-[500px] h-[500px] bg-purple-500/[0.03] rounded-full blur-[160px]"></div>
+      <div class="absolute bottom-20 left-1/4 w-[500px] h-[500px] bg-emerald-500/[0.03] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* ============================================================== */}
+    {/* 1. HERO SECTION                                               */}
+    {/* ============================================================== */}
+    <section class="relative z-10 pt-16 sm:pt-20 lg:pt-24 pb-14 sm:pb-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- Breadcrumb: Home → Service Areas -->
+        <nav aria-label="Breadcrumb" class="flex items-center justify-center gap-2 text-xs text-zinc-400 mb-6 font-medium">
+          <a href="/" class="hover:text-[#F6C453] transition-colors">Home</a>
+          <span class="text-zinc-600">→</span>
+          <span class="text-[#F6C453] font-semibold">Service Areas</span>
+        </nav>
+
+        <!-- Eyebrow badge -->
+        <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#E5A93C]/30 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+          <span class="text-[#E5A93C] text-[11px] sm:text-xs font-extrabold tracking-[0.2em] uppercase font-mono">
+            BANGALORE REGIONAL COVERAGE
+          </span>
+        </div>
+
+        <!-- Heading: Pest Control Service Areas in Bangalore (Bangalore in gold) -->
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading max-w-5xl mx-auto">
+          Pest Control Service Areas in <span class="text-[#F6C453] slv-gold-text">Bangalore</span>
+        </h1>
+
+        <!-- Introductory text verbatim from brief -->
+        <p class="text-zinc-200 text-base sm:text-lg lg:text-xl font-medium leading-relaxed max-w-3xl mx-auto mb-4">
+          “We provide pest-control services across North, East, West, South, Central and Outer Bangalore.”
+        </p>
+
+        <!-- Preserved description about residential and commercial coverage -->
+        <p class="text-zinc-400 text-xs sm:text-sm lg:text-base leading-relaxed max-w-3xl mx-auto mb-8 font-normal">
+          SLV Pest Control provides comprehensive residential and commercial pest management with certified technicians strategically stationed across all Bangalore metropolitan sectors. Experience odorless, warranty-backed protection with rapid same-day response.
+        </p>
+
+        <!-- Three Prominent Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 mb-12">
+          <!-- Get Free Inspection -->
+          <a
+            href="#contact"
+            class="slv-btn-primary w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider shadow-lg shadow-[#E5A93C]/25 hover:shadow-[#E5A93C]/40"
+          >
+            <span>GET FREE INSPECTION</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+
+          <!-- WhatsApp Button -->
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-8 py-4 text-xs sm:text-sm font-bold gap-2.5 uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_6px_26px_rgba(37,211,102,0.55)] hover:scale-[1.02] active:scale-95 transition-all duration-200 inline-flex items-center justify-center"
+          >
+            <MessageCircle class="w-4 h-4 text-white" />
+            <span>WHATSAPP</span>
+          </a>
+
+          <!-- Call Helpline -->
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-7 py-4 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider hover:border-[#F6C453]"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>CALL: 91803 97822</span>
+          </a>
+        </div>
+
+        <!-- Four Compact Feature Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto text-left pt-6 border-t border-white/[0.06]">
+          {/* Card 1: Same-Day Service */}
+          <div class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] bg-[#0c0d10]/70 hover:border-[#E5A93C]/40 transition-colors">
+            <div class="w-9 h-9 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center mb-2.5">
+              <Clock class="w-4 h-4 text-[#F6C453]" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight">Same-Day Service</h3>
+            <p class="text-[11px] text-zinc-400 mt-0.5">30-45 min local response</p>
+          </div>
+
+          {/* Card 2: Safe & Odorless */}
+          <div class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] bg-[#0c0d10]/70 hover:border-cyan-500/40 transition-colors">
+            <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-2.5">
+              <ShieldCheck class="w-4 h-4 text-cyan-400" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight">Safe &amp; Odorless</h3>
+            <p class="text-[11px] text-zinc-400 mt-0.5">Kid &amp; pet-friendly gels</p>
+          </div>
+
+          {/* Card 3: Free Inspection */}
+          <div class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] bg-[#0c0d10]/70 hover:border-emerald-500/40 transition-colors">
+            <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-2.5">
+              <Sparkles class="w-4 h-4 text-emerald-400" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight">Free Inspection</h3>
+            <p class="text-[11px] text-zinc-400 mt-0.5">Zero obligation diagnostics</p>
+          </div>
+
+          {/* Card 4: Warranty Backed */}
+          <div class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] bg-[#0c0d10]/70 hover:border-[#E5A93C]/40 transition-colors">
+            <div class="w-9 h-9 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center mb-2.5">
+              <CalendarCheck class="w-4 h-4 text-[#F6C453]" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white tracking-tight">Warranty Backed</h3>
+            <p class="text-[11px] text-zinc-400 mt-0.5">Up to 4 mos. / 5 yrs guarantee</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 2. BANGALORE REGIONAL COVERAGE: 6 REGIONAL CARDS               */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              REGIONAL COVERAGE
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Bangalore Regional Coverage
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed">
+            Select your zone below to review covered localities, specialized pest treatments, and local response details.
+          </p>
+        </div>
+
+        {/* 6 Region Cards Grid: 3 cols desktop, 2 cols tablet, 1 col mobile */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {serviceRegions.map((region) => {
+            const { theme } = region;
+            return (
+              <div
+                class={`slv-card rounded-2xl p-6 sm:p-7 border bg-[#0e1014]/90 ${theme.border} ${theme.borderHover} ${theme.glow} transition-all duration-300 flex flex-col justify-between group`}
+              >
+                <div>
+                  {/* Top Bar: Location Icon + Region Title + Zone Pill */}
+                  <div class="flex items-start justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                      <div class={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 ${theme.iconBg} group-hover:scale-105 transition-transform`}>
+                        <MapPin class="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 class={`text-lg font-black tracking-tight font-heading text-white transition-colors`}>
+                          {region.title}
+                        </h3>
+                        <span class={`text-[10px] font-bold uppercase tracking-wider font-mono ${theme.text}`}>
+                          {region.colorName} Zone • Zone {region.number}
+                        </span>
+                      </div>
+                    </div>
+
+                    <span class={`text-[10px] font-bold px-2 py-0.5 rounded-md font-mono border ${theme.badgeBg} ${theme.badgeBorder} ${theme.badgeText}`}>
+                      {region.avgResponse}
+                    </span>
+                  </div>
+
+                  {/* Key Localities Summary */}
+                  <div class="mb-3">
+                    <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block mb-1 font-mono">
+                      Key Localities:
+                    </span>
+                    <p class="text-zinc-200 text-xs font-medium leading-relaxed">
+                      {region.summary}
+                    </p>
+                  </div>
+
+                  {/* Regional Description / Tagline */}
+                  <p class="text-zinc-400 text-xs leading-relaxed mb-5">
+                    {region.tagline}
+                  </p>
+                </div>
+
+                {/* Card Footer with View Localities Button */}
+                <div class="pt-4 border-t border-white/[0.06] flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-1.5 text-[11px] text-zinc-400">
+                    <Clock class="w-3.5 h-3.5 text-zinc-500" />
+                    <span>{region.avgResponse} dispatch</span>
+                  </div>
+
+                  <a
+                    href={`#${region.id}`}
+                    class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${theme.badgeBg} ${theme.badgeBorder} ${theme.badgeText} hover:bg-white/[0.1] hover:text-white border`}
+                  >
+                    <span>View Localities</span>
+                    <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* QUICK ZONE JUMP SELECTOR                                       */}
+    {/* ============================================================== */}
+    <div class="relative z-10 py-5 bg-[#0c0d10]/90 border-b border-white/[0.06] sticky top-16 sm:top-20 backdrop-blur-xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-widest font-mono shrink-0 hidden md:inline-block">
+            JUMP TO ZONE:
+          </span>
+          <div class="flex items-center gap-2 sm:gap-2.5 min-w-max mx-auto md:mx-0">
+            {serviceRegions.map((region) => (
+              <a
+                href={`#${region.id}`}
+                class={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 flex items-center gap-1.5 bg-white/[0.02] border-white/[0.08] text-zinc-300 hover:text-white hover:border-white/[0.25] ${region.theme.borderHover}`}
+              >
+                <span class={`w-2 h-2 rounded-full ${region.theme.dotBg}`}></span>
+                <span>{region.shortName}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* ============================================================== */}
+    {/* 3. DETAILED REGIONAL SECTIONS                                  */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-24 border-b border-white/[0.06] bg-[#0a0b0e]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
+        {serviceRegions.map((region) => {
+          const { theme } = region;
+          return (
+            <div
+              id={region.id}
+              class={`scroll-mt-28 sm:scroll-mt-32 p-6 sm:p-10 lg:p-12 rounded-3xl bg-[#0e1014]/95 border ${theme.border} relative overflow-hidden shadow-2xl`}
+            >
+              {/* Subtle Ambient Glow for this region's color */}
+              <div class="absolute -top-24 -right-24 w-80 h-80 bg-white/[0.02] rounded-full blur-[100px] pointer-events-none" />
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                {/* Left Column: Region Details, Description, and Locality Chips (7 cols) */}
+                <div class="lg:col-span-7 space-y-6">
+                  {/* Zone Header Badges */}
+                  <div class="flex flex-wrap items-center gap-2.5">
+                    <div class={`inline-flex items-center gap-2 px-3 py-1 rounded-full border ${theme.badgeBg} ${theme.badgeBorder}`}>
+                      <span class={`w-2 h-2 rounded-full ${theme.dotBg}`}></span>
+                      <span class={`text-[11px] font-bold tracking-widest uppercase font-mono ${theme.badgeText}`}>
+                        ZONE {region.number} • {region.colorName.toUpperCase()}
+                      </span>
+                    </div>
+
+                    <span class="text-xs text-zinc-400 font-mono">
+                      Bangalore Dispatch Base
+                    </span>
+                  </div>
+
+                  <div>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight mb-2">
+                      {region.title}
+                    </h2>
+                    <p class="text-sm sm:text-base text-zinc-300 font-medium leading-relaxed">
+                      {region.tagline}
+                    </p>
+                  </div>
+
+                  <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                    {region.description}
+                  </p>
+
+                  {/* Approved Localities Presented as Compact Rounded Chips */}
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <h4 class="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-2 font-mono">
+                        <MapPin class={`w-3.5 h-3.5 ${theme.text}`} />
+                        <span>Approved Localities &amp; Surrounding Sectors</span>
+                      </h4>
+                      <span class="text-[11px] text-zinc-500 font-mono">
+                        {region.coverageAreas.length} verified areas
+                      </span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                      {region.coverageAreas.map((locality) => (
+                        <span
+                          class={`px-3 py-1.5 rounded-xl text-xs font-medium text-zinc-200 transition-all border ${theme.chipBg} ${theme.chipBorder} ${theme.chipHover}`}
+                        >
+                          {locality}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Call to Actions for this Zone */}
+                  <div class="pt-4 flex flex-wrap items-center gap-3.5 border-t border-white/[0.06]">
+                    <a
+                      href="#contact"
+                      class="slv-btn-primary px-6 py-3 text-xs sm:text-sm font-black uppercase tracking-wider gap-2 shadow-md"
+                    >
+                      <span>Book Inspection in {region.shortName}</span>
+                      <ArrowRight class="w-3.5 h-3.5" />
+                    </a>
+
+                    <a
+                      href="tel:9180397822"
+                      class="px-5 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.09] text-xs sm:text-sm font-bold text-white border border-white/[0.1] inline-flex items-center gap-2 transition-all hover:scale-[1.02]"
+                    >
+                      <Phone class="w-4 h-4 text-[#F6C453]" />
+                      <span>Call 91803 97822</span>
+                    </a>
+
+                    <a
+                      href="https://wa.me/9180397822"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="px-4 py-3 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 text-xs font-bold text-white border border-[#25D366]/30 inline-flex items-center gap-2 transition-all"
+                    >
+                      <MessageCircle class="w-4 h-4 text-[#25D366]" />
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Right Column: Key Pest Focus, Specs, and Safety Details (5 cols) */}
+                <div class="lg:col-span-5 space-y-4">
+                  {/* Response & Safety Metric Card */}
+                  <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07] space-y-3.5">
+                    <div class="flex items-center justify-between text-xs pb-3 border-b border-white/[0.06]">
+                      <span class="text-zinc-400 font-medium">Standard Response Time</span>
+                      <span class={`font-bold font-mono text-sm ${theme.text}`}>{region.avgResponse}</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs pb-3 border-b border-white/[0.06]">
+                      <span class="text-zinc-400 font-medium">Inspection Availability</span>
+                      <span class="text-emerald-400 font-bold">Same-Day / 7 Days a Week</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs pb-3 border-b border-white/[0.06]">
+                      <span class="text-zinc-400 font-medium">Safety Information</span>
+                      <span class="text-white font-bold">Odorless &amp; Child Safe</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="text-zinc-400 font-medium">Regional Base</span>
+                      <span class="text-zinc-300 font-mono">143 Soundarya Layout Corridor</span>
+                    </div>
+                  </div>
+
+                  {/* Specialized Pest Treatments in this Zone */}
+                  <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+                    <h4 class="text-xs font-bold text-zinc-300 uppercase tracking-wider mb-3 flex items-center gap-2 font-mono">
+                      <ShieldCheck class={`w-4 h-4 ${theme.text}`} />
+                      <span>Specialized Treatments in {region.shortName}</span>
+                    </h4>
+                    <ul class="space-y-2">
+                      {region.commonPests.map((pest) => (
+                        <li class="flex items-center gap-2.5 text-xs text-zinc-300">
+                          <CheckCircle2 class={`w-3.5 h-3.5 ${theme.text} shrink-0`} />
+                          <span>{pest}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Properties Serviced */}
+                  <div class="p-5 sm:p-6 rounded-2xl bg-white/[0.02] border border-white/[0.07]">
+                    <h4 class="text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2 flex items-center gap-2 font-mono">
+                      <Building class={`w-4 h-4 ${theme.text}`} />
+                      <span>Types of Properties Serviced</span>
+                    </h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">
+                      {region.propertyTypes.join(' • ')}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 4. FOUR-STAGE TREATMENT PROCESS                                */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-24 border-b border-white/[0.06] bg-[#0c0d10]/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.25em] uppercase font-mono">
+              STANDARDIZED PROTOCOL
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Our 4-Stage Treatment Process Across Bangalore
+          </h2>
+
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed">
+            Every inspection and treatment follows our proven Integrated Pest Management (IPM) methodology for long-lasting results.
+          </p>
+        </div>
+
+        {/* Process Timeline: Horizontal on Desktop, Vertical on Mobile */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {processSteps.map((step, idx) => {
+            const Icon = step.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 sm:p-7 border border-white/[0.08] bg-[#0e1014]/90 flex flex-col justify-between group hover:border-[#E5A93C]/40 transition-all relative">
+                <div>
+                  <div class="flex items-center justify-between mb-5">
+                    {/* Numbered circle indicator */}
+                    <div class="w-12 h-12 rounded-2xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center">
+                      <span class="text-lg font-black font-heading text-[#F6C453] font-mono">
+                        {step.num}
+                      </span>
+                    </div>
+
+                    <div class="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-zinc-300 group-hover:text-[#F6C453] group-hover:border-[#E5A93C]/30 transition-colors">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                  </div>
+
+                  <h3 class="text-base sm:text-lg font-bold text-white font-heading mb-2.5 group-hover:text-[#F6C453] transition-colors">
+                    {step.title}
+                  </h3>
+
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-zinc-400 font-mono">
+                  <span>Stage {step.num} of 04</span>
+                  <span class="w-2 h-2 rounded-full bg-[#E5A93C]"></span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 5. FREQUENTLY ASKED QUESTIONS (Interactive Accordion)           */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-24 border-b border-white/[0.06] bg-[#0a0b0e]/60">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              FREQUENTLY ASKED QUESTIONS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading tracking-tight">
+            Bangalore Service Area FAQs
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed max-w-2xl mx-auto">
+            Clear information on dispatch response times, treatment safety, property coverage, and warranty support.
+          </p>
+        </div>
+
+        <!-- Accessible Interactive React Accordion Component -->
+        <ServiceAreasFaq client:load faqs={faqs} />
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 6. BOOKING AND CALLBACK SECTION                                */}
+    {/* ============================================================== */}
+    <section id="contact" class="relative z-10 py-16 sm:py-24 border-b border-white/[0.06] bg-[#0c0d10]/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          {/* Left Column: Schedule Inspection Info & Contact Details (5 cols) */}
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 mb-2">
+                <span class="w-5 h-[1.5px] bg-[#E5A93C]"></span>
+                <span class="text-[#E5A93C] text-[11px] font-bold tracking-[0.2em] uppercase font-mono">
+                  SCHEDULE INSPECTION
+                </span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-heading mb-3">
+                Book Pest Inspection in Your Bangalore Locality
+              </h2>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                Connect with our local Bangalore pest specialists. Tell us your locality and pest concerns for immediate scheduling.
+              </p>
+            </div>
+
+            {/* Preserved Business Details Glass Card */}
+            <div class="slv-card rounded-2xl p-6 sm:p-7 space-y-5 border border-white/[0.08] bg-[#0e1014]/90">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center shrink-0">
+                  <MapPin class="w-5 h-5 text-[#E5A93C]" />
+                </div>
+                <div>
+                  <span class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-wider block font-mono">
+                    Service Headquarters
+                  </span>
+                  <p class="text-sm sm:text-base font-bold text-white mt-0.5">
+                    143 Soundarya Layout, Doddabidarakallu, Bangalore 560073
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 pt-4 border-t border-white/[0.06]">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0">
+                  <Phone class="w-5 h-5 text-cyan-400" />
+                </div>
+                <div>
+                  <span class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-wider block font-mono">
+                    Helpline / Urgent Dispatch
+                  </span>
+                  <a
+                    href="tel:9180397822"
+                    class="text-lg font-black text-white font-mono hover:text-[#F6C453] transition-colors block mt-0.5"
+                  >
+                    91803 97822
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 pt-4 border-t border-white/[0.06]">
+                <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 flex items-center justify-center shrink-0">
+                  <Mail class="w-5 h-5 text-[#F6C453]" />
+                </div>
+                <div>
+                  <span class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-wider block font-mono">
+                    Official Email
+                  </span>
+                  <a
+                    href="mailto:contact@slvpestcontrol.com"
+                    class="text-sm sm:text-base font-semibold text-white hover:text-[#F6C453] transition-colors block mt-0.5"
+                  >
+                    contact@slvpestcontrol.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 pt-4 border-t border-white/[0.06]">
+                <div class="w-10 h-10 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 flex items-center justify-center shrink-0">
+                  <MessageCircle class="w-5 h-5 text-[#25D366]" />
+                </div>
+                <div>
+                  <span class="text-[10.5px] font-bold text-zinc-400 uppercase tracking-wider block font-mono">
+                    WhatsApp Specialist Direct
+                  </span>
+                  <a
+                    href="https://wa.me/9180397822"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-bold text-white hover:text-[#25D366] transition-colors block mt-0.5"
+                  >
+                    Chat on WhatsApp (91803 97822)
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Regional Links */}
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-3 font-mono">
+                Jump to Bangalore Regional Zones
+              </span>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                {serviceRegions.map((r) => (
+                  <a
+                    href={`#${r.id}`}
+                    class="text-zinc-300 hover:text-white transition flex items-center gap-2 py-1 group"
+                  >
+                    <span class={`w-1.5 h-1.5 rounded-full ${r.theme.dotBg}`}></span>
+                    <span class="group-hover:translate-x-0.5 transition-transform">{r.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Glassmorphism Booking Form (7 cols) */}
+          <div class="lg:col-span-7">
+            <ContactForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Reusable Global Footer -->
+  <Footer client:load />
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <FloatingActions client:load />
+</Layout>

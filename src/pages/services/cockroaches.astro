@@ -1,0 +1,818 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import { ContactForm } from '../../components/ContactForm';
+import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+import {
+  Sparkles,
+  Shield,
+  ShieldCheck,
+  CheckCircle2,
+  AlertTriangle,
+  Search,
+  Layers,
+  Phone,
+  MessageCircle,
+  Mail,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Home,
+  Building,
+  UtensilsCrossed,
+  HelpCircle,
+  BookOpen,
+  Eye,
+  Activity,
+  FileText,
+  DoorOpen,
+  Waves,
+  Box,
+  Flame,
+  Package,
+  Wrench,
+  Droplets,
+  Trash2
+} from 'lucide-react';
+
+const signs = [
+  {
+    title: 'Cockroach Droppings',
+    desc: 'Small black or dark brown specks resembling ground black pepper or coffee grounds behind kitchen appliances, in drawer corners, and along baseboards.',
+    icon: Activity
+  },
+  {
+    title: 'Egg Cases (Oothecae)',
+    desc: 'Small, dark reddish-brown cylindrical egg capsules hidden in kitchen cabinet corners, behind refrigerators, under sinks, or inside pantry shelves.',
+    icon: Layers
+  },
+  {
+    title: 'Unpleasant Musty Odour',
+    desc: 'An oily, musty, pungent smell in kitchens and enclosed cupboards caused by aggregation pheromones released by active cockroach populations.',
+    icon: Sparkles
+  },
+  {
+    title: 'Live Sightings at Night',
+    desc: 'Cockroaches scattering when kitchen or bathroom lights are switched on at night, indicating harbourage in cracks, drains, or under counter sinks.',
+    icon: Eye
+  }
+];
+
+const harbourageAreas = [
+  { name: 'Kitchen Cabinets', desc: 'Hinges, underside shelving, and corner joints' },
+  { name: 'Behind Appliances', desc: 'Refrigerator motor compressors, microwaves, and ovens' },
+  { name: 'Under Sinks', desc: 'Plumbing pipe entries and moisture-prone gaps' },
+  { name: 'Drainage Lines', desc: 'Kitchen floor drains and wash area piping' },
+  { name: 'Wall Cracks & Tiles', desc: 'Loose grout, tile gaps, and baseboard crevices' },
+  { name: 'Pantry Shelves', desc: 'Food storage boxes, cardboard containers, and corners' }
+];
+
+const fourStageProcess = [
+  {
+    step: '01',
+    title: 'Inspection & Activity Mapping',
+    description: 'Identify activity and likely harbourage areas.',
+    detail: 'Our certified technician systematically inspects kitchen cabinetry, drain traps, appliances, and utility ducts to determine species and map active harbourages.',
+    icon: Search
+  },
+  {
+    step: '02',
+    title: 'Targeted Treatment',
+    description: 'Treat suitable areas according to inspection findings and property conditions.',
+    detail: 'Precision odorless gel bait dots are placed discreetly in deep crack recesses, cabinet hinges, and appliance motor housings away from food-contact surfaces.',
+    icon: Layers
+  },
+  {
+    step: '03',
+    title: 'Monitoring & Follow-up',
+    description: 'Monitor activity and provide appropriate follow-up guidance.',
+    detail: 'Structured monitoring tracks bait consumption, accounts for newly emerging nymphs from egg cases, and provides targeted follow-up guidance.',
+    icon: Activity
+  },
+  {
+    step: '04',
+    title: 'Prevention Guidance',
+    description: 'Provide practical recommendations to help reduce future activity.',
+    detail: 'Actionable sanitation, moisture management, parcel inspection, and structural exclusion recommendations tailored to your premises.',
+    icon: ShieldCheck
+  }
+];
+
+const propertiesWeTreat = [
+  'Homes & Villas',
+  'Apartments & High-Rises',
+  'Paying Guest (PG) Accommodations',
+  'Hotels & Hostels',
+  'Restaurants & Cloud Kitchens',
+  'Corporate Offices & Cafeterias',
+  'Retail Outlets & Supermarkets',
+  'Commercial Food Facilities'
+];
+
+const serviceZones = [
+  { title: 'NORTH BANGALORE', areas: 'Yelahanka, Hebbal, RT Nagar, Sahakar Nagar and surrounding sectors' },
+  { title: 'EAST BANGALORE', areas: 'Whitefield, Indiranagar, Marathahalli, KR Puram and surrounding sectors' },
+  { title: 'WEST BANGALORE', areas: 'Nagasandra, Yeshwanthpur, Rajajinagar, Basaveshwaranagar, Andarahalli' },
+  { title: 'SOUTH BANGALORE', areas: 'Jayanagar, JP Nagar, BTM Layout, Koramangala, Electronic City' },
+  { title: 'CENTRAL BANGALORE', areas: 'Malleshwaram, MG Road, Richmond Town, Shanthi Nagar and central corridors' },
+  { title: 'OUTER BANGALORE', areas: 'Sarjapur Road, Devanahalli, Kanakapura Road and extended industrial zones' }
+];
+
+const knowledgeArticles = [
+  {
+    title: 'Cockroach Identification',
+    desc: 'Common signs of activity: live sightings, droppings, egg cases, and distinctive odors.',
+    href: '/knowledge/cockroaches/identification'
+  },
+  {
+    title: 'Where Cockroaches Hide',
+    desc: 'Cabinet hinges, under sinks, floor drains, cracks, crevices, and behind appliance motors.',
+    href: '/knowledge/cockroaches/where-they-hide'
+  },
+  {
+    title: 'How Cockroaches Enter & Spread',
+    desc: 'Entry pathways via grocery packaging, deliveries, drains, and shared apartment shafts.',
+    href: '/knowledge/cockroaches/how-they-spread'
+  },
+  {
+    title: 'Cockroach Prevention',
+    desc: 'Actionable sanitation checklist, moisture reduction, structural sealing, and waste management.',
+    href: '/knowledge/cockroaches/prevention'
+  },
+  {
+    title: 'Cockroach Treatment Guide',
+    desc: 'Professional 4-stage IPM approach: inspection, targeted gel baiting, monitoring, and advice.',
+    href: '/knowledge/cockroaches/treatment-guide'
+  },
+  {
+    title: 'Cockroach FAQ',
+    desc: 'Answers to 11 key questions on costs, preparation, safety, apartments, and restaurants.',
+    href: '/knowledge/cockroaches/faq'
+  }
+];
+
+const faqs = [
+  {
+    q: 'How does cockroach gel baiting work?',
+    a: 'Cockroach gel bait contains food attractants combined with a slow-acting active ingredient. Cockroaches consume the bait, return to their harbourage, and share it with the population through natural feeding behavior, controlling the colony at its source.'
+  },
+  {
+    q: 'Do I need to empty my kitchen utensils before cockroach treatment?',
+    a: 'For standard odorless gel baiting, it is generally not necessary to empty your entire kitchen. Gel bait is placed in tiny, discreet spots behind hinges and corners away from utensils and food-contact areas.'
+  },
+  {
+    q: 'How much does cockroach control cost in Bangalore?',
+    a: 'Cockroach control at SLV Pest Control starts from ₹599. Pricing is determined based on property type, BHK size, and infestation severity during assessment.'
+  },
+  {
+    q: 'How do cockroaches enter my home or apartment?',
+    a: 'Cockroaches commonly enter via drainage pipes, gap openings under doors, delivery grocery boxes, egg cartons, and adjoining apartment utility ducts.'
+  },
+  {
+    q: 'What should I do after cockroach treatment?',
+    a: 'Keep treated areas dry and avoid washing away gel bait dots. Maintain good kitchen hygiene by wiping down food crumbs, storing dry goods in sealed containers, and emptying garbage bins nightly.'
+  },
+  {
+    q: 'Do you treat apartments, PGs, and commercial kitchens?',
+    a: 'Yes. SLV Pest Control provides tailored cockroach management for private residences, gated community apartments, PGs, hostels, cloud kitchens, and commercial food establishments across Bangalore.'
+  }
+];
+---
+
+<Layout
+  title="Cockroach Control in Bangalore | ₹599 Starting | SLV Pest Control"
+  description="Professional cockroach control in Bangalore. Clean & hygienic spaces with targeted odorless gel baiting and perimeter barrier protection. Starting ₹599. Call 91803 97822."
+  canonical="https://slvpestcontrol.com/services/cockroach-control"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://slvpestcontrol.com/services/cockroach-control#service",
+          "name": "Cockroach Control in Bangalore",
+          "serviceType": "Cockroach Pest Control Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "SLV Pest Control",
+            "telephone": "+91-9180397822",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "143 Soundarya Layout, Doddabidarakallu",
+              "addressLocality": "Bengaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "560073",
+              "addressCountry": "IN"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Bengaluru"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "599",
+            "priceCurrency": "INR"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://slvpestcontrol.com/services/cockroach-control#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.a
+            }
+          }))
+        }
+      ]
+    })} />
+  </Fragment>
+
+  <Header client:load activeItem="cockroaches" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/#services" class="hover:text-white transition">Services</a>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Cockroach Control</span>
+      </nav>
+    </div>
+
+    {/* ============================================================== */}
+    {/* 1. HERO SECTION                                               */}
+    {/* ============================================================== */}
+    <section class="relative z-10 pt-10 sm:pt-14 lg:pt-18 pb-14 sm:pb-18 border-b border-white/[0.06] overflow-hidden bg-[#090a0c]">
+      {/* Premium Cockroach Control HD Hero Banner Background */}
+      <div 
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none transition-opacity duration-700"
+        style="background-image: url('/cockroach-banner.png'); background-position: center 42%;"
+        aria-hidden="true"
+      ></div>
+
+      {/* Atmospheric dark overlays preserving maximum center negative space and crisp typography contrast */}
+      {/* Center focus radial vignette keeping center 35-40% uncluttered and deeply readable */}
+      <div 
+        class="absolute inset-0 bg-radial-[at_50%_50%] from-[#090a0c]/80 via-[#090a0c]/75 to-[#090a0c]/85 pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      {/* Top & bottom gentle gradient fades seamlessly connecting with header and subsequent section */}
+      <div 
+        class="absolute inset-0 bg-gradient-to-b from-[#090a0c]/75 via-transparent to-[#090a0c] pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto">
+          {/* Eyebrow badge */}
+          <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+            <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.25em] uppercase">
+              COCKROACH CONTROL IN BANGALORE
+            </span>
+          </div>
+
+          {/* H1 */}
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading">
+            Cockroach Control in <span class="slv-gold-text">Bangalore</span>
+          </h1>
+
+          {/* Supporting message */}
+          <p class="text-xl sm:text-2xl font-bold text-white mb-6 font-heading tracking-tight">
+            Clean &amp; hygienic spaces
+          </p>
+
+          <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8 font-normal">
+            SLV Pest Control provides professional cockroach inspection and targeted odorless gel baiting across Bangalore. Our disciplined 4-stage process controls cockroaches at their harbourage sources in homes, apartments, PGs, and commercial kitchens.
+          </p>
+
+          {/* Pricing indicator */}
+          <div class="inline-flex items-center gap-4 px-4 py-2 rounded-2xl bg-white/[0.03] border border-white/[0.08] mb-8 text-xs sm:text-sm font-semibold">
+            <span class="text-[#F6C453] font-bold">Starting at ₹599</span>
+            <span class="text-zinc-600">|</span>
+            <span class="text-white uppercase tracking-wider text-[11px] sm:text-xs">Odorless Gel Baiting</span>
+          </div>
+
+          {/* CTAs */}
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+            <a
+              href="/contact"
+              class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider hover:border-[#F6C453]"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call Now</span>
+            </a>
+
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md transition-all inline-flex items-center justify-center"
+            >
+              <MessageCircle class="w-4 h-4 text-white" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 2. SIGNS OF COCKROACHES                                       */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              IDENTIFICATION
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Common Signs of Cockroaches
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3">
+            Inspect your kitchen, pantry, and plumbing areas for these characteristic indicators.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {signs.map((sign) => {
+            const Icon = sign.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                    <Icon class="w-5 h-5 text-[#E5A93C]" />
+                  </div>
+                  <h3 class="text-base sm:text-lg font-bold text-white mb-2">
+                    {sign.title}
+                  </h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                    {sign.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 3. WHERE COCKROACHES HIDE                                     */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              HARBOURAGE AREAS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Where Cockroaches Hide
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Primary nesting and shelter locations close to warmth, moisture, and food residues.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {harbourageAreas.map((item) => (
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.07] flex flex-col justify-between">
+              <div>
+                <h3 class="text-sm sm:text-base font-bold text-[#F6C453] mb-1.5">{item.name}</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 4. OUR 4-STAGE TREATMENT PROCESS                              */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              TREATMENT PROCESS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Our 4-Stage Treatment Process
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-4">
+            A property-specific approach focused on root-cause inspection, precision gel baiting, and sustained monitoring.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {fourStageProcess.map((stage) => {
+            const Icon = stage.icon;
+            return (
+              <div class="slv-card rounded-2xl p-7 flex flex-col justify-between border border-white/[0.08] hover:border-[#E5A93C]/50 transition-all">
+                <div>
+                  <div class="flex items-center justify-between mb-5">
+                    <span class="text-3xl font-black font-heading slv-gold-text tracking-tighter">
+                      {stage.step}
+                    </span>
+                    <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#E5A93C]">
+                      <Icon class="w-5 h-5 text-[#E5A93C]" />
+                    </div>
+                  </div>
+
+                  <h3 class="text-lg font-bold text-white font-heading mb-2">
+                    {stage.title}
+                  </h3>
+                  <p class="text-[#FFE08A] text-xs font-semibold mb-3">
+                    {stage.description}
+                  </p>
+                  <p class="text-zinc-400 text-xs sm:text-[13px] leading-relaxed">
+                    {stage.detail}
+                  </p>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/[0.06] text-[11px] text-zinc-500 font-mono">
+                  Phase {stage.step} of 04
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 5. PROPERTIES WE TREAT                                        */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              COVERAGE
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-heading">
+            Properties We Treat
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3">
+            Customized cockroach management across residential, rental, and commercial properties.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {propertiesWeTreat.map((prop) => (
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.07] text-center flex flex-col items-center justify-center">
+              <Building class="w-6 h-6 text-[#E5A93C] mb-2" />
+              <span class="text-sm font-bold text-white">{prop}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 6. DEDICATED PRICING SECTION                                  */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="slv-card rounded-3xl p-8 sm:p-14 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.25em] uppercase block mb-3">
+            TRANSPARENT PRICING
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-heading mb-6">
+            COCKROACH CONTROL
+          </h2>
+          <div class="my-6">
+            <span class="text-zinc-400 text-base sm:text-lg mr-2 font-medium">Starting at</span>
+            <span class="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-mono tracking-tight text-[#F6C453]">
+              ₹599
+            </span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] mb-8">
+            <ShieldCheck class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
+              Odorless Gel Baiting
+            </span>
+          </div>
+          <p class="text-zinc-400 text-xs sm:text-sm max-w-md mx-auto mb-8 leading-relaxed">
+            Starting price applies to basic residential kitchen scope. Detailed pricing is confirmed based on BHK size and property conditions during initial assessment.
+          </p>
+          <div class="flex justify-center">
+            <a
+              href="/contact"
+              class="slv-btn-primary px-8 py-4 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 7. LEARN MORE ABOUT COCKROACHES (KNOWLEDGE HUB CARDS)         */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL RESOURCES
+            </span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+            Learn More About Cockroaches
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3">
+            Explore our educational Knowledge Hub guides covering identification, hiding places, spread mechanisms, prevention, treatment protocols, and FAQs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {knowledgeArticles.map((article) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/50 transition-all flex flex-col justify-between group">
+              <div>
+                <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-2 font-mono">
+                  Knowledge Guide
+                </span>
+                <h3 class="text-lg font-bold text-white group-hover:text-[#F6C453] transition mb-2 font-heading">
+                  {article.title}
+                </h3>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                  {article.desc}
+                </p>
+              </div>
+
+              <a
+                href={article.href}
+                class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between transition"
+              >
+                <span>Read Full Article</span>
+                <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#E5A93C]" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 8. PREPARATION & RE-ENTRY GUIDANCE                            */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Before Treatment */}
+          <div class="slv-card rounded-3xl p-8 border border-white/[0.08]">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+              PREPARATION GUIDANCE
+            </span>
+            <h3 class="text-2xl font-black text-white font-heading mb-4">Before Treatment</h3>
+            <div class="space-y-3 text-xs sm:text-sm text-zinc-300">
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Wipe heavy cooking oil residues from splashbacks and stoves.</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Keep under-sink plumbing and floor drains accessible.</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>No need to empty crockery for standard odorless gel application.</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Inform the technician of observed nocturnal activity zones.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* After Treatment */}
+          <div class="slv-card rounded-3xl p-8 border border-white/[0.08]">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+              POST-TREATMENT CARE
+            </span>
+            <h3 class="text-2xl font-black text-white font-heading mb-4">After Treatment</h3>
+            <div class="space-y-3 text-xs sm:text-sm text-zinc-300">
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Do not wipe away or wash over tiny gel bait dots.</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Avoid spraying store-bought aerosols over treated bait spots.</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Store pantry grains in airtight containers to reduce competition.</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Follow the technician's monitoring instructions and follow-up guidance.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 9. WHY SLV PEST CONTROL                                       */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            WHY CHOOSE US
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Why SLV Pest Control
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Search class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Forensic Inspection</h3>
+            <p class="text-zinc-400 text-xs">Diagnostic mapping of hidden kitchen and drain harbourages.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Sparkles class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Odorless Gel Baiting</h3>
+            <p class="text-zinc-400 text-xs">No need to vacate or empty kitchen cupboards.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Home class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Property-Specific Approach</h3>
+            <p class="text-zinc-400 text-xs">Tailored protocols for flats, villas, PGs, and restaurants.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <ShieldCheck class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">IPM Methodology</h3>
+            <p class="text-zinc-400 text-xs">Non-repellent active placement that controls colony roots.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <FileText class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Free Inspection</h3>
+            <p class="text-zinc-400 text-xs">Initial assessment to evaluate infestation extent.</p>
+          </div>
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+            <Phone class="w-6 h-6 text-[#E5A93C] mb-3" />
+            <h3 class="text-base font-bold text-white mb-1.5">Direct Communication</h3>
+            <p class="text-zinc-400 text-xs">Transparent advice and prompt Bangalore support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 10. FREQUENTLY ASKED QUESTIONS                                */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 sm:mb-14">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">FAQS</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <h3 class="text-base sm:text-lg font-bold text-white mb-2">{faq.q}</h3>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ============================================================== */}
+    {/* 11. BANGALORE SERVICE AREAS                                   */}
+    {/* ============================================================== */}
+    <ServiceAreasSection />
+
+    {/* ============================================================== */}
+    {/* 12. CONTACT & INSPECTION FORM                                 */}
+    {/* ============================================================== */}
+    <section class="relative z-10 py-16 sm:py-20 lg:py-24 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+                CONTACT SLV
+              </span>
+              <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight font-heading mb-4">
+                Schedule Your Cockroach Inspection
+              </h2>
+              <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                Contact our Bangalore team directly or submit the inquiry form for prompt residential and commercial service.
+              </p>
+            </div>
+
+            <div class="slv-card rounded-2xl p-6 space-y-4 border border-white/[0.08]">
+              <div class="flex items-start gap-3">
+                <MapPin class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <div>
+                  <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">Office Address</span>
+                  <p class="text-sm text-white">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 pt-3 border-t border-white/[0.06]">
+                <Phone class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <div>
+                  <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">Phone / WhatsApp</span>
+                  <a href="tel:9180397822" class="text-base font-bold text-white font-mono hover:text-[#FFE08A]">91803 97822</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 pt-3 border-t border-white/[0.06]">
+                <Mail class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <div>
+                  <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block">Email</span>
+                  <a href="mailto:contact@slvpestcontrol.com" class="text-sm font-semibold text-white hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                href="tel:9180397822"
+                class="slv-btn-primary flex-1 py-3 text-xs font-bold uppercase tracking-wider justify-center"
+              >
+                <Phone class="w-3.5 h-3.5 mr-1" />
+                <span>Call Now</span>
+              </a>
+
+              <a
+                href="https://wa.me/9180397822"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 py-3 text-xs font-bold uppercase tracking-wider justify-center rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white inline-flex items-center"
+              >
+                <MessageCircle class="w-3.5 h-3.5 mr-1" />
+                <span>WhatsApp</span>
+              </a>
+
+              <a
+                href="mailto:contact@slvpestcontrol.com"
+                class="slv-btn-secondary flex-1 py-3 text-xs font-bold uppercase tracking-wider justify-center"
+              >
+                <Mail class="w-3.5 h-3.5 mr-1" />
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <ContactForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

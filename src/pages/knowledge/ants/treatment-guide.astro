@@ -1,0 +1,332 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  CalendarCheck,
+  FileCheck2,
+  ListOrdered
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Ant Identification',
+    desc: 'Recognize common ant behaviors, signs of infestation, trailing activity, and food attraction.',
+    href: '/knowledge/ants/identification'
+  },
+  {
+    title: 'Where Ants Hide & Nest',
+    desc: 'Discover nesting zones in cracks, wall voids, under sinks, kitchen cupboards, and outdoor perimeters.',
+    href: '/knowledge/ants/where-they-hide'
+  },
+  {
+    title: 'How Ants Enter & Spread',
+    desc: 'Understand entry through exterior gaps, utility penetrations, foraging trails, and scent-guided expansion.',
+    href: '/knowledge/ants/how-they-spread'
+  },
+  {
+    title: 'Ant Prevention Guide',
+    desc: 'Actionable sanitation steps, food storage habits, moisture control, and structural sealing techniques.',
+    href: '/knowledge/ants/prevention'
+  },
+  {
+    title: 'Ant FAQ',
+    desc: 'Clear, factual answers to 12 common questions regarding ant species, nesting habits, sprays vs baits, and safety.',
+    href: '/knowledge/ants/faq'
+  }
+];
+
+const processStages = [
+  {
+    step: '01',
+    title: 'Inspection',
+    desc: 'Identify ant activity, likely harbourage and environmental conditions across kitchens, bathrooms, wall gaps, and entry points.'
+  },
+  {
+    step: '02',
+    title: 'Assessment',
+    desc: 'Determine the appropriate management approach based on inspection findings and property conditions.'
+  },
+  {
+    step: '03',
+    title: 'Targeted Treatment',
+    desc: 'Apply an appropriate treatment method to suitable areas based on the inspection, utilizing targeted bait formulations and perimeter barriers.'
+  },
+  {
+    step: '04',
+    title: 'Follow-up & Prevention Guidance',
+    desc: 'Provide monitoring and practical prevention recommendations to maintain long-term ant exclusion.'
+  }
+];
+---
+
+<Layout
+  title="Ant Treatment Guide in Bangalore | 4-Stage Management | SLV Pest Control"
+  description="Comprehensive 4-stage ant treatment guide: inspection, assessment, targeted baiting, and prevention guidance. Professional ant control by SLV Pest Control."
+  canonical="https://slvpestcontrol.com/knowledge/ants/treatment-guide"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+    </div>
+
+    {/* BREADCRUMB */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>/</span>
+        <span class="text-zinc-500">Ants</span>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Treatment Guide</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+            TREATMENT METHODOLOGY • ANTS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] mb-5 font-heading">
+          Ant Treatment Guide: 4-Stage Integrated Colony Management
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6">
+          Effective ant control requires a structured Integrated Pest Management (IPM) methodology. Rather than spraying surface chemicals that trigger colony budding, SLV Pest Control follows a disciplined 4-stage management process tailored to Bangalore properties.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-400 pt-4 border-t border-white/[0.06]">
+          <span>Service Standard: SLV Technical Protocol</span>
+          <span>•</span>
+          <span>Bangalore Residential &amp; Commercial</span>
+          <span>•</span>
+          <span class="text-[#F6C453]">Full Protocol Disclosure</span>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        {/* SECTION 1: METHODOLOGY OVERVIEW */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            The Science Behind Our 4-Stage Ant Control
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Over-the-counter insecticide sprays fail because they only target foraging workers visible on surfaces. Ants communicate via social food sharing known as <em>trophallaxis</em>. When returning workers share slow-acting baits with the queen and nursing workers inside the nest, the entire reproductive engine of the colony is dismantled.
+          </p>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            Our treatment follows four clear, accountable stages designed for domestic homes, apartment complexes, restaurants, and corporate pantries across Bangalore:
+          </p>
+        </div>
+
+        {/* SECTION 2: THE 4 STAGES IN DETAIL */}
+        <div class="space-y-6">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            Our 4-Stage Treatment Journey
+          </h2>
+
+          {/* STAGE 1 */}
+          <div class="slv-card p-6 sm:p-8 rounded-2xl border border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl font-black text-[#F6C453] font-heading">Stage 01</span>
+              <span class="text-zinc-500">|</span>
+              <h3 class="text-lg font-bold text-white">Inspection</h3>
+            </div>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4">
+              <strong>Objective:</strong> Identify ant activity, likely harbourage and environmental conditions across kitchens, bathrooms, wall gaps, and entry points.
+            </p>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs text-zinc-300 space-y-2">
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Mapping active foraging trails along floor skirting, tile joints, and kitchen backsplashes.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Checking under-sink plumbing cabinets, drain traps, and kitchen appliances for moisture accumulation.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Inspecting exterior foundation walls, balcony planters, and utility lines for outdoor nesting sources.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* STAGE 2 */}
+          <div class="slv-card p-6 sm:p-8 rounded-2xl border border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl font-black text-[#F6C453] font-heading">Stage 02</span>
+              <span class="text-zinc-500">|</span>
+              <h3 class="text-lg font-bold text-white">Assessment</h3>
+            </div>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4">
+              <strong>Objective:</strong> Determine the appropriate management approach based on inspection findings and property conditions.
+            </p>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs text-zinc-300 space-y-2">
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Evaluating species feeding preferences (sugar-loving vs protein-loving species).</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Identifying whether the infestation is a primary nest or multiple budding satellite colonies.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Designing a custom treatment layout safe for households with young children and pets.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* STAGE 3 */}
+          <div class="slv-card p-6 sm:p-8 rounded-2xl border border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl font-black text-[#F6C453] font-heading">Stage 03</span>
+              <span class="text-zinc-500">|</span>
+              <h3 class="text-lg font-bold text-white">Targeted Treatment</h3>
+            </div>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4">
+              <strong>Objective:</strong> Apply an appropriate treatment method to suitable areas based on the inspection.
+            </p>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs text-zinc-300 space-y-2">
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Precision placement of high-palatability gel bait dots along active foraging tracks and cabinet hinges.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Application of targeted dust formulation in inaccessible dry wall voids and conduit openings.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Applying non-repellent perimeter treatments at exterior thresholds where necessary to prevent incoming scouts.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* STAGE 4 */}
+          <div class="slv-card p-6 sm:p-8 rounded-2xl border border-white/[0.08]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl font-black text-[#F6C453] font-heading">Stage 04</span>
+              <span class="text-zinc-500">|</span>
+              <h3 class="text-lg font-bold text-white">Follow-up &amp; Prevention Guidance</h3>
+            </div>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4">
+              <strong>Objective:</strong> Provide monitoring and practical prevention recommendations.
+            </p>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs text-zinc-300 space-y-2">
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Guidance on maintaining undisturbed bait stations during the critical transfer period (24–72 hours).</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Detailed structural sealing and caulking suggestions to close known entry apertures permanently.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>Post-service monitoring check to confirm complete cessation of trail movement and colony collapse.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* PRIMARY CALL TO ACTION */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-[#E5A93C]/40 text-center">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            SLV PROFESSIONAL SERVICE
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Schedule an Inspection &amp; Treatment Today
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+            Get transparent inspection pricing and targeted treatment tailored to your home or office space in Bangalore.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/services/ant-control" class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2">
+              <span>Ant Control</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a href="tel:9180397822" class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 hover:border-[#F6C453]">
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+
+        {/* RELATED ARTICLES */}
+        <div>
+          <h3 class="text-xl font-bold text-white font-heading mb-4">
+            Related Ant Knowledge Guides
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card p-4 rounded-xl border border-white/[0.08] hover:border-[#E5A93C]/40 transition group block"
+              >
+                <h4 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1">
+                  {article.title}
+                </h4>
+                <p class="text-zinc-400 text-xs line-clamp-2">
+                  {article.desc}
+                </p>
+                <span class="text-[#E5A93C] text-xs font-semibold inline-flex items-center gap-1 mt-2">
+                  <span>Read Guide</span>
+                  <ArrowRight class="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* LOCAL FOOTER */}
+    <section class="relative z-10 py-12 border-b border-white/[0.06] bg-[#0c0d10]/50 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-xl font-bold text-white font-heading mb-2">
+          Science-Backed Ant Management in Bangalore
+        </h3>
+        <p class="text-zinc-400 text-xs sm:text-sm mb-4">
+          Safe, odourless, and targeted colony elimination delivered by experienced technicians across Bangalore.
+        </p>
+        <div class="flex items-center justify-center gap-6 text-xs text-zinc-300 font-mono">
+          <span>Phone: 91803 97822</span>
+          <span>•</span>
+          <span>Email: contact@slvpestcontrol.com</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

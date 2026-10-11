@@ -1,0 +1,322 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  PawPrint,
+  Home
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Where Ticks Hide',
+    desc: 'Inspect pet resting zones, upholstery, wall cracks, and shaded gardens.',
+    href: '/knowledge/ticks/where-they-hide'
+  },
+  {
+    title: 'How Ticks Spread',
+    desc: 'Understand entry vectors through domestic pets, vegetation, and outdoor walks.',
+    href: '/knowledge/ticks/how-they-spread'
+  },
+  {
+    title: 'Tick Prevention',
+    desc: 'Actionable environmental hygiene, bedding sanitation, and structural sealing.',
+    href: '/knowledge/ticks/prevention'
+  },
+  {
+    title: 'Tick Treatment Guide',
+    desc: 'Our structured 4-stage environmental protocol: inspection, source assessment, treatment, and follow-up.',
+    href: '/knowledge/ticks/treatment-guide'
+  },
+  {
+    title: 'Tick FAQ',
+    desc: 'Clear, factual answers to 13 common questions regarding tick management.',
+    href: '/knowledge/ticks/faq'
+  }
+];
+
+const identificationPoints = [
+  {
+    title: 'What Ticks Are',
+    desc: 'Ticks are eight-legged parasitic arachnids (in nymph and adult stages), distinct from six-legged insects. In Bangalore residences and kennels, the predominant species is the Brown Dog Tick (Rhipicephalus sanguineus), an arachnid uniquely suited to surviving and reproducing in indoor structural cracks without requiring soil.',
+    icon: Search
+  },
+  {
+    title: 'Visible Ticks Crawling Up Walls',
+    desc: 'Unlike fleas that jump, ticks crawl. Brown dog ticks exhibit strong negative geotaxis, instinctually climbing upward along vertical surfaces such as plaster walls, curtain pleats, window casings, doorframes, and ceiling moldings to seek seclusion.',
+    icon: Eye
+  },
+  {
+    title: 'Tick Activity Around Pets',
+    desc: 'Ticks frequently attach to domestic dogs and cats in sheltered vascular areas where grooming is difficult. Common attachment sites include behind ears, inside ear flaps, between paw pads, on necks, and along flanks. Noticeable pet restlessness or head shaking often signals activity.',
+    icon: PawPrint
+  },
+  {
+    title: 'Tick Presence in Resting Areas',
+    desc: 'Clusters of small, seed-sized nymphs or cast molting skins in pet sleeping areas, dog crate corners, bedding seams, and kennel woodwork. Unengorged ticks appear flat and oval, swelling significantly after feeding.',
+    icon: Home
+  },
+  {
+    title: 'Signs Along Skirting & Crevices',
+    desc: 'Fine dark specks or live flat nymphs lodged in expansion joints between tiled floors and skirting boards, behind loose baseboards, and within unsealed electrical conduit boxes near pet resting zones.',
+    icon: Layers
+  },
+  {
+    title: 'Compound & Yard Perimeter Indicators',
+    desc: 'Active ticks observed on exterior compound boundary walls, shaded veranda brickwork, gate pillar joints, and sheltered garden edges where animals routinely rest or pass through.',
+    icon: Activity
+  }
+];
+---
+
+<Layout
+  title="Tick Identification | Signs, Detection & Bangalore Guide | SLV Pest Control"
+  description="Learn how to identify tick activity in Bangalore homes and compounds. Recognize signs on walls, pet resting areas, and skirting boards. Consult SLV Pest Control."
+  canonical="https://slvpestcontrol.com/knowledge/ticks/identification"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Glow */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Ticks > Tick Identification */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/tick-control" class="hover:text-white transition">Ticks</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Tick Identification</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            TICK KNOWLEDGE HUB
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Tick Identification in <span class="slv-gold-text">Bangalore</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Recognize early signs of tick activity across living rooms, walls, pet resting areas, and property perimeters before numbers multiply.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/tick-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Tick Control</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+          >
+            <MessageCircle class="w-4 h-4 mr-1 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Overview */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Understanding Tick Biology &amp; Visible Indicators
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Ticks are arachnids that feed on host blood across distinct life stages: egg, larva (six-legged seed tick), nymph (eight-legged), and adult (eight-legged). In urban Bangalore homes and independent villas with pets, the Brown Dog Tick (<em>Rhipicephalus sanguineus</em>) is the most widespread species.
+            </p>
+            <p>
+              Unlike ticks found in deep woodlands that require high humidity in leaf litter, the Brown Dog Tick has adapted to survive inside dry residential structures. They climb vertical walls, hide inside masonry crevices, and nest in dog bedding between feeding intervals.
+            </p>
+            <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs sm:text-sm text-zinc-300 flex items-start gap-3">
+              <AlertTriangle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+              <span>
+                <strong>Important Note:</strong> SLV Pest Control provides professional environmental property inspection and premises pest control. We do not diagnose medical or veterinary conditions. For the health assessment and clinical treatment of dogs, cats, or other domestic animals, always consult a qualified licensed veterinarian.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* 6 Key Signs Grid */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">IDENTIFICATION GUIDE</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              Common Signs of Tick Activity
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {identificationPoints.map((point) => {
+              const Icon = point.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{point.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{point.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Areas Where Ticks May Be Noticed */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Where Ticks Are Most Frequently Noticed in Bangalore Properties
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-zinc-300">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Indoor Zones</span>
+              <h3 class="text-base font-bold text-white mb-2">Vertical Surfaces &amp; Rest Areas</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                Baseboards, electrical switch plates, door casing gaps, window curtain folds, mattress corners near pet sleeping zones, and dog crates.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1">Outdoor &amp; Perimeter Zones</span>
+              <h3 class="text-base font-bold text-white mb-2">Perimeters &amp; Compound Walls</h3>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                Compound boundary walls, external kennel enclosures, shaded car porches, garden pavers, and veranda steps where dogs rest.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Noticed Tick Activity on Your Property?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Professional inspection and targeted environmental treatments help protect your home and compound. Pricing provided after thorough on-site inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/tick-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Tick Control</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+              <span>Call: 91803 97822</span>
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Tick Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

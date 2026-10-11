@@ -1,0 +1,90 @@
+---
+import { MapPin, ArrowRight } from 'lucide-react';
+
+interface Props {
+  serviceName?: string;
+}
+
+const { serviceName } = Astro.props;
+
+export const serviceZones = [
+  {
+    id: 'north-bangalore',
+    title: 'NORTH BANGALORE',
+    areas: 'Yelahanka, Hebbal, RT Nagar, Sahakar Nagar and surrounding sectors',
+    locations: ['Yelahanka', 'Hebbal', 'RT Nagar', 'Sahakar Nagar', 'Vidyaranyapura', 'Thanisandra', 'Jakkur', 'Hennur']
+  },
+  {
+    id: 'east-bangalore',
+    title: 'EAST BANGALORE',
+    areas: 'Whitefield, Indiranagar, Marathahalli, KR Puram and surrounding sectors',
+    locations: ['Whitefield', 'Indiranagar', 'Marathahalli', 'KR Puram', 'Bellandur', 'Mahadevapura', 'CV Raman Nagar', 'Varthur']
+  },
+  {
+    id: 'west-bangalore',
+    title: 'WEST BANGALORE',
+    areas: 'Nagasandra, Yeshwanthpur, Rajajinagar, Basaveshwaranagar, Andarahalli',
+    locations: ['Nagasandra', 'Yeshwanthpur', 'Rajajinagar', 'Basaveshwaranagar', 'Andarahalli', 'Peenya', 'Vijayanagar', 'Kengeri']
+  },
+  {
+    id: 'south-bangalore',
+    title: 'SOUTH BANGALORE',
+    areas: 'Jayanagar, JP Nagar, BTM Layout, Koramangala, Electronic City',
+    locations: ['Jayanagar', 'JP Nagar', 'BTM Layout', 'Koramangala', 'Electronic City', 'HSR Layout', 'Bannerghatta Road', 'Banashankari']
+  },
+  {
+    id: 'central-bangalore',
+    title: 'CENTRAL BANGALORE',
+    areas: 'Malleshwaram, MG Road, Richmond Town, Shanthi Nagar and central corridors',
+    locations: ['Malleshwaram', 'MG Road', 'Richmond Town', 'Shanthi Nagar', 'Frazer Town', 'Vasanth Nagar', 'Shivajinagar', 'Cunningham Road']
+  },
+  {
+    id: 'outer-bangalore',
+    title: 'OUTER BANGALORE',
+    areas: 'Sarjapur Road, Devanahalli, Kanakapura Road and extended industrial zones',
+    locations: ['Sarjapur Road', 'Devanahalli', 'Kanakapura Road', 'Nelamangala', 'Hoskote', 'Bidadi', 'Jigani', 'Attibele']
+  }
+];
+---
+
+<section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+        <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+          BANGALORE REGIONS
+        </span>
+        <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-heading">
+        Service Areas
+      </h2>
+      <p class="text-zinc-400 text-xs sm:text-sm mt-3 max-w-2xl mx-auto">
+        We provide pest-control services across North, East, West, South, Central and Outer Bangalore with rapid technician dispatch.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+      {serviceZones.map((zone) => (
+        <a
+          href={`/service-areas#${zone.id}`}
+          class="slv-card rounded-2xl p-6 border border-white/[0.07] hover:border-[#E5A93C]/40 transition-all flex flex-col justify-between group block"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-2.5 mb-2">
+              <div class="flex items-center gap-2.5">
+                <MapPin class="w-4 h-4 text-[#E5A93C]" />
+                <h3 class="text-base font-bold text-white uppercase group-hover:text-[#F6C453] transition-colors">
+                  {zone.title}
+                </h3>
+              </div>
+              <ArrowRight class="w-3.5 h-3.5 text-zinc-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:text-[#F6C453] transition-all" />
+            </div>
+            <p class="text-zinc-400 text-xs leading-relaxed">{zone.areas}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,299 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Wind,
+  DoorOpen,
+  Waves,
+  Building,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  ShieldCheck,
+  Compass,
+  TreePine,
+  Shuffle
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Mosquito Identification',
+    desc: 'Recognize signs: day vs. night biters, larvae, and resting zones.',
+    href: '/knowledge/mosquitoes/identification'
+  },
+  {
+    title: 'Where Mosquitoes Breed & Hide',
+    desc: 'Stagnant water, containers, drains, gardens, and shaded damp areas.',
+    href: '/knowledge/mosquitoes/where-they-breed'
+  },
+  {
+    title: 'Mosquito Prevention',
+    desc: 'Eliminating standing water, covered tanks, physical mesh, and outdoor care.',
+    href: '/knowledge/mosquitoes/prevention'
+  },
+  {
+    title: 'Mosquito Treatment Guide',
+    desc: 'The 4-stage journey: inspection, source assessment, targeted treatment, and guidance.',
+    href: '/knowledge/mosquitoes/treatment-guide'
+  },
+  {
+    title: 'Mosquito FAQ',
+    desc: 'Answers to 12 practical questions on costs, preparation, breeding, and safety.',
+    href: '/knowledge/mosquitoes/faq'
+  }
+];
+
+const pathways = [
+  {
+    step: '01',
+    title: 'Unscreened Open Windows & Balcony Doors',
+    desc: 'During early morning and dusk hours when winds subside, flying adult mosquitoes follow carbon dioxide and heat plumes emitted by occupants, entering directly through open unscreened windows and balcony sliding doors.',
+    icon: DoorOpen
+  },
+  {
+    step: '02',
+    title: 'Exhaust Fan Openings & Ventilation Louvers',
+    desc: 'Kitchen chimney vents, bathroom exhaust fan louvers, and AC pipe masonry penetrations without insect mesh screens provide passive entry routes into living and sleeping quarters.',
+    icon: Wind
+  },
+  {
+    step: '03',
+    title: 'Perimeter Standing Water & Garden Breeding',
+    desc: 'Water collecting in garden planter saucers, terrace rainwater gutters, or utility balcony floor drains breeds hundreds of adults right at the threshold of living spaces.',
+    icon: Waves
+  },
+  {
+    step: '04',
+    title: 'Neighborhood & Construction Site Sources',
+    desc: 'Uncovered basement water storage tanks at nearby construction projects, unmaintained empty plots, and stagnant municipal roadside storm drains produce large mosquito populations that fly 100–300 meters into adjacent residential compounds.',
+    icon: Building
+  },
+  {
+    step: '05',
+    title: 'Outdoor-to-Indoor Transition Seeking Shelter',
+    desc: 'High ambient daytime heat drives mosquitoes to seek cooler, sheltered indoor environments. They follow residents through entry doors, settling beneath furniture and behind curtains.',
+    icon: Shuffle
+  },
+  {
+    step: '06',
+    title: 'Elevator Shafts & Vertical High-Rise Ducts',
+    desc: 'In multi-story Bangalore apartment buildings, mosquitoes entering ground-floor parking or lobby entrances ride air updrafts and elevator cars, easily reaching upper-floor corridors and balconies.',
+    icon: Compass
+  }
+];
+---
+
+<Layout
+  title="How Mosquitoes Enter & Spread | Entry Pathways & Flight | SLV Pest Control"
+  description="Discover how mosquitoes enter homes and spread across Bangalore properties. Learn about open windows, ventilation gaps, outdoor breeding sources, and wind-assisted flight."
+  canonical="https://slvpestcontrol.com/knowledge/mosquitoes/how-they-spread"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Mosquitoes > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/mosquito-control" class="hover:text-white transition">Mosquitoes</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">How Mosquitoes Enter &amp; Spread</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            ENTRY &amp; DISPERSAL PATHWAYS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          How Mosquitoes Enter &amp; Spread in <span class="slv-gold-text">Homes &amp; Spaces</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          A practical guide to how adult mosquitoes exploit structural gaps, external water sources, and ventilation openings to infiltrate properties.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/mosquito-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Get Mosquito Treatment</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Why Flight Dynamics Matter */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Understanding Mosquito Flight &amp; Attractants
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Mosquitoes are weak fliers that struggle in direct wind currents or beneath high-speed ceiling fans. However, in calm air during morning and evening transitional periods, they use specialized sensory organs to track body warmth, exhaled carbon dioxide (CO2), and skin lactic acid over distances of 20 to 30 meters.
+            </p>
+            <p>
+              Even when a home maintains pristine cleanliness indoors, open balcony doors, unmeshed bathroom vents, and nearby stagnant puddles allow continuous waves of incoming insects to breach interior spaces.
+            </p>
+          </div>
+        </div>
+
+        {/* 6 Pathways Grid */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">ENTRY MECHANISMS</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              6 Common Mosquito Entry Pathways
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {pathways.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="text-2xl font-black font-mono text-[#F6C453]">{item.step}</span>
+                      <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C]">
+                        <Icon class="w-5 h-5" />
+                      </div>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{item.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* High-Rise Apartment Movement */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl font-black text-white font-heading mb-4">
+            Do Mosquitoes Reach Upper Floors in Bangalore High-Rises?
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+            <p>
+              While individual mosquitoes rarely fly vertically above the 3rd or 4th floor against wind resistance, they frequently reach upper floors through elevator lobbies, staircase shafts, and vertical plumbing ducts. Additionally, potted plants on high-rise balconies with water-retaining saucers provide localized breeding habitats on the 10th or 20th floor itself.
+            </p>
+            <p>
+              Effective management therefore requires addressing both ground-level exterior perimeters and individual residential balcony containers.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Reduce Mosquito Intrusion Across Your Premises
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            SLV Pest Control combines perimeter barrier misting, outdoor thermal fogging, and targeted larvicide application. Pricing confirmed after on-site assessment.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/mosquito-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Get Mosquito Treatment</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Mosquito Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

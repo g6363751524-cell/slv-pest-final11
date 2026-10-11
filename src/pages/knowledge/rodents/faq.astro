@@ -1,0 +1,266 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  HelpCircle,
+  ShieldCheck,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Building
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Rodent Identification',
+    desc: 'Signs of activity: droppings, gnaw marks, scratching noises, and smear trails.',
+    href: '/knowledge/rodents/identification'
+  },
+  {
+    title: 'Where Rodents Hide',
+    desc: 'Kitchens, storage areas, ceiling voids, wall cavities, and utility rooms.',
+    href: '/knowledge/rodents/where-they-hide'
+  },
+  {
+    title: 'How Rodents Enter & Spread',
+    desc: 'Concealed gaps, door sweeps, utility pipes, and roofline travel paths.',
+    href: '/knowledge/rodents/how-they-spread'
+  },
+  {
+    title: 'Rodent Prevention',
+    desc: 'Securing food, clutter reduction, waste sanitation, and exclusion tips.',
+    href: '/knowledge/rodents/prevention'
+  },
+  {
+    title: 'Rodent Management Guide',
+    desc: 'The 4-stage management workflow: inspection, assessment, targeted control, and monitoring.',
+    href: '/knowledge/rodents/treatment-guide'
+  }
+];
+
+const faqs = [
+  {
+    q: 'How do I know if I have rodents?',
+    a: 'You can detect rodent presence by paying attention to physical evidence: small dark spindle-shaped droppings, gnaw marks on food packaging or cables, unexplained nocturnal scratching in ceilings or walls, greasy smudge marks along baseboards, and musky odours.'
+  },
+  {
+    q: 'What are the common signs of rodent activity?',
+    a: 'The most consistent signs include droppings near food storage, shredded cardboard or paper nesting materials, chewed electrical cables, food containers with nibbled holes, and occasionally live sightings along wall baseboards during evening hours.'
+  },
+  {
+    q: 'Where do rodents usually hide?',
+    a: 'Rats and mice prioritize warm, quiet, dark voids close to food and water. Common harbourages include false ceiling spaces, motor compartments behind refrigerators, voids under kitchen sinks, internal wall cavities, storage cartons, and utility rooms.'
+  },
+  {
+    q: 'How do rodents enter buildings?',
+    a: 'Rodents exploit structural vulnerabilities including settlement cracks in foundations, gaps beneath exterior doors without door sweeps, unsealed gaps around plumbing and AC conduit penetrations, damaged floor drain covers, and overhanging tree branches touching roofs.'
+  },
+  {
+    q: 'How much does rodent management cost in Bangalore?',
+    a: 'Rodent management is priced after an on-site property inspection. The cost depends on the size of the property, severity of the infestation, number of tamper-resistant bait stations or mechanical traps required, and whether specialized exterior perimeter defenses are needed.'
+  },
+  {
+    q: 'Is an inspection required before treatment?',
+    a: 'Yes. An initial inspection is essential to identify the specific rodent species (mice, roof rats, or sewer rats), locate primary harbourage cavities and travel runways, evaluate food sources, and identify structural entry points for targeted management.'
+  },
+  {
+    q: 'How long does treatment take?',
+    a: 'The duration varies by property type and population scale. The initial inspection and station placement typically takes 1 to 2 hours. However, because rodents are naturally neophobic (cautious of new objects), noticeable population reduction occurs over several days to weeks through scheduled monitoring.'
+  },
+  {
+    q: 'What preparation is required before rodent management?',
+    a: 'Property owners should clear access to baseboards, corners, and areas beneath kitchen sinks. Store all open food items in sealed plastic, glass, or metal containers, and ensure garbage is cleared from treatment zones.'
+  },
+  {
+    q: 'What should I do after treatment?',
+    a: 'Do not touch or reposition deployed bait stations or mechanical traps. Maintain strict kitchen sanitation by wiping crumbs nightly and securing pantry foods. Implement the technician’s structural exclusion advice to seal identified gaps.'
+  },
+  {
+    q: 'Can rodents return after treatment?',
+    a: 'Yes. Because wild rodent populations exist in surrounding urban environments, open drains, and vacant plots, rodents can re-invade if structural entry points remain unsealed or if accessible food sources attract new individuals. Ongoing monitoring and exclusion are key.'
+  },
+  {
+    q: 'Do you treat residential homes and apartments?',
+    a: 'Yes. We provide customized rodent management for independent villas, gated community apartments, row houses, and residential societies, utilizing child- and pet-safe locked bait stations and non-toxic mechanical traps.'
+  },
+  {
+    q: 'Do you treat restaurants, offices, warehouses and commercial properties?',
+    a: 'Yes. SLV Pest Control services commercial office parks, food service facilities, cloud kitchens, retail supermarkets, manufacturing plants, and logistics warehouses with compliant documentation and pest management protocols.'
+  }
+];
+---
+
+<Layout
+  title="Rodent FAQ | Frequently Asked Questions in Bangalore | SLV Pest Control"
+  description="Answers to common questions about rodent management in Bangalore: costs, inspection requirements, common signs, hiding spots, and commercial property treatments."
+  canonical="https://slvpestcontrol.com/knowledge/rodents/faq"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://slvpestcontrol.com/knowledge/rodents/faq#faq",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Rodents > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/rodent-control" class="hover:text-white transition">Rodents</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Rodent FAQ</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            RODENT KNOWLEDGE HUB
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1] mb-5 font-heading">
+          Rodent Management <span class="slv-gold-text">FAQ</span>
+        </h1>
+
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+          Clear, factual answers to 12 of the most frequently asked questions about rat and mouse behavior, inspection requirements, and management protocols in Bangalore.
+        </p>
+
+        <div class="inline-flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+          <a
+            href="/services/rodent-control"
+            class="slv-btn-primary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>View Rodent Management</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary px-6 py-3 text-xs uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>Call 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* FAQS LIST */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <h2 class="text-base sm:text-lg font-bold text-white mb-3 flex items-start gap-3 font-heading">
+                <HelpCircle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>{faq.q}</span>
+              </h2>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-8">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* RELATED GUIDES */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            CONTINUE LEARNING
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            More Rodent Knowledge Guides
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedArticles.map((article) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+              <div>
+                <h3 class="text-base font-bold text-white mb-2 font-heading">
+                  {article.title}
+                </h3>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+                  {article.desc}
+                </p>
+              </div>
+              <a
+                href={article.href}
+                class="text-xs font-bold text-[#F6C453] hover:text-white inline-flex items-center gap-1.5 transition"
+              >
+                <span>Read Guide</span>
+                <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FOOTER CTA SECTION */}
+    <section class="relative z-10 py-14 sm:py-16 bg-[#0c0d10]/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+          Need a Professional Inspection for Your Premises?
+        </h2>
+        <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+          Contact SLV Pest Control for factual advice, comprehensive property surveys, and targeted rodent management in Bangalore.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/services/rodent-control"
+            class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>View Rodent Management</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 rounded-full bg-[#25D366] text-white text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-md hover:bg-[#20bd5a] transition"
+          >
+            <MessageCircle class="w-4 h-4" />
+            <span>WhatsApp 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

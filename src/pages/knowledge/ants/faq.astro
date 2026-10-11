@@ -1,0 +1,255 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  HelpCircle
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Ant Identification',
+    desc: 'Recognize common ant behaviors, signs of infestation, trailing activity, and food attraction.',
+    href: '/knowledge/ants/identification'
+  },
+  {
+    title: 'Where Ants Hide & Nest',
+    desc: 'Discover nesting zones in cracks, wall voids, under sinks, kitchen cupboards, and outdoor perimeters.',
+    href: '/knowledge/ants/where-they-hide'
+  },
+  {
+    title: 'How Ants Enter & Spread',
+    desc: 'Understand entry through exterior gaps, utility penetrations, foraging trails, and scent-guided expansion.',
+    href: '/knowledge/ants/how-they-spread'
+  },
+  {
+    title: 'Ant Prevention Guide',
+    desc: 'Actionable sanitation steps, food storage habits, moisture control, and structural sealing techniques.',
+    href: '/knowledge/ants/prevention'
+  },
+  {
+    title: 'Ant Treatment Guide',
+    desc: 'Our systematic 4-stage management methodology: inspection, colony assessment, targeted baiting, and prevention.',
+    href: '/knowledge/ants/treatment-guide'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Why are ants suddenly infesting my kitchen in Bangalore?',
+    a: 'Ants are driven indoors by either scarcity of water during dry, hot weather or flooding of their soil burrows during monsoons. In Bangalore kitchens, accessible food crumbs, unsealed sugar containers, grease on hobs, and moist under-sink plumbing provide the ideal combination of food and water.'
+  },
+  {
+    q: 'What is the pricing for ant control service at SLV Pest Control?',
+    a: 'Pricing is provided after an on-site inspection. The exact cost depends on property dimensions (1 BHK, 2 BHK, 3 BHK, villa, or commercial kitchen), the severity of the infestation, the ant species identified, and whether exterior perimeter management is needed.'
+  },
+  {
+    q: 'Why do store-bought bug sprays make ant problems worse?',
+    a: 'Household aerosol sprays act as quick repellents. They kill the 5–10% of visible worker ants on the surface while frightening the queen in the wall void. In response, colonies often undergo "budding"—splitting into multiple satellite colonies with separate queens across different rooms.'
+  },
+  {
+    q: 'How does professional gel baiting eliminate the queen ant?',
+    a: 'Gel baits are formulated with highly attractive food matrices combined with a slow-acting active ingredient. Foraging workers consume the bait and carry it back to the nest. Through a communal food-sharing process called trophallaxis, they feed the bait directly to the queen and larvae, eliminating the colony at its core.'
+  },
+  {
+    q: 'Is SLV Pest Control ant treatment safe for children and pets?',
+    a: 'Yes. We prioritize targeted, odourless gel bait placements inside cracks, crevices, hinges, and behind appliances where children and pets cannot access them. When perimeter treatments are necessary, we use approved formulations and advise a short drying window.'
+  },
+  {
+    q: 'Do I need to empty all my kitchen cabinets before treatment?',
+    a: 'In most residential situations utilizing targeted gel baiting, extensive cabinet emptying is not required. Our technicians place small, discreet gel beads in corner hinges and along trailing seams. If a severe carpenter ant or wood-nesting problem requires void dusting, specific instructions will be provided during pre-treatment assessment.'
+  },
+  {
+    q: 'How long does it take to see complete results after ant treatment?',
+    a: 'You will usually see a noticeable decline in ant activity within 24 to 72 hours as workers transport bait to the colony. Complete elimination of the nest and suppression of newly hatching pupae generally occurs within 7 to 14 days.'
+  },
+  {
+    q: 'Should I wipe away the ants I see feeding on the gel bait?',
+    a: 'No! It is crucial to let the ants feed undisturbed. If you spray or wipe them away, they cannot carry the active bait back to the nest to eliminate the queen and other colony members.'
+  },
+  {
+    q: 'What common species of ants are found in Bangalore homes?',
+    a: 'The most frequent species include Black Carpenter Ants (Camponotus spp., large black ants that nest in hollows), Pharaoh Ants (Monomorium pharaonis, tiny yellowish ants infamous for budding), Crazy Ants (Paratrechina longicornis, rapid erratic runners), and Odorous House Ants.'
+  },
+  {
+    q: 'Can ants cause structural damage or electrical short circuits?',
+    a: 'Carpenter ants do not eat wood like termites, but they excavate tunnels inside softened, moist wood to create nesting galleries. Additionally, species like crazy ants are drawn to warm electromagnetic fields and have been known to cause short circuits inside switchboards, AC units, and inverter panels.'
+  },
+  {
+    q: 'How often should ant control be carried out?',
+    a: 'After successful colony elimination, routine seasonal inspections or maintenance services every 3 to 6 months are recommended for ground-floor apartments, independent houses, and food establishments with active garden surroundings.'
+  },
+  {
+    q: 'What should I do if ants reappear a few weeks later?',
+    a: 'If lingering worker activity is observed after two weeks, SLV Pest Control provides follow-up assessment. Technicians inspect for secondary satellite colonies or newly invading outdoor trails and apply booster bait placements where appropriate.'
+  }
+];
+---
+
+<Layout
+  title="Ant Control FAQs in Bangalore | Common Questions & Answers | SLV Pest Control"
+  description="Clear answers to common questions about ant control in Bangalore: pricing after inspection, baiting vs sprays, safety for pets, and colony elimination."
+  canonical="https://slvpestcontrol.com/knowledge/ants/faq"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+    </div>
+
+    {/* BREADCRUMB */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>/</span>
+        <span class="text-zinc-500">Ants</span>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">FAQs</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
+          <HelpCircle class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+            FAQS • ANTS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] mb-5 font-heading">
+          Ant Control FAQs: Answers for Bangalore Homeowners
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6">
+          Find clear, factual answers to 12 frequently asked questions regarding ant identification, why supermarket sprays often backfire, treatment safety, pricing, and how professional baiting works.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-400 pt-4 border-t border-white/[0.06]">
+          <span>Format: Q&amp;A Knowledge Resource</span>
+          <span>•</span>
+          <span>12 Verified Answers</span>
+          <span>•</span>
+          <span class="text-[#F6C453]">SLV Technical Advisory</span>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        {/* FAQS LIST */}
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="slv-card p-6 sm:p-7 rounded-2xl border border-white/[0.08]">
+              <div class="flex items-start gap-3">
+                <span class="text-[#F6C453] font-bold font-mono text-sm mt-0.5">
+                  Q{index + 1 < 10 ? `0${index + 1}` : index + 1}.
+                </span>
+                <div class="space-y-2">
+                  <h2 class="text-base sm:text-lg font-bold text-white font-heading">
+                    {faq.q}
+                  </h2>
+                  <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* PRIMARY CALL TO ACTION */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-[#E5A93C]/40 text-center">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            FREE ASSESSMENT
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Have Questions About Ants in Your Home?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+            Speak directly with our pest management specialists or book an on-site inspection for targeted colony management.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/services/ant-control" class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2">
+              <span>Ant Control</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a href="tel:9180397822" class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 hover:border-[#F6C453]">
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+
+        {/* RELATED ARTICLES */}
+        <div>
+          <h3 class="text-xl font-bold text-white font-heading mb-4">
+            Related Ant Knowledge Guides
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card p-4 rounded-xl border border-white/[0.08] hover:border-[#E5A93C]/40 transition group block"
+              >
+                <h4 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1">
+                  {article.title}
+                </h4>
+                <p class="text-zinc-400 text-xs line-clamp-2">
+                  {article.desc}
+                </p>
+                <span class="text-[#E5A93C] text-xs font-semibold inline-flex items-center gap-1 mt-2">
+                  <span>Read Guide</span>
+                  <ArrowRight class="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* LOCAL FOOTER */}
+    <section class="relative z-10 py-12 border-b border-white/[0.06] bg-[#0c0d10]/50 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-xl font-bold text-white font-heading mb-2">
+          Transparent, Dependable Ant Control in Bangalore
+        </h3>
+        <p class="text-zinc-400 text-xs sm:text-sm mb-4">
+          Providing Bangalore residents with clear advice, inspection-based pricing, and professional colony treatments.
+        </p>
+        <div class="flex items-center justify-center gap-6 text-xs text-zinc-300 font-mono">
+          <span>Phone: 91803 97822</span>
+          <span>•</span>
+          <span>Email: contact@slvpestcontrol.com</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

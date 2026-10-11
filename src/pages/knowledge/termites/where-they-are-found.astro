@@ -1,0 +1,295 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Building,
+  DoorOpen,
+  Waves,
+  Layers,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  ShieldCheck,
+  Home,
+  Wrench,
+  Droplets
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Termite Identification',
+    desc: 'Recognize signs: mud tubes, hollow woodwork, and discarded wings.',
+    href: '/knowledge/termites/identification'
+  },
+  {
+    title: 'How Termites Spread',
+    desc: 'Movement through soil, foundation openings, and structural pathways.',
+    href: '/knowledge/termites/how-they-spread'
+  },
+  {
+    title: 'Termite Prevention',
+    desc: 'Practical moisture mitigation, wood-to-soil reduction, and sealing.',
+    href: '/knowledge/termites/prevention'
+  },
+  {
+    title: 'Termite Treatment Guide',
+    desc: 'The 4-stage journey: inspection, assessment, targeted treatment, and monitoring.',
+    href: '/knowledge/termites/treatment-guide'
+  },
+  {
+    title: 'Termite FAQ',
+    desc: 'Factual answers regarding costs, signs, preparation, and apartments.',
+    href: '/knowledge/termites/faq'
+  }
+];
+
+const harbourageAreas = [
+  {
+    title: 'Wooden Door Frames & Window Jambs',
+    desc: 'Door frames anchored directly into brickwork or concrete floors at ground level represent the most common entry vulnerability. Termites tunnel upward from the floor plinth into frame jambs, consuming the wood core behind the paint.',
+    icon: DoorOpen
+  },
+  {
+    title: 'Sub-Slab Foundations & Plinth Masonry',
+    desc: 'The soil directly underneath concrete floor slabs and around foundation footings serves as the natural subterranean nest. Termites navigate minuscule hairline shrinkage cracks in concrete to breach the ground barrier.',
+    icon: Building
+  },
+  {
+    title: 'Flooring Expansion Joints & Skirting Junctures',
+    desc: 'Tile grout seams, expansion joints between tiled floors and plastered walls, and the gaps behind skirting boards offer concealed, unpainted pathways directly into interior living rooms and bedrooms.',
+    icon: Layers
+  },
+  {
+    title: 'Wall Openings & Electrical Conduits',
+    desc: 'Subterranean termites frequently utilize electrical cable conduits, switchboard junction boxes, and pipe wall sleeves as smooth, continuous expressways connecting different rooms and upper floors.',
+    icon: Wrench
+  },
+  {
+    title: 'Moisture-Prone Kitchens & Bathrooms',
+    desc: 'Areas with consistent plumbing humidity—such as underneath kitchen sinks, bathroom pipe chases, and damp external walls adjacent to rainwater drains—provide the sustained dampness termites require to avoid desiccation.',
+    icon: Droplets
+  },
+  {
+    title: 'Modular Wardrobes & Concealed Woodwork',
+    desc: 'Built-in wardrobes, modular kitchen carcasses, wooden wall paneling, and false ceiling battens in contact with plastered walls allow colonies to feed undisturbed for months without external detection.',
+    icon: Home
+  },
+  {
+    title: 'Basement Storage & Soil-Connected Spaces',
+    desc: 'Staircase storage cupboards, basement parking service shafts, and structural crawlspaces directly adjacent to soil provide undisturbed environments where colonies establish large foraging networks.',
+    icon: Search
+  }
+];
+---
+
+<Layout
+  title="Where Termites Are Found | Structural & Soil Harbourage | SLV Pest Control"
+  description="Learn where subterranean termites hide in Bangalore properties: wooden door frames, foundation footings, flooring skirting, wall conduits, and moisture hotspots."
+  canonical="https://slvpestcontrol.com/knowledge/termites/where-they-are-found"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Termites > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/termite-control" class="hover:text-white transition">Termites</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Where Termites Are Found</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            STRUCTURAL HARBOURAGE MAPPING
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Where Termites Are Found: <span class="slv-gold-text">Key Structural Vulnerabilities</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          A property-focused overview of the foundations, wooden assemblies, and moisture conduits where subterranean colonies nest and forage.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/termite-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Get Termite Inspection</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Why Location Matters */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-12">
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Understanding Structural Entry Points
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Termites do not ingest concrete, stone, or brickwork. However, subterranean termite workers can squeeze through gaps as narrow as 1.5 millimeters—about the thickness of a business card. Any tiny separation between a concrete slab and a masonry wall, an unsealed pipe penetration, or a ground-level wooden door frame provides an entry route.
+            </p>
+            <p>
+              In contemporary Bangalore homes, apartments, and villas, the prevalence of modular interior woodwork directly anchored to damp plastered walls has created extensive artificial harbourage zones that bridge ground soil directly to high-value finishes.
+            </p>
+          </div>
+        </div>
+
+        {/* 7 Key Zones Grid */}
+        <div class="mb-14">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">VULNERABILITY ZONES</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+              7 Common Termite Harbourage Locations
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {harbourageAreas.map((zone) => {
+              const Icon = zone.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08] flex flex-col justify-between">
+                  <div>
+                    <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-[#E5A93C] mb-4">
+                      <Icon class="w-5 h-5" />
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-heading">{zone.title}</h3>
+                    <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{zone.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Multi-Floor & Apartment Realities */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-white/[0.08] mb-14">
+          <h2 class="text-2xl font-black text-white font-heading mb-4">
+            Can Termites Infest Upper-Floor Apartments?
+          </h2>
+          <div class="space-y-4 text-zinc-300 text-sm leading-relaxed">
+            <p>
+              Many homeowners mistakenly assume that living on the 4th, 8th, or 15th floor of a high-rise residential tower provides automatic immunity from subterranean termites. However, subterranean colonies routinely travel through central plumbing ducts, vertical electrical chases, and lift shaft expansion seams, reaching upper floors to colonize wooden doors, parquet floors, and false ceilings.
+            </p>
+            <p>
+              Additionally, seasonal reproductive swarmers can fly into open balconies or utility windows during post-monsoon evenings, establishing satellite moisture-supported nests if localized plumbing seepages exist.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Suspect Termites in Your Door Frames or Wardrobes?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Our technicians map structural pathways and perform targeted precision drill-and-infusion barrier treatments. Pricing confirmed after on-site inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/termite-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Get Termite Inspection</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Termite Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

@@ -1,0 +1,280 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  HelpCircle,
+  ShieldCheck,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Building
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Mosquito Identification',
+    desc: 'Recognize signs: day vs. night biters, larvae, and resting zones.',
+    href: '/knowledge/mosquitoes/identification'
+  },
+  {
+    title: 'Where Mosquitoes Breed & Hide',
+    desc: 'Stagnant water, containers, drains, gardens, and shaded damp areas.',
+    href: '/knowledge/mosquitoes/where-they-breed'
+  },
+  {
+    title: 'How Mosquitoes Enter & Spread',
+    desc: 'Open windows, door gaps, outdoor breeding sources, and indoor flight paths.',
+    href: '/knowledge/mosquitoes/how-they-spread'
+  },
+  {
+    title: 'Mosquito Prevention',
+    desc: 'Eliminating standing water, covered tanks, physical mesh, and outdoor care.',
+    href: '/knowledge/mosquitoes/prevention'
+  },
+  {
+    title: 'Mosquito Treatment Guide',
+    desc: 'The 4-stage journey: inspection, source assessment, targeted treatment, and guidance.',
+    href: '/knowledge/mosquitoes/treatment-guide'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Why are mosquitoes common around my property?',
+    a: 'Mosquitoes thrive in areas with available stagnant water for egg laying and cool, shaded vegetation for daytime resting. Proximity to open stormwater drains, garden planter saucers, unmaintained construction plots, or humid utility balconies contributes to localized populations.'
+  },
+  {
+    q: 'Where do mosquitoes breed?',
+    a: 'Mosquitoes breed in any standing water that remains undisturbed for 5 or more days. Common sites include flowerpot saucers, bird baths, AC condensation trays, open rainwater collection tanks, choked drainage channels, and puddles in construction areas.'
+  },
+  {
+    q: 'How can I reduce mosquito activity?',
+    a: 'Key steps include eliminating standing water weekly (practicing a weekly dry day), keeping overhead water storage tanks tightly covered, trimming dense garden foliage, installing 18x16 mesh screens on windows and exhaust vents, and clearing clogged balcony drainage channels.'
+  },
+  {
+    q: 'How much does mosquito control cost?',
+    a: 'Mosquito control pricing is determined after an on-site property inspection. The cost depends on the open perimeter area, garden landscaping acreage, number of drainage sumps to be treated with larvicide, and the scope of thermal fogging or barrier misting required.'
+  },
+  {
+    q: 'Is inspection required?',
+    a: 'Yes. An on-site evaluation allows the technician to identify specific aquatic breeding sources (plant saucers vs. stormwater drains), evaluate shaded resting corridors, assess safety parameters, and recommend the appropriate dual-action treatment method.'
+  },
+  {
+    q: 'How long does mosquito treatment take?',
+    a: 'Treatment duration varies depending on property size. A residential apartment or independent home perimeter typically takes 30 to 45 minutes, while larger residential societies, school campuses, or commercial grounds require more time as evaluated during inspection.'
+  },
+  {
+    q: 'What preparation is required?',
+    a: 'Prior to outdoor thermal fogging or perimeter misting, close exterior windows and balcony doors for approximately 30 minutes, bring pets indoors, cover open fish ponds, and ensure technicians have clear access along garden perimeters.'
+  },
+  {
+    q: 'What should I do after treatment?',
+    a: 'Keep windows closed for about 30 minutes following exterior fogging to allow mist to settle. Avoid entering direct fogging zones until air clears, maintain dry garden saucers, and follow the technician’s ongoing source-reduction advice.'
+  },
+  {
+    q: 'Can mosquito activity return?',
+    a: 'Yes. Because adult mosquitoes fly freely across open outdoor air from surrounding neighborhoods and unmaintained public drains, no service can promise permanent eradication. Sustained reduction requires periodic seasonal barrier treatments and continuous elimination of standing water.'
+  },
+  {
+    q: 'Do you treat homes and apartments?',
+    a: 'Yes. SLV Pest Control provides mosquito management for private villas, gated community apartments, housing societies, paying guest accommodations, and rental residences across Bangalore.'
+  },
+  {
+    q: 'Do you treat restaurants, offices and commercial properties?',
+    a: 'Yes. We treat outdoor dining restaurants, corporate campus lawns, tech parks, hospitals, banquet halls, and educational institutions with customized scheduling.'
+  },
+  {
+    q: 'Do you provide treatment for outdoor areas?',
+    a: 'Yes. We provide outdoor thermal smoke fogging, motorized garden misting, and aquatic larvicidal application for gardens, driveways, basement parking sumps, and open event grounds.'
+  }
+];
+---
+
+<Layout
+  title="Mosquito Control FAQ | Questions & Answers | SLV Pest Control"
+  description="Answers to frequently asked questions about mosquito control in Bangalore: breeding sources, thermal fogging, costs, preparation, apartments, and outdoor areas."
+  canonical="https://slvpestcontrol.com/knowledge/mosquitoes/faq"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://slvpestcontrol.com/knowledge/mosquitoes/faq#faq",
+      "mainEntity": faqs.map((faq) => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Background Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Mosquitoes > Current Page */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/mosquito-control" class="hover:text-white transition">Mosquitoes</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Mosquito FAQ</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <HelpCircle class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            FREQUENTLY ASKED QUESTIONS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Frequently Asked Questions About <span class="slv-gold-text">Mosquito Control</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Clear, factual answers regarding mosquito breeding habits, thermal fogging, costs, property preparation, apartments, and outdoor areas.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/mosquito-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Get Free Inspection</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* FAQS ACCORDION / CARD SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-4 mb-16">
+          {faqs.map((faq, index) => (
+            <div class="slv-card rounded-2xl p-6 sm:p-7 border border-white/[0.08] transition hover:border-[#E5A93C]/40">
+              <div class="flex items-start gap-3.5 mb-2.5">
+                <span class="text-xs font-mono font-bold text-[#F6C453] bg-[#E5A93C]/10 px-2 py-0.5 rounded shrink-0 mt-0.5">
+                  Q{index + 1 < 10 ? `0${index + 1}` : index + 1}
+                </span>
+                <h2 class="text-base sm:text-lg font-bold text-white font-heading">
+                  {faq.q}
+                </h2>
+              </div>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-10">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Concerned About Mosquito Swarms Around Your Property?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Speak directly with SLV Pest Control technicians or schedule an on-site property evaluation. Clear pricing confirmed after inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/mosquito-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Mosquito Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

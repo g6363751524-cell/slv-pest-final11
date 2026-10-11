@@ -1,0 +1,1420 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { FloatingActions } from '../components/FloatingActions';
+import { KnowledgeSearch } from '../components/KnowledgeSearch';
+import { KnowledgeFaq } from '../components/KnowledgeFaq';
+import {
+  BookOpen,
+  Search,
+  Sparkles,
+  BedDouble,
+  Layers,
+  Wind,
+  Share2,
+  PawPrint,
+  ShieldAlert,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  HelpCircle,
+  Calendar,
+  AlertTriangle,
+  FileText,
+  Clock,
+  ExternalLink,
+  MessageCircle,
+  Bug,
+  Shield,
+  SearchCheck,
+  ClipboardCheck,
+} from 'lucide-react';
+
+const allTenPests = [
+  {
+    name: 'Bed Bugs',
+    species: 'Cimex lectularius',
+    serviceLink: '/services/bed-bugs',
+    pricing: 'Starting at ₹999',
+    badge: 'High Priority',
+    desc: 'Blood-feeding parasitic insects that harbour within 5–8 feet of sleeping areas in mattress seams, box springs, headboards, and electrical socket voids.',
+    signs: 'Linear red bite welts, tiny dark fecal spots on sheets, cast nymphal exoskeletons, and a faint sweet-musty room odor.',
+    prevention: 'Inspect travel luggage before unpacking, wash bed linen at temperatures exceeding 60°C, and avoid acquiring untreated second-hand furniture.'
+  },
+  {
+    name: 'Subterranean Termites',
+    species: 'Coptotermes & Heterotermes',
+    serviceLink: '/services/termites',
+    pricing: 'Starting at ₹899',
+    badge: 'Structural Risk',
+    desc: 'Social wood-destroying insects nesting in underground moisture gradients that construct earthen mud tubes to access and hollow out structural timber.',
+    signs: 'Mud shelter tubes along plinths, hollow-sounding doorframes, discarded alate swarmer wings near windows, and bubbled wall paint.',
+    prevention: 'Eliminate direct wood-to-soil ground contact, repair sub-slab plumbing leaks promptly, and install continuous chemical soil barriers.'
+  },
+  {
+    name: 'Cockroaches',
+    species: 'German (Blattella germanica) & American',
+    serviceLink: '/services/cockroach-control',
+    pricing: 'Starting at ₹599',
+    badge: 'Common Infestation',
+    desc: 'Nocturnal scavengers sheltering in warm kitchen crevices, behind refrigerator motors, and in drainage shafts. Carry pathogens and trigger allergic asthma.',
+    signs: 'Pepper-like droppings, dark ootheca egg capsules, stale oily odor, and live insects scattering when kitchen lights are switched on.',
+    prevention: 'Seal plumbing pipe wall penetrations, wipe kitchen counters nightly, and store pantry dry grains in airtight containers.'
+  },
+  {
+    name: 'Mosquitoes',
+    species: 'Aedes aegypti, Culex & Anopheles',
+    serviceLink: '/services/mosquitoes',
+    pricing: 'Starting at ₹799',
+    badge: 'Vector Risk',
+    desc: 'Flying disease vectors breeding in stagnant water containers, plant saucers, and storm sumps, resting in shaded indoor foliage and curtains during daylight.',
+    signs: 'Audible buzzing around beds, persistent itchy bites at dawn/dusk, and visible wigglers (larvae) in standing water receptacles.',
+    prevention: 'Empty balcony plant drip trays weekly, ensure overhead tank lids are sealed tightly, and maintain fine window mesh screens.'
+  },
+  {
+    name: 'Rodents (Rats & Mice)',
+    species: 'Rattus rattus & Mus musculus',
+    serviceLink: '/services/rodents',
+    pricing: 'Starting at ₹699',
+    badge: 'Wire & Food Hazard',
+    desc: 'Destructive mammals that gnaw electrical wiring, contaminate pantry foods, and travel along false ceilings, kitchen modular voids, and drainage pipes.',
+    signs: 'Spindle-shaped black droppings, gnaw marks on PVC pipes/wood, nocturnal scuttling noises, and dark greasy rub trails along skirting.',
+    prevention: 'Seal wall penetrations greater than 6mm with steel wool and mortar, keep pantry staples in glass/metal jars, and maintain covered floor drains.'
+  },
+  {
+    name: 'Ants (Black & Carpenter Ants)',
+    species: 'Formicidae family',
+    serviceLink: '/services/ant-control',
+    pricing: 'Starting at ₹499',
+    badge: 'Kitchen Invader',
+    desc: 'Social foraging insects that establish pheromone trails along electrical conduits, wall gaps, and sink rims leading to satellite colonies.',
+    signs: 'Organized trailing columns of worker ants, food and sweet contamination, fine sawdust frass in timber, and perimeter nesting mounds.',
+    prevention: 'Store sugar and syrups in airtight containers, wipe counter spills immediately, fix faucet drips, and seal perimeter baseboard gaps.'
+  },
+  {
+    name: 'Brown Dog Ticks',
+    species: 'Rhipicephalus sanguineus',
+    serviceLink: '/services/tick-control',
+    pricing: 'Starting at ₹799',
+    badge: 'Pet Parasite',
+    desc: 'Eight-legged arachnids that crawl vertically up indoor walls, curtains, and kennel cracks, attaching to domestic pets and humans to ingest blood.',
+    signs: 'Ticks attached to pet skin (ears, neck, paws), flat reddish-brown nymphs climbing vertical walls, and scratching dogs.',
+    prevention: 'Maintain veterinarian-approved topical pet spot-on treatments, inspect kennel crevices regularly, and treat compound perimeter walls.'
+  },
+  {
+    name: 'Fleas',
+    species: 'Ctenocephalides felis & canis',
+    serviceLink: '/services/fleas',
+    pricing: 'Starting at ₹799',
+    badge: 'Bite Vector',
+    desc: 'Tiny wingless jumping insects residing in carpet piles, rug fibers, and pet resting cushions, biting human ankles and lower legs.',
+    signs: 'Domestic pets constantly scratching, red itchy ankle bite clusters, and black specks of flea dirt (digested blood) on pet bedding.',
+    prevention: 'Regular pet brushing, hot laundering of pet cushions at 60°C, and frequent high-suction vacuuming of carpet fibers and baseboards.'
+  },
+  {
+    name: 'Wood Borers',
+    species: 'Anobiidae & Bostrichidae',
+    serviceLink: '/services/wood-borer-control',
+    pricing: 'Starting at ₹899',
+    badge: 'Timber Threat',
+    desc: 'Timber-infesting beetles whose larvae tunnel through wooden furniture, doorframes, plywood cabinetry, and wooden architectural rafters.',
+    signs: 'Tiny round pinholes (shot-holes), piles of fine flour-like yellow wood dust (frass) beneath wooden items, and brittle timber edges.',
+    prevention: 'Apply protective polyurethane sealer coats on unpolished timber backs, maintain low indoor humidity, and inspect newly purchased wooden items.'
+  },
+  {
+    name: 'Flies (House & Fruit Flies)',
+    species: 'Musca domestica & Drosophila',
+    serviceLink: '/services/fly-control',
+    pricing: 'Starting at ₹499',
+    badge: 'Sanitation Vector',
+    desc: 'Filth and fruit flies breeding in decomposing organic kitchen waste, unsealed drains, and overripe fruit, transferring bacteria onto food surfaces.',
+    signs: 'Adult flies hovering around dining areas, maggots in waste bins, and drain fly larvae emerging from bathroom floor traps.',
+    prevention: 'Sanitize kitchen sink drains with hot water and baking soda, keep food covered, use tightly sealed garbage bins, and install mesh screens.'
+  }
+];
+
+const seasonalGuides = [
+  {
+    season: 'Monsoon (June – September)',
+    focus: 'Mosquitoes, Cockroaches & Termite Swarms',
+    desc: 'High ambient humidity and accumulated rainwater create rapid mosquito breeding cycles in stagnant drains. Heavy rainfall drives cockroaches upwards out of municipal sewers into kitchens. Termite reproductive swarmers emerge in twilight following early showers.',
+    actions: 'Inspect balcony plant saucers weekly, maintain mesh screens, seal kitchen floor drains with jali traps, and look for discarded termite wings.'
+  },
+  {
+    season: 'Post-Monsoon & Autumn (October – November)',
+    focus: 'Rodents & Bed Bugs',
+    desc: 'Falling evening temperatures prompt outdoor rats and mice to seek warm indoor harbourage inside false ceilings, wall cavities, and modular kitchens. Increased festive holiday and business travel accelerates bed bug transfers via suitcases.',
+    actions: 'Seal pipe wall gaps with stainless steel wool, inspect hotel luggage before unpacking in bedrooms, and wash travel clothes in hot water.'
+  },
+  {
+    season: 'Winter (December – February)',
+    focus: 'Indoor Rodent Nesting & Fleas',
+    desc: 'Rodents establish permanent indoor nests close to warmth sources, gnawing cables and contaminating food storages. Domestic pets spending extended hours on indoor carpets and blankets facilitate concentrated flea pupal cycles.',
+    actions: 'Store pantry dry goods in glass containers, vacuum rugs and pet beds weekly, and monitor false ceiling access panels for rodent activity.'
+  },
+  {
+    season: 'Summer (March – May)',
+    focus: 'Ticks, Ants & Cockroaches',
+    desc: 'High temperatures accelerate insect metabolism and egg hatch rates. Brown dog ticks proliferate rapidly in gardens, compound walls, and kennels. Foraging black and carpenter ants invade kitchens seeking moisture and food supplies.',
+    actions: 'Apply pet tick prevention, seal exterior foundation cracks, wipe kitchen countertops nightly, and eliminate plumbing faucet leaks.'
+  }
+];
+
+const cockroachKnowledgePages = [
+  {
+    title: 'Cockroach Identification Guide',
+    desc: 'Diagnose signs, droppings, egg cases (oothecae), and distinctive odors of German and American cockroaches.',
+    href: '/knowledge/cockroaches/identification'
+  },
+  {
+    title: 'Where Cockroaches Hide Indoors',
+    desc: 'Common harbourages in modular cabinets, under sinks, drainage conduits, and refrigerator motors.',
+    href: '/knowledge/cockroaches/where-they-hide'
+  },
+  {
+    title: 'How Cockroaches Enter & Spread',
+    desc: 'Entry pathways via grocery cartons, deliveries, drains, utility shafts, and building corridors.',
+    href: '/knowledge/cockroaches/how-they-spread'
+  },
+  {
+    title: 'Cockroach Prevention & Hygiene Checklist',
+    desc: 'Actionable kitchen sanitation protocols, moisture mitigation, structural caulking, and food storage.',
+    href: '/knowledge/cockroaches/prevention'
+  },
+  {
+    title: 'Cockroach IPM Treatment Guide',
+    desc: 'Professional 4-stage IPM approach: inspection, odorless gel baiting, monitoring traps, and prevention.',
+    href: '/knowledge/cockroaches/treatment-guide'
+  },
+  {
+    title: 'Cockroach Frequently Asked Questions',
+    desc: '11 practical questions and answers regarding costs, gel safety, pet risks, and preparation.',
+    href: '/knowledge/cockroaches/faq'
+  }
+];
+
+const termiteKnowledgePages = [
+  {
+    title: 'Subterranean Termite Identification',
+    desc: 'Signs of activity, earthen mud shelter tubes, hollow-sounding woodwork, and discarded swarmer wings.',
+    href: '/knowledge/termites/identification'
+  },
+  {
+    title: 'Where Termites Are Found in Buildings',
+    desc: 'Foundations, sub-slab plinths, wooden door frames, skirting expansion joints, and damp masonry.',
+    href: '/knowledge/termites/where-they-are-found'
+  },
+  {
+    title: 'How Termites Spread Subterraneously',
+    desc: 'Movement through subterranean soil, foundation shrinkage cracks, utility conduits, and connected timber.',
+    href: '/knowledge/termites/how-they-spread'
+  },
+  {
+    title: 'Termite Prevention & Moisture Mitigation',
+    desc: 'Wood-to-soil clearance, plumbing leak repair, expansion joint sealing, and routine foundation checks.',
+    href: '/knowledge/termites/prevention'
+  },
+  {
+    title: 'Termite Drill-and-Infusion Treatment Guide',
+    desc: 'The 4-stage journey: property inspection, structural assessment, targeted drill-and-infusion, and monitoring.',
+    href: '/knowledge/termites/treatment-guide'
+  },
+  {
+    title: 'Termite Questions, Costs & Safety FAQ',
+    desc: 'Factual answers regarding costs, signs, preparation, drilling safety, apartments, and monitoring.',
+    href: '/knowledge/termites/faq'
+  }
+];
+
+const mosquitoKnowledgePages = [
+  {
+    title: 'Mosquito Identification & Breeding Signs',
+    desc: 'Signs of activity, daytime vs. nighttime biting habits (Aedes, Culex), larvae detection, and breeding sites.',
+    href: '/knowledge/mosquitoes/identification'
+  },
+  {
+    title: 'Where Mosquitoes Breed & Rest in Bangalore',
+    desc: 'Stagnant water sites, unsealed containers, balcony plant saucers, garden foliage, and shaded resting spots.',
+    href: '/knowledge/mosquitoes/where-they-breed'
+  },
+  {
+    title: 'How Mosquitoes Enter & Disperse in Apartments',
+    desc: 'Open windows, door gaps, utility corridors, outdoor breeding hotspots, and neighborhood flight patterns.',
+    href: '/knowledge/mosquitoes/how-they-spread'
+  },
+  {
+    title: 'Mosquito Source Reduction & Prevention Guide',
+    desc: 'Standing water elimination, overhead tank sealing, window mesh maintenance, and garden care.',
+    href: '/knowledge/mosquitoes/prevention'
+  },
+  {
+    title: 'Mosquito Larvicide & Cold Fogging Treatment',
+    desc: 'The 4-stage management workflow: breeding site detection, microbial larviciding, and cold ULV fogging.',
+    href: '/knowledge/mosquitoes/treatment-guide'
+  },
+  {
+    title: 'Mosquito Control & Fogging Safety FAQ',
+    desc: 'Practical answers to 12 frequently asked questions on costs, fogging safety, breeding cycles, and prevention.',
+    href: '/knowledge/mosquitoes/faq'
+  }
+];
+
+const rodentKnowledgePages = [
+  {
+    title: 'Rodent Identification: Rats vs Mice',
+    desc: 'Signs of activity: spindle droppings, gnaw marks, scratching sounds, nesting materials, and greasy rub marks.',
+    href: '/knowledge/rodents/identification'
+  },
+  {
+    title: 'Where Rodents Hide Indoors',
+    desc: 'False ceilings, modular kitchen voids, behind refrigerators, AC ducting, storerooms, and cavity walls.',
+    href: '/knowledge/rodents/where-they-hide'
+  },
+  {
+    title: 'How Rodents Enter & Spread Through Buildings',
+    desc: 'Gaps as small as 6mm, pipe sleeves, balcony drainage holes, roof tiles, and municipal service lines.',
+    href: '/knowledge/rodents/how-they-spread'
+  },
+  {
+    title: 'Rodent Proofing & Exclusion Checklist',
+    desc: 'Hardware cloth wire mesh installation, silicone caulking, food containment in glass, and waste hygiene.',
+    href: '/knowledge/rodents/prevention'
+  },
+  {
+    title: 'Rodent Trapping & Multi-Stage Management',
+    desc: 'The 4-stage management workflow: inspection, tamper-resistant bait stations, mechanical snap traps, and sealing.',
+    href: '/knowledge/rodents/treatment-guide'
+  },
+  {
+    title: 'Rodent Control Questions & Safety FAQ',
+    desc: 'Clear, factual answers to 12 questions on costs, preparation, hiding habits, pet safety, and commercial care.',
+    href: '/knowledge/rodents/faq'
+  }
+];
+
+const fleaKnowledgePages = [
+  {
+    title: 'Flea Identification & Bite Patterns',
+    desc: 'Signs of flea activity, bite patterns around ankles, flea dirt, and pet scratching behaviors.',
+    href: '/knowledge/fleas/identification'
+  },
+  {
+    title: 'Where Fleas Hide in Homes',
+    desc: 'Pet bedding, carpets, rugs, upholstery, floorboard cracks, and shaded outdoor resting areas.',
+    href: '/knowledge/fleas/where-they-hide'
+  },
+  {
+    title: 'How Fleas Spread Between Hosts',
+    desc: 'Domestic pets, animal resting areas, infested carpet piles, and outdoor environmental vectors.',
+    href: '/knowledge/fleas/how-they-spread'
+  },
+  {
+    title: 'Flea Prevention & Carpet Care',
+    desc: 'Laundering bedding at 60°C, deep vacuuming, clutter reduction, and pet grooming protocols.',
+    href: '/knowledge/fleas/prevention'
+  },
+  {
+    title: 'Flea Life-Cycle Treatment & Eradication Guide',
+    desc: 'The 4-stage management workflow: inspection, pet coordination, targeted IGR spray, and follow-up.',
+    href: '/knowledge/fleas/treatment-guide'
+  },
+  {
+    title: 'Flea Frequently Asked Questions',
+    desc: 'Clear, factual answers to 13 common questions on costs, preparation, pets, and safety.',
+    href: '/knowledge/fleas/faq'
+  }
+];
+
+const tickKnowledgePages = [
+  {
+    title: 'Tick Identification & Biology',
+    desc: 'Signs of tick activity, visible wall crawling, pet attachment sites (ears, neck), and resting zones.',
+    href: '/knowledge/ticks/identification'
+  },
+  {
+    title: 'Where Ticks Hide Indoors',
+    desc: 'Pet resting areas, bedding, upholstery, vertical wall cracks, curtains, and shaded garden perimeters.',
+    href: '/knowledge/ticks/where-they-hide'
+  },
+  {
+    title: 'How Ticks Spread Across Properties',
+    desc: 'Pets, outdoor environments, compound vegetation, and vertical crawling mechanisms.',
+    href: '/knowledge/ticks/how-they-spread'
+  },
+  {
+    title: 'Tick Prevention Checklist',
+    desc: 'Bedding hygiene, outdoor maintenance, crack reduction, and early veterinary detection.',
+    href: '/knowledge/ticks/prevention'
+  },
+  {
+    title: 'Tick Wall & Perimeter Management Protocol',
+    desc: 'Our 4-stage management approach: inspection, source assessment, targeted crack treatment, and guidance.',
+    href: '/knowledge/ticks/treatment-guide'
+  },
+  {
+    title: 'Tick Frequently Asked Questions',
+    desc: 'Clear, factual answers to 13 common questions regarding costs, preparation, and safety.',
+    href: '/knowledge/ticks/faq'
+  }
+];
+
+const woodBorerKnowledgePages = [
+  {
+    title: 'Wood Borer Identification & Powder Symptoms',
+    desc: 'Signs of activity, circular shot-holes, fine yellow wood frass, weakened timber, and emergence holes.',
+    href: '/knowledge/wood-borers/identification'
+  },
+  {
+    title: 'Where Wood Borers Are Found in Furniture',
+    desc: 'Wooden furniture, doors, window frames, plywood wardrobes, cabinets, beams, and decorative timber.',
+    href: '/knowledge/wood-borers/where-they-are-found'
+  },
+  {
+    title: 'How Wood Borers Damage Wood Over Time',
+    desc: 'Internal larval tunneling, frass generation, structural hollowing, and progressive timber weakening.',
+    href: '/knowledge/wood-borers/how-they-damage-wood'
+  },
+  {
+    title: 'Wood Borer Prevention Guide',
+    desc: 'Timber moisture control, surface sealing, checking newly purchased furniture, and early detection.',
+    href: '/knowledge/wood-borers/prevention'
+  },
+  {
+    title: 'Wood Borer Syringe Injection & Treatment Guide',
+    desc: 'Our 4-stage journey: inspection, assessment, targeted chemical syringe injection, and follow-up.',
+    href: '/knowledge/wood-borers/treatment-guide'
+  },
+  {
+    title: 'Wood Borer FAQ',
+    desc: 'Clear, factual answers to 13 questions regarding costs, inspection, furniture rescue, and safety.',
+    href: '/knowledge/wood-borers/faq'
+  }
+];
+
+const antKnowledgePages = [
+  {
+    title: 'Ant Species Identification',
+    desc: 'Recognize common ant species (black house & carpenter ants), active trails, foraging behaviors, and nesting.',
+    href: '/knowledge/ants/identification'
+  },
+  {
+    title: 'Where Ants Hide & Nest Indoors',
+    desc: 'Explore wall gaps, kitchen cupboards, sink perimeters, moisture zones, and outdoor nesting sites.',
+    href: '/knowledge/ants/where-they-hide'
+  },
+  {
+    title: 'How Ants Enter & Spread Through Buildings',
+    desc: 'Understand entry pathways through structural cracks, doors, food sources, and outdoor-to-indoor trails.',
+    href: '/knowledge/ants/how-they-spread'
+  },
+  {
+    title: 'Ant Prevention & Kitchen Hygiene Checklist',
+    desc: 'Actionable tips: airtight food storage, spill cleanup, moisture reduction, and structural sealing.',
+    href: '/knowledge/ants/prevention'
+  },
+  {
+    title: 'Ant Gel Baiting & Colony Eradication Guide',
+    desc: 'Our 4-stage management journey: inspection, source assessment, targeted gel baiting, and prevention advice.',
+    href: '/knowledge/ants/treatment-guide'
+  },
+  {
+    title: 'Ant FAQ',
+    desc: 'Clear, factual answers to 13 common questions regarding costs, nesting, preparation, and commercial care.',
+    href: '/knowledge/ants/faq'
+  }
+];
+---
+
+<Layout
+  title="Pest Control Knowledge Hub | Educational Guides & Pest Library | SLV Pest Control"
+  description="Understand pests, prevent infestations, and protect your home. Comprehensive Bangalore pest library, identification diagnostics, IPM treatment guides, and seasonal calendars."
+  canonical="https://slvpestcontrol.com/knowledge"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Subtle Ambient Background Accents */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[550px] h-[550px] bg-[#E5A93C]/[0.05] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[35%] left-[-100px] w-[500px] h-[500px] bg-[#00D4FF]/[0.03] rounded-full blur-[160px]"></div>
+      <div class="absolute bottom-[20%] right-[-80px] w-[450px] h-[450px] bg-[#E5A93C]/[0.04] rounded-full blur-[150px]"></div>
+    </div>
+
+    {/* Breadcrumb Navigation */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Knowledge Hub</span>
+      </nav>
+    </div>
+
+    {/* HERO SECTION */}
+    <section class="relative z-10 pt-10 sm:pt-14 lg:pt-18 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Category Badge */}
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.22em] uppercase">
+            Pest Education &amp; Resource Directory
+          </span>
+        </div>
+
+        {/* Title */}
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08] mb-4 font-heading">
+          Pest Control Knowledge <span class="slv-gold-text">Hub</span>
+        </h1>
+
+        {/* Subtitle & Description */}
+        <p class="text-lg sm:text-xl font-medium text-[#FFE08A] mb-3">
+          Understand pests. Prevent infestations. Protect your space.
+        </p>
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+          Learn how to identify common Bangalore pests, recognize early symptoms of infestation, apply practical hygiene prevention, and understand professional treatment protocols.
+        </p>
+
+        {/* Hero CTAs: Call Now & WhatsApp */}
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10">
+          <a
+            href="tel:9180397822"
+            class="slv-btn-primary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-[0_0_20px_rgba(229,169,60,0.3)]"
+          >
+            <Phone class="w-4 h-4 text-[#1a1202]" />
+            <span>Call Now: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822?text=Hello%20SLV%20Pest%20Control%2C%20I%20have%20a%20question%20about%20pest%20control%20services"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 border-emerald-500/30 text-emerald-400 hover:text-white hover:border-emerald-400 hover:bg-emerald-500/10"
+          >
+            <MessageCircle class="w-4 h-4 text-emerald-400" />
+            <span>WhatsApp Us</span>
+          </a>
+          <a
+            href="/contact"
+            class="px-5 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs sm:text-sm font-bold text-zinc-200 hover:text-white hover:bg-white/[0.08] transition inline-flex items-center gap-2"
+          >
+            <span>Book Free Inspection</span>
+            <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C]" />
+          </a>
+        </div>
+
+        {/* Four Main Navigation Pills */}
+        <div class="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold">
+          <a
+            href="#pest-library"
+            class="px-3.5 py-2 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 text-[#F6C453] hover:text-white hover:border-[#F6C453] transition font-bold"
+          >
+            1. Pest Library
+          </a>
+          <a
+            href="#treatment-prevention"
+            class="px-3.5 py-2 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 text-[#F6C453] hover:text-white hover:border-[#F6C453] transition font-bold"
+          >
+            2. Treatment &amp; Prevention
+          </a>
+          <a
+            href="#seasonal-pest-guide"
+            class="px-3.5 py-2 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/30 text-[#F6C453] hover:text-white hover:border-[#F6C453] transition font-bold"
+          >
+            3. Seasonal Pest Guide
+          </a>
+          <a
+            href="#pest-articles"
+            class="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.1] text-zinc-300 hover:text-white hover:border-[#F6C453] transition font-bold"
+          >
+            4. In-Depth Guides (48+ Articles)
+          </a>
+          <a
+            href="#faqs"
+            class="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-zinc-400 hover:text-white hover:border-white/[0.2] transition"
+          >
+            Pest FAQs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* FOUR EDUCATIONAL CATEGORY CARDS SECTION */}
+    <section class="relative z-10 py-12 sm:py-16 border-b border-white/[0.06] bg-black/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            CORE LEARNING MODULES
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            Four Pillars of Pest Knowledge
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-2">
+            Browse our structured educational resources designed to give property owners clear diagnostic and preventive clarity.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* Card 1: Pest Library */}
+          <a
+            href="#pest-library"
+            class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/60 hover:shadow-[0_8px_30px_rgba(229,169,60,0.12)] transition-all flex flex-col justify-between group bg-[#0d0f13]/90"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Bug class="w-6 h-6 text-[#F6C453]" />
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#E5A93C] font-mono block mb-1">
+                Category 01
+              </span>
+              <h3 class="text-lg font-bold text-white group-hover:text-[#F6C453] transition mb-2 font-heading">
+                Pest Library
+              </h3>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                Detailed pest profiles, identification diagnostics, warning signs, habitats, and risk levels for all 10 major Bangalore pests.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-bold text-[#FFE08A]">
+              <span>Explore 10 Pest Profiles</span>
+              <ArrowRight class="w-4 h-4 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+
+          {/* Card 2: Treatment & Prevention */}
+          <a
+            href="#treatment-prevention"
+            class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/60 hover:shadow-[0_8px_30px_rgba(229,169,60,0.12)] transition-all flex flex-col justify-between group bg-[#0d0f13]/90"
+          >
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <ShieldCheck class="w-6 h-6 text-cyan-400" />
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 font-mono block mb-1">
+                Category 02
+              </span>
+              <h3 class="text-lg font-bold text-white group-hover:text-[#F6C453] transition mb-2 font-heading">
+                Treatment &amp; Prevention
+              </h3>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                Integrated Pest Management (IPM) protocols, safe application practices, preparation instructions, and structural hygiene checklists.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-bold text-[#FFE08A]">
+              <span>View Treatment Guides</span>
+              <ArrowRight class="w-4 h-4 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+
+          {/* Card 3: Seasonal Pest Guide */}
+          <a
+            href="#seasonal-pest-guide"
+            class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/60 hover:shadow-[0_8px_30px_rgba(229,169,60,0.12)] transition-all flex flex-col justify-between group bg-[#0d0f13]/90"
+          >
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <Calendar class="w-6 h-6 text-[#E5A93C]" />
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#E5A93C] font-mono block mb-1">
+                Category 03
+              </span>
+              <h3 class="text-lg font-bold text-white group-hover:text-[#F6C453] transition mb-2 font-heading">
+                Seasonal Pest Guide
+              </h3>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                Quarterly pest activity shifts across Monsoon, Post-Monsoon, Winter, and Summer in Bangalore, with season-specific protection tips.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-bold text-[#FFE08A]">
+              <span>Check Seasonal Trends</span>
+              <ArrowRight class="w-4 h-4 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+
+          {/* Card 4: In-Depth Pest Guides (Deep Dive Articles) */}
+          <a
+            href="#pest-articles"
+            class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/60 hover:shadow-[0_8px_30px_rgba(229,169,60,0.12)] transition-all flex flex-col justify-between group bg-[#0d0f13]/90"
+          >
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <FileText class="w-6 h-6 text-purple-400" />
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 font-mono block mb-1">
+                Category 04
+              </span>
+              <h3 class="text-lg font-bold text-white group-hover:text-[#F6C453] transition mb-2 font-heading">
+                In-Depth Article Hub
+              </h3>
+              <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                48 comprehensive educational articles covering specific pest hiding spots, spread mechanics, treatment workflows, and FAQs.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-bold text-[#FFE08A]">
+              <span>Search 48+ Articles</span>
+              <ArrowRight class="w-4 h-4 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* INTERACTIVE SEARCH & ARTICLE FILTER SECTION */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06] bg-[#0b0c0f]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <div class="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06]">
+            <Search class="w-3.5 h-3.5 text-[#E5A93C]" />
+            <span class="text-xs font-bold text-zinc-300">INSTANT KNOWLEDGE SEARCH</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+            Find Answers &amp; Guides Fast
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-1">
+            Search our entire repository of pest identification, treatment protocols, and prevention advice by keyword or category.
+          </p>
+        </div>
+
+        <KnowledgeSearch client:load />
+      </div>
+    </section>
+
+    {/* =========================================================================
+        1. PEST LIBRARY (PROFILES, IDENTIFICATION, HABITATS, SIGNS & RISKS)
+        ========================================================================= */}
+    <section id="pest-library" class="relative z-10 py-16 sm:py-22 border-b border-white/[0.06] bg-[#0c0d10]/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL PILLAR 01
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading">
+            Bangalore Pest <span class="slv-gold-text">Library</span>
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed">
+            Detailed profiles for all 10 major pest categories encountered across residential and commercial premises in Bangalore. Understand species habits, warning signs, and prevention tips.
+          </p>
+        </div>
+
+        {/* 10 Pest Profile Cards Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {allTenPests.map((pest) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition-all flex flex-col justify-between group bg-[#0e1014]/90">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider font-mono">
+                    {pest.pricing}
+                  </span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-zinc-300">
+                    {pest.badge}
+                  </span>
+                </div>
+
+                <h3 class="text-xl font-bold text-white group-hover:text-[#F6C453] transition mb-1 font-heading">
+                  {pest.name}
+                </h3>
+                <span class="text-[11px] text-zinc-500 font-mono italic block mb-3">
+                  {pest.species}
+                </span>
+
+                <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4">
+                  {pest.desc}
+                </p>
+
+                <div class="space-y-2.5 border-t border-white/[0.06] pt-3.5 text-xs">
+                  <div class="bg-white/[0.02] p-2.5 rounded-xl border border-white/[0.04]">
+                    <span class="text-[#F6C453] font-semibold block mb-0.5">Infestation Signs:</span>
+                    <span class="text-zinc-400 leading-snug">{pest.signs}</span>
+                  </div>
+                  <div class="bg-white/[0.02] p-2.5 rounded-xl border border-white/[0.04]">
+                    <span class="text-cyan-400 font-semibold block mb-0.5">Prevention Strategy:</span>
+                    <span class="text-zinc-400 leading-snug">{pest.prevention}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 mt-6 border-t border-white/[0.06] flex items-center justify-between">
+                <a
+                  href={pest.serviceLink}
+                  class="text-xs font-bold text-white hover:text-[#F6C453] flex items-center gap-1.5 transition group-hover:translate-x-0.5"
+                >
+                  <span>Dedicated Treatment Page</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C]" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* PEST IDENTIFICATION DIAGNOSTIC SUBSECTION (Preserved Anchor: #pest-identification) */}
+        <div id="pest-identification" class="scroll-mt-24 pt-4">
+          <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/30 bg-gradient-to-br from-[#12141a] to-[#0c0d10] shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
+            <div class="max-w-3xl mb-8">
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2 font-mono">
+                VISUAL DIAGNOSTICS &amp; IDENTIFICATION
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+                How to Accurately Identify Pests in Your Home
+              </h3>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                Correctly identifying the species is the first and most critical step in effective pest management. Misidentifying bed bugs for fleas or termites for carpenter ants leads to ineffective DIY spending, pesticide resistance, and delayed structural protection.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-xs text-zinc-300">
+              <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-white text-sm">Bed Bugs vs. Fleas</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-red-500/10 text-red-400 font-mono font-bold">Bite Risk</span>
+                  </div>
+                  <p class="text-zinc-400 leading-relaxed mb-3">
+                    <strong>Bed bugs</strong> crawl slowly, have flat reddish oval bodies (apple-seed size), and shelter within mattress piping, headboards, and electrical plates.
+                  </p>
+                  <p class="text-zinc-400 leading-relaxed">
+                    <strong>Fleas</strong> are tiny (1.5–3mm) wingless jumping insects that congregate on domestic pets and carpet piles, delivering bites primarily around lower ankles and shins.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-white text-sm">Termites vs. Flying Ants</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-mono font-bold">Structural</span>
+                  </div>
+                  <p class="text-zinc-400 leading-relaxed mb-3">
+                    <strong>Termite swarmers</strong> possess straight beaded antennae, uniform thick waists with no constriction, and two pairs of wings of equal length.
+                  </p>
+                  <p class="text-zinc-400 leading-relaxed">
+                    <strong>Flying ants</strong> have elbowed antennae, distinctly pinched (wasp-like) waists, and forewings noticeably larger than their hindwings.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-white text-sm">Mice vs. Young Roof Rats</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 font-mono font-bold">Rodent</span>
+                  </div>
+                  <p class="text-zinc-400 leading-relaxed mb-3">
+                    <strong>House mice</strong> have small heads, proportionally large ears, pointed snouts, and slender tails longer than their body length.
+                  </p>
+                  <p class="text-zinc-400 leading-relaxed">
+                    <strong>Young roof rats</strong> have large, chunky hind feet out of proportion to their bodies, blunt heads, and scaly heavy tails.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-white text-sm">Ticks vs. Bed Bugs</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 font-mono font-bold">Parasites</span>
+                  </div>
+                  <p class="text-zinc-400 leading-relaxed mb-3">
+                    <strong>Brown dog ticks</strong> are 8-legged arachnids that crawl vertically up indoor walls, baseboards, and curtains to latch onto domestic pets.
+                  </p>
+                  <p class="text-zinc-400 leading-relaxed">
+                    <strong>Bed bugs</strong> are 6-legged insects that feed for 5–10 minutes and then quickly retreat into mattress crevices.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-white text-sm">Cockroach Nymphs vs. Beetles</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono font-bold">Crawling</span>
+                  </div>
+                  <p class="text-zinc-400 leading-relaxed mb-3">
+                    <strong>Cockroach nymphs</strong> move at high speed, possess long sweeping antennae, and have distinct cerci appendages on their rear abdomens.
+                  </p>
+                  <p class="text-zinc-400 leading-relaxed">
+                    <strong>Beetles</strong> move significantly slower, have hard protective wing cases (elytra), and lack the flattened flexible body of cockroaches.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-white text-sm">Wood Borer Frass vs. Termites</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 font-mono font-bold">Wood Decay</span>
+                  </div>
+                  <p class="text-zinc-400 leading-relaxed mb-3">
+                    <strong>Wood borer frass</strong> is ultra-fine, talcum-powder-like yellow flour that falls in conical piles directly beneath pinhole exit holes.
+                  </p>
+                  <p class="text-zinc-400 leading-relaxed">
+                    <strong>Subterranean termites</strong> construct earthen mud tubes composed of soil particles and saliva, leaving hollowed timber without visible loose powder.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* =========================================================================
+        2. TREATMENT & PREVENTION (TREATMENT GUIDES, IPM, PREP & PREVENTION TIPS)
+        ========================================================================= */}
+    <section id="treatment-prevention" class="relative z-10 py-16 sm:py-22 border-b border-white/[0.06] bg-[#090a0d]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL PILLAR 02
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading">
+            Treatment &amp; <span class="slv-gold-text">Prevention</span>
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed">
+            Professional Integrated Pest Management (IPM) methodology combines biological inspection, safe targeted chemistries, resident preparation checklists, and long-term exclusion.
+          </p>
+        </div>
+
+        {/* SUBSECTION A: TREATMENT GUIDES & IPM (Preserved Anchor: #treatment-guides) */}
+        <div id="treatment-guides" class="scroll-mt-24 mb-14">
+          <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] bg-[#0e1014]/90">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/[0.06]">
+              <div>
+                <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-mono">
+                  IPM METHODOLOGY &amp; SAFETY
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-black text-white font-heading">
+                  Integrated Pest Management (IPM) Protocols
+                </h3>
+              </div>
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">
+                <ShieldCheck class="w-4 h-4" />
+                <span>Odorless &amp; CIB-Certified Formulations</span>
+              </div>
+            </div>
+
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+              Professional pest control does not rely on random chemical fogging or indiscriminate surface spraying. Our IPM protocols target pests at their biological source while guaranteeing the health and safety of infants, elder family members, and domestic pets.
+            </p>
+
+            {/* 4-Stage Professional Journey Cards */}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                    STAGE 01
+                  </span>
+                  <h4 class="text-base font-bold text-white mb-2">Thorough Inspection</h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    Inspecting moisture points, electrical conduits, plumbing penetrations, and false ceiling voids to map exact colonies.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                    STAGE 02
+                  </span>
+                  <h4 class="text-base font-bold text-white mb-2">Micro-Placement</h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    Applying odorless gel baits, micro-encapsulated suspensions, and precision crack infusions strictly inside harborage zones.
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                    STAGE 03
+                  </span>
+                  <h4 class="text-base font-bold text-white mb-2">Life-Cycle Sync</h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    Scheduling secondary intervention visits timed with egg incubation periods (e.g. 14–21 days for bed bugs and fleas).
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                    STAGE 04
+                  </span>
+                  <h4 class="text-base font-bold text-white mb-2">Monitoring &amp; Audit</h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    Installing non-toxic sticky monitoring stations and providing written structural exclusion recommendations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Pre-Service Preparation Checklist */}
+            <div class="p-6 rounded-2xl bg-[#E5A93C]/[0.04] border border-[#E5A93C]/20">
+              <div class="flex items-center gap-2 mb-3">
+                <ClipboardCheck class="w-5 h-5 text-[#E5A93C]" />
+                <h4 class="text-sm sm:text-base font-bold text-white">
+                  Resident Pre-Service Preparation Guidelines
+                </h4>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs text-zinc-300">
+                <div class="flex items-start gap-2">
+                  <CheckCircle2 class="w-4 h-4 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Store open foods, fruits, and cooked dishes inside the refrigerator.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <CheckCircle2 class="w-4 h-4 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Cover pet aquariums, turn off air pumps, and keep pets in ventilated rooms.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <CheckCircle2 class="w-4 h-4 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>For bed bug service, strip bed sheets and wash in hot water (&gt;60°C).</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <CheckCircle2 class="w-4 h-4 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Keep room perimeter baseboards unobstructed for targeted barrier sprays.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <CheckCircle2 class="w-4 h-4 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>For cockroach gel baiting, modular cabinets do NOT need to be emptied.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <CheckCircle2 class="w-4 h-4 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Allow 2 hours for spray treatments to dry completely before re-entering.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SUBSECTION B: PREVENTION TIPS & EXCLUSION (Preserved Anchor: #prevention) */}
+        <div id="prevention" class="scroll-mt-24">
+          <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] bg-[#0c0d10]/90">
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2 font-mono">
+              LONG-TERM DEFENSE &amp; EXCLUSION
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+              Structural &amp; Hygiene Prevention Checklist
+            </h3>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+              More than 70% of persistent urban pest infestations originate from unsealed exterior gaps and interior moisture leaks. Implement these practical prevention measures for long-term protection.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs text-zinc-300">
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-[#E5A93C]"></span>
+                  <span class="font-bold text-white text-sm">1. Kitchen Sanitation &amp; Food Storage</span>
+                </div>
+                <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc">
+                  <li>Wipe down grease behind kitchen cooktops and stoves nightly with warm soapy water.</li>
+                  <li>Store pantry pulses, grains, and sugars inside airtight glass or thick plastic jars.</li>
+                  <li>Dispose of wet organic kitchen waste in tightly lidded bins before retiring for the night.</li>
+                  <li>Never leave open pet food in bowls overnight on kitchen or utility room floors.</li>
+                </ul>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                  <span class="font-bold text-white text-sm">2. Moisture Control &amp; Plumbing Defense</span>
+                </div>
+                <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc">
+                  <li>Repair weeping under-sink valves and drain traps to deprive roaches of water.</li>
+                  <li>Ensure all bathroom and balcony floor drains feature intact cockroach-proof jali traps.</li>
+                  <li>Route air-conditioner condensation drainage pipes safely away from outer wall bases.</li>
+                  <li>Fix persistent wall seepage to prevent subterranean termites and fungal spores.</li>
+                </ul>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                  <span class="font-bold text-white text-sm">3. Physical Exclusion &amp; Structural Sealing</span>
+                </div>
+                <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc">
+                  <li>Install heavy-duty rubber brush sweeps on all exterior main and kitchen balcony doors.</li>
+                  <li>Seal pipe voids around gas lines, dishwashers, and sinks with copper mesh and silicone.</li>
+                  <li>Install 20-mesh stainless steel fly and mosquito screens on openable windows.</li>
+                  <li>Seal cracks along granite skirting boards and modular cabinet joints with clear caulk.</li>
+                </ul>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span class="font-bold text-white text-sm">4. Travel &amp; Package Hygiene</span>
+                </div>
+                <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc">
+                  <li>Place hotel luggage on elevated racks or bathtubs, never directly on hotel beds or carpets.</li>
+                  <li>Unpack suitcases in laundry areas and wash travel garments immediately at high temperatures.</li>
+                  <li>Inspect corrugated cardboard grocery delivery boxes outside before bringing them indoors.</li>
+                  <li>Thoroughly examine second-hand furniture and mattress seams before moving them into your home.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* =========================================================================
+        3. SEASONAL PEST GUIDE (CALENDAR, WEATHER-RELATED RISKS & TIPS)
+        ========================================================================= */}
+    <section id="seasonal-pest-guide" class="relative z-10 py-16 sm:py-22 border-b border-white/[0.06] bg-[#0c0d10]/70 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL PILLAR 03
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading">
+            Bangalore Seasonal Pest <span class="slv-gold-text">Guide</span>
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed">
+            Understand how Bangalore's unique weather and climate fluctuations trigger distinct seasonal pest influxes throughout the calendar year.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+          {seasonalGuides.map((guide, idx) => (
+            <div class="slv-card rounded-2xl p-6 sm:p-7 border border-white/[0.08] hover:border-[#E5A93C]/40 transition-all flex flex-col justify-between bg-[#0e1014]/90">
+              <div>
+                <div class="flex items-center gap-2.5 mb-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center text-xs font-bold text-[#F6C453]">
+                    Q{idx + 1}
+                  </div>
+                  <div>
+                    <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+                      {guide.season}
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="inline-block px-2.5 py-1 rounded-md bg-[#E5A93C]/10 border border-[#E5A93C]/20 text-[#FFE08A] text-xs font-bold mb-3">
+                  Focus: {guide.focus}
+                </div>
+
+                <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4">
+                  {guide.desc}
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] text-xs">
+                <span class="text-[#F6C453] font-semibold block mb-1">Recommended Action:</span>
+                <span class="text-zinc-400 leading-snug">{guide.actions}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* =========================================================================
+        4. IN-DEPTH PEST ARTICLE DIRECTORIES (ALL 48 ARTICLES PRESERVED)
+        ========================================================================= */}
+    <section id="pest-articles" class="relative z-10 py-16 sm:py-22 border-b border-white/[0.06] bg-[#090a0c] scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL PILLAR 04
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading">
+            Comprehensive Pest <span class="slv-gold-text">Guides</span>
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-3 leading-relaxed">
+            Browse our complete collection of deep-dive articles across all major pest categories. Every article includes identification markers, harbourage mappings, spread vectors, prevention advice, and professional treatment blueprints.
+          </p>
+        </div>
+
+        {/* COCKROACHES ARTICLES */}
+        <div class="mb-14 pb-12 border-b border-white/[0.06]">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <span class="text-xs font-bold text-[#E5A93C] uppercase tracking-wider font-mono">CATEGORY: COCKROACHES</span>
+              <h3 class="text-2xl font-bold text-white font-heading">Cockroach In-Depth Guides</h3>
+            </div>
+            <a href="/services/cockroach-control" class="text-xs font-bold text-[#FFE08A] hover:underline flex items-center gap-1">
+              <span>View Service (₹599)</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {cockroachKnowledgePages.map((page) => (
+              <div class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between group bg-[#0e1014]/80">
+                <div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 font-heading">
+                    {page.title}
+                  </h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed mb-4">{page.desc}</p>
+                </div>
+                <a href={page.href} class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between">
+                  <span>Read Full Article</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* TERMITES ARTICLES */}
+        <div class="mb-14 pb-12 border-b border-white/[0.06]">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <span class="text-xs font-bold text-[#E5A93C] uppercase tracking-wider font-mono">CATEGORY: TERMITES</span>
+              <h3 class="text-2xl font-bold text-white font-heading">Subterranean Termite Guides</h3>
+            </div>
+            <a href="/services/termite-control" class="text-xs font-bold text-[#FFE08A] hover:underline flex items-center gap-1">
+              <span>View Service (₹899)</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {termiteKnowledgePages.map((page) => (
+              <div class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between group bg-[#0e1014]/80">
+                <div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 font-heading">
+                    {page.title}
+                  </h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed mb-4">{page.desc}</p>
+                </div>
+                <a href={page.href} class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between">
+                  <span>Read Full Article</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* MOSQUITOES ARTICLES */}
+        <div class="mb-14 pb-12 border-b border-white/[0.06]">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <span class="text-xs font-bold text-[#E5A93C] uppercase tracking-wider font-mono">CATEGORY: MOSQUITOES</span>
+              <h3 class="text-2xl font-bold text-white font-heading">Mosquito Management Guides</h3>
+            </div>
+            <a href="/services/mosquitoes" class="text-xs font-bold text-[#FFE08A] hover:underline flex items-center gap-1">
+              <span>View Service (₹799)</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {mosquitoKnowledgePages.map((page) => (
+              <div class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between group bg-[#0e1014]/80">
+                <div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 font-heading">
+                    {page.title}
+                  </h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed mb-4">{page.desc}</p>
+                </div>
+                <a href={page.href} class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between">
+                  <span>Read Full Article</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RODENTS ARTICLES */}
+        <div class="mb-14 pb-12 border-b border-white/[0.06]">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <span class="text-xs font-bold text-[#E5A93C] uppercase tracking-wider font-mono">CATEGORY: RODENTS</span>
+              <h3 class="text-2xl font-bold text-white font-heading">Rodent Management Guides</h3>
+            </div>
+            <a href="/services/rodents" class="text-xs font-bold text-[#FFE08A] hover:underline flex items-center gap-1">
+              <span>View Service (₹699)</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {rodentKnowledgePages.map((page) => (
+              <div class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between group bg-[#0e1014]/80">
+                <div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 font-heading">
+                    {page.title}
+                  </h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed mb-4">{page.desc}</p>
+                </div>
+                <a href={page.href} class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between">
+                  <span>Read Full Article</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* FLEAS & TICKS ARTICLES */}
+        <div class="mb-14 pb-12 border-b border-white/[0.06]">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <span class="text-xs font-bold text-[#E5A93C] uppercase tracking-wider font-mono">CATEGORY: FLEAS &amp; TICKS</span>
+              <h3 class="text-2xl font-bold text-white font-heading">Flea &amp; Brown Dog Tick Guides</h3>
+            </div>
+            <a href="/services/fleas" class="text-xs font-bold text-[#FFE08A] hover:underline flex items-center gap-1">
+              <span>View Service (₹799)</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {fleaKnowledgePages.slice(0, 3).concat(tickKnowledgePages.slice(0, 3)).map((page) => (
+              <div class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between group bg-[#0e1014]/80">
+                <div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 font-heading">
+                    {page.title}
+                  </h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed mb-4">{page.desc}</p>
+                </div>
+                <a href={page.href} class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between">
+                  <span>Read Full Article</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* WOOD BORERS & ANTS ARTICLES */}
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <span class="text-xs font-bold text-[#E5A93C] uppercase tracking-wider font-mono">CATEGORY: WOOD BORERS &amp; ANTS</span>
+              <h3 class="text-2xl font-bold text-white font-heading">Wood Borer &amp; Ant Guides</h3>
+            </div>
+            <a href="/services/wood-borer-control" class="text-xs font-bold text-[#FFE08A] hover:underline flex items-center gap-1">
+              <span>View Service (₹899)</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {woodBorerKnowledgePages.slice(0, 3).concat(antKnowledgePages.slice(0, 3)).map((page) => (
+              <div class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between group bg-[#0e1014]/80">
+                <div>
+                  <h4 class="text-base font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 font-heading">
+                    {page.title}
+                  </h4>
+                  <p class="text-zinc-400 text-xs leading-relaxed mb-4">{page.desc}</p>
+                </div>
+                <a href={page.href} class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between">
+                  <span>Read Full Article</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* =========================================================================
+        5. FREQUENTLY ASKED QUESTIONS (EXPANDABLE ANSWERS)
+        ========================================================================= */}
+    <section id="faqs" class="relative z-10 py-16 sm:py-22 border-b border-white/[0.06] bg-[#0c0d10]/90 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <HelpCircle class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL FAQS
+            </span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Common Pest Control <span class="slv-gold-text">Questions</span>
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Clear, technical, and practical answers regarding pest identification, IPM treatment safety, resident preparation, and long-term protection.
+          </p>
+        </div>
+
+        <KnowledgeFaq client:load />
+      </div>
+    </section>
+
+    {/* =========================================================================
+        6. CALL TO ACTION: NEED PROFESSIONAL HELP?
+        ========================================================================= */}
+    <section class="relative z-10 py-18 sm:py-24 overflow-hidden bg-gradient-to-b from-[#090a0c] to-[#0d0f14]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="slv-card rounded-3xl p-8 sm:p-14 border border-[#E5A93C]/40 bg-gradient-to-br from-[#13161c] to-[#0c0d10] shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative overflow-hidden">
+          {/* Subtle Ambient Glow */}
+          <div class="absolute -top-24 right-1/4 w-72 h-72 bg-[#E5A93C]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08]">
+            <Sparkles class="w-3.5 h-3.5 text-[#E5A93C]" />
+            <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider">
+              ON-SITE DIAGNOSTICS &amp; ADVICE
+            </span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading mb-4">
+            Need Professional <span class="slv-gold-text">Help?</span>
+          </h2>
+
+          <p class="text-zinc-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+            Unsure of the pest species, or facing a persistent recurring infestation? Speak directly with certified SLV Pest Control technicians to discuss your problem or arrange an inspection.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="tel:9180397822"
+              class="slv-btn-primary px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 w-full sm:w-auto justify-center shadow-[0_0_25px_rgba(229,169,60,0.3)]"
+            >
+              <Phone class="w-4 h-4 text-[#1a1202]" />
+              <span>Call Now: 91803 97822</span>
+            </a>
+
+            <a
+              href="https://wa.me/9180397822?text=Hello%20SLV%20Pest%20Control%2C%20I%20need%20assistance%20with%20pest%20control"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="slv-btn-secondary px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 w-full sm:w-auto justify-center border-emerald-500/30 text-emerald-400 hover:text-white hover:border-emerald-400 hover:bg-emerald-500/10"
+            >
+              <MessageCircle class="w-4 h-4 text-emerald-400" />
+              <span>WhatsApp Us</span>
+            </a>
+
+            <a
+              href="/contact"
+              class="px-8 py-3.5 rounded-xl bg-white/[0.05] border border-white/[0.12] text-xs sm:text-sm font-bold text-white hover:bg-white/[0.1] transition w-full sm:w-auto justify-center inline-flex items-center gap-1.5"
+            >
+              <span>Book An Inspection</span>
+              <ArrowRight class="w-4 h-4 text-[#E5A93C]" />
+            </a>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400">
+            <div class="flex items-center gap-1.5">
+              <CheckCircle2 class="w-3.5 h-3.5 text-[#E5A93C]" />
+              <span>Zero Odor Formulations</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <CheckCircle2 class="w-3.5 h-3.5 text-[#E5A93C]" />
+              <span>Child &amp; Pet Safe IPM</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <CheckCircle2 class="w-3.5 h-3.5 text-[#E5A93C]" />
+              <span>Same-Day Bangalore Coverage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

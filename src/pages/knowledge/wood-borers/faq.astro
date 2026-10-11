@@ -1,0 +1,300 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  HelpCircle,
+  ShieldCheck,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  AlertTriangle
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Wood Borer Identification',
+    desc: 'Recognize shot-holes, fine frass powder, weakened timber, and activity around furniture.',
+    href: '/knowledge/wood-borers/identification'
+  },
+  {
+    title: 'Where Wood Borers Are Found',
+    desc: 'Examine common harbourages: wooden furniture, doors, window frames, flooring, and cabinets.',
+    href: '/knowledge/wood-borers/where-they-are-found'
+  },
+  {
+    title: 'How Wood Borers Damage Wood',
+    desc: 'Understand internal tunneling, exit holes, frass generation, and progressive timber weakening.',
+    href: '/knowledge/wood-borers/how-they-damage-wood'
+  },
+  {
+    title: 'Wood Borer Prevention',
+    desc: 'Actionable tips: moisture management, timber maintenance, and checking newly purchased furniture.',
+    href: '/knowledge/wood-borers/prevention'
+  },
+  {
+    title: 'Wood Borer Treatment Guide',
+    desc: 'Our 4-stage journey: inspection, assessment, targeted treatment, and follow-up monitoring.',
+    href: '/knowledge/wood-borers/treatment-guide'
+  }
+];
+
+const faqs = [
+  {
+    q: 'How do I know if my wood has wood borers?',
+    a: 'Key indicators include the appearance of tiny circular pinholes (1–2 mm across) on wooden surfaces, fine yellowish or white wood powder (frass) accumulating below the holes, and localized hollow-sounding or brittle timber edges.'
+  },
+  {
+    q: 'What are the common signs?',
+    a: 'Common signs include fresh powder heaps reappearing after cleaning, visible round exit flight holes, crumbling timber corners, loose veneer laminates, and occasionally finding small adult beetles near windows during breeding periods.'
+  },
+  {
+    q: 'What are the small holes in wooden furniture?',
+    a: 'The small holes (often called shot-holes or pinholes) are exit holes created by adult wood-boring beetles as they chew their way out of the timber after completing their larval and pupal development inside.'
+  },
+  {
+    q: 'What is the powder around wood-borer holes?',
+    a: 'The powder is frass (bore-dust), composed of finely chewed, digested wood particles ejected from the internal gallery networks by emerging adult beetles and active larvae.'
+  },
+  {
+    q: 'Where are wood borers commonly found?',
+    a: 'Wood borers are commonly found in solid wood dining tables, chairs, bed frames, wardrobe plywood backs, wooden door leaves, window frames, parquet flooring, modular kitchen cabinets, and structural timber beams.'
+  },
+  {
+    q: 'How much does wood borer treatment cost?',
+    a: 'At SLV Pest Control, pricing is provided after an on-site inspection. The total investment depends on the number of affected furniture pieces, doorframes, the volume of structural timber, and the extent of internal tunneling.'
+  },
+  {
+    q: 'Is inspection required?',
+    a: 'Yes. A thorough inspection is essential to differentiate between active and dormant infestations, locate all affected pieces across the property, and determine whether syringe injection, surface brush coating, or combined methods are needed.'
+  },
+  {
+    q: 'How long does treatment take?',
+    a: 'The duration of treatment depends on the total count of furniture pieces, linear footage of doorframes, and accessibility of unpolished surfaces. Because each active exit hole is individually injected, treatment time is customized to the scope of each property.'
+  },
+  {
+    q: 'Can furniture be treated?',
+    a: 'Yes. Polished and unpolished wooden furniture can be treated using targeted micro-syringe injection into existing flight holes without damaging the outer finish, combined with preservative treatment on unfinished back surfaces.'
+  },
+  {
+    q: 'Can wooden doors and frames be treated?',
+    a: 'Yes. Both solid wood and flush doors, as well as main door frames, window sills, and architraves, can be treated using precision injection and targeted preservative application.'
+  },
+  {
+    q: 'What preparation is required?',
+    a: 'Clear personal belongings, clothing, or crockery from inside affected wardrobes and cabinets. Wipe away existing dust from around flight holes to allow clear visibility of active pinholes for our technicians.'
+  },
+  {
+    q: 'What should I do after treatment?',
+    a: 'Allow treated surfaces to dry thoroughly according to the technician\'s guidance. Keep treated rooms well-ventilated, avoid immediately washing or polishing treated surfaces, and monitor the area periodically for any residual or new powder ejection.'
+  },
+  {
+    q: 'Can wood-borer activity return?',
+    a: 'Activity can recur if new, untreated wooden furniture with unhatched beetle eggs is introduced into the home, or if larvae located deep within dense timber escape initial contact. Ongoing monitoring and periodic reviews help ensure sustained protection.'
+  }
+];
+---
+
+<Layout
+  title="Wood Borer FAQ | Questions & Factual Answers | SLV Pest Control"
+  description="Factual answers to common questions about wood borer control in Bangalore: signs, shot-holes, frass powder, furniture treatment, costs, and inspection."
+  canonical="https://slvpestcontrol.com/knowledge/wood-borers/faq"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://slvpestcontrol.com/knowledge/wood-borers/faq#faq",
+      "mainEntity": faqs.map((faq) => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Architectural Glow */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs: Home > Knowledge Hub > Wood Borers > Wood Borer FAQ */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>&gt;</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>&gt;</span>
+        <a href="/services/wood-borer-control" class="hover:text-white transition">Wood Borers</a>
+        <span>&gt;</span>
+        <span class="text-[#F6C453] font-semibold">Wood Borer FAQ</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <HelpCircle class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.2em] uppercase">
+            FREQUENTLY ASKED QUESTIONS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5 font-heading">
+          Frequently Asked Questions About <span class="slv-gold-text">Wood Borer Treatment</span>
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          Clear, factual answers regarding wood borer signs, pinholes, frass powder, furniture preservation, inspection protocols, and safety.
+        </p>
+
+        {/* Primary CTA */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href="/services/wood-borer-control"
+            class="slv-btn-primary w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <span>Get Free Inspection</span>
+            <ArrowRight class="w-4 h-4 ml-1" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+            <span>Call: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+          >
+            <MessageCircle class="w-4 h-4 mr-1 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* FAQS CARDS SECTION */}
+    <section class="relative z-10 py-14 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-4 mb-16">
+          {faqs.map((faq, index) => (
+            <div class="slv-card rounded-2xl p-6 sm:p-7 border border-white/[0.08] transition hover:border-[#E5A93C]/40">
+              <div class="flex items-start gap-3.5 mb-2.5">
+                <span class="text-xs font-mono font-bold text-[#F6C453] bg-[#E5A93C]/10 px-2 py-0.5 rounded shrink-0 mt-0.5">
+                  Q{index + 1 < 10 ? `0${index + 1}` : index + 1}
+                </span>
+                <h2 class="text-base sm:text-lg font-bold text-white font-heading">
+                  {faq.q}
+                </h2>
+              </div>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-10">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Banner */}
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 bg-gradient-to-b from-[#14161c] to-[#0c0d10] text-center mb-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <ShieldCheck class="w-12 h-12 text-[#E5A93C] mx-auto mb-4" />
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Have More Questions About Wood Borer Treatment?
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Speak directly with SLV Pest Control technicians for personalized advice or schedule an on-site property inspection. Pricing provided after inspection.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/services/wood-borer-control"
+              class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4 ml-1" />
+            </a>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453] mr-1" />
+              <span>Call: 91803 97822</span>
+            </a>
+            <a
+              href="https://wa.me/9180397822"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-md inline-flex items-center transition"
+            >
+              <MessageCircle class="w-4 h-4 mr-1 text-white" />
+              <span>WhatsApp Us</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Related Knowledge Hub Articles */}
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <BookOpen class="w-4 h-4 text-[#E5A93C]" />
+            <h2 class="text-xl font-bold text-white font-heading">
+              Explore More Wood Borer Guides
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card rounded-2xl p-5 border border-white/[0.08] hover:border-[#E5A93C]/50 transition block group"
+              >
+                <h3 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1.5 flex items-center justify-between">
+                  <span>{article.title}</span>
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">{article.desc}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT & SERVICE DETAILS */}
+    <section class="relative z-10 py-14 sm:py-18 bg-[#0c0d10]/50 border-b border-white/[0.06]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="slv-card rounded-3xl p-6 sm:p-10 border border-white/[0.08]">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Bangalore Service Office</span>
+              <p class="text-white text-sm">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</p>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Phone / WhatsApp</span>
+              <a href="tel:9180397822" class="text-white text-sm font-bold font-mono hover:text-[#FFE08A]">91803 97822</a>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Email Support</span>
+              <a href="mailto:contact@slvpestcontrol.com" class="text-white text-sm hover:text-[#FFE08A]">contact@slvpestcontrol.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

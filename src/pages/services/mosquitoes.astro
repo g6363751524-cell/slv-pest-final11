@@ -1,0 +1,732 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import { ContactForm } from '../../components/ContactForm';
+import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+import {
+  Wind,
+  Shield,
+  ShieldCheck,
+  CheckCircle2,
+  AlertTriangle,
+  Search,
+  Phone,
+  MessageCircle,
+  Mail,
+  ArrowRight,
+  MapPin,
+  HelpCircle,
+  Sparkles,
+  Droplets,
+  Layers,
+  Activity,
+  Home,
+  Building,
+  TreePine,
+  Waves,
+  Eye,
+  FileText,
+  Calendar,
+  CloudRain
+} from 'lucide-react';
+
+const signs = [
+  {
+    title: 'Persistent Biting & Welts',
+    desc: 'Frequent bites occurring during dawn and dusk hours (or daytime bites from container-breeding Aedes mosquitoes) across balconies, verandas, and bedrooms.',
+    icon: Wind
+  },
+  {
+    title: 'Visible Larvae in Standing Water',
+    desc: 'Active, wiggly larvae suspended near the water surface in flowerpot saucers, AC runoff trays, bucket bottoms, and unsealed rainwater cisterns.',
+    icon: Droplets
+  },
+  {
+    title: 'Resting on Shaded Garden Foliage',
+    desc: 'Adult mosquitoes resting in dense ornamental shrubs, under outdoor staircases, beneath patio furniture, and behind living room curtains.',
+    icon: Search
+  },
+  {
+    title: 'Audible Buzzing in Sleeping Areas',
+    desc: 'High-pitched buzzing interfering with rest and sleep, indicating flying adults have entered indoor spaces through windows or doorway corridors.',
+    icon: AlertTriangle
+  }
+];
+
+const breedingHarbourageAreas = [
+  { name: 'Balcony Planter Saucers', desc: 'Undrained water collecting beneath potted plants creates ideal breeding pools' },
+  { name: 'Open Overhead Tanks & Sumps', desc: 'Broken lids or unsealed vents allow female mosquitoes direct oviposition access' },
+  { name: 'AC Drainage & Cooler Trays', desc: 'Continuous condensation drip collecting in exterior trays and discharge pipes' },
+  { name: 'Dense Garden Foliage', desc: 'Moist, shaded shrubbery providing cool daytime shelter for adult flying mosquitoes' },
+  { name: 'Stormwater Drains & Gullies', desc: 'Stagnant wastewater pooling in exterior compound drainage channels' },
+  { name: 'Underneath Balconies & Stairs', desc: 'Dark, low-airflow sheltered zones where adult mosquitoes harbor during heat' }
+];
+
+const fourStageProcess = [
+  {
+    step: '01',
+    title: 'Breeding Site Inspection',
+    description: 'Identify standing water sources and adult resting zones.',
+    detail: 'Our certified technicians survey your property perimeter, garden landscaping, drainage channels, and indoor corridors to locate active larvae breeding pools and adult harborage vegetation.',
+    icon: Search
+  },
+  {
+    step: '02',
+    title: 'Targeted Larvicidal Treatment',
+    description: 'Neutralize mosquito larvae before they reach flying adulthood.',
+    detail: 'Application of approved biological (Bti) and specialized chemical larvicides directly into non-potable standing water, drains, and retention sumps to stop the mosquito reproduction cycle.',
+    icon: Droplets
+  },
+  {
+    step: '03',
+    title: 'Thermal Fogging & Cold Misting',
+    description: 'Knock down active flying adult mosquito populations.',
+    detail: 'Calibrated exterior thermal fogging across perimeter vegetation, drains, and compound boundaries, paired with ultra-low volume (ULV) cold misting for shaded outdoor gathering spaces.',
+    icon: Wind
+  },
+  {
+    step: '04',
+    title: 'Prevention & Exclusion Guidance',
+    description: 'Practical environmental management to sustain results.',
+    detail: 'Actionable property recommendations including window mesh maintenance, drainage flow optimization, water container turnover schedules, and vegetation trimming.',
+    icon: ShieldCheck
+  }
+];
+
+const propertiesWeTreat = [
+  'Gated Communities & Societies',
+  'Independent Homes & Villas',
+  'Commercial Offices & Tech Parks',
+  'Schools & Educational Campuses',
+  'Outdoor Event Lawns & Resorts',
+  'Restaurants & Open-Air Cafes',
+  'Warehouses & Logistics Hubs',
+  'Industrial Facilities & Grounds'
+];
+
+const serviceZones = [
+  { title: 'NORTH BANGALORE', areas: 'Yelahanka, Hebbal, RT Nagar, Sahakar Nagar and surrounding sectors' },
+  { title: 'EAST BANGALORE', areas: 'Whitefield, Indiranagar, Marathahalli, KR Puram and surrounding sectors' },
+  { title: 'WEST BANGALORE', areas: 'Nagasandra, Yeshwanthpur, Rajajinagar, Basaveshwaranagar, Andarahalli' },
+  { title: 'SOUTH BANGALORE', areas: 'Jayanagar, JP Nagar, BTM Layout, Koramangala, Electronic City' },
+  { title: 'CENTRAL BANGALORE', areas: 'Malleshwaram, MG Road, Richmond Town, Shanthi Nagar and central corridors' },
+  { title: 'OUTER BANGALORE', areas: 'Sarjapur Road, Devanahalli, Kanakapura Road and extended industrial zones' }
+];
+
+const knowledgeArticles = [
+  {
+    title: 'Mosquito Identification',
+    desc: 'Learn common signs of mosquito activity, daytime vs. nighttime biting habits, larvae detection, and breeding conditions.',
+    href: '/knowledge/mosquitoes/identification'
+  },
+  {
+    title: 'Where Mosquitoes Breed & Hide',
+    desc: 'Examine standing water containers, balcony plant saucers, garden foliage, drainage lines, and shaded resting locations.',
+    href: '/knowledge/mosquitoes/where-they-breed'
+  },
+  {
+    title: 'How Mosquitoes Enter & Spread',
+    desc: 'Understand entry pathways through open windows, doorway gaps, utility shafts, and neighborhood outdoor flight dispersal.',
+    href: '/knowledge/mosquitoes/how-they-spread'
+  },
+  {
+    title: 'Mosquito Prevention',
+    desc: 'Practical strategies including standing water elimination, overhead tank sealing, mesh screen care, and garden upkeep.',
+    href: '/knowledge/mosquitoes/prevention'
+  },
+  {
+    title: 'Mosquito Treatment Guide',
+    desc: 'The complete 4-stage professional journey: inspection, source assessment, targeted larvicide and fogging, and monitoring.',
+    href: '/knowledge/mosquitoes/treatment-guide'
+  },
+  {
+    title: 'Mosquito FAQ',
+    desc: 'Clear, factual answers to 12 frequently asked questions covering costs, fogging safety, preparation, and prevention.',
+    href: '/knowledge/mosquitoes/faq'
+  }
+];
+
+const faqs = [
+  {
+    q: 'How does SLV Pest Control treat mosquitoes?',
+    a: 'We implement an integrated mosquito management strategy combining two proven protocols: targeted larvicidal treatment applied directly into standing water sources to eliminate larvae before adulthood, and precision outdoor thermal fogging or ultra-low volume (ULV) cold misting to knock down active flying adult populations.'
+  },
+  {
+    q: 'Why is mosquito control priced after inspection?',
+    a: 'Mosquito treatment scope depends heavily on exterior perimeter dimensions, compound landscaping density, stagnant water accumulation points, proximity to open drains, and property layout. An on-site assessment ensures an accurate, transparent quote tailored to your exact property conditions.'
+  },
+  {
+    q: 'Is outdoor thermal fogging safe for residents and pets?',
+    a: 'Yes. Our treatments use approved formulations applied by trained technicians during optimal meteorological windows (early morning or dusk when winds are calm). Residents and pets are advised to remain indoors with windows closed for 30 to 45 minutes during outdoor thermal fogging.'
+  },
+  {
+    q: 'Can mosquito treatment eliminate bites permanently?',
+    a: 'No pest control provider can permanently stop wild mosquitoes from flying into outdoor open spaces from neighboring plots. However, professional integrated management drastically suppresses local breeding sources on your property and knocks down the resident adult population, providing substantial relief.'
+  },
+  {
+    q: 'How often should mosquito control be performed in Bangalore?',
+    a: 'During the high-risk monsoon and post-monsoon months (June through November), bi-weekly or monthly treatments are recommended for gated communities and independent homes. During dry months, routine monthly larvicidal monitoring maintains control.'
+  },
+  {
+    q: 'Do you offer mosquito fogging for outdoor events and weddings?',
+    a: 'Yes. We provide scheduled knockdown fogging services for outdoor weddings, corporate sports days, open-air gatherings, and society festivals, scheduled 2 to 4 hours prior to guest arrival for maximum evening comfort.'
+  },
+  {
+    q: 'What should I do before and after mosquito treatment?',
+    a: 'Before exterior fogging, close all external windows and doors, bring pets indoors, and cover exposed food or outdoor water bowls. After treatment, keep windows closed for 30 minutes, then ventilate living spaces. Continue practicing weekly dry days for plant saucers and water collection trays.'
+  },
+  {
+    q: 'Do you service high-rise apartment societies across Bangalore?',
+    a: 'Yes. We cater to entire gated communities, clubhouse grounds, basements, landscaping perimeters, and podium gardens with high-capacity equipment suited for extensive acreage.'
+  }
+];
+---
+
+<Layout
+  title="Mosquito Control in Bangalore | Starting at ₹799 | SLV Pest Control"
+  description="Professional mosquito control in Bangalore. Enjoy a bite-free space with targeted larvicide treatment and thermal fogging for homes, societies, and commercial grounds. Starting at ₹799. Call 91803 97822."
+  canonical="https://slvpestcontrol.com/services/mosquito-control"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://slvpestcontrol.com/services/mosquito-control#service",
+          "name": "Mosquito Control in Bangalore",
+          "serviceType": "Mosquito Pest Control Service",
+          "description": "Professional mosquito control service in Bangalore providing targeted larvicidal treatment and outdoor thermal fogging for residences, societies, and commercial grounds.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "SLV Pest Control",
+            "telephone": "+91-9180397822",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "143 Soundarya Layout, Doddabidarakallu",
+              "addressLocality": "Bengaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "560073",
+              "addressCountry": "IN"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Bengaluru"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "INR",
+              "description": "Pricing determined after property inspection"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://slvpestcontrol.com/services/mosquito-control#faq",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.a
+            }
+          }))
+        }
+      ]
+    })} />
+  </Fragment>
+
+  <Header client:load activeItem="mosquitoes" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Background glow effects */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[35%] left-[-100px] w-[500px] h-[500px] bg-[#E5A93C]/[0.04] rounded-full blur-[160px]"></div>
+    </div>
+
+    {/* Breadcrumbs */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/#services" class="hover:text-white transition">Services</a>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">Mosquito Control</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 lg:pt-18 pb-14 sm:pb-18 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.25em] uppercase">
+            MOSQUITO CONTROL IN BANGALORE
+          </span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading">
+          Mosquito Control in <span class="slv-gold-text">Bangalore</span>
+        </h1>
+
+        <p class="text-xl sm:text-2xl font-bold text-white mb-6 font-heading tracking-tight">
+          Enjoy a bite-free space
+        </p>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8 font-normal">
+          SLV Pest Control delivers targeted mosquito management across Bangalore. Combining precision biological and chemical larviciding for standing water sources with calibrated outdoor thermal fogging and cold misting, we safeguard homes, residential societies, and commercial grounds against seasonal mosquito swarms.
+        </p>
+
+        {/* Badges */}
+        <div class="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 px-5 py-2.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] mb-8 text-xs sm:text-sm font-semibold">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#E5A93C]"></span>
+            <span class="text-[#F6C453] font-black tracking-wide">STARTING AT ₹799</span>
+          </div>
+          <span class="text-zinc-600 hidden sm:inline">|</span>
+          <div class="flex items-center gap-2">
+            <Droplets class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-white">Larvicidal Defense</span>
+          </div>
+          <span class="text-zinc-600 hidden sm:inline">|</span>
+          <div class="flex items-center gap-2">
+            <Wind class="w-4 h-4 text-[#E5A93C]" />
+            <span class="text-white">Thermal Fogging &amp; Cold Misting</span>
+          </div>
+        </div>
+
+        {/* CTAs */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+          <a
+            href="/contact"
+            class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider"
+          >
+            <span>Get Free Inspection</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a
+            href="tel:9180397822"
+            class="slv-btn-secondary w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider hover:border-[#F6C453]"
+          >
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>Call Now</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider rounded-full bg-[#25D366] text-white shadow-md hover:bg-[#20bd5a] transition inline-flex items-center justify-center"
+          >
+            <MessageCircle class="w-4 h-4 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* WHY MOSQUITOES ARE A PROBLEM */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+                HEALTH RISKS &amp; NUISANCE
+              </span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white font-heading tracking-tight leading-tight">
+              Why Mosquito Control Is Essential for Bangalore Properties
+            </h2>
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+              Bangalore's climate, intermittent monsoon showers, and rapid urban construction create ideal conditions for mosquito proliferation. Beyond the physical discomfort of itchy welts and restless nights, mosquitoes are recognized public health vectors transmitting debilitating illnesses including Dengue fever, Chikungunya, and Malaria.
+            </p>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+              Female mosquitoes require only tiny reservoirs of undisturbed water—such as balcony plant saucers, discarded plastic containers, or rooftop tank corners—to complete their larval life cycle in as little as 7 to 10 days. Relying solely on aerosol sprays merely scatters flying adults without addressing the root larvae colonies nesting on your property.
+            </p>
+          </div>
+
+          <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <Shield class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Disease Vector Risks</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Mosquito bites are primary transmission pathways for Dengue, Chikungunya, and Malaria, making proactive management crucial for family well-being.
+              </p>
+            </div>
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <CloudRain class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Rapid Monsoon Breeding</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Intermittent rains create hundreds of localized micro-pools in potted trays, drains, and roof gutters, accelerating multiplication.
+              </p>
+            </div>
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <Droplets class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Concealed Larvae Sites</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Over 80% of mosquito populations remain as larvae hidden in standing water sources before emerging simultaneously as biting swarms.
+              </p>
+            </div>
+            <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+              <Wind class="w-6 h-6 text-[#E5A93C] mb-3" />
+              <h3 class="text-base font-bold text-white mb-2 font-heading">Dual-Action Defense</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">
+                Effective suppression demands simultaneously neutralizing aquatic larvae and knocking down flying adult harborages in foliage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* COMMON SIGNS */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              IDENTIFICATION SIGNS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Common Signs of Mosquito Activity
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Recognizing early indicators of mosquito activity helps pinpoint breeding sources before heavy seasonal swarms develop.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {signs.map((sign) => {
+            const Icon = sign.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/40 transition flex flex-col justify-between">
+                <div>
+                  <div class="w-12 h-12 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center mb-4">
+                    <Icon class="w-6 h-6 text-[#E5A93C]" />
+                  </div>
+                  <h3 class="text-base font-bold text-white mb-2 font-heading">
+                    {sign.title}
+                  </h3>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    {sign.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* WHERE MOSQUITOES BREED & HIDE */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              BREEDING &amp; RESTING LOCATIONS
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Where Mosquitoes Breed &amp; Hide on Properties
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Mosquito management begins with identifying both stagnant water breeding sites and sheltered daytime resting harborages.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {breedingHarbourageAreas.map((area) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="w-2 h-2 rounded-full bg-[#E5A93C]"></span>
+                <h3 class="text-base font-bold text-white font-heading">{area.name}</h3>
+              </div>
+              <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{area.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 4-STAGE TREATMENT JOURNEY */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              OUR PROTOCOL
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            The SLV 4-Stage Mosquito Management Journey
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            A comprehensive, integrated methodology designed to disrupt both aquatic breeding cycles and adult flying populations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {fourStageProcess.map((stage) => {
+            const Icon = stage.icon;
+            return (
+              <div class="slv-card rounded-2xl p-6 border border-white/[0.08] relative group hover:border-[#E5A93C]/50 transition">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl font-black font-heading slv-gold-text">
+                    {stage.step}
+                  </span>
+                  <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center">
+                    <Icon class="w-5 h-5 text-[#E5A93C]" />
+                  </div>
+                </div>
+
+                <h3 class="text-base font-bold text-white mb-1 font-heading">
+                  {stage.title}
+                </h3>
+                <p class="text-xs font-semibold text-[#F6C453] mb-3">
+                  {stage.description}
+                </p>
+                <p class="text-zinc-400 text-xs leading-relaxed">
+                  {stage.detail}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* PRICING */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/40 relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#E5A93C]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase block mb-2">
+            TRANSPARENT INSPECTION-BASED PRICING
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-black text-white font-heading mb-4">
+            MOSQUITO CONTROL
+          </h2>
+
+          <div class="my-6">
+            <span class="text-3xl sm:text-5xl font-black text-[#F6C453] uppercase tracking-wider font-heading">
+              Starting at ₹799
+            </span>
+          </div>
+
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+            Because mosquito breeding depends directly on exterior square footage, density of garden foliage, water drainage conditions, and premise layout, we provide clear, itemized quotes following an on-site property evaluation.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-300 mb-8">
+            <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+              No Hidden Charges
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+              Eco-Conscious Larvicides
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+              Thermal Fogging &amp; Cold Misting
+            </span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href="/contact"
+              class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
+            >
+              <span>Get Free Inspection</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-secondary w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
+            >
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* LEARN MORE ABOUT MOSQUITOES - KNOWLEDGE HUB INTEGRATION */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+              EDUCATIONAL RESOURCES
+            </span>
+            <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Learn More About Mosquitoes
+          </h2>
+          <p class="text-zinc-400 text-sm mt-3">
+            Explore our educational Knowledge Hub guides covering mosquito biology, breeding hotspots, spread mechanisms, proactive prevention, and management strategies.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {knowledgeArticles.map((article) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] hover:border-[#E5A93C]/50 transition-all flex flex-col justify-between group">
+              <div>
+                <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-2 font-mono">
+                  Knowledge Guide
+                </span>
+                <h3 class="text-lg font-bold text-white group-hover:text-[#F6C453] transition mb-2 font-heading">
+                  {article.title}
+                </h3>
+                <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+                  {article.desc}
+                </p>
+              </div>
+
+              <a
+                href={article.href}
+                class="pt-3 border-t border-white/[0.06] text-xs font-bold text-[#FFE08A] hover:text-white flex items-center justify-between transition"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#E5A93C]" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* PROPERTIES WE TREAT */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            VERSATILE COVERAGE
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Properties We Treat Across Bangalore
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {propertiesWeTreat.map((property) => (
+            <div class="slv-card rounded-xl p-4 border border-white/[0.08] text-center">
+              <CheckCircle2 class="w-5 h-5 text-[#E5A93C] mx-auto mb-2" />
+              <span class="text-xs sm:text-sm font-semibold text-zinc-200 block">{property}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* BANGALORE SERVICE AREAS */}
+    <ServiceAreasSection />
+
+    {/* FAQS */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            COMMON QUESTIONS
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-zinc-400 text-sm mt-2">
+            Factual information regarding mosquito biology, treatment protocols, and pricing.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+              <h3 class="text-base font-bold text-white mb-2 flex items-start gap-2.5">
+                <HelpCircle class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span>{faq.q}</span>
+              </h3>
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed pl-7">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* CONTACT FORM */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-2">
+              <span class="w-6 h-[1.5px] bg-[#E5A93C]"></span>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+                CONTACT SLV
+              </span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">
+              Schedule Free Mosquito Inspection
+            </h2>
+            <p class="text-zinc-300 text-sm leading-relaxed">
+              Contact our Bangalore pest control specialists today. We will evaluate your property grounds, identify stagnant water sources, and provide an accurate inspection-based quote.
+            </p>
+
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] space-y-4 text-xs sm:text-sm">
+              <div class="flex items-start gap-3">
+                <MapPin class="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span class="text-zinc-300">143 Soundarya Layout, Doddabidarakallu, Bangalore 560073</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <Phone class="w-5 h-5 text-[#E5A93C] shrink-0" />
+                <a href="tel:9180397822" class="font-bold text-white font-mono hover:text-[#FFE08A] transition">
+                  91803 97822
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <Mail class="w-5 h-5 text-[#E5A93C] shrink-0" />
+                <a href="mailto:contact@slvpestcontrol.com" class="text-white hover:text-[#FFE08A] transition">
+                  contact@slvpestcontrol.com
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <a
+                href="https://wa.me/9180397822"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-3 rounded-xl bg-[#25D366] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:bg-[#20bd5a] transition"
+              >
+                <MessageCircle class="w-4 h-4 text-white" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <ContactForm client:load />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

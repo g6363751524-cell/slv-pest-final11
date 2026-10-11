@@ -1,0 +1,293 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  BookOpen,
+  Search,
+  Eye,
+  Layers,
+  Sparkles,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  Share2,
+  DoorOpen,
+  Navigation
+} from 'lucide-react';
+
+const relatedArticles = [
+  {
+    title: 'Ant Identification',
+    desc: 'Recognize common ant behaviors, signs of infestation, trailing activity, and food attraction.',
+    href: '/knowledge/ants/identification'
+  },
+  {
+    title: 'Where Ants Hide & Nest',
+    desc: 'Discover nesting zones in cracks, wall voids, under sinks, kitchen cupboards, and outdoor perimeters.',
+    href: '/knowledge/ants/where-they-hide'
+  },
+  {
+    title: 'Ant Prevention Guide',
+    desc: 'Actionable sanitation steps, food storage habits, moisture control, and structural sealing techniques.',
+    href: '/knowledge/ants/prevention'
+  },
+  {
+    title: 'Ant Treatment Guide',
+    desc: 'Our systematic 4-stage management methodology: inspection, colony assessment, targeted baiting, and prevention.',
+    href: '/knowledge/ants/treatment-guide'
+  },
+  {
+    title: 'Ant FAQ',
+    desc: 'Clear, factual answers to 12 common questions regarding ant species, nesting habits, sprays vs baits, and safety.',
+    href: '/knowledge/ants/faq'
+  }
+];
+
+const entryMechanisms = [
+  {
+    title: 'Cracks, Expansion Gaps & Foundation Crevices',
+    desc: 'Tiny hairline apertures in exterior plaster, gaps between door frames and brickwork, and expansion joints between floor tiles provide direct entry routes.',
+    icon: Search
+  },
+  {
+    title: 'Doors, Windows & Utility Penetrations',
+    desc: 'Worn door sweeps, unsealed gaps around sliding window tracks, and service openings for electrical wiring, water pipelines, and air conditioning conduits.',
+    icon: DoorOpen
+  },
+  {
+    title: 'Food Attraction & Nutrient Scents',
+    desc: 'Spilled sugars, sweet fruit juices, bread crumbs, pet food left out in the open, and cooking grease residue that emit volatile airborne attractants.',
+    icon: AlertTriangle
+  },
+  {
+    title: 'Moisture Sources & Plumbing Leaks',
+    desc: 'Persistent drips from kitchen and bathroom faucets, condensating AC discharge tubes, wet dish-drying racks, and water bowls provide vital hydration.',
+    icon: Droplets
+  },
+  {
+    title: 'Outdoor-to-Indoor Movement & Landscaping',
+    desc: 'Garden beds abutting foundation walls, overhanging tree branches touching roofs, and potted plants relocated inside provide immediate crossing bridges.',
+    icon: Navigation
+  },
+  {
+    title: 'Pheromone Trail Formation & Rapid Expansion',
+    desc: 'Scout ants mark successful food discoveries with invisible chemical pheromone scents, rapidly recruiting hundreds of nestmates along dedicated trails.',
+    icon: Share2
+  }
+];
+---
+
+<Layout
+  title="How Ants Enter & Spread in Homes | Trail Mechanics | SLV Pest Control"
+  description="Learn how ants enter Bangalore properties through gaps, doors, moisture, and food scents, and how pheromone trails cause rapid spread. SLV Pest Control."
+  canonical="https://slvpestcontrol.com/knowledge/ants/how-they-spread"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+    </div>
+
+    {/* BREADCRUMB */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <span>/</span>
+        <span class="text-zinc-500">Ants</span>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">How They Spread</span>
+      </nav>
+    </div>
+
+    {/* HERO */}
+    <section class="relative z-10 pt-10 sm:pt-14 pb-12 sm:pb-16 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
+          <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.25em] uppercase">
+            KNOWLEDGE BASE • ANTS
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] mb-5 font-heading">
+          How Ants Enter &amp; Spread: Ingress Pathways &amp; Trail Mechanics
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6">
+          Understanding how ants penetrate building envelopes and expand into interior rooms explains why infestations recur even after surface wiping. From micro-gaps to chemical pheromone signaling, here is how ant trails form and multiply across Bangalore properties.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-400 pt-4 border-t border-white/[0.06]">
+          <span>Topic: Ant Ingress Pathways &amp; Colony Communication</span>
+          <span>•</span>
+          <span>Technical Reference</span>
+          <span>•</span>
+          <span class="text-[#F6C453]">SLV Technical Guide</span>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTENT SECTION */}
+    <section class="relative z-10 py-14 sm:py-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        {/* SECTION 1: THE MECHANISM */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            How Ants Gain Entry into Properties
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Ants are extraordinarily small and adaptable foragers. An opening as thin as 0.5 millimetres—such as a small shrinkage crack in cement mortar, a worn silicone bead around kitchen window glazing, or an uncaulked plumbing sleeve under a kitchen sink—is more than sufficient for scout ants to penetrate.
+          </p>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            Properties in Bangalore commonly experience heightened outdoor-to-indoor ant movement during two climatic extremes: the dry pre-monsoon heat (April–May) when outdoor colonies search inside for water, and heavy monsoon rains (July–October) when saturated soil floods subterranean nesting burrows, driving colonies upward into wall cavities and ceilings.
+          </p>
+        </div>
+
+        {/* SECTION 2: SIX MECHANISMS GRID */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-6">
+            Key Ingress &amp; Spread Pathways
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {entryMechanisms.map((mech) => {
+              const Icon = mech.icon;
+              return (
+                <div class="slv-card rounded-2xl p-6 border border-white/[0.08]">
+                  <Icon class="w-6 h-6 text-[#E5A93C] mb-3" />
+                  <h3 class="text-base font-bold text-white mb-2">{mech.title}</h3>
+                  <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed">{mech.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SECTION 3: THE ROLE OF CHEMICAL TRAIL PHEROMONES */}
+        <div class="p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-4">
+          <h2 class="text-xl sm:text-2xl font-black text-white font-heading">
+            The Science of Ant Trails: Pheromone Recruitment
+          </h2>
+          <p class="text-zinc-300 text-sm leading-relaxed">
+            The secret behind an ant colony's rapid spreading ability is chemical communication. When a lone scout ant discovers a food or moisture source, it eats a small portion and heads back toward the nest while touching its abdomen to the ground, laying down a volatile trail pheromone.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs text-zinc-300">
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <strong class="text-[#FFE08A] block mb-1">1. Scout Discovery:</strong>
+              Individual workers wander randomly until they encounter sugar, protein, or moisture resources.
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <strong class="text-[#FFE08A] block mb-1">2. Pheromone Laydown:</strong>
+              The scout returns home while depositing an invisible chemical track using specialized abdominal glands.
+            </div>
+            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+              <strong class="text-[#FFE08A] block mb-1">3. Mass Mobilization:</strong>
+              Nestmates follow the scent; as more workers traverse the path, the scent reinforces exponentially until thousands are recruited.
+            </div>
+          </div>
+          <p class="text-zinc-400 text-xs leading-relaxed italic pt-2">
+            Standard household cleaners may kill the visible ants on the path, but unless the pheromone residue is completely neutralized and the food attraction removed, new workers will re-establish the route within hours.
+          </p>
+        </div>
+
+        {/* SECTION 4: HOW COLONIES EXPAND VIA "BUDDING" */}
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            How Colony "Budding" Spreads Infestations
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            Certain widespread ant species (such as Pharaoh ants and Ghost ants) do not reproduce solely through outdoor mating swarms. Instead, they practice <strong>colony budding</strong>.
+          </p>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-4">
+            When a property owner sprays aggressive chemical repellent sprays or pyrethroid aerosols on visible worker trails, the colony senses distress. Instead of dying off, one or more fertile queens take a segment of workers and larvae and scatter deeper into interior wall voids, establishing <em>multiple new satellite colonies</em> throughout the building.
+          </p>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            This is why professional pest managers avoid surface repellents and instead utilize non-repellent slow-acting baits that worker ants carry back to eliminate the queen without triggering defensive budding.
+          </p>
+        </div>
+
+        {/* PRIMARY CALL TO ACTION */}
+        <div class="slv-card rounded-3xl p-8 sm:p-10 border border-[#E5A93C]/40 text-center">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+            TARGETED MANAGEMENT
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-4">
+            Stop Trail Expansion at the Nest Level
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm max-w-xl mx-auto mb-6">
+            Target ant trails at their source with professional colony baiting and perimeter barrier management from SLV Pest Control.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/services/ant-control" class="slv-btn-primary px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2">
+              <span>Get Ant Control</span>
+              <ArrowRight class="w-4 h-4" />
+            </a>
+            <a href="tel:9180397822" class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 hover:border-[#F6C453]">
+              <Phone class="w-4 h-4 text-[#F6C453]" />
+              <span>Call 91803 97822</span>
+            </a>
+          </div>
+        </div>
+
+        {/* RELATED ARTICLES */}
+        <div>
+          <h3 class="text-xl font-bold text-white font-heading mb-4">
+            Related Ant Knowledge Guides
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {relatedArticles.map((article) => (
+              <a
+                href={article.href}
+                class="slv-card p-4 rounded-xl border border-white/[0.08] hover:border-[#E5A93C]/40 transition group block"
+              >
+                <h4 class="text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-1">
+                  {article.title}
+                </h4>
+                <p class="text-zinc-400 text-xs line-clamp-2">
+                  {article.desc}
+                </p>
+                <span class="text-[#E5A93C] text-xs font-semibold inline-flex items-center gap-1 mt-2">
+                  <span>Read Guide</span>
+                  <ArrowRight class="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* LOCAL FOOTER */}
+    <section class="relative z-10 py-12 border-b border-white/[0.06] bg-[#0c0d10]/50 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-xl font-bold text-white font-heading mb-2">
+          Comprehensive Ant Ingress Barrier Protection in Bangalore
+        </h3>
+        <p class="text-zinc-400 text-xs sm:text-sm mb-4">
+          Stopping outdoor-to-indoor ant trails across homes, villas, restaurants, and IT offices in Bangalore.
+        </p>
+        <div class="flex items-center justify-center gap-6 text-xs text-zinc-300 font-mono">
+          <span>Phone: 91803 97822</span>
+          <span>•</span>
+          <span>Email: contact@slvpestcontrol.com</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>

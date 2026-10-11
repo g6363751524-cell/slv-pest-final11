@@ -1,0 +1,378 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import { ContactForm } from '../../components/ContactForm';
+import ServiceAreasSection from '../../components/ServiceAreasSection.astro';
+import {
+  ArrowRight,
+  ShieldCheck,
+  ShieldAlert,
+  Sparkles,
+  BedDouble,
+  Layers,
+  Wind,
+  Share2,
+  PawPrint,
+  Bug,
+  Leaf,
+  Eye,
+  Droplets,
+  Package,
+  Phone,
+  MessageCircle,
+  CheckCircle2,
+  Clock,
+  MapPin,
+  Calendar,
+  AlertTriangle,
+} from 'lucide-react';
+
+const allServices = [
+  {
+    name: 'Ant Control',
+    category: 'Crawling Insects',
+    price: '₹499',
+    desc: 'Targeted gel baiting & colony elimination for kitchens, walls, and gardens.',
+    href: '/services/ant-control',
+    icon: Bug,
+    badge: 'Approved Chemical'
+  },
+  {
+    name: 'Bed Bug Treatments',
+    category: 'Residential Priority',
+    price: '₹999',
+    desc: 'Deep thermal & micro-spray eradication with 4-month written warranty.',
+    href: '/services/bed-bugs',
+    icon: BedDouble,
+    badge: '4 Mo. Warranty'
+  },
+  {
+    name: 'Cockroach Control',
+    category: 'Residential Priority',
+    price: '₹599',
+    desc: 'German & American roach gel baiting, drain flushing & egg-case removal.',
+    href: '/services/cockroach-control',
+    icon: Sparkles,
+    badge: 'Zero Odor'
+  },
+  {
+    name: 'Fleas Control',
+    category: 'Pet & Textile',
+    price: '₹799',
+    desc: 'Pet-safe indoor carpet, rug, and bedding micro-mist sanitization.',
+    href: '/services/fleas',
+    icon: PawPrint,
+    badge: 'Pet-Friendly'
+  },
+  {
+    name: 'Flies Control',
+    category: 'Flying Pests',
+    price: '₹499',
+    desc: 'Bio-drain treatment, UV trap deployment & restaurant kitchen hygiene.',
+    href: '/services/fly-control',
+    icon: Wind,
+    badge: 'Food-Safe'
+  },
+  {
+    name: 'Mosquito Control',
+    category: 'Flying Pests',
+    price: '₹799',
+    desc: 'Larvicide breeding control, cold fogging & outdoor yard barrier misting.',
+    href: '/services/mosquitoes',
+    icon: Wind,
+    badge: 'Dengue Defense'
+  },
+  {
+    name: 'Rodent Management',
+    category: 'Commercial & Home',
+    price: '₹699',
+    desc: 'Tamper-proof bait stations, snap traps & entry point exclusion sealing.',
+    href: '/services/rodents',
+    icon: Share2,
+    badge: 'Burrow Sealing'
+  },
+  {
+    name: 'Termite Treatment',
+    category: 'Structural Defense',
+    price: '₹899',
+    desc: 'Drill-fill-seal subterranean barrier with comprehensive written warranty.',
+    href: '/services/termites',
+    icon: Layers,
+    badge: '5-Yr Warranty'
+  },
+  {
+    name: 'Tick Control',
+    category: 'Pet & Lawn',
+    price: '₹799',
+    desc: 'Yard border spraying, kennel sanitization & indoor perimeter defense.',
+    href: '/services/tick-control',
+    icon: ShieldAlert,
+    badge: 'Yard Barrier'
+  },
+  {
+    name: 'Wood Borer Treatment',
+    category: 'Structural Defense',
+    price: '₹899',
+    desc: 'Syringe injection into wood flight holes to save timber & luxury furniture.',
+    href: '/services/wood-borer-control',
+    icon: Layers,
+    badge: 'Deep Injection'
+  }
+];
+
+const treatmentStages = [
+  {
+    num: '01',
+    title: 'Comprehensive Inspection',
+    desc: 'Thorough evaluation of harborage zones, moisture sources, nesting pockets, and entry points.'
+  },
+  {
+    num: '02',
+    title: 'Customized Treatment Plan',
+    desc: 'Species-specific selection of CIBRC-approved, odorless, child- and pet-safe chemistries.'
+  },
+  {
+    num: '03',
+    title: 'Targeted Application',
+    desc: 'Precision micro-injection, gel baiting, misting, or sub-surface barriers minimizing disruption.'
+  },
+  {
+    num: '04',
+    title: 'Prevention & Warranty Care',
+    desc: 'Exclusion guidance, sanitation recommendations, and follow-up monitoring under SLV warranty.'
+  }
+];
+---
+
+<Layout
+  title="All Pest Control Services in Bangalore | Complete Pest Management | SLV Pest Control"
+  description="Explore all 22+ professional pest control services in Bangalore. Strict alphabetical directory with transparent pricing, eco-safe odorless treatments & same-day inspection."
+  canonical="https://slvpestcontrol.com/services"
+>
+  <Header client:load activeItem="services" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Background glow effects */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#E5A93C]/[0.06] rounded-full blur-[140px]"></div>
+      <div class="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-[#E5A93C]/[0.04] rounded-full blur-[120px]"></div>
+    </div>
+
+    {/* Breadcrumbs */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <span>/</span>
+        <span class="text-[#F6C453] font-semibold">All Pest Services</span>
+      </nav>
+    </div>
+
+    {/* HERO SECTION */}
+    <section class="relative z-10 pt-10 sm:pt-14 lg:pt-18 pb-14 sm:pb-18 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.25em] uppercase">
+            COMPLETE PEST CATALOG • 22 SPECIALIZED SERVICES
+          </span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] mb-5 font-heading">
+          All Pest Control Services in <span class="slv-gold-text">Bangalore</span>
+        </h1>
+
+        <p class="text-xl sm:text-2xl font-bold text-white mb-6 font-heading tracking-tight">
+          Strictly organized & transparently priced pest management for every property
+        </p>
+
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+          From fast residential eradication to industrial warehousing compliance, explore our complete alphabetical directory of 22 specialized, eco-friendly, and government-approved treatments across Bangalore.
+        </p>
+
+        {/* Hero Trust Badges */}
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mb-10">
+          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center">
+            <span class="text-[#F6C453] font-mono font-bold text-lg block">22+</span>
+            <span class="text-zinc-400 text-[11px]">Specialized Treatments</span>
+          </div>
+          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center">
+            <span class="text-[#F6C453] font-mono font-bold text-lg block">100%</span>
+            <span class="text-zinc-400 text-[11px]">CIBRC Approved</span>
+          </div>
+          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center">
+            <span class="text-[#F6C453] font-mono font-bold text-lg block">0 Odor</span>
+            <span class="text-zinc-400 text-[11px]">Child &amp; Pet Safe</span>
+          </div>
+          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-center">
+            <span class="text-[#F6C453] font-mono font-bold text-lg block">Same Day</span>
+            <span class="text-zinc-400 text-[11px]">Free Site Inspection</span>
+          </div>
+        </div>
+
+        {/* CTA Buttons */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+          <a href="/contact" class="slv-btn-primary w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm font-black gap-2 uppercase tracking-wider">
+            <span>Book Free Inspection</span>
+            <ArrowRight class="w-4 h-4" />
+          </a>
+          <a href="tel:9180397822" class="slv-btn-secondary w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider hover:border-[#F6C453]">
+            <Phone class="w-4 h-4 text-[#F6C453]" />
+            <span>Call Now</span>
+          </a>
+          <a href="https://wa.me/9180397822" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 text-xs sm:text-sm font-bold gap-2 uppercase tracking-wider rounded-full bg-[#25D366] text-white shadow-md inline-flex items-center justify-center">
+            <MessageCircle class="w-4 h-4 text-white" />
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* COMPLETE ALPHABETICAL SERVICES GRID */}
+    <section class="relative z-10 py-16 sm:py-24 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 mb-2">
+              <span class="w-5 h-[1.5px] bg-[#E5A93C]"></span>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+                STRICT ALPHABETICAL DIRECTORY (A - Z)
+              </span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-[42px] font-black text-white tracking-tight font-heading">
+              All 10 Pest Control Services
+            </h2>
+            <p class="text-zinc-400 text-sm mt-2 max-w-xl">
+              Every service is conducted by verified technicians using government-approved chemistries. Click any service card to view complete treatment protocols.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono text-zinc-400 bg-white/[0.03] px-3.5 py-1.5 rounded-lg border border-white/[0.06]">
+              Showing 10 of 10 Services
+            </span>
+          </div>
+        </div>
+
+        {/* The 10 Cards in strict alphabetical order */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+          {allServices.map((service, idx) => {
+            const Icon = service.icon;
+            return (
+              <a
+                href={service.href}
+                class="slv-card group rounded-2xl p-6 bg-[#121316] border border-zinc-800/80 hover:border-[#E5A93C]/50 transition flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-[#E5A93C]/10 border border-[#E5A93C]/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <Icon class="w-5 h-5 text-[#E5A93C]" />
+                    </div>
+                    <span class="text-[11px] font-mono font-bold text-[#F6C453] bg-white/[0.04] px-2.5 py-1 rounded-md border border-white/[0.08]">
+                      Starting at {service.price}
+                    </span>
+                  </div>
+
+                  <div class="mb-2">
+                    <span class="text-[10px] uppercase font-bold tracking-wider text-[#E5A93C]/80 bg-[#E5A93C]/[0.08] px-2 py-0.5 rounded inline-block mb-1.5">
+                      {service.category}
+                    </span>
+                    <h3 class="text-white text-lg font-bold tracking-tight group-hover:text-[#F6C453] transition-colors">
+                      {service.name}
+                    </h3>
+                  </div>
+
+                  <p class="text-zinc-400 text-xs sm:text-[13px] leading-relaxed mb-4">
+                    {service.desc}
+                  </p>
+                </div>
+
+                <div class="pt-4 mt-2 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400 group-hover:text-[#E5A93C] transition-colors">
+                  <span class="text-[11px] font-semibold text-zinc-300 group-hover:text-[#F6C453]">View Treatment Details</span>
+                  <ArrowRight class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* 4-STAGE PROCESS SECTION */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06] bg-[#0c0d10]/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">QUALITY STANDARD</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">Our 4-Stage Treatment Standard</h2>
+          <p class="text-zinc-400 text-sm mt-3">Every pest service follows strict Integrated Pest Management protocols.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {treatmentStages.map((stage) => (
+            <div class="slv-card rounded-2xl p-6 border border-white/[0.08] relative">
+              <span class="text-3xl font-black font-heading slv-gold-text mb-3 block">{stage.num}</span>
+              <h3 class="text-base font-bold text-white mb-2">{stage.title}</h3>
+              <p class="text-zinc-400 text-xs leading-relaxed">{stage.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* PROPERTIES WE TREAT */}
+    <section class="relative z-10 py-16 sm:py-20 border-b border-white/[0.06]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">COVERAGE</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading">Properties We Treat Across Bangalore</h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+          <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+            <span class="text-white font-bold text-sm block mb-1">Homes &amp; Villas</span>
+            <span class="text-[11px] text-zinc-400">Independent houses</span>
+          </div>
+          <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+            <span class="text-white font-bold text-sm block mb-1">Apartments &amp; PGs</span>
+            <span class="text-[11px] text-zinc-400">Societies &amp; hostels</span>
+          </div>
+          <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+            <span class="text-white font-bold text-sm block mb-1">Restaurants &amp; Cafes</span>
+            <span class="text-[11px] text-zinc-400">Commercial kitchens</span>
+          </div>
+          <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+            <span class="text-white font-bold text-sm block mb-1">IT Parks &amp; Offices</span>
+            <span class="text-[11px] text-zinc-400">Corporate spaces</span>
+          </div>
+          <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+            <span class="text-white font-bold text-sm block mb-1">Warehouses</span>
+            <span class="text-[11px] text-zinc-400">Storage &amp; logistics</span>
+          </div>
+          <div class="slv-card rounded-2xl p-5 border border-white/[0.08]">
+            <span class="text-white font-bold text-sm block mb-1">Gardens &amp; Yards</span>
+            <span class="text-[11px] text-zinc-400">Outdoor greenery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* BANGALORE SERVICE AREAS */}
+    <ServiceAreasSection />
+
+    {/* INTERACTIVE BOOKING FORM */}
+    <section class="relative z-10 py-16 sm:py-24">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-2">INSTANT BOOKING</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-heading mb-3">Schedule Free Site Inspection</h2>
+          <p class="text-zinc-400 text-sm max-w-xl mx-auto">
+            Select your pest concern or get a full property diagnostic. Our certified technician will arrive at your scheduled convenience.
+          </p>
+        </div>
+        <ContactForm client:load defaultPest="General Pest Inspection" />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <FloatingActions client:load />
+</Layout>
