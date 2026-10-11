@@ -151,9 +151,10 @@ const ALL_PESTS: PestProfile[] = [
     hidingSpots: 'Wall voids, window sill cavities, behind switchboards, compost bins, and wet plumbing ducts.',
     healthRisks: 'Food contamination, electrical short-circuits caused by swarm nesting inside AC relays and inverters.',
     serviceHref: '/services/ant-control',
-    primaryGuideHref: '/knowledge/ants/identification',
-    articleCount: 6,
+    primaryGuideHref: '/knowledge/pests/ants',
+    articleCount: 7,
     availableArticles: [
+      { title: 'Comprehensive Ants Guide', href: '/knowledge/pests/ants' },
       { title: 'Ant Identification Guide', href: '/knowledge/ants/identification' },
       { title: 'Where Ants Hide Indoors', href: '/knowledge/ants/where-they-hide' },
       { title: 'How Ants Spread & Forage', href: '/knowledge/ants/how-they-spread' },

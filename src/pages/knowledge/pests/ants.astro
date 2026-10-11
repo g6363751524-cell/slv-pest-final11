@@ -1,0 +1,985 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
+import { FloatingActions } from '../../../components/FloatingActions';
+import {
+  ChevronRight,
+  BookOpen,
+  Search,
+  Eye,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  ShieldCheck,
+  Activity,
+  Droplets,
+  Layers,
+  Sparkles,
+  MapPin,
+  Clock,
+  Flame,
+  Bug,
+  Home,
+  UtensilsCrossed,
+  ShieldAlert,
+  HelpCircle,
+  Calendar,
+  Compass,
+  FileText
+} from 'lucide-react';
+
+// Breadcrumb structured items
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Knowledge Hub', href: '/knowledge' },
+  { label: 'Pest Library', href: '/knowledge/pests' },
+  { label: 'Ants', href: '/knowledge/pests/ants', current: true }
+];
+
+// Quick information metrics
+const quickStats = [
+  {
+    label: 'Primary Habitats',
+    value: 'Kitchens & Wall Cavities',
+    detail: 'Pantries, under sinks, window trim & foundation voids',
+    icon: Home
+  },
+  {
+    label: 'Peak Activity',
+    value: 'Summer & Post-Monsoon',
+    detail: 'Surging during dry heat (seeking water) and rain floods',
+    icon: Calendar
+  },
+  {
+    label: 'Infestation Risk',
+    value: 'Moderate to High',
+    detail: 'Food contamination, pheromone trails & budding nests',
+    icon: ShieldAlert
+  },
+  {
+    label: 'Control Protocol',
+    value: 'Targeted Gel Baiting',
+    detail: 'Non-repellent matrix transfer eliminating the queen',
+    icon: ShieldCheck
+  }
+];
+
+// Section navigation links
+const navSections = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'types-of-ants', label: 'Types of Ants' },
+  { id: 'signs-of-infestation', label: 'Signs of Infestation' },
+  { id: 'where-they-hide', label: 'Where They Hide' },
+  { id: 'risks-problems', label: 'Risks & Problems' },
+  { id: 'prevention-tips', label: 'Prevention Tips' },
+  { id: 'treatment-options', label: 'Treatment Options' },
+  { id: 'faqs', label: 'FAQs' }
+];
+
+// 4 Common Ant Species
+const antSpecies = [
+  {
+    name: 'Sugar Ants (Black House Ant)',
+    scientific: 'Ochetellus glaber / Tapinoma sessile',
+    size: '2.5 – 3.0 mm',
+    color: 'Glossy dark brown to jet black',
+    behavior: 'Highly attracted to sweet foods, syrups, honey, ripe fruit, and kitchen grease residues. Follows disciplined foraging trails.',
+    habitats: 'Kitchen pantries, gaps behind wall tiles, under microwave bases, and window sill gaps.',
+    riskBadge: 'Pantry Invader',
+    badgeColor: 'text-amber-400 border-amber-400/30 bg-amber-400/10'
+  },
+  {
+    name: 'Carpenter Ants',
+    scientific: 'Camponotus compressus',
+    size: '6.0 – 15.0 mm',
+    color: 'Matte black or dark reddish-black',
+    behavior: 'Equipped with powerful chewing mandibles; excavates nesting galleries into damp, decaying timber without ingesting cellulose.',
+    habitats: 'Moist door frames, roof rafters, decaying tree branches near walls, and bathroom ceiling voids.',
+    riskBadge: 'Wood Cavity Excavator',
+    badgeColor: 'text-orange-400 border-orange-400/30 bg-orange-400/10'
+  },
+  {
+    name: 'Pharaoh Ants',
+    scientific: 'Monomorium pharaonis',
+    size: '1.5 – 2.0 mm',
+    color: 'Translucent yellow to light orange-brown',
+    behavior: 'Multi-queen species. Extremely sensitive to repellent sprays; chemical disturbance triggers rapid colony budding into dozens of satellite nests.',
+    habitats: 'Electrical conduits, heated appliance motors, switchboard voids, and sterile commercial kitchen shafts.',
+    riskBadge: 'Budding Risk',
+    badgeColor: 'text-yellow-400 border-yellow-400/30 bg-yellow-400/10'
+  },
+  {
+    name: 'Fire Ants',
+    scientific: 'Solenopsis geminata',
+    size: '3.0 – 6.0 mm',
+    color: 'Reddish-brown with darker copper abdomen',
+    behavior: 'Highly territorial and aggressive when disturbed; delivers repeated burning alkaloid stings resulting in itchy, sterile pustules.',
+    habitats: 'Outdoor soil mounds, paved walkway borders, electrical junction boxes, and garden perimeter turf.',
+    riskBadge: 'Stinging Risk',
+    badgeColor: 'text-rose-400 border-rose-400/30 bg-rose-400/10'
+  }
+];
+
+// Signs of Infestation
+const infestationSigns = [
+  {
+    title: 'Pheromone Trail Highways',
+    description: 'Disciplined, unbroken lines of worker ants traveling systematically across countertops, splashbacks, baseboards, and window casings along established hydrocarbon scent pathways.',
+    tag: 'Primary Early Indicator'
+  },
+  {
+    title: 'Food Swarming & Contamination',
+    description: 'Rapid concentration of dozens to hundreds of worker ants within unsealed sugar containers, pet food bowls, fruit baskets, bread bins, and kitchen sink grease traps.',
+    tag: 'Active Foraging'
+  },
+  {
+    title: 'Nesting Debris & Soil Mounds',
+    description: 'Small deposits of fine excavated soil granules, insect parts, or fine sawdust-like frass (from carpenter ants) accumulating beneath skirting boards and masonry fissures.',
+    tag: 'Structural Harbor'
+  },
+  {
+    title: 'Clustering at Structural Entries',
+    description: 'Frequent clusters of scout ants emerging from behind electrical switchplates, plumbing conduit wall penetrations, window weatherstripping, and balcony floor joins.',
+    tag: 'Perimeter Breach'
+  }
+];
+
+// Where Ants Hide
+const hidingLocations = [
+  {
+    title: 'Kitchen Cabinets & Food-Storage Areas',
+    points: [
+      'Cavities beneath low kitchen kickboards and drawer glide brackets',
+      'Warm compressor compartments behind refrigerators and dishwashers',
+      'Unsealed gaps around under-sink water purifier and drainage pipes',
+      'Pantry corner joins where spilled grains and sugar dust accumulate'
+    ]
+  },
+  {
+    title: 'Wall Cracks & Structural Voids',
+    points: [
+      'Expansion joints and hairline fissures in masonry plasterwork',
+      'Internal wall cavities providing protected routes between rooms',
+      'Hollow back boxes behind electrical switches and junction sockets',
+      'Suspended false ceiling framework above kitchens and bathrooms'
+    ]
+  },
+  {
+    title: 'Window & Door Frameworks',
+    points: [
+      'Worn rubber weatherstripping and perished perimeter silicone seals',
+      'Hollow gaps between aluminum or wooden door jambs and brickwork',
+      'Exterior window sill ledges connecting to adjacent garden vegetation',
+      'Sliding balcony track drainage channels collecting moisture'
+    ]
+  },
+  {
+    title: 'Gardens & Building Foundation Perimeters',
+    points: [
+      'Soil interfaces directly adjoining exterior building foundation plinths',
+      'Gaps beneath concrete walkway pavers and decorative landscaping stones',
+      'Tree branches and creeping ornamental vines touching exterior walls',
+      'Moist soil beneath air conditioner outdoor drain pipe outlets'
+    ]
+  }
+];
+
+// Risks & Problems
+const risksList = [
+  {
+    title: 'Food Contamination & Spoilage',
+    desc: 'Ants forage across waste chutes, exterior soil, and sink drains before walking over kitchen prep counters, transferring mechanical bacteria and spoiling pantry supplies.'
+  },
+  {
+    title: 'Persistent Domestic Disruption',
+    desc: 'Once chemical pheromone trails are deposited, scouting workers repeatedly recruit thousands of nestmates, turning meal preparation and dining into daily frustration.'
+  },
+  {
+    title: 'Appliance & Electrical Vulnerabilities',
+    desc: 'Species such as Pharaoh and Fire ants frequently harbor inside the warm relay compartments of air conditioners, inverters, and switchboards, causing contact corrosion and electrical shorts.'
+  },
+  {
+    title: 'Timber Cavity Excavation',
+    desc: 'Carpenter ants do not ingest cellulose, but hollow out smooth galleries inside moisture-compromised structural timber, weakened window framing, and wooden fascia boards.'
+  },
+  {
+    title: 'Painful Stings & Allergic Reactions',
+    desc: 'Fire ant stings inject solenopsin alkaloid venom that produces immediate intense burning sensations, localized swelling, and itchy pustules that risk secondary skin infections in children and pets.'
+  }
+];
+
+// Prevention Tips
+const preventionChecklist = [
+  {
+    step: '01',
+    title: 'Hermetic Food Storage Discipline',
+    desc: 'Transfer dry staples, sugar, flours, honey, and cereal into airtight glass or heavy-duty snap-lock acrylic containers. Never store open bags held only with rubber bands.'
+  },
+  {
+    step: '02',
+    title: 'Immediate Residue Elimination',
+    desc: 'Wipe countertops with vinegar or mild detergent after every cooking session to neutralize sugar drips and grease. Pheromone trails are stripped when surfaces are cleaned thoroughly.'
+  },
+  {
+    step: '03',
+    title: 'Eliminate Excess Moisture Sources',
+    desc: 'Repair leaking tap valves, address under-sink drain sweating, and ensure kitchen sponges and drying mats air out completely. Ants frequently invade properties primarily seeking water.'
+  },
+  {
+    step: '04',
+    title: 'Seal Structural Entry Points',
+    desc: 'Apply silicone caulk along gaps between countertops and tiled splashbacks, around window sills, and across wall penetrations for gas pipes and water filtration tubes.'
+  },
+  {
+    step: '05',
+    title: 'Sanitize Waste & Pet Dining Zones',
+    desc: 'Provide tightly sealed waste bins with foot-operated lids. Clean pet food bowls promptly after meals, or place feeding bowls on shallow water-moat saucers to deter foraging scouts.'
+  }
+];
+
+// Treatment Methodology
+const treatmentSteps = [
+  {
+    phase: 'Stage 1',
+    title: 'Diagnostic Inspection & Species Identification',
+    desc: 'Technicians accurately identify the exact ant species before applying any treatments. This step is crucial because multi-queen species like Pharaoh ants must never be sprayed with repellents.'
+  },
+  {
+    phase: 'Stage 2',
+    title: 'Precision Micro-Droplet Colony Baiting',
+    desc: 'Strategic placement of specialized, slow-acting matrix bait droplets containing attractants matched to current colony nutritional demands (sugar vs protein phases).'
+  },
+  {
+    phase: 'Stage 3',
+    title: 'Trophallaxis Transfer to the Queen',
+    desc: 'Foraging worker ants consume the non-repellent formulation and carry it back into the heart of concealed nests, feeding the queen, larvae, and nursery workers via mouth-to-mouth sharing.'
+  },
+  {
+    phase: 'Stage 4',
+    title: 'Botanical Barrier & Crevice Sealing',
+    desc: 'Application of eco-sensitive botanical actives along exterior foundation thresholds and pipe wall joints to establish long-term perimeter defense without indoor toxic odors.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    q: 'Why are ants suddenly infesting my kitchen in Bangalore?',
+    a: 'Ants are driven indoors primarily by weather extremes: during prolonged dry heatwaves, colonies send out scout foragers searching for water and moist food sources. Conversely, heavy monsoon downpours flood subterranean soil nests, forcing entire colonies to seek dry shelter within cavity walls and elevated kitchen kickboards.'
+  },
+  {
+    q: 'Why did over-the-counter insecticide sprays make my ant problem worse?',
+    a: 'Consumer aerosol sprays kill only the visible 5–10% of worker ants on the surface. When repellent chemicals are sprayed, especially on species like Pharaoh ants, the concealed colony perceives danger and immediately initiates "budding"—the surviving queens and nurse ants scatter in multiple directions, creating several new separate nests throughout your home.'
+  },
+  {
+    q: 'How long does professional ant baiting take to eliminate an entire colony?',
+    a: 'Targeted gel baiting typically produces noticeable reduction within 48 to 72 hours, with complete colony collapse occurring in 7 to 14 days. The slow-acting active ingredient is deliberately designed not to kill foragers immediately so they have adequate time to return and feed the egg-laying queen.'
+  },
+  {
+    q: 'Are SLV Pest Control treatments safe for children, seniors, and pets?',
+    a: 'Yes. Our specialized ant management relies on food-grade matrix gel baits placed in precise micro-droplets within concealed cracks, hinges, and under-counter recesses inaccessible to children and pets. No broadcast aerosol fogging or heavy chemical smells are used inside your living spaces.'
+  },
+  {
+    q: 'Can carpenter ants damage the structure of my house like termites?',
+    a: 'While carpenter ants do not eat cellulose for nutritional value like subterranean termites, they do excavate smooth nesting galleries inside damp or soft timber. Over time, extensive nesting in window frames, door headers, or structural roof trusses can weaken wooden members, requiring timber repairs.'
+  },
+  {
+    q: 'When should I stop DIY attempts and call a certified technician?',
+    a: 'If you notice ants re-emerging continuously after repeated cleanings, trails entering multiple rooms, flying winged ants (swarmers) emerging from walls, or suspect Pharaoh or Carpenter ants, professional intervention is recommended to eliminate the hidden breeding source.'
+  }
+];
+
+// Related Articles for Sidebar
+const relatedArticles = [
+  {
+    title: 'Where Ants Hide & Nest Indoors',
+    desc: 'Discover nesting zones in cracks, wall voids, under sinks, and exterior perimeters.',
+    href: '/knowledge/ants/where-they-hide',
+    icon: Home
+  },
+  {
+    title: 'How Ants Enter & Spread',
+    desc: 'Understand entry through exterior gaps, utility conduits, and scent-guided expansion.',
+    href: '/knowledge/ants/how-they-spread',
+    icon: Compass
+  },
+  {
+    title: 'Ant Prevention & Food Storage',
+    desc: 'Actionable sanitation protocols, moisture control, and structural sealing habits.',
+    href: '/knowledge/ants/prevention',
+    icon: ShieldCheck
+  },
+  {
+    title: 'Ant Treatment Methodology Guide',
+    desc: 'Our systematic 4-stage management protocol: inspection, baiting, and barrier defense.',
+    href: '/knowledge/ants/treatment-guide',
+    icon: Activity
+  },
+  {
+    title: 'Complete Ant FAQ Guide',
+    desc: 'In-depth answers to 12 common homeowner questions about species, baits, and safety.',
+    href: '/knowledge/ants/faq',
+    icon: HelpCircle
+  }
+];
+---
+
+<Layout
+  title="Ants Guide | Identification, Habitats, Risks & Control | SLV Pest Control"
+  description="Comprehensive Bangalore homeowner and facility guide to identifying ant species, locating concealed nesting chambers, preventing food contamination, and scientific colony elimination."
+  canonical="https://slvpestcontrol.com/knowledge/pests/ants"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="flex-1 w-full relative overflow-hidden bg-[#090a0c]">
+    {/* Subtle Ambient Background Lighting */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-40 right-1/4 w-96 h-96 bg-[#FFE08A]/[0.025] rounded-full blur-[140px]"></div>
+      <div class="absolute top-[40%] -left-32 w-96 h-96 bg-[#D99A18]/[0.02] rounded-full blur-[160px]"></div>
+      <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-[#FFE08A]/[0.015] rounded-full blur-[150px]"></div>
+    </div>
+
+    {/* BREADCRUMB NAVIGATION */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+      <nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-1.5 text-xs text-zinc-400 font-medium">
+        {breadcrumbs.map((crumb, idx) => (
+          <div class="flex items-center gap-1.5">
+            {idx > 0 && <ChevronRight class="w-3.5 h-3.5 text-zinc-600 shrink-0" />}
+            {crumb.current ? (
+              <span class="text-[#F6C453] font-semibold" aria-current="page">{crumb.label}</span>
+            ) : (
+              <a href={crumb.href} class="hover:text-white transition-colors duration-200">
+                {crumb.label}
+              </a>
+            )}
+          </div>
+        ))}
+      </nav>
+    </div>
+
+    {/* HERO SECTION WITH CLEAN MODERN KITCHEN BACKGROUND */}
+    <section class="relative z-10 pt-6 sm:pt-10 pb-12 sm:pb-16 border-b border-white/[0.06] overflow-hidden">
+      {/* Background with clean modern kitchen interior and dark glass overlay */}
+      <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <img
+          src="/clean-kitchen-interior.jpg"
+          alt="Modern hygienic kitchen interior background"
+          data-image-component="true"
+          loading="eager"
+          class="w-full h-full object-cover object-center opacity-15 filter blur-[1px] scale-105"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-[#090a0c]/80 via-[#090a0c]/95 to-[#090a0c]"></div>
+        <div class="absolute inset-0 slv-hex-bg opacity-[0.03]"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl">
+          {/* Category Tag */}
+          <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+            <Bug class="w-3.5 h-3.5 text-[#E5A93C]" />
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase">
+              Pest Library · Crawling Insects
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 font-heading leading-tight">
+            Ants
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFE08A] via-[#F6C453] to-[#D99A18] text-xl sm:text-2xl md:text-3xl font-semibold mt-1">
+              Identification, Habitats, Hygiene Risks & Targeted Control
+            </span>
+          </h1>
+
+          {/* Concise Description */}
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal max-w-3xl">
+            A comprehensive scientific and practical guide to identifying ant species, locating concealed nesting chambers, preventing food contamination, and executing targeted non-repellent colony treatments in Bangalore residential and commercial properties.
+          </p>
+
+          {/* Quick-Navigation Highlights */}
+          <div class="flex items-center flex-wrap gap-2 mb-8">
+            <span class="text-xs text-zinc-400 font-semibold mr-1">Quick Jump:</span>
+            <a
+              href="#types-of-ants"
+              class="px-3 py-1.5 rounded-full text-xs font-medium text-zinc-300 bg-white/[0.05] border border-white/[0.1] hover:text-[#F6C453] hover:border-[#E5A93C]/40 hover:bg-white/[0.08] transition-all"
+            >
+              Ant Types
+            </a>
+            <a
+              href="#where-they-hide"
+              class="px-3 py-1.5 rounded-full text-xs font-medium text-zinc-300 bg-white/[0.05] border border-white/[0.1] hover:text-[#F6C453] hover:border-[#E5A93C]/40 hover:bg-white/[0.08] transition-all"
+            >
+              Hiding Places
+            </a>
+            <a
+              href="#risks-problems"
+              class="px-3 py-1.5 rounded-full text-xs font-medium text-zinc-300 bg-white/[0.05] border border-white/[0.1] hover:text-[#F6C453] hover:border-[#E5A93C]/40 hover:bg-white/[0.08] transition-all"
+            >
+              Risks
+            </a>
+            <a
+              href="#prevention-tips"
+              class="px-3 py-1.5 rounded-full text-xs font-medium text-zinc-300 bg-white/[0.05] border border-white/[0.1] hover:text-[#F6C453] hover:border-[#E5A93C]/40 hover:bg-white/[0.08] transition-all"
+            >
+              Prevention
+            </a>
+            <a
+              href="#treatment-options"
+              class="px-3 py-1.5 rounded-full text-xs font-medium text-zinc-300 bg-white/[0.05] border border-white/[0.1] hover:text-[#F6C453] hover:border-[#E5A93C]/40 hover:bg-white/[0.08] transition-all"
+            >
+              Treatment
+            </a>
+          </div>
+        </div>
+
+        {/* GLASS-EFFECT QUICK INFORMATION PANEL */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          {quickStats.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <div class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] bg-[#0e1014]/80 backdrop-blur-md relative overflow-hidden group hover:border-[#E5A93C]/30 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-2">
+                  <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 text-[#E5A93C] flex items-center justify-center shrink-0">
+                    <Icon class="w-4 h-4" />
+                  </div>
+                  <span class="text-[11px] uppercase tracking-wider text-zinc-400 font-semibold">{stat.label}</span>
+                </div>
+                <div class="text-base font-bold text-white mb-1 group-hover:text-[#F6C453] transition-colors">{stat.value}</div>
+                <div class="text-xs text-zinc-400 leading-relaxed">{stat.detail}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* RESPONSIVE STICKY SECTION NAVIGATION BAR */}
+    <nav
+      aria-label="Section Navigation"
+      class="sticky top-[68px] sm:top-[76px] z-30 bg-[#090a0c]/92 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-3 no-scrollbar scroll-smooth">
+          {navSections.map((sec) => (
+            <a
+              href={`#${sec.id}`}
+              class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-zinc-300 hover:text-white hover:bg-white/[0.06] whitespace-nowrap transition-colors border border-transparent hover:border-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5A93C]"
+            >
+              {sec.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    {/* MAIN CONTENT AREA WITH 2-COLUMN LAYOUT (EDUCATIONAL SECTIONS + RIGHT SIDEBAR) */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <div class="lg:grid lg:grid-cols-12 lg:gap-10 items-start">
+        {/* LEFT / PRIMARY EDUCATIONAL CONTENT COLUMN (8 COLS) */}
+        <div class="lg:col-span-8 space-y-14 sm:space-y-18">
+          {/* 1. OVERVIEW */}
+          <section id="overview" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 01</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Biological Insights</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4 font-heading">
+              Overview: Understanding Ant Colony Behavior
+            </h2>
+            <div class="prose prose-invert max-w-none text-zinc-300 text-sm sm:text-base leading-relaxed space-y-4">
+              <p>
+                Ants belong to the insect family <em class="text-zinc-200">Formicidae</em> and are among the most persistent eusocial organisms on Earth. Inside homes and commercial properties, they operate in tightly organized social castes comprised of one or more reproductive queens, specialized soldiers, and countless sterile worker ants that forage continuously.
+              </p>
+              <p>
+                Unlike solitary insects, ants communicate through chemical compounds called <strong class="text-white">hydrocarbon trail pheromones</strong>. When an individual scout discovers a microscopic drop of syrup or an unsealed grain of rice, it deposits a scent path on its return journey. This path alerts and directs hundreds of nestmates along an uninterrupted highway across kitchen tiles, splashbacks, and interior wall voids.
+              </p>
+              <div class="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm mt-4">
+                <h3 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                  <Search class="w-4 h-4 text-[#E5A93C]" />
+                  Why Early Identification Matters
+                </h3>
+                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-3">
+                  Eliminating an ant infestation requires addressing the hidden queen inside the primary nesting chamber. Simply crushing visible foragers or spraying over-the-counter surface aerosols often scatters the colony into defensive satellite buddings, rapidly multiplying the number of active harborages.
+                </p>
+                <div class="flex items-center flex-wrap gap-3 pt-2 border-t border-white/[0.06] text-xs">
+                  <a href="/knowledge/ants/identification" class="text-[#F6C453] hover:underline font-semibold inline-flex items-center gap-1">
+                    Read Diagnostic Identification Guide <ArrowRight class="w-3.5 h-3.5" />
+                  </a>
+                  <span class="text-zinc-600">·</span>
+                  <a href="/knowledge/ants/how-they-spread" class="text-zinc-300 hover:text-white font-medium inline-flex items-center gap-1">
+                    How Ants Spread Across Buildings <ArrowRight class="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 2. TYPES OF ANTS */}
+          <section id="types-of-ants" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 02</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Species Differentiation</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Common Types of Ants
+            </h2>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+              Identifying the specific ant species infesting a property is critical: bait preferences, foraging radius, and sensitivity to treatments vary drastically by species.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {antSpecies.map((species) => (
+                <div class="slv-card rounded-2xl p-5 border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md relative overflow-hidden flex flex-col justify-between group hover:border-[#E5A93C]/40 transition-all duration-300">
+                  <div>
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
+                          <img src="/ant-icon.png" alt={species.name} data-image-component="true" class="w-6 h-6 object-contain" />
+                        </div>
+                        <div>
+                          <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-[#F6C453] transition-colors font-heading leading-tight">
+                            {species.name}
+                          </h3>
+                          <span class="text-[11px] font-mono text-zinc-400 italic block">{species.scientific}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 mb-3 text-[11px]">
+                      <span class={`px-2 py-0.5 rounded-full border text-[10px] font-semibold ${species.badgeColor}`}>
+                        {species.riskBadge}
+                      </span>
+                      <span class="text-zinc-400">Size: <strong class="text-zinc-200">{species.size}</strong></span>
+                    </div>
+
+                    <p class="text-xs text-zinc-300 leading-relaxed mb-3">
+                      {species.behavior}
+                    </p>
+                  </div>
+
+                  <div class="pt-3 border-t border-white/[0.06] text-[11px] text-zinc-400">
+                    <span class="font-semibold text-zinc-300">Harborage:</span> {species.habitats}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 3. SIGNS OF INFESTATION */}
+          <section id="signs-of-infestation" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 03</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Early Warning Detection</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Signs of Ant Infestation
+            </h2>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+              Recognizing early warning signs allows homeowners and facility teams to intervene before foraging paths transform into firmly rooted interior satellite colonies.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {infestationSigns.map((sign, idx) => (
+                <div class="slv-card rounded-2xl p-5 border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md relative overflow-hidden group hover:border-[#E5A93C]/40 transition-all duration-300">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold text-[#E5A93C]">0{idx + 1}</span>
+                    <span class="text-[10px] uppercase tracking-wider font-semibold text-zinc-400 px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">
+                      {sign.tag}
+                    </span>
+                  </div>
+                  <h3 class="text-base font-bold text-white mb-2 group-hover:text-[#F6C453] transition-colors font-heading">
+                    {sign.title}
+                  </h3>
+                  <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                    {sign.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 4. WHERE ANTS HIDE */}
+          <section id="where-they-hide" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 04</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Structural Harborages</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Where Ants Hide &amp; Nest
+            </h2>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+              Ants choose nesting sites based on three primary requirements: constant moisture, temperature stability, and quick proximity to food sources.
+            </p>
+
+            <div class="space-y-4">
+              {hidingLocations.map((loc) => (
+                <div class="slv-card rounded-2xl p-5 border border-white/[0.08] bg-[#0e1014]/85 backdrop-blur-md">
+                  <h3 class="text-base font-bold text-white mb-3 flex items-center gap-2.5 font-heading">
+                    <MapPin class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                    {loc.title}
+                  </h3>
+                  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-zinc-300">
+                    {loc.points.map((pt) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-[#E5A93C] font-bold mt-0.5 shrink-0">›</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between flex-wrap gap-3 text-xs">
+              <span class="text-zinc-400">Need specific architectural hiding blueprints for Bangalore residences?</span>
+              <a href="/knowledge/ants/where-they-hide" class="text-[#F6C453] hover:underline font-semibold inline-flex items-center gap-1">
+                View Architectural Hiding Guide <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </section>
+
+          {/* 5. RISKS & PROBLEMS */}
+          <section id="risks-problems" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 05</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Hygiene &amp; Damage Analysis</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Risks &amp; Potential Problems
+            </h2>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+              A balanced, factual appraisal of the real consequences of unchecked ant populations in residential and commercial settings without exaggerated claims.
+            </p>
+
+            <div class="space-y-3">
+              {risksList.map((risk) => (
+                <div class="slv-card rounded-xl p-4 sm:p-5 border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md flex items-start gap-3.5">
+                  <div class="w-8 h-8 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <AlertTriangle class="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 class="text-sm sm:text-base font-bold text-white mb-1 font-heading">{risk.title}</h3>
+                    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">{risk.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 6. PREVENTION TIPS */}
+          <section id="prevention-tips" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 06</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Actionable Home Defense</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Five Practical Prevention Habits
+            </h2>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+              Exclusion and sanitation form the foundation of sustainable pest prevention. Implementing these five protocols prevents foraging scouts from establishing trails.
+            </p>
+
+            <div class="space-y-3.5">
+              {preventionChecklist.map((tip) => (
+                <div class="slv-card rounded-2xl p-5 border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FFE08A]/15 to-[#D99A18]/25 border border-[#E5A93C]/40 text-[#F6C453] font-bold text-base flex items-center justify-center shrink-0 font-mono">
+                    {tip.step}
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-sm sm:text-base font-bold text-white mb-1 font-heading">{tip.title}</h3>
+                    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">{tip.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between flex-wrap gap-3 text-xs">
+              <span class="text-zinc-400">Looking for our comprehensive seasonal pantry checklist?</span>
+              <a href="/knowledge/ants/prevention" class="text-[#F6C453] hover:underline font-semibold inline-flex items-center gap-1">
+                Full Ant Prevention Protocol <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </section>
+
+          {/* 7. TREATMENT OPTIONS */}
+          <section id="treatment-options" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 07</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Scientific IPM Protocol</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Treatment Options: Professional IPM Methodology
+            </h2>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+              Our Integrated Pest Management (IPM) methodology focuses on long-term colony collapse through biological transfer rather than toxic chemical fumigation.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              {treatmentSteps.map((step) => (
+                <div class="slv-card rounded-2xl p-5 border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md">
+                  <div class="text-[11px] font-mono font-bold text-[#E5A93C] uppercase tracking-wider mb-2">
+                    {step.phase}
+                  </div>
+                  <h3 class="text-sm sm:text-base font-bold text-white mb-2 font-heading">
+                    {step.title}
+                  </h3>
+                  <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Crucial Safety Warning Box */}
+            <div class="p-5 rounded-2xl bg-amber-500/[0.05] border border-amber-500/20 backdrop-blur-sm">
+              <div class="flex items-start gap-3">
+                <AlertTriangle class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <h4 class="text-sm font-bold text-amber-300 mb-1">
+                    Safety Warning: Avoid General Repellent Sprays on Budding Species
+                  </h4>
+                  <p class="text-xs text-zinc-300 leading-relaxed mb-2">
+                    Spraying synthetic pyrethroid aerosol sprays directly on worker trails triggers chemical panic in colonies of Pharaoh and Ghost ants. In response, fertile queens separate and disperse across adjacent rooms, turning a localized problem into an apartment-wide infestation. Always prefer slow-acting baits that allow foragers to return to the nest.
+                  </p>
+                  <a href="/knowledge/ants/treatment-guide" class="text-[#F6C453] hover:underline font-semibold text-xs inline-flex items-center gap-1">
+                    Read the 4-Stage Professional Treatment Methodology <ArrowRight class="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 8. FAQS */}
+          <section id="faqs" class="scroll-mt-36">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-[#E5A93C] tracking-wider uppercase">Section 08</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-xs text-zinc-400">Frequently Asked Questions</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Ant Identification &amp; Treatment FAQs
+            </h2>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">
+              Answers to common questions regarding ant biology, bait mechanisms, family safety, and professional extermination in Bangalore.
+            </p>
+
+            <div class="space-y-3">
+              {faqs.map((faq, index) => (
+                <details class="group slv-card rounded-2xl border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md overflow-hidden transition-all duration-200">
+                  <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none select-none text-sm sm:text-base font-bold text-white group-hover:text-[#F6C453] transition-colors">
+                    <span class="flex items-center gap-3">
+                      <span class="text-xs font-mono text-[#E5A93C] font-semibold">Q{index + 1}.</span>
+                      {faq.q}
+                    </span>
+                    <span class="w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 ml-3 group-open:rotate-180 transition-transform duration-200">
+                      <svg class="w-3.5 h-3.5 text-zinc-400 group-open:text-[#F6C453]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div class="px-5 pb-5 pt-1 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/[0.04]">
+                    {faq.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+
+            <div class="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between flex-wrap gap-3 text-xs">
+              <span class="text-zinc-400">Have a question not addressed here?</span>
+              <a href="/knowledge/ants/faq" class="text-[#F6C453] hover:underline font-semibold inline-flex items-center gap-1">
+                Read All 12 Ant FAQs <ArrowRight class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </section>
+        </div>
+
+        {/* RIGHT SIDEBAR (4 COLS) */}
+        <aside class="lg:col-span-4 mt-12 lg:mt-0 space-y-6 lg:sticky lg:top-28">
+          {/* PROFESSIONAL ASSISTANCE & BOOKING CARD */}
+          <div class="slv-card rounded-3xl p-6 sm:p-7 border border-[#E5A93C]/40 bg-gradient-to-b from-[#15171d] to-[#0c0e12] shadow-[0_20px_50px_rgba(0,0,0,0.65)] relative overflow-hidden group">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-[#E5A93C]/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center gap-2 mb-3">
+              <ShieldCheck class="w-4 h-4 text-[#E5A93C]" />
+              <span class="text-[11px] font-bold text-[#E5A93C] tracking-wider uppercase">Certified Protection</span>
+            </div>
+
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-2 font-heading leading-tight">
+              Need Professional Ant Control in Bangalore?
+            </h3>
+
+            <p class="text-xs text-zinc-300 leading-relaxed mb-5">
+              Eliminate stubborn colonies with targeted micro-bait matrix technology and non-repellent botanical barrier applications. Odorless, child-safe, and backed by our service warranty.
+            </p>
+
+            <div class="space-y-2.5 mb-6 text-xs text-zinc-300">
+              <div class="flex items-center gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span>Diagnostic inspection by trained entomology technicians</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span>Zero chemical fumes, odorless and baby-safe</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <CheckCircle2 class="w-4 h-4 text-[#E5A93C] shrink-0" />
+                <span>Colony eradication with 90-day warranty</span>
+              </div>
+            </div>
+
+            <div class="space-y-2.5">
+              <a
+                href="/services/ant-control"
+                class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#FFE08A] via-[#F6C453] to-[#D99A18] text-black font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(246,196,83,0.35)] hover:shadow-[0_6px_25px_rgba(246,196,83,0.5)] transition-all hover:scale-[1.01] active:scale-[0.99]"
+              >
+                <span>Book Ant Inspection</span>
+                <ArrowRight class="w-4 h-4" />
+              </a>
+
+              <div class="grid grid-cols-2 gap-2">
+                <a
+                  href="tel:9180397822"
+                  class="py-2.5 px-3 rounded-xl bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.08] hover:border-white/[0.2] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                >
+                  <Phone class="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <span>Call Now</span>
+                </a>
+                <a
+                  href="https://wa.me/9180397822?text=Hi%20SLV%20Pest%20Control,%20I%20need%20assistance%20with%20an%20ant%20infestation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="py-2.5 px-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                >
+                  <MessageCircle class="w-3.5 h-3.5" />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* RELATED EDUCATIONAL TOPICS CARD */}
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.06]">
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider font-heading flex items-center gap-2">
+                <BookOpen class="w-3.5 h-3.5 text-[#E5A93C]" />
+                Ant Educational Series
+              </h4>
+              <span class="text-[10px] text-zinc-500">5 Deep-Dives</span>
+            </div>
+
+            <div class="space-y-3">
+              {relatedArticles.map((art) => {
+                const Icon = art.icon;
+                return (
+                  <a
+                    href={art.href}
+                    class="group block p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.06] hover:border-[#E5A93C]/30 transition-all duration-200"
+                  >
+                    <div class="flex items-start gap-3">
+                      <div class="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 text-[#E5A93C] flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+                        <Icon class="w-3.5 h-3.5" />
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <h5 class="text-xs font-bold text-white group-hover:text-[#F6C453] transition-colors truncate">
+                          {art.title}
+                        </h5>
+                        <p class="text-[11px] text-zinc-400 line-clamp-2 mt-0.5 leading-snug">
+                          {art.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* RELATED HUBS & SPECIALIZED GUIDES */}
+          <div class="slv-card rounded-2xl p-6 border border-white/[0.08] bg-[#0e1014]/90 backdrop-blur-md">
+            <h4 class="text-xs font-bold text-white uppercase tracking-wider font-heading mb-3 flex items-center gap-2">
+              <Compass class="w-3.5 h-3.5 text-[#E5A93C]" />
+              Related Educational Hubs
+            </h4>
+
+            <div class="space-y-2 text-xs">
+              <a
+                href="/knowledge/pests"
+                class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.04] text-zinc-300 hover:text-white transition-colors group"
+              >
+                <span class="font-medium">Bangalore Pest Library (All Pests)</span>
+                <ArrowRight class="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#F6C453] transition-colors" />
+              </a>
+              <a
+                href="/knowledge/treatment"
+                class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.04] text-zinc-300 hover:text-white transition-colors group"
+              >
+                <span class="font-medium">Treatment &amp; Prevention Protocols</span>
+                <ArrowRight class="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#F6C453] transition-colors" />
+              </a>
+              <a
+                href="/knowledge/seasonal"
+                class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.04] text-zinc-300 hover:text-white transition-colors group"
+              >
+                <span class="font-medium">Seasonal Pest Activity Guide</span>
+                <ArrowRight class="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#F6C453] transition-colors" />
+              </a>
+              <a
+                href="/knowledge/cockroaches/identification"
+                class="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.04] text-zinc-300 hover:text-white transition-colors group"
+              >
+                <span class="font-medium">Cockroach Identification &amp; Gel Defense</span>
+                <ArrowRight class="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#F6C453] transition-colors" />
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {/* BOTTOM CALL-TO-ACTION PANEL */}
+    <section class="relative z-10 border-t border-white/[0.08] bg-[#0c0e12] py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/30 bg-gradient-to-r from-[#14171e] via-[#101217] to-[#14171e] shadow-[0_25px_60px_rgba(0,0,0,0.7)] text-center relative overflow-hidden">
+          <div class="max-w-2xl mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-[#E5A93C] text-xs font-semibold">
+              <ShieldCheck class="w-3.5 h-3.5" />
+              <span>Bangalore Wide Coverage</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 font-heading">
+              Stop Ant Trails at the Source with Certified Protection
+            </h2>
+            <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8">
+              Schedule a residential or commercial inspection today. Our technicians apply non-repellent matrix baits and eco-sensitive botanical perimeter treatments designed for complete colony elimination.
+            </p>
+            <div class="flex items-center justify-center flex-wrap gap-4">
+              <a
+                href="/services/ant-control"
+                class="py-3 px-6 rounded-full bg-gradient-to-r from-[#FFE08A] via-[#F6C453] to-[#D99A18] text-black font-bold text-xs uppercase tracking-wider shadow-[0_4px_22px_rgba(246,196,83,0.4)] hover:shadow-[0_6px_28px_rgba(246,196,83,0.55)] transition-all hover:scale-105 active:scale-95"
+              >
+                Book Inspection Now
+              </a>
+              <a
+                href="/knowledge/pests"
+                class="py-3 px-6 rounded-full bg-white/[0.05] border border-white/[0.15] text-white hover:bg-white/[0.1] font-semibold text-xs tracking-wider transition-all"
+              >
+                Back to Pest Library
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+  <FloatingActions client:load />
+</Layout>

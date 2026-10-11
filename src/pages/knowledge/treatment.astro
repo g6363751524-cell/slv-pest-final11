@@ -1,0 +1,883 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { FloatingActions } from '../../components/FloatingActions';
+import {
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  HelpCircle,
+  ChevronRight,
+  ClipboardCheck,
+  Sparkles,
+  Bug,
+  Calendar,
+  AlertTriangle,
+  Building2,
+  Home,
+  Clock,
+  Droplets,
+  Layers,
+  Wind,
+  Sprout,
+  Search
+} from 'lucide-react';
+---
+
+<Layout
+  title="Pest Treatment & Prevention Protocols | IPM Methods & Safety | SLV Pest Control"
+  description="Professional Integrated Pest Management (IPM) methodology, pre-service resident preparation, post-treatment safety care, structural exclusion, and commercial protocols in Bangalore."
+  canonical="https://slvpestcontrol.com/knowledge/treatment"
+>
+  <Header client:load activeItem="knowledge" />
+
+  <main class="relative bg-[#08090b] text-white min-h-screen overflow-hidden">
+    {/* Subtle Ambient Glows and Hexagonal Pattern */}
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-[radial-gradient(ellipse_at_center,_rgba(229,169,60,0.08)_0%,_rgba(10,12,16,0)_70%)]"></div>
+      <div class="absolute top-[35%] -left-[200px] w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(6,182,212,0.04)_0%,_rgba(10,12,16,0)_70%)]"></div>
+      <div class="absolute bottom-[20%] -right-[200px] w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(229,169,60,0.05)_0%,_rgba(10,12,16,0)_70%)]"></div>
+      <div class="absolute inset-0 opacity-[0.025] slv-hex-bg"></div>
+    </div>
+
+    {/* BREADCRUMB NAVIGATION */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-zinc-400">
+        <a href="/" class="hover:text-white transition">Home</a>
+        <ChevronRight class="w-3.5 h-3.5 text-zinc-600" />
+        <a href="/knowledge" class="hover:text-white transition">Knowledge Hub</a>
+        <ChevronRight class="w-3.5 h-3.5 text-zinc-600" />
+        <span class="text-[#F6C453] font-semibold">Treatment &amp; Prevention</span>
+      </nav>
+    </div>
+
+    {/* HERO SECTION */}
+    <section class="relative z-10 pt-8 sm:pt-12 pb-10 border-b border-white/[0.06]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Module Badge */}
+        <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
+          <ShieldCheck class="w-3.5 h-3.5 text-[#E5A93C]" />
+          <span class="text-[#E5A93C] text-xs font-extrabold tracking-[0.22em] uppercase">
+            Module 02 • IPM Protocols &amp; Prevention
+          </span>
+        </div>
+
+        {/* Heading verbatim from mockup */}
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.1] mb-3 font-heading">
+          <span class="slv-gold-text">Treatment</span> &amp; Prevention
+        </h1>
+
+        {/* Subtitle verbatim from mockup */}
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-6 font-normal">
+          Learn effective treatment methods, prevention tips and safe practices.
+        </p>
+
+        {/* Four Main Navigation Pills */}
+        <div class="flex flex-wrap items-center justify-center gap-2 text-xs font-semibold mb-8">
+          <a
+            href="/knowledge"
+            class="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.1] text-zinc-300 hover:text-white hover:border-[#F6C453] transition font-bold"
+          >
+            1. Knowledge Hub
+          </a>
+          <a
+            href="/knowledge/pests"
+            class="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.1] text-zinc-300 hover:text-white hover:border-[#F6C453] transition font-bold"
+          >
+            2. Pest Library
+          </a>
+          <a
+            href="/knowledge/treatment"
+            class="px-3.5 py-2 rounded-xl bg-[#E5A93C]/15 border border-[#E5A93C]/40 text-[#F6C453] font-bold shadow-[0_0_15px_rgba(229,169,60,0.15)]"
+          >
+            3. Treatment &amp; Prevention
+          </a>
+          <a
+            href="/knowledge/seasonal"
+            class="px-3.5 py-2 rounded-xl bg-white/[0.04] border border-white/[0.1] text-zinc-300 hover:text-white hover:border-[#F6C453] transition font-bold"
+          >
+            4. Seasonal Pest Guide
+          </a>
+        </div>
+
+        {/* Fast Action Buttons */}
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="tel:9180397822"
+            class="slv-btn-primary px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 shadow-[0_0_20px_rgba(229,169,60,0.3)]"
+          >
+            <Phone class="w-4 h-4 text-[#1a1202]" />
+            <span>Call: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822?text=Hello%20SLV%20Pest%20Control%2C%20I%20have%20questions%20about%20treatment%20preparation"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="slv-btn-secondary px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 border-emerald-500/30 text-emerald-400 hover:text-white hover:border-emerald-400 hover:bg-emerald-500/10"
+          >
+            <MessageCircle class="w-4 h-4 text-emerald-400" />
+            <span>WhatsApp Consultation</span>
+          </a>
+          <a
+            href="/contact"
+            class="px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs font-bold text-zinc-300 hover:text-white hover:bg-white/[0.08] transition inline-flex items-center gap-1.5"
+          >
+            <span>Book Free Inspection</span>
+            <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C]" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* MOCKUP SCREEN 3: 6 TALL CATEGORY CARDS (1 ROW × 6 COLUMNS RESPONSIVE) */}
+    <section class="relative z-10 py-10 border-b border-white/[0.06] bg-black/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4">
+          {/* 1. Treatment Methods */}
+          <a
+            href="#treatment-methods"
+            class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] hover:border-cyan-400/60 transition-all flex flex-col justify-between items-center text-center group bg-[#0d0f14]/90 min-h-[170px]"
+          >
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <Droplets class="w-6 h-6 text-cyan-400" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-400 transition mb-3 font-heading leading-tight">
+              Treatment Methods
+            </h3>
+            <div class="w-7 h-7 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-black transition-all">
+              <ArrowRight class="w-3.5 h-3.5 font-bold" />
+            </div>
+          </a>
+
+          {/* 2. Prevention Tips */}
+          <a
+            href="#prevention-tips"
+            class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] hover:border-emerald-400/60 transition-all flex flex-col justify-between items-center text-center group bg-[#0d0f14]/90 min-h-[170px]"
+          >
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <ShieldCheck class="w-6 h-6 text-emerald-400" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-400 transition mb-3 font-heading leading-tight">
+              Prevention Tips
+            </h3>
+            <div class="w-7 h-7 rounded-full bg-purple-500/20 border border-purple-500/40 text-purple-400 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-all">
+              <ArrowRight class="w-3.5 h-3.5 font-bold" />
+            </div>
+          </a>
+
+          {/* 3. Before Service Preparation */}
+          <a
+            href="#before-service"
+            class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] hover:border-amber-400/60 transition-all flex flex-col justify-between items-center text-center group bg-[#0d0f14]/90 min-h-[170px]"
+          >
+            <div class="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <ClipboardCheck class="w-6 h-6 text-[#F6C453]" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-[#F6C453] transition mb-3 font-heading leading-tight">
+              Before Service Preparation
+            </h3>
+            <div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-black transition-all">
+              <ArrowRight class="w-3.5 h-3.5 font-bold" />
+            </div>
+          </a>
+
+          {/* 4. After Service Care */}
+          <a
+            href="#after-service"
+            class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] hover:border-orange-400/60 transition-all flex flex-col justify-between items-center text-center group bg-[#0d0f14]/90 min-h-[170px]"
+          >
+            <div class="w-12 h-12 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <Home class="w-6 h-6 text-orange-400" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-orange-400 transition mb-3 font-heading leading-tight">
+              After Service Care
+            </h3>
+            <div class="w-7 h-7 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-400 flex items-center justify-center group-hover:bg-orange-500 group-hover:text-black transition-all">
+              <ArrowRight class="w-3.5 h-3.5 font-bold" />
+            </div>
+          </a>
+
+          {/* 5. Safety Guidelines */}
+          <a
+            href="#safety-guidelines"
+            class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] hover:border-yellow-400/60 transition-all flex flex-col justify-between items-center text-center group bg-[#0d0f14]/90 min-h-[170px]"
+          >
+            <div class="w-12 h-12 rounded-xl bg-yellow-500/15 border border-yellow-500/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <Sprout class="w-6 h-6 text-yellow-400" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-yellow-400 transition mb-3 font-heading leading-tight">
+              Safety Guidelines
+            </h3>
+            <div class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
+              <ArrowRight class="w-3.5 h-3.5 font-bold" />
+            </div>
+          </a>
+
+          {/* 6. Commercial Pest Control */}
+          <a
+            href="#commercial-control"
+            class="slv-card rounded-2xl p-4 sm:p-5 border border-white/[0.08] hover:border-blue-400/60 transition-all flex flex-col justify-between items-center text-center group bg-[#0d0f14]/90 min-h-[170px]"
+          >
+            <div class="w-12 h-12 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <Building2 class="w-6 h-6 text-blue-400" />
+            </div>
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-blue-400 transition mb-3 font-heading leading-tight">
+              Commercial Pest Control
+            </h3>
+            <div class="w-7 h-7 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-400 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-all">
+              <ArrowRight class="w-3.5 h-3.5 font-bold" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* JUMP LINKS BAR */}
+    <div class="relative z-10 border-b border-white/[0.06] bg-black/40 backdrop-blur-sm sticky top-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div class="flex items-center gap-3 overflow-x-auto text-xs whitespace-nowrap scrollbar-none py-1">
+          <span class="text-zinc-500 font-mono uppercase text-[10px] tracking-wider shrink-0">Quick Jump:</span>
+          <a href="#treatment-methods" class="text-zinc-300 hover:text-[#F6C453] transition">1. Treatment Methods (IPM)</a>
+          <span class="text-zinc-700">•</span>
+          <a href="#prevention-tips" class="text-zinc-300 hover:text-[#F6C453] transition">2. Prevention Tips</a>
+          <span class="text-zinc-700">•</span>
+          <a href="#before-service" class="text-zinc-300 hover:text-[#F6C453] transition">3. Before-Service Prep</a>
+          <span class="text-zinc-700">•</span>
+          <a href="#after-service" class="text-zinc-300 hover:text-[#F6C453] transition">4. After-Service Care</a>
+          <span class="text-zinc-700">•</span>
+          <a href="#safety-guidelines" class="text-zinc-300 hover:text-[#F6C453] transition">5. Safety Guidelines</a>
+          <span class="text-zinc-700">•</span>
+          <a href="#commercial-control" class="text-zinc-300 hover:text-[#F6C453] transition">6. Commercial Control</a>
+        </div>
+      </div>
+    </div>
+
+    {/* CONTENT SECTION CONTAINER */}
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+      {/* 1. TREATMENT METHODS & IPM */}
+      <section id="treatment-methods" class="scroll-mt-36">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] bg-[#0d0f13]/90">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/[0.06]">
+            <div>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-mono">
+                CATEGORY 01 • METHODOLOGY
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+                Integrated Pest Management (IPM) Methods
+              </h2>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold self-start md:self-auto">
+              <ShieldCheck class="w-4 h-4" />
+              <span>CIB-Approved &amp; Odorless</span>
+            </div>
+          </div>
+
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+            Professional pest eradication does not rely on indiscriminate broadcast chemical spraying. Our Integrated Pest Management (IPM) methodology utilizes biological harborage mapping, precision micro-placement of odorless active ingredients, and targeted biological life-cycle disruption.
+          </p>
+
+          {/* 4-Stage Professional Journey Cards */}
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                  STAGE 01
+                </span>
+                <h3 class="text-base font-bold text-white mb-2">Harborage Mapping</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">
+                  Inspecting moisture gradients, electrical conduit sleeves, plumbing shafts, and sub-slab voids to identify focal colonies and nests.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                  STAGE 02
+                </span>
+                <h3 class="text-base font-bold text-white mb-2">Precision Micro-Placement</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">
+                  Applying targeted gel baits, micro-encapsulated suspensions, and drill-infusion barrier emulsions directly into harborage crevices.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                  STAGE 03
+                </span>
+                <h3 class="text-base font-bold text-white mb-2">Life-Cycle Synchronization</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">
+                  Scheduling timed follow-up services aligned with insect egg incubation periods (14–21 days) to break nymphal breeding cycles.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-[#F6C453] uppercase tracking-wider block mb-1 font-mono">
+                  STAGE 04
+                </span>
+                <h3 class="text-base font-bold text-white mb-2">Monitoring &amp; Audit</h3>
+                <p class="text-zinc-400 text-xs leading-relaxed">
+                  Deploying non-toxic insect monitor traps, sealing structural ingress points, and establishing long-term exclusion boundaries.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Links to Detailed Treatment Guides */}
+          <div class="p-6 rounded-2xl bg-black/40 border border-white/[0.06]">
+            <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+              <Sparkles class="w-4 h-4 text-[#E5A93C]" />
+              <span>Targeted Treatment Guides by Species</span>
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+              <a href="/knowledge/cockroaches/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Cockroach IPM Gel Baiting</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/knowledge/termites/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Termite Drill &amp; Infusion</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/services/bed-bugs" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Bed Bug Thermal &amp; Spray</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/knowledge/mosquitoes/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Mosquito Larvicide &amp; Fogging</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/knowledge/rodents/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Rodent Multi-Stage Trapping</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/knowledge/ants/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Ant Colony Gel Eradication</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/knowledge/wood-borers/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Wood Borer Syringe Injection</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/knowledge/ticks/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Brown Dog Tick Wall Protocol</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="/knowledge/fleas/treatment-guide" class="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.04] flex items-center justify-between text-zinc-300 hover:text-white transition group">
+                <span>Flea Life-Cycle IGR Spray</span>
+                <ArrowRight class="w-3.5 h-3.5 text-[#E5A93C] group-hover:translate-x-0.5 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. PREVENTION TIPS & STRUCTURAL EXCLUSION */}
+      <section id="prevention-tips" class="scroll-mt-36">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] bg-[#0c0d10]/90">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-mono">
+            CATEGORY 02 • EXCLUSION
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Structural &amp; Hygiene Prevention Tips
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+            More than 70% of persistent urban pest infestations originate from unsealed exterior conduits and interior moisture leaks. Combine these four practical prevention disciplines to safeguard your home.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs text-zinc-300">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#E5A93C]"></span>
+                <h3 class="font-bold text-white text-sm">1. Kitchen Sanitation &amp; Food Storage</h3>
+              </div>
+              <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc leading-relaxed">
+                <li>Wipe down grease behind kitchen cooktops and stoves nightly with warm soapy water.</li>
+                <li>Store pantry dry pulses, grains, flours, and sugars inside airtight glass or thick plastic jars.</li>
+                <li>Dispose of wet organic kitchen waste in tightly lidded bins before sleeping each night.</li>
+                <li>Never leave open pet food in bowls overnight on kitchen or utility room floors.</li>
+              </ul>
+              <div class="mt-3 pt-3 border-t border-white/[0.04]">
+                <a href="/knowledge/cockroaches/prevention" class="text-[#F6C453] hover:underline font-semibold flex items-center gap-1">
+                  <span>View Cockroach Hygiene Checklist</span>
+                  <ArrowRight class="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                <h3 class="font-bold text-white text-sm">2. Moisture Control &amp; Plumbing Defense</h3>
+              </div>
+              <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc leading-relaxed">
+                <li>Repair weeping under-sink valves and drain traps promptly to deprive roaches of water.</li>
+                <li>Ensure all bathroom, utility, and balcony floor drains feature intact cockroach-proof jali traps.</li>
+                <li>Route air-conditioner condensation drainage pipes safely away from external foundation plinths.</li>
+                <li>Fix persistent damp wall seepage to prevent subterranean termites and wood rot fungi.</li>
+              </ul>
+              <div class="mt-3 pt-3 border-t border-white/[0.04]">
+                <a href="/knowledge/termites/prevention" class="text-cyan-400 hover:underline font-semibold flex items-center gap-1">
+                  <span>View Termite Moisture Defense Guide</span>
+                  <ArrowRight class="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+                <h3 class="font-bold text-white text-sm">3. Physical Exclusion &amp; Structural Sealing</h3>
+              </div>
+              <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc leading-relaxed">
+                <li>Install heavy-duty rubber brush sweeps on all exterior main and balcony doors to close gaps.</li>
+                <li>Seal annular pipe voids around gas lines, dishwashers, and sinks with copper mesh and silicone.</li>
+                <li>Install 20-mesh stainless steel fly and mosquito screens on all openable windows and vents.</li>
+                <li>Seal shrinkage cracks along granite skirting boards and modular cabinet joints with silicone.</li>
+              </ul>
+              <div class="mt-3 pt-3 border-t border-white/[0.04]">
+                <a href="/knowledge/rodents/prevention" class="text-purple-400 hover:underline font-semibold flex items-center gap-1">
+                  <span>View Rodent Proofing &amp; Exclusion Guide</span>
+                  <ArrowRight class="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                <h3 class="font-bold text-white text-sm">4. Travel &amp; Package Hygiene</h3>
+              </div>
+              <ul class="space-y-1.5 text-zinc-400 pl-4 list-disc leading-relaxed">
+                <li>Place hotel luggage on elevated metal luggage racks or bathtubs, never directly on hotel rugs.</li>
+                <li>Unpack suitcases in laundry areas and wash travel garments immediately at high temperatures (>60°C).</li>
+                <li>Inspect corrugated cardboard grocery delivery boxes outside before bringing them indoors.</li>
+                <li>Thoroughly inspect second-hand furniture and mattress seams before moving them inside.</li>
+              </ul>
+              <div class="mt-3 pt-3 border-t border-white/[0.04]">
+                <a href="/knowledge/fleas/prevention" class="text-emerald-400 hover:underline font-semibold flex items-center gap-1">
+                  <span>View Flea &amp; Pet Sanitation Checklist</span>
+                  <ArrowRight class="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. BEFORE-SERVICE PREPARATION */}
+      <section id="before-service" class="scroll-mt-36">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-[#E5A93C]/30 bg-gradient-to-br from-[#12141a] to-[#0c0d10]">
+          <div class="flex items-center gap-3 mb-2">
+            <ClipboardCheck class="w-6 h-6 text-[#E5A93C]" />
+            <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase font-mono">
+              CATEGORY 03 • RESIDENT PROTOCOL
+            </span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            Before-Service Preparation Checklist
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+            Proper site preparation maximizes chemical efficacy, prevents chemical transfer to food surfaces, and guarantees the safety of residents and household pets.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-xs text-zinc-300">
+            {/* Prep 1: General & Cockroach Gel */}
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center justify-between mb-3 border-b border-white/[0.06] pb-2">
+                <h3 class="font-bold text-white text-sm">Cockroach Gel Baiting</h3>
+                <span class="text-[10px] text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded font-mono">Zero Emptying</span>
+              </div>
+              <ul class="space-y-2 text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Modular kitchen cabinets do NOT need to be emptied for odorless gel baiting.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Wipe down grease on stove backsplashes to ensure bait spots remain attractive.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Store open snacks, cut fruits, and exposed cooked food inside the refrigerator.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Prep 2: Bed Bug Treatment */}
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center justify-between mb-3 border-b border-white/[0.06] pb-2">
+                <h3 class="font-bold text-white text-sm">Bed Bug Treatment</h3>
+                <span class="text-[10px] text-rose-400 bg-rose-400/10 px-2 py-0.5 rounded font-mono">High Prep</span>
+              </div>
+              <ul class="space-y-2 text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Strip all bed sheets, pillow covers, and curtains; seal in plastic bags.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Wash bagged linens in hot water (>60°C) and tumble dry on high heat.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Move beds, cots, and wardrobes 2 feet away from bedroom perimeter walls.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Prep 3: Termite Drill & Infusion */}
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center justify-between mb-3 border-b border-white/[0.06] pb-2">
+                <h3 class="font-bold text-white text-sm">Termite Drill &amp; Infusion</h3>
+                <span class="text-[10px] text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded font-mono">Structural</span>
+              </div>
+              <ul class="space-y-2 text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Clear floor skirting and door frame plinths for drilling precision.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Provide access to electrical plug points for precision rotary drilling tools.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Ensure water access for calibrated chemical emulsion dilution tanks.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Prep 4: Fleas & Ticks */}
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center justify-between mb-3 border-b border-white/[0.06] pb-2">
+                <h3 class="font-bold text-white text-sm">Flea &amp; Tick Treatment</h3>
+                <span class="text-[10px] text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded font-mono">Pet Sync</span>
+              </div>
+              <ul class="space-y-2 text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Coordinate with your vet for simultaneous topical pet tick/flea treatment.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Thoroughly vacuum all carpets, rugs, and pet resting mats prior to service.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Wash pet bedding at high temperature (>60°C) or discard heavily infested mats.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Prep 5: Aquariums & Domestic Birds */}
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center justify-between mb-3 border-b border-white/[0.06] pb-2">
+                <h3 class="font-bold text-white text-sm">Aquariums &amp; Pet Birds</h3>
+                <span class="text-[10px] text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded font-mono">Safety Critical</span>
+              </div>
+              <ul class="space-y-2 text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Cover fish aquariums tightly with damp towels and temporarily disconnect air pumps.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Relocate pet birds to untreated rooms due to their highly sensitive respiratory systems.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Remove pet water and feeding bowls from treatment zones.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Prep 6: Infant & Elderly Protocols */}
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center justify-between mb-3 border-b border-white/[0.06] pb-2">
+                <h3 class="font-bold text-white text-sm">Infants &amp; Senior Care</h3>
+                <span class="text-[10px] text-purple-400 bg-purple-400/10 px-2 py-0.5 rounded font-mono">Health Protocol</span>
+              </div>
+              <ul class="space-y-2 text-zinc-400">
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Pack away baby toys, pacifiers, teething rings, and feeding bottles in cupboards.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Pregnant women and asthmatic seniors should remain outside during spray tasks.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <CheckCircle2 class="w-3.5 h-3.5 text-[#F6C453] shrink-0 mt-0.5" />
+                  <span>Allow 2 hours for spray treatments to dry completely before re-entry.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. AFTER-SERVICE CARE */}
+      <section id="after-service" class="scroll-mt-36">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] bg-[#0c0d10]/90">
+          <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-mono">
+            CATEGORY 04 • POST-CARE
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+            After-Service Care &amp; Protocols
+          </h2>
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+            Following post-treatment instructions ensures maximum residual longevity of chemical barriers while keeping your living spaces clean and secure.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-zinc-300">
+            {/* The 48-Hour Non-Mopping Rule */}
+            <div class="p-6 rounded-2xl bg-amber-500/[0.03] border border-amber-500/20">
+              <div class="flex items-center gap-2 mb-3">
+                <Clock class="w-5 h-5 text-[#F6C453]" />
+                <h3 class="font-bold text-white text-base">The Critical 48-Hour Non-Mopping Rule</h3>
+              </div>
+              <p class="text-zinc-400 leading-relaxed mb-3">
+                Do NOT wet-mop, wash, or wipe treated baseboard perimeters, skirting tiles, or cabinet corners for at least 48 hours following service.
+              </p>
+              <p class="text-zinc-400 leading-relaxed">
+                Micro-encapsulated suspensions adhere to porous floor joints to create an invisible, odorless residual barrier. Wet mopping removes these micro-capsules before emerging nymphs can contact the active molecules.
+              </p>
+            </div>
+
+            {/* Expected Pest Activity Surge */}
+            <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center gap-2 mb-3">
+                <Bug class="w-5 h-5 text-cyan-400" />
+                <h3 class="font-bold text-white text-base">Initial 3–5 Day Pest Activity Surge</h3>
+              </div>
+              <p class="text-zinc-400 leading-relaxed mb-3">
+                It is completely normal to notice an apparent increase in sluggish pest activity during the first 3 to 5 days following treatment.
+              </p>
+              <p class="text-zinc-400 leading-relaxed">
+                Gel baits and residual actives stimulate insect nervous systems, driving them out of deep dark crevices into visible open areas before they succumb. Sweep and dispose of carcasses; do not spray over-the-counter aerosols.
+              </p>
+            </div>
+
+            {/* Safe Carcass Disposal */}
+            <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center gap-2 mb-3">
+                <CheckCircle2 class="w-5 h-5 text-emerald-400" />
+                <h3 class="font-bold text-white text-base">Safe Pest Carcass Sanitation</h3>
+              </div>
+              <p class="text-zinc-400 leading-relaxed mb-3">
+                Use a household dustpan and broom to collect dead cockroaches, flies, or pests. Never handle dead pests with bare hands.
+              </p>
+              <p class="text-zinc-400 leading-relaxed">
+                Seal carcasses inside an exterior trash bag and dispose of immediately in outdoor garbage bins to prevent scavenger attraction.
+              </p>
+            </div>
+
+            {/* Timed Follow-Up Inspection */}
+            <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="flex items-center gap-2 mb-3">
+                <Calendar class="w-5 h-5 text-purple-400" />
+                <h3 class="font-bold text-white text-base">Life-Cycle Booster Visits</h3>
+              </div>
+              <p class="text-zinc-400 leading-relaxed mb-3">
+                For bed bug, flea, and heavy cockroach infestations, a second service visit is scheduled within 14–21 days to treat newly hatched eggs.
+              </p>
+              <p class="text-zinc-400 leading-relaxed">
+                Most chemical formulations do not penetrate egg casings (oothecae). The timed second visit ensures juvenile nymphs are neutralized before reaching reproductive maturity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. SAFETY GUIDELINES */}
+      <section id="safety-guidelines" class="scroll-mt-36">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] bg-[#0c0d10]/90">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/[0.06]">
+            <div>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-mono">
+                CATEGORY 05 • HEALTH &amp; TOXICOLOGY
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+                Safety Guidelines &amp; Active Chemistry
+              </h2>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E5A93C]/10 border border-[#E5A93C]/20 text-[#F6C453] text-xs font-bold self-start md:self-auto">
+              <Sparkles class="w-4 h-4" />
+              <span>Low Mammalian Toxicity</span>
+            </div>
+          </div>
+
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+            SLV Pest Control utilizes exclusively Central Insecticides Board (CIB) registered and approved public health active ingredients. Formulations are selected for high biological selectivity against pest neuro-receptors with maximum safety for humans and domestic animals.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-xs text-zinc-300">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <span class="text-[#E5A93C] font-mono text-[10px] uppercase font-bold block mb-1">Standard 01</span>
+              <h3 class="text-sm font-bold text-white mb-2">Zero Petroleum Odor</h3>
+              <p class="text-zinc-400 leading-relaxed">
+                Water-based and gel matrix carriers eliminate harsh diesel or solvent chemical smells, preventing headache and eye irritation.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <span class="text-cyan-400 font-mono text-[10px] uppercase font-bold block mb-1">Standard 02</span>
+              <h3 class="text-sm font-bold text-white mb-2">Child &amp; Elderly Safe</h3>
+              <p class="text-zinc-400 leading-relaxed">
+                Active molecules bind tightly to target harborage surfaces without airborne vaporization, making them safe for sensitive family members.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <span class="text-emerald-400 font-mono text-[10px] uppercase font-bold block mb-1">Standard 03</span>
+              <h3 class="text-sm font-bold text-white mb-2">Domestic Pet Protocols</h3>
+              <p class="text-zinc-400 leading-relaxed">
+                Formulations do not leave sticky surface residues that dogs or cats can ingest through paw grooming once dry.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <span class="text-purple-400 font-mono text-[10px] uppercase font-bold block mb-1">Standard 04</span>
+              <h3 class="text-sm font-bold text-white mb-2">Eco-Sensitive Actives</h3>
+              <p class="text-zinc-400 leading-relaxed">
+                Botanical pyrethrins and targeted insect growth regulators (IGRs) break down naturally without persistent soil bio-accumulation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. COMMERCIAL PEST CONTROL */}
+      <section id="commercial-control" class="scroll-mt-36">
+        <div class="slv-card rounded-3xl p-8 sm:p-12 border border-white/[0.08] bg-[#0c0d10]/90">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/[0.06]">
+            <div>
+              <span class="text-[#E5A93C] text-xs font-bold tracking-[0.2em] uppercase block mb-1 font-mono">
+                CATEGORY 06 • ENTERPRISE &amp; COMPLIANCE
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-black text-white font-heading">
+                Commercial Pest Control Protocols
+              </h2>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold self-start md:self-auto">
+              <Building2 class="w-4 h-4" />
+              <span>FSSAI &amp; HACCP Compliant</span>
+            </div>
+          </div>
+
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-8 max-w-4xl">
+            Commercial spaces require rigorous documentation, zero-tolerance infestation thresholds, and non-toxic food-safe chemistry. We serve restaurants, cloud kitchens, tech parks, hospitals, and pharmaceutical warehouses across Bangalore.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-zinc-300 mb-8">
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <h3 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                <Building2 class="w-4 h-4 text-[#E5A93C]" />
+                <span>Restaurants &amp; Cloud Kitchens</span>
+              </h3>
+              <p class="text-zinc-400 leading-relaxed mb-3">
+                Mandatory FSSAI-compliant pest control logs, non-spray food contact zone treatment, drain fly biofilm eradication, and monthly trend reports.
+              </p>
+              <ul class="space-y-1 text-zinc-500">
+                <li>• Tamper-resistant monitoring stations</li>
+                <li>• Odorless food-grade gel placement</li>
+                <li>• Digital audit compliance certificates</li>
+              </ul>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <h3 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                <Building2 class="w-4 h-4 text-cyan-400" />
+                <span>Tech Parks &amp; IT Data Centers</span>
+              </h3>
+              <p class="text-zinc-400 leading-relaxed mb-3">
+                Sub-floor cable trench protection, server room rodent exclusion, cafeteria IPM sanitation, and night-shift execution to prevent workplace disruption.
+              </p>
+              <ul class="space-y-1 text-zinc-500">
+                <li>• Ultrasonic rodent deterrent units</li>
+                <li>• Server raised-floor void sealing</li>
+                <li>• Non-conductive electrical treatments</li>
+              </ul>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+              <h3 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                <Building2 class="w-4 h-4 text-emerald-400" />
+                <span>Warehouses &amp; Logistics Hubs</span>
+              </h3>
+              <p class="text-zinc-400 leading-relaxed mb-3">
+                Perimeter rodent bait stations, bird netting installation, corrugated carton pallet fumigation, and routine quarterly biological audits.
+              </p>
+              <ul class="space-y-1 text-zinc-500">
+                <li>• High-perimeter dock seal audits</li>
+                <li>• Barcoded bait station inspection</li>
+                <li>• Rapid emergency vector response</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-gradient-to-r from-[#E5A93C]/10 to-transparent border border-[#E5A93C]/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 class="text-base font-bold text-white mb-1">Need a Commercial Facility Audit?</h3>
+              <p class="text-xs text-zinc-400">Our senior entomologists provide customized IPM contracts with digital audit trails for Bangalore enterprises.</p>
+            </div>
+            <a
+              href="tel:9180397822"
+              class="slv-btn-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider shrink-0"
+            >
+              <span>Call Enterprise Desk</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    {/* BOTTOM CONVERSION CTA BANNER */}
+    <section class="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] bg-black/40">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-black text-white font-heading mb-3">
+          Ready to Implement Professional Pest Defense?
+        </h2>
+        <p class="text-zinc-400 text-xs sm:text-sm max-w-xl mx-auto mb-8">
+          Speak with SLV Pest Control experts to schedule a comprehensive property inspection with customized IPM treatment planning across Bangalore.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="tel:9180397822"
+            class="slv-btn-primary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <Phone class="w-4 h-4 text-[#1a1202]" />
+            <span>Call Now: 91803 97822</span>
+          </a>
+          <a
+            href="https://wa.me/9180397822?text=Hello%20SLV%20Pest%20Control%2C%20I%20would%20like%20to%20book%20a%20site%20inspection"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="slv-btn-secondary px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider inline-flex items-center gap-2 border-emerald-500/30 text-emerald-400 hover:text-white hover:border-emerald-400 hover:bg-emerald-500/10"
+          >
+            <MessageCircle class="w-4 h-4 text-emerald-400" />
+            <span>WhatsApp Us</span>
+          </a>
+          <a
+            href="/contact"
+            class="px-6 py-3 rounded-xl bg-white/[0.06] border border-white/[0.12] text-xs sm:text-sm font-bold text-white hover:bg-white/[0.12] transition"
+          >
+            <span>Book Online Inspection</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <FloatingActions client:load />
+  <Footer />
+</Layout>
