@@ -1,269 +1,195 @@
 import React from 'react';
-import {
-  ArrowRight,
-  Sparkles,
-  Bug,
-  Layers,
-  PawPrint,
-  Wind,
-  Share2,
-  ShieldAlert,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-interface ServiceItem {
-  icon: React.ElementType | string;
-  hoverIcon?: string;
-  isCustomImg?: boolean;
-  isRodentCard?: boolean;
-  isCockroachCard?: boolean;
-  isAntCard?: boolean;
-  isTickCard?: boolean;
+export interface ServiceCardData {
+  id: string;
   title: string;
-  subheading?: {
-    line1: string;
-    line2: string;
-  };
   description: string;
   price: string;
-  startingLabel?: string;
   href: string;
+  titleColor: string;
+  accentColor: string;
+  glowColor: string;
+  borderClass: string;
+  envImage: string;
+  liveIcon: string;
+  deadIcon: string;
 }
 
-const WarningSymbol: React.FC<{ id: string }> = ({ id }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-5 h-5 sm:w-6 sm:h-6 drop-shadow-[0_0_8px_rgba(245,158,11,0.85)] filter"
-  >
-    <defs>
-      <linearGradient id={`warn-grad-${id}`} x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#FEF08A" />
-        <stop offset="35%" stopColor="#FBBF24" />
-        <stop offset="75%" stopColor="#F59E0B" />
-        <stop offset="100%" stopColor="#D97706" />
-      </linearGradient>
-      <linearGradient id={`warn-gloss-${id}`} x1="12" y1="3" x2="12" y2="13" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
-        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.05" />
-      </linearGradient>
-      <filter id={`warn-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="1.5" stdDeviation="1" floodColor="#000000" floodOpacity="0.7" />
-      </filter>
-    </defs>
-    {/* 3D Glossy Yellow-Gold Warning Triangle */}
-    <path
-      d="M10.268 3.866a2 2 0 013.464 0l7.856 13.608A2 2 0 0119.856 20.5H4.144a2 2 0 01-1.732-3.026L10.268 3.866z"
-      fill={`url(#warn-grad-${id})`}
-      stroke="#78350F"
-      strokeWidth="0.85"
-      filter={`url(#warn-shadow-${id})`}
-    />
-    {/* Glossy Reflection Sheen */}
-    <path
-      d="M12 4.8L5.2 16.5C8 14.5 13 13.5 18.8 16.5L12 4.8Z"
-      fill={`url(#warn-gloss-${id})`}
-      opacity="0.65"
-    />
-    {/* High-Contrast Exclamation Mark */}
-    <path
-      d="M12 8.5v5"
-      stroke="#1E1303"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-    />
-    <circle
-      cx="12"
-      cy="16.8"
-      r="1.25"
-      fill="#1E1303"
-    />
-  </svg>
-);
-
-const ProhibitedSymbol: React.FC<{ id: string }> = ({ id }) => (
-  <svg
-    viewBox="0 0 64 64"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-[58px] h-[58px] sm:w-[80px] sm:h-[80px] drop-shadow-[0_0_10px_rgba(239,68,68,0.95)] drop-shadow-[0_0_22px_rgba(220,38,38,0.65)] filter"
-  >
-    <defs>
-      <linearGradient id={`prohib-grad-${id}`} x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#FF4D4D" />
-        <stop offset="40%" stopColor="#EF4444" />
-        <stop offset="80%" stopColor="#DC2626" />
-        <stop offset="100%" stopColor="#991B1B" />
-      </linearGradient>
-      <linearGradient id={`prohib-gloss-${id}`} x1="32" y1="4" x2="32" y2="28" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
-        <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-      </linearGradient>
-      <filter id={`prohib-shadow-${id}`} x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#000000" floodOpacity="0.75" />
-      </filter>
-    </defs>
-    {/* Outer Red Ring */}
-    <circle
-      cx="32"
-      cy="32"
-      r="25"
-      fill="none"
-      stroke={`url(#prohib-grad-${id})`}
-      strokeWidth="5.5"
-      filter={`url(#prohib-shadow-${id})`}
-    />
-    {/* Diagonal Slash crossing out the pest */}
-    <line
-      x1="14.3"
-      y1="14.3"
-      x2="49.7"
-      y2="49.7"
-      stroke={`url(#prohib-grad-${id})`}
-      strokeWidth="5.5"
-      strokeLinecap="round"
-      filter={`url(#prohib-shadow-${id})`}
-    />
-    {/* Glossy Light Reflection Sheen on upper rim */}
-    <path
-      d="M11 26A25 25 0 0 1 53 26"
-      fill="none"
-      stroke={`url(#prohib-gloss-${id})`}
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      opacity="0.7"
-    />
-  </svg>
-);
-
-const services: ServiceItem[] = [
+export const servicesData: ServiceCardData[] = [
+  // Row 1 (Cards 1 - 5)
   {
-    icon: '/ant-icon.png',
-    isCustomImg: true,
-    isAntCard: true,
-    title: 'Ant Control',
-    subheading: {
-      line1: 'STOP ANTS AT THE SOURCE.',
-      line2: 'COLONY ERADICATION.',
-    },
-    description: 'Targeted baiting & pheromone trail elimination',
-    price: '₹499',
-    href: '/services/ant-control',
-  },
-  {
-    icon: '/bedbug.png',
-    isCustomImg: true,
-    title: 'Bed Bug Treatments',
-    subheading: {
-      line1: 'BED BUGS OUT.',
-      line2: 'SLEEP PEACEFULLY.',
-    },
-    description: 'Deep thermal & chemical mattress-safe eradication',
-    price: '₹999',
-    href: '/services/bed-bugs',
-  },
-  {
-    icon: '/cockroach-icon.png',
-    isCustomImg: true,
-    isCockroachCard: true,
+    id: 'cockroach',
     title: 'Cockroach Control',
-    subheading: {
-      line1: 'CLEAN & HYGIENIC SPACES.',
-      line2: 'ODORLESS GEL BAITING.',
-    },
-    description: 'Kitchen gel baiting & drain flush-out service',
+    description: 'Keep your kitchen and living spaces cockroach free.',
     price: '₹599',
     href: '/services/cockroach-control',
+    titleColor: '#F59E0B', // amber orange
+    accentColor: '#F59E0B',
+    glowColor: 'rgba(245, 158, 11, 0.35)',
+    borderClass: 'border-amber-500/40 hover:border-amber-400',
+    envImage: '/service-cards/cockroach-env.png',
+    liveIcon: '/service-cards/cockroach-hex-live.png',
+    deadIcon: '/service-cards/cockroach-hex-dead.png',
   },
   {
-    icon: PawPrint,
+    id: 'ant',
+    title: 'Ant Control',
+    description: 'Eliminate ants and keep your space pest-free.',
+    price: '₹499',
+    href: '/services/ant-control',
+    titleColor: '#F6C453', // warm gold
+    accentColor: '#F6C453',
+    glowColor: 'rgba(246, 196, 83, 0.35)',
+    borderClass: 'border-[#F6C453]/40 hover:border-[#F6C453]',
+    envImage: '/service-cards/ant-env.png',
+    liveIcon: '/service-cards/ant-hex-live.png',
+    deadIcon: '/service-cards/ant-hex-dead.png',
+  },
+  {
+    id: 'bedbug',
+    title: 'Bed Bug Treatments',
+    description: 'Remove bed bugs and get restful sleep again.',
+    price: '₹999',
+    href: '/services/bed-bugs',
+    titleColor: '#4ADE80', // sage green
+    accentColor: '#4ADE80',
+    glowColor: 'rgba(74, 222, 128, 0.35)',
+    borderClass: 'border-emerald-500/40 hover:border-emerald-400',
+    envImage: '/service-cards/bedbug-env.png',
+    liveIcon: '/service-cards/bedbug-hex-live.png',
+    deadIcon: '/service-cards/bedbug-hex-dead.png',
+  },
+  {
+    id: 'fleas',
     title: 'Fleas Control',
-    subheading: {
-      line1: 'STOP ITCHING.',
-      line2: 'PET & CARPET RELIEF.',
-    },
-    description: 'Pet-safe indoor carpet, rug & upholstery sanitization',
+    description: 'Effective treatment for fleas in homes and pet areas.',
     price: '₹799',
     href: '/services/fleas',
+    titleColor: '#FB7185', // dusty rose
+    accentColor: '#FB7185',
+    glowColor: 'rgba(251, 113, 133, 0.35)',
+    borderClass: 'border-rose-400/40 hover:border-rose-400',
+    envImage: '/service-cards/fleas-env.png',
+    liveIcon: '/service-cards/fleas-hex-live.png',
+    deadIcon: '/service-cards/fleas-hex-dead.png',
   },
   {
-    icon: Wind,
+    id: 'flies',
     title: 'Flies Control',
-    subheading: {
-      line1: 'CLEAN AIR & DRAINS.',
-      line2: 'LARVICIDE & BARRIER.',
-    },
-    description: 'Bio-drain flushing, fruit fly & house fly perimeter misting',
+    description: 'Keep your space free from flies and maintain cleanliness.',
     price: '₹499',
     href: '/services/fly-control',
+    titleColor: '#38BDF8', // steel blue
+    accentColor: '#38BDF8',
+    glowColor: 'rgba(56, 189, 248, 0.35)',
+    borderClass: 'border-sky-400/40 hover:border-sky-400',
+    envImage: '/service-cards/flies-env.png',
+    liveIcon: '/service-cards/flies-hex-live.png',
+    deadIcon: '/service-cards/flies-hex-dead.png',
   },
+
+  // Row 2 (Cards 6 - 10)
   {
-    icon: Wind,
+    id: 'mosquito',
     title: 'Mosquito Control',
-    subheading: {
-      line1: 'DENGUE & MALARIA DEFENSE.',
-      line2: 'MISTING & LARVICIDE.',
-    },
-    description: 'Larvicide breeding control & outdoor barrier misting',
+    description: 'Reduce mosquito breeding and enjoy a healthier space.',
     price: '₹799',
     href: '/services/mosquitoes',
+    titleColor: '#2DD4BF', // aqua teal
+    accentColor: '#2DD4BF',
+    glowColor: 'rgba(45, 212, 191, 0.35)',
+    borderClass: 'border-teal-400/40 hover:border-teal-400',
+    envImage: '/service-cards/mosquito-env.png',
+    liveIcon: '/service-cards/mosquito-hex-live.png',
+    deadIcon: '/service-cards/mosquito-hex-dead.png',
   },
   {
-    icon: '/rat-icon.png',
-    isCustomImg: true,
-    isRodentCard: true,
+    id: 'rodent',
     title: 'Rodent Management',
-    subheading: {
-      line1: 'ENTRY POINT SEALING.',
-      line2: 'TAMPER-PROOF BAITING.',
-    },
-    description: 'Tamper-proof bait stations & burrow exclusion sealing',
+    description: 'Prevent and control rats and mice effectively.',
     price: '₹699',
     href: '/services/rodents',
+    titleColor: '#60A5FA', // blue
+    accentColor: '#60A5FA',
+    glowColor: 'rgba(96, 165, 250, 0.35)',
+    borderClass: 'border-blue-400/40 hover:border-blue-400',
+    envImage: '/service-cards/rodent-env.png',
+    liveIcon: '/service-cards/rodent-hex-live.png',
+    deadIcon: '/service-cards/rodent-hex-dead.png',
   },
   {
-    icon: Layers,
+    id: 'termite',
     title: 'Termite Treatment',
-    subheading: {
-      line1: 'STRUCTURAL PROTECTION.',
-      line2: 'DRILL-FILL-SEAL BARRIER.',
-    },
-    description: 'Drill-fill-seal subterranean barrier with warranty',
+    description: 'Protect your property from termite damage.',
     price: '₹899',
     href: '/services/termites',
+    titleColor: '#FBBF24', // earth brown / warm amber gold
+    accentColor: '#FBBF24',
+    glowColor: 'rgba(251, 191, 36, 0.35)',
+    borderClass: 'border-amber-400/40 hover:border-amber-400',
+    envImage: '/service-cards/termite-env.png',
+    liveIcon: '/service-cards/termite-hex-live.png',
+    deadIcon: '/service-cards/termite-hex-dead.png',
   },
   {
-    icon: '/tick-icon.png',
-    isCustomImg: true,
-    isTickCard: true,
+    id: 'tick',
     title: 'Tick Control',
-    subheading: {
-      line1: 'YARD & HOME DEFENSE.',
-      line2: 'KENNEL & LAWN CARE.',
-    },
-    description: 'Yard border spraying & indoor perimeter defense',
+    description: 'Protect your home and family from ticks.',
     price: '₹799',
     href: '/services/tick-control',
+    titleColor: '#F87171', // burgundy red
+    accentColor: '#F87171',
+    glowColor: 'rgba(248, 113, 113, 0.35)',
+    borderClass: 'border-red-400/40 hover:border-red-400',
+    envImage: '/service-cards/tick-env.png',
+    liveIcon: '/service-cards/tick-hex-live.png',
+    deadIcon: '/service-cards/tick-hex-dead.png',
   },
   {
-    icon: Layers,
+    id: 'woodborer',
     title: 'Wood Borer Treatment',
-    subheading: {
-      line1: 'WOODWORK DEFENSE.',
-      line2: 'SYRINGE INJECTION.',
-    },
-    description: 'Specialized chemical injection into exit holes & timbers',
+    description: 'Protect your wooden furniture and structures.',
     price: '₹899',
     href: '/services/wood-borer-control',
+    titleColor: '#C084FC', // deep violet
+    accentColor: '#C084FC',
+    glowColor: 'rgba(192, 132, 252, 0.35)',
+    borderClass: 'border-purple-400/40 hover:border-purple-400',
+    envImage: '/service-cards/woodborer-env.png',
+    liveIcon: '/service-cards/woodborer-hex-live.png',
+    deadIcon: '/service-cards/woodborer-hex-dead.png',
   },
 ];
 
 export const ServicesGrid: React.FC = () => {
   return (
-    <section id="services" className="py-20 lg:py-28 relative bg-[#0a0b0e]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-20 lg:py-28 relative bg-[#07080b] overflow-hidden">
+      {/* Subtle Dark Honeycomb Pattern Background */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05] overflow-hidden" aria-hidden="true">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="slv-services-honeycomb-pattern" width="56" height="96" patternUnits="userSpaceOnUse">
+              <path
+                d="M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z M28 64 L56 80 L56 112 L28 128 L0 112 L0 80 Z"
+                fill="none"
+                stroke="#F6C453"
+                strokeWidth="1.2"
+                strokeOpacity="0.8"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#slv-services-honeycomb-pattern)" />
+        </svg>
+      </div>
+
+      {/* Subtle Ambient Glows */}
+      <div className="absolute -top-32 left-1/4 w-96 h-96 bg-[#FFE08A]/[0.025] rounded-full blur-[140px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#D99A18]/[0.02] rounded-full blur-[160px] pointer-events-none" aria-hidden="true" />
+
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-14 gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-5 h-[1.5px] bg-[#E5A93C]" />
@@ -271,7 +197,7 @@ export const ServicesGrid: React.FC = () => {
                 PEST CONTROL SERVICES
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-white tracking-tight leading-[1.12]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-white tracking-tight leading-[1.12] font-heading">
               THE RIGHT APPROACH FOR{' '}
               <span className="slv-gold-text">EVERY PEST.</span>
             </h2>
@@ -283,7 +209,7 @@ export const ServicesGrid: React.FC = () => {
           <div className="shrink-0">
             <a
               href="/contact"
-              className="slv-btn-secondary px-5 py-2.5 text-xs font-bold gap-2"
+              className="slv-btn-secondary px-5 py-2.5 text-xs font-bold gap-2 inline-flex items-center"
             >
               <span>Book Free Inspection</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -291,214 +217,137 @@ export const ServicesGrid: React.FC = () => {
           </div>
         </div>
 
-        {/* 10-Card Grid in strict alphabetical order: 5 columns x 2 rows on large desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5">
-          {services.map((item, idx) => {
-            const isAnt = item.isAntCard || item.href === '/services/ant-control';
-            const isBedBug = item.href === '/services/bed-bugs';
-            const isRodent = item.isRodentCard || item.href === '/services/rodents';
-            const isCockroach = item.isCockroachCard || item.href === '/services/cockroach-control';
-            const isTick = item.isTickCard || item.href === '/services/tick-control';
-
+        {/* 10-Card Grid: 5 columns x 2 rows on wide desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-5">
+          {servicesData.map((item, idx) => {
             return (
               <a
-                key={idx}
+                key={item.id}
                 href={item.href}
-                className={`slv-card group rounded-2xl p-4 sm:p-5 transition-all duration-300 flex flex-row items-stretch relative overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C453] ${
-                  isAnt
-                    ? 'bg-gradient-to-br from-[#12161a] via-[#101317] to-[#0c0f12] border border-cyan-500/35 hover:border-cyan-400/70 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_26px_rgba(34,211,238,0.22),0_10px_32px_rgba(0,0,0,0.65)] ring-1 ring-cyan-500/15 hover:ring-cyan-400/35'
-                    : isTick
-                    ? 'bg-gradient-to-br from-[#181215] via-[#131012] to-[#0f0d0f] border border-rose-900/40 hover:border-rose-600/70 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_26px_rgba(225,29,72,0.22),0_10px_32px_rgba(0,0,0,0.65)] ring-1 ring-rose-900/20 hover:ring-rose-600/35'
-                    : isRodent
-                    ? 'bg-gradient-to-br from-[#11151a] via-[#101317] to-[#0c0e12] border border-slate-500/40 hover:border-sky-400/70 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_26px_rgba(70,130,180,0.25),0_10px_32px_rgba(0,0,0,0.65)] ring-1 ring-slate-500/15 hover:ring-sky-400/35'
-                    : isBedBug
-                    ? 'bg-gradient-to-br from-[#181613] via-[#121316] to-[#0f1013] border border-[#E5A93C]/50 hover:border-[#F6C453] shadow-[0_0_20px_rgba(229,169,60,0.12),0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(246,196,83,0.25),0_12px_36px_rgba(0,0,0,0.7)] ring-1 ring-[#E5A93C]/20 hover:ring-[#F6C453]/40'
-                    : isCockroach
-                    ? 'bg-gradient-to-br from-[#181613] via-[#121316] to-[#0f1013] border border-[#E5A93C]/40 hover:border-[#F6C453] shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_26px_rgba(246,196,83,0.22),0_10px_32px_rgba(0,0,0,0.65)] ring-1 ring-[#E5A93C]/15 hover:ring-[#F6C453]/35'
-                    : 'bg-gradient-to-br from-[#16171a] via-[#121316] to-[#0f1013] border border-[#E5A93C]/30 hover:border-[#E5A93C]/70 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_24px_rgba(229,169,60,0.18),0_10px_32px_rgba(0,0,0,0.6)] ring-1 ring-[#E5A93C]/10 hover:ring-[#E5A93C]/30'
-                }`}
+                aria-label={`View ${item.title} details, starting from ${item.price}`}
+                className={`group relative rounded-[24px] sm:rounded-[26px] overflow-hidden transition-all duration-300 flex flex-col justify-between p-4 sm:p-5 border bg-[#0b0c10] shadow-[0_10px_30px_rgba(0,0,0,0.65)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.85)] min-h-[390px] sm:min-h-[420px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6C453] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07080b] ${item.borderClass}`}
+                style={
+                  {
+                    '--glow-color': item.glowColor,
+                  } as React.CSSProperties
+                }
               >
-                {/* Subtle ambient gold/aqua/burgundy/steel-blue glow in the icon corner */}
-                <div
-                  className={`absolute -left-6 -top-6 w-32 h-32 rounded-full bg-gradient-to-br to-transparent blur-2xl pointer-events-none transition-all duration-500 ${
-                    isAnt
-                      ? 'from-cyan-500/20 group-hover:from-cyan-400/35'
-                      : isTick
-                      ? 'from-rose-900/25 group-hover:from-rose-600/35'
-                      : isRodent
-                      ? 'from-sky-700/20 group-hover:from-sky-500/35'
-                      : isBedBug || isCockroach
-                      ? 'from-[#E5A93C]/20 group-hover:from-[#F6C453]/30'
-                      : 'from-[#E5A93C]/10 group-hover:from-[#E5A93C]/20'
-                  }`}
-                />
-
-                {/* Inner subtle illumination along card top edge */}
-                <div
-                  className={`absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent pointer-events-none ${
-                    isAnt
-                      ? 'via-cyan-400/50 to-transparent'
-                      : isTick
-                      ? 'via-rose-600/40 to-transparent'
-                      : isRodent
-                      ? 'via-sky-400/40 to-transparent'
-                      : isBedBug || isCockroach
-                      ? 'via-[#F6C453]/60 to-transparent'
-                      : 'via-[#F6C453]/40 to-transparent'
-                  }`}
-                />
-
-                {/* Left section: exactly one-third (33.33%) of card width, icon centered vertically and horizontally */}
-                <div className="w-[33.333%] shrink-0 flex items-center justify-center p-1 sm:p-2 relative z-10">
-                  <div
-                    className={`absolute inset-2 rounded-full blur-xl pointer-events-none transition-all duration-300 ${
-                      isAnt
-                        ? 'bg-cyan-500/20 group-hover:bg-cyan-400/35'
-                        : isCockroach
-                        ? 'bg-amber-500/20 group-hover:bg-amber-400/35'
-                        : isTick
-                        ? 'bg-rose-900/25 group-hover:bg-rose-600/35'
-                        : isRodent
-                        ? 'bg-sky-600/20 group-hover:bg-sky-400/35'
-                        : 'bg-[#E5A93C]/10 group-hover:bg-[#E5A93C]/20'
-                    }`}
+                {/* 1. Left Section: Pest-themed environmental image */}
+                <div className="absolute inset-y-0 left-0 w-[58%] overflow-hidden pointer-events-none">
+                  <img
+                    src={item.envImage}
+                    alt=""
+                    data-image-component="true"
+                    className="w-full h-full object-cover object-left brightness-[0.88] contrast-[1.08] transition-transform duration-500 ease-out group-hover:scale-105"
                   />
-
-                  {/* Pest Icon with Warning Symbol and Centered Prohibited Overlay */}
-                  <div className="relative flex items-center justify-center w-[68px] h-[68px] sm:w-[92px] sm:h-[92px] shrink-0">
-                    {isAnt ? (
-                      <img
-                        src={item.icon as string}
-                        alt={item.title}
-                        className="w-[66px] h-[66px] sm:w-[90px] sm:h-[90px] max-w-full max-h-20 sm:max-h-24 object-contain transition-all duration-[250ms] ease-out group-hover:scale-105 group-focus-visible:scale-105 drop-shadow-[0_0_12px_rgba(34,211,238,0.55)] group-hover:drop-shadow-[0_0_24px_rgba(34,211,238,0.85)] relative z-10 motion-reduce:transition-none motion-reduce:transform-none"
-                        style={{ transitionDuration: '250ms' }}
-                        loading="lazy"
-                      />
-                    ) : isCockroach ? (
-                      <img
-                        src={item.icon as string}
-                        alt={item.title}
-                        className="w-[66px] h-[66px] sm:w-[90px] sm:h-[90px] max-w-full max-h-20 sm:max-h-24 object-contain transition-all duration-[250ms] ease-out group-hover:scale-105 group-focus-visible:scale-105 drop-shadow-[0_0_10px_rgba(245,158,11,0.45)] group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.8)] relative z-10 motion-reduce:transition-none motion-reduce:transform-none"
-                        style={{ transitionDuration: '250ms' }}
-                        loading="lazy"
-                      />
-                    ) : isTick ? (
-                      <img
-                        src={item.icon as string}
-                        alt={item.title}
-                        className="w-[66px] h-[66px] sm:w-[90px] sm:h-[90px] max-w-full max-h-20 sm:max-h-24 object-contain transition-all duration-[250ms] ease-out group-hover:scale-105 group-focus-visible:scale-105 drop-shadow-[0_0_12px_rgba(190,18,60,0.5)] group-hover:drop-shadow-[0_0_24px_rgba(225,29,72,0.85)] relative z-10 motion-reduce:transition-none motion-reduce:transform-none"
-                        style={{ transitionDuration: '250ms' }}
-                        loading="lazy"
-                      />
-                    ) : isRodent ? (
-                      <img
-                        src={item.icon as string}
-                        alt={item.title}
-                        className="w-[66px] h-[66px] sm:w-[90px] sm:h-[90px] max-w-full max-h-20 sm:max-h-24 object-contain transition-all duration-[250ms] ease-out group-hover:scale-105 group-focus-visible:scale-105 drop-shadow-[0_0_12px_rgba(70,130,180,0.55)] group-hover:drop-shadow-[0_0_24px_rgba(96,165,250,0.85)] relative z-10 motion-reduce:transition-none motion-reduce:transform-none"
-                        style={{ transitionDuration: '250ms' }}
-                        loading="lazy"
-                      />
-                    ) : item.isCustomImg ? (
-                      <img
-                        src={item.icon as string}
-                        alt={item.title}
-                        className="w-[66px] h-[66px] sm:w-[86px] sm:h-[86px] max-w-full max-h-20 sm:max-h-24 object-contain transition-all duration-[250ms] ease-out group-hover:scale-105 group-focus-visible:scale-105 drop-shadow-[0_4px_14px_rgba(229,169,60,0.45)] group-hover:drop-shadow-[0_0_22px_rgba(246,196,83,0.7)] relative z-10 motion-reduce:transition-none motion-reduce:transform-none"
-                        style={{ transitionDuration: '250ms' }}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-[#E5A93C]/10 border border-[#E5A93C]/25 flex items-center justify-center shrink-0 group-hover:scale-105 group-focus-visible:scale-105 group-hover:border-[#E5A93C]/50 transition-all duration-[250ms] ease-out shadow-[0_0_15px_rgba(229,169,60,0.15)] relative z-10 motion-reduce:transition-none motion-reduce:transform-none">
-                        {React.createElement(item.icon as React.ElementType, {
-                          className:
-                            'w-6 h-6 sm:w-8 sm:h-8 text-[#F6C453] drop-shadow-[0_2px_8px_rgba(229,169,60,0.35)]',
-                        })}
-                      </div>
-                    )}
-
-                    {/* Warning Symbol Badge: Yellow-Gold Warning Triangle at bottom-right corner */}
-                    <div
-                      className="absolute -bottom-1 -right-1 sm:bottom-0 sm:right-0 z-20 pointer-events-none transition-all duration-[250ms] ease-out opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-75 group-focus-visible:opacity-0 group-focus-visible:scale-75 [@media(hover:none)]:group-hover:opacity-100 [@media(hover:none)]:group-hover:scale-100 motion-reduce:transition-none"
-                      aria-hidden="true"
-                    >
-                      <WarningSymbol id={`warn-${idx}`} />
-                    </div>
-
-                    {/* Prohibited Symbol: Centered glossy red circle with diagonal slash, subtle neon glow */}
-                    <div
-                      className="absolute inset-0 m-auto flex items-center justify-center z-30 pointer-events-none transition-all duration-[250ms] ease-out opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100 [@media(hover:none)]:group-hover:opacity-0 [@media(hover:none)]:group-hover:scale-90 motion-reduce:transition-none"
-                      aria-hidden="true"
-                    >
-                      <ProhibitedSymbol id={`prohib-${idx}`} />
-                    </div>
-                  </div>
+                  {/* Subtle edge vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/60" />
                 </div>
 
-                {/* Thin vertical gold divider between the two sections */}
+                {/* 2. Right Section: Dark glassmorphic panel with diagonal division */}
                 <div
-                  className={`w-px self-stretch my-0.5 shrink-0 relative z-10 ${
-                    isAnt
-                      ? 'bg-gradient-to-b from-cyan-500/25 via-cyan-400/50 to-transparent'
-                      : 'bg-gradient-to-b from-[#E5A93C]/20 via-[#E5A93C]/50 to-transparent'
-                  }`}
+                  className="absolute inset-0 bg-gradient-to-b from-[#0d0e13]/98 via-[#090a0e]/98 to-[#06070a] pointer-events-none transition-colors duration-300"
+                  style={{
+                    clipPath: 'polygon(36% 0%, 100% 0%, 100% 100%, 18% 100%)',
+                  }}
                 />
 
-                {/* Right section: remaining two-thirds (66.67%) of card width */}
-                <div className="w-[66.667%] shrink-0 flex flex-col justify-between pl-3 sm:pl-3.5 py-0.5 relative z-10">
+                {/* Glowing Diagonal Separator Line */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none z-10"
+                  preserveAspectRatio="none"
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  <line
+                    x1="36"
+                    y1="0"
+                    x2="18"
+                    y2="100"
+                    stroke={item.accentColor}
+                    strokeWidth="0.8"
+                    strokeOpacity="0.45"
+                  />
+                </svg>
+
+                {/* Ambient Glow in Accent Color on Hover */}
+                <div
+                  className="absolute inset-0 rounded-[24px] sm:rounded-[26px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    boxShadow: `inset 0 0 20px ${item.glowColor}, 0 0 25px ${item.glowColor}`,
+                  }}
+                />
+
+                {/* 3. Glossy Gold-Orange Hexagonal Frame with Live/Dead Pest Hover Interaction */}
+                <div className="absolute left-[3%] sm:left-[4%] top-[18%] sm:top-[20%] w-[32%] max-w-[110px] aspect-[125/135] z-20 flex items-center justify-center pointer-events-none">
+                  {/* Subtle Ambient Radial Glow behind hexagon */}
+                  <div
+                    className="absolute inset-0 rounded-full blur-xl opacity-25 group-hover:opacity-55 transition-opacity duration-300"
+                    style={{ backgroundColor: item.accentColor }}
+                  />
+
+                  {/* Live Pest Icon (default state) */}
+                  <img
+                    src={item.liveIcon}
+                    alt={`${item.title} live illustration`}
+                    data-image-component="true"
+                    loading="lazy"
+                    className="w-full h-full object-contain relative z-10 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:scale-95 group-hover:rotate-1"
+                  />
+
+                  {/* Dead Pest Icon (smooth transition on card hover) */}
+                  <img
+                    src={item.deadIcon}
+                    alt={`${item.title} eliminated illustration`}
+                    data-image-component="true"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-contain z-20 transition-all duration-300 ease-out opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100"
+                  />
+                </div>
+
+                {/* 4. Content Panel: Title, Description, Divider, Price, and Button */}
+                <div className="relative z-20 ml-auto w-[62%] sm:w-[64%] pl-2 sm:pl-3.5 pr-0.5 py-0.5 flex flex-col justify-between h-full min-h-[360px] sm:min-h-[380px]">
+                  {/* Top: Title & Description */}
                   <div>
-                    {/* Heading */}
-                    <h3 className="text-white text-sm sm:text-base font-bold tracking-tight mb-1 group-hover:text-[#F6C453] transition-colors leading-snug line-clamp-1">
+                    <h3
+                      className="text-base sm:text-[17px] font-extrabold tracking-tight font-heading leading-tight mb-2 transition-all duration-200 group-hover:brightness-110"
+                      style={{ color: item.titleColor }}
+                    >
                       {item.title}
                     </h3>
-
-                    {/* Description / Subheading */}
-                    {item.subheading ? (
-                      <div className="text-zinc-300 text-[10px] sm:text-[10.5px] font-semibold tracking-wider uppercase leading-tight mb-2.5">
-                        <div className="truncate">{item.subheading.line1}</div>
-                        <div className="truncate">{item.subheading.line2}</div>
-                      </div>
-                    ) : (
-                      <p className="text-zinc-400 text-[11px] leading-snug line-clamp-2 mb-2.5">
-                        {item.description}
-                      </p>
-                    )}
+                    <p className="text-zinc-300 text-xs sm:text-[12.5px] leading-relaxed line-clamp-3">
+                      {item.description}
+                    </p>
                   </div>
 
-                  {/* Price, starting label, and circular arrow button */}
-                  <div className="flex items-end justify-between pt-1 mt-auto gap-1">
-                    <div className="min-w-0 pr-1">
-                      <span className="text-[9.5px] sm:text-[10px] text-zinc-400 font-medium uppercase tracking-wider block mb-0.5">
-                        Starting at
-                      </span>
-                      <div
-                        className="text-base sm:text-lg font-black leading-none text-[#F6C453] tracking-tight drop-shadow-[0_2px_10px_rgba(246,196,83,0.35)]"
-                      >
+                  {/* Middle: Thin Accent-Colored Divider */}
+                  <div
+                    className="w-8 h-[2px] rounded-full my-3 sm:my-3.5 transition-all duration-300 group-hover:w-14"
+                    style={{ backgroundColor: item.accentColor }}
+                  />
+
+                  {/* Bottom: Starting Price & Button */}
+                  <div className="space-y-3 sm:space-y-3.5 mt-auto">
+                    <div>
+                      <div className="text-[11px] font-medium text-zinc-400 tracking-wide">
+                        Starting from
+                      </div>
+                      <div className="text-2xl sm:text-[26px] font-black text-[#F6C453] tracking-tight leading-none mt-1 drop-shadow-[0_2px_8px_rgba(246,196,83,0.3)]">
                         {item.price}
                       </div>
                     </div>
 
-                    {/* Circular dark button with thin gold border and gold arrow */}
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#18191d] border border-[#E5A93C]/40 flex items-center justify-center text-[#F6C453] shadow-[0_2px_8px_rgba(0,0,0,0.5)] group-hover:text-[#F6C453] group-hover:border-[#F6C453]/80 group-hover:bg-[#22242a] group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(229,169,60,0.25)] transition-all shrink-0">
-                      <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
+                    <div className="pt-0.5">
+                      <span className="inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-[#0a0c10] border border-amber-500/60 text-white text-[11px] sm:text-xs font-semibold tracking-wide shadow-[0_2px_12px_rgba(0,0,0,0.6)] group-hover:border-[#F6C453] group-hover:text-[#F6C453] group-hover:shadow-[0_0_16px_rgba(246,196,83,0.35)] transition-all duration-300">
+                        <span>View Service</span>
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1 text-amber-400" />
+                      </span>
                     </div>
                   </div>
                 </div>
               </a>
             );
           })}
-        </div>
-
-        {/* Clear Button/Link: View All Pest Services */}
-        <div className="mt-12 sm:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
-          <a
-            href="/services"
-            className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#E5A93C] to-[#F6C453] text-[#0a0b0e] font-black text-sm tracking-wide shadow-lg shadow-[#E5A93C]/20 hover:brightness-110 hover:shadow-[#E5A93C]/30 hover:scale-[1.02] active:scale-[0.98] transition-all group"
-          >
-            <span>View All Pest Services</span>
-            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-          </a>
-          <span className="text-xs text-zinc-400 hidden sm:inline">
-            Browse all 10 pest management treatments in Bangalore
-          </span>
         </div>
       </div>
     </section>
